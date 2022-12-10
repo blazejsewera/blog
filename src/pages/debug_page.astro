@@ -1,0 +1,14 @@
+---
+import Post from '../layouts/Post.astro'
+import { Heading } from '../components/Heading'
+---
+
+{
+	import.meta.env.DEV
+	&& 
+	<Post title="Hello">
+		<main>
+			<Heading level={1}>Hello AV</Heading>
+		</main>
+	</Post>
+}
