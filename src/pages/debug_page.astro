@@ -1,6 +1,7 @@
 ---
 import Post from '../layouts/Post.astro'
-import { Heading } from '../components/Heading'
+import { H1 } from '../components/heading/H1';
+import { H2 } from '../components/heading/H2';
 ---
 
 {
@@ -8,7 +9,8 @@ import { Heading } from '../components/Heading'
 	&& 
 	<Post title="Hello">
 		<main>
-			<Heading level={1}>Hello AV</Heading>
+			<H1>Hello AV</H1>
+			<H2>Hello AV</H2>
 		</main>
 	</Post>
 }

@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     fontFamily: {
       geometric: [
-        'Euclid, Futura, "Trebuchet MS", Arial, sans-serif',
+        '"Euclid Circular B", Futura, "Trebuchet MS", Arial, sans-serif',
         { fontFeatureSettings: '"kern"' },
       ],
       sans: [
