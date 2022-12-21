@@ -1,0 +1,11 @@
+// Vitest Snapshot v1
+
+exports[`<H1 /> > is properly styled 1`] = `
+<div>
+  <h1
+    class="font-geometric text-4xl"
+  >
+    Test
+  </h1>
+</div>
+`;
