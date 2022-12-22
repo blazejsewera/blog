@@ -3,8 +3,6 @@ layout: ../layouts/Post.astro
 title: Reactive Raven
 ---
 
-# Reactive Raven
-
 A Proof-of-Concept application to showcase the reactive approach of pushing
 data asynchronously to the UI.
 

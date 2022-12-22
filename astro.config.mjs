@@ -4,4 +4,10 @@ import tailwind from '@astrojs/tailwind'
 
 export default defineConfig({
   integrations: [solidJs(), tailwind()],
+  markdown: {
+    syntaxHighlight: 'shiki',
+    shikiConfig: {
+      theme: 'github-light',
+    },
+  },
 })
