@@ -1,6 +1,8 @@
 ---
 layout: ../layouts/Post.astro
 title: Reactive Raven
+author: Blazej Sewera
+date: 2022-12-23
 ---
 
 A Proof-of-Concept application to showcase the reactive approach of pushing

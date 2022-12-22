@@ -1,5 +1,9 @@
 {
   "vitest.enable": true,
   "vitest.commandLine": "yarn test --reporter=json --",
-  "testing.automaticallyOpenPeekView": "never"
+  "testing.automaticallyOpenPeekView": "never",
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "cSpell.words": ["Blazej", "Błażej", "Sewera"]
 }
