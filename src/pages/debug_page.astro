@@ -1,16 +1,11 @@
 ---
 import Post from '../layouts/Post.astro'
-import { H1 } from '../components/heading/H1';
-import { H2 } from '../components/heading/H2';
 ---
 
 {
-	import.meta.env.DEV
-	&& 
-	<Post title="Hello">
-		<main>
-			<H1>Hello AV</H1>
-			<H2>Hello AV</H2>
-		</main>
-	</Post>
+  import.meta.env.DEV && (
+    <Post frontmatter={{ title: 'Hello', date: '2022-12-23' }}>
+      <div>Hello world!</div>
+    </Post>
+  )
 }
