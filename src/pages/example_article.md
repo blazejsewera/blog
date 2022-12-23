@@ -1,6 +1,8 @@
 ---
 layout: ../layouts/Post.astro
 title: Reactive Raven
+abstract: |
+  Hello world!
 author: Blazej Sewera
 date: 2022-12-23
 ---

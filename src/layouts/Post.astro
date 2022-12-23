@@ -6,6 +6,7 @@ export interface Props {
     author?: string
     abstract?: string
     imgUrl?: string
+    imgDescription?: string
   }
 }
 
@@ -16,21 +17,42 @@ const date = frontmatter.date
 const author = frontmatter.author ?? 'Blazej Sewera'
 const abstract = frontmatter.abstract ?? ''
 const imgUrl = frontmatter.imgUrl ?? ''
+const imgDescription = frontmatter.imgDescription ?? ''
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/style/swisstypefaces.css" />
+
+    <meta name="generator" content={Astro.generator} />
+
     <meta name="description" content={abstract} />
     <meta name="author" content={author} />
     <meta name="created" content={date} />
-    <meta name="DC.Date" content={date} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="stylesheet" href="/style/swisstypefaces.css" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <meta name="date" content={date} />
+
+    <meta name="dcterms.title" content={title} />
+    <meta name="dcterms.date" content={date} />
+    <meta name="dcterms.abstract" content={abstract} />
+    <meta name="dcterms.creator" content={author} />
+    <meta name="dcterms.language" content="en-US" />
+    <meta name="dcterms.license" content="CC BY-SA 4.0" />
+    <meta name="dcterms.rights" content={`CC BY-SA 4.0 ${author}`} />
+
+    <meta name="og:title" content={title} />
+    <meta name="og:image" content={imgUrl} />
+    <meta name="og:image:alt" content={imgDescription} />
+    <meta name="og:type" content="article" />
+    <meta name="og:description" content={abstract} />
+    <meta name="og:site_name" content="blog.sewera.dev" />
+    <meta name="article:published_time" content={date} />
+    <meta name="article:author" content={author} />
+
+    <title>{title} — blog.sewera.dev</title>
   </head>
   <body class="font-sans">
     <div id="ribbon">
