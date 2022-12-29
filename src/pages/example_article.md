@@ -1,102 +1,149 @@
 ---
 layout: ../layouts/Post.astro
-title: Reactive Raven
+title: "Markdown Samples"
+date: 2020-06-08T08:06:25+06:00
+description: Markdown rendering samples
 abstract: |
-  Hello world!
+  This article exemplifies how different
+  Markdown elements are rendered on the blog.
+  Some elements are intentionally unstyled,
+  such as h1, because they shouldn't be
+  included on a page more than once.
+menu:
+  sidebar:
+    name: Markdown Sample
+    identifier: markdown
+    weight: 30
 author: Blazej Sewera
-date: 2022-12-23
 ---
 
-A Proof-of-Concept application to showcase the reactive approach of pushing
-data asynchronously to the UI.
+This is a sample post intended to test the followings:
 
-This project is mainly an experiment if this kind of reactive approach can be
-used in my other project, [notipie](https://github.com/blazejsewera/notipie).
+- A different post author.
+- Table of contents.
+- Markdown content rendering.
+- Math rendering.
+- Emoji rendering.
+
+---
+# Markdown Syntax Rendering
+
+## Headings
+
+The following HTML `<h1>`—`<h6>` elements represent six levels of section headings. `<h1>` is the highest section level while `<h6>` is the lowest.
+
+# H1
+## H2
+### H3
+#### H4
+##### H5
+###### H6
+
+## Paragraph
+
+Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptionse latur sitiae dolessi aut parist aut dollo enim qui voluptate ma dolestendit peritin re plis aut quas inctum laceat est volestemque commosa as cus endigna tectur, offic to cor sequas etum rerum idem sintibus eiur? Quianimin porecus evelectur, cum que nis nust voloribus ratem aut omnimi, sitatur? Quiatem. Nam, omnis sum am facea corem alique molestrunt et eos evelece arcillit ut aut eos eos nus, sin conecerem erum fuga. Ri oditatquam, ad quibus unda veliamenimin cusam et facea ipsamus es exerum sitate dolores editium rerore eost, temped molorro ratiae volorro te reribus dolorer sperchicium faceata tiustia prat.
+
+Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que aut hariosam ex eat.
+
+## Blockquotes
+
+The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a `footer` or `cite` element, and optionally with in-line changes such as annotations and abbreviations.
+
+#### Blockquote without attribution
+
+> Tiam, ad mint andaepu dandae nostion secatur sequo quae.
+> **Note** that you can use *Markdown syntax* within a blockquote.
+
+#### Blockquote with attribution
+
+> Don't communicate by sharing memory, share memory by communicating.
+> <cite>Rob Pike[^1]</cite>
 
 
-## Starting
+[^1]: The above quote is excerpted from Rob Pike's [talk](https://www.youtube.com/watch?v=PAAkCSZUG1c) during Gopherfest, November 18, 2015.
 
-### Quickest launch
+## Tables
 
-```bash
-make      # to build the application
-make run  # to run the application
+Tables aren't part of the core Markdown spec, but Hugo supports supports them out-of-the-box.
+
+   | Name  | Age |
+   | ----- | --- |
+   | Bob   | 13  |
+   | Alice | 27  |
+
+#### Inline Markdown within tables
+
+| Inline&nbsp;&nbsp;&nbsp; | Markdown&nbsp;&nbsp;&nbsp; | In&nbsp;&nbsp;&nbsp;                | Table  |
+| ------------------------ | -------------------------- | ----------------------------------- | ------ |
+| *italics*                | **bold**                   | ~~strikethrough~~&nbsp;&nbsp;&nbsp; | `code` |
+
+## Code Blocks
+
+#### Code block with backticks
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Example HTML5 Document</title>
+</head>
+<body>
+  <p>Test</p>
+</body>
+</html>
 ```
+#### Code block indented with four spaces
 
-Use `run-prod` to start the server on `0.0.0.0:8080`, or just go to `./dist`
-(`cd ./dist`), and run `./rr -addr <address:port>`.
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <title>Example HTML5 Document</title>
+    </head>
+    <body>
+      <p>Test</p>
+    </body>
+    </html>
 
-### Development launch
+## List Types
 
-You will need `make`, `go`, and `yarn` to start the whole stack. Use `./makew`
-wrapper for make, as it has parallel execution set, needed for the dev servers
-to start simultaneously.
+#### Ordered List
 
-Sync the dependencies with `make install`. Start the dev servers with
-`./makew dev`.
+1. First item
+2. Second item
+3. Third item
 
-Open the preview of the application with `./makew preview` (recommended for
-finding out if the statically-built version of ui works properly).
+#### Unordered List
 
+* List item
+* Another item
+* And another item
 
-## The Why
+#### Nested list
 
-When searching for the optimal solution for pushing the data to the UI, I came
-across two major solutions:
-- Redux Thunks - okay for fetching some data on user interaction, e.g. on a
-  button click, but it provides virtually full implementation lock-in, and
-  very little separation of concerns. Fetching data is an action dispatched on
-  a store, so external communication and storing data are dependent on each
-  other. More information on thunks
-  [here](https://redux.js.org/usage/writing-logic-thunks).
-- Redux Sagas - good for managing side effects with plain JavaScript, but they
-  use [generator functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*)
-  that yield a different type every time, so they are a nightmare to use with
-  strict TypeScript.
+* Fruit
+  * Apple
+  * Orange
+  * Banana
+* Dairy
+  * Milk
+  * Cheese
 
-Both thunks and sagas don't provide the separation of concerns I want to
-achieve. Fetching or acting upon pushed data is a different concern than
-storing it.
+## Other Elements — abbr, sub, sup, kbd, mark
 
-The user shouldn't dispatch an action on a _store_, when all they want to do
-is fetch data. Of course, the data can be immediately stored after fetching,
-but this behavior should be injected, so that there is no store implementation
-lock-in.
+<abbr title="Graphics Interchange Format">GIF</abbr> is a bitmap image format.
 
+H<sub>2</sub>O
 
-## The How
+X<sup>n</sup> + Y<sup>n</sup> = Z<sup>n</sup>
 
-[ReactiveX](http://reactivex.io/) turned out to be the best framework for this
-specific PoC. Being based on the [Observer Pattern](https://en.wikipedia.org/wiki/Observer_pattern),
-it seemed to be the right solution for the problem. When pushing the data
-asynchronously to the UI, it _feels_ natural to subscribe to the observable data
-stream from the backend, and write a simple method what to do with it.
+Press <kbd><kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>Delete</kbd></kbd> to end the session.
 
-See the `./ui/src/net/rx` directory for example usages of this framework in
-the project.
+Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and other small creatures.
 
-I don't want to manually model time, I just want to act on the data **when it arrives**.
+---
 
-The basic setup is a couple of clients pushing some messages to the backend,
-that will push the aggregated messages to one live dashboard, that will
-asynchronously update whenever a new message arrives.
+## Emoji Rendering
 
-```
-Client UI \
-Client UI --> Backend --> Live Dashboard
-Client UI /
-```
-
-
-### Implementation details
-
-All of the frontend components will be implemented using React, RxJS, and Redux.
-
-Backend will be implemented using Go. Why Go? Because handling concurrency is
-very elegant with coroutines and channels, Go is performant, and many
-microservices are written in it.
-
-
-## License
-
-The project is licensed under MPL-2.0 License. Copyright 2021 Blazej Sewera
+🙈 🙉 🙊

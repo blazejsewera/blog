@@ -59,7 +59,7 @@ const license = frontmatter.license ?? defaultLicense
     <div id="screen-image" class="padding-big text-white">
       <div class="header-image flex margin-bottom-header">
         <span class="brand center-y-flex font-bigger">
-          <a href="/" title="Błażej Sewera" class="text-white weight-normal"
+          <a href="/" title={siteName} class="text-white weight-normal"
             >{siteName}</a
           >
         </span>
@@ -78,6 +78,14 @@ const license = frontmatter.license ?? defaultLicense
     <article>
       <div class="post-wrapper flex">
         <div id="post-content" class="post-content">
+          {
+            abstract && (
+              <section class="abstract">
+                <h2>Abstract</h2>
+                <p>{abstract}</p>
+              </section>
+            )
+          }
           <slot />
         </div>
       </div>
@@ -86,7 +94,12 @@ const license = frontmatter.license ?? defaultLicense
     <div class="footer flex">
       <img src="/logo-black.svg" alt="[magpie]" class="center-x-flex" />
     </div>
+
     <style is:global define:vars={{ imgUrl }}>
+      html {
+        font-kerning: auto;
+      }
+
       /* Ribbon that will contain post title */
       #ribbon {
         height: 420px;
@@ -105,9 +118,17 @@ const license = frontmatter.license ?? defaultLicense
         background-color: hsl(0, 0%, 20%);
       }
 
+      section.abstract {
+        max-width: 37rem;
+        margin: 0 4rem 2rem 4rem;
+        line-height: 1.55;
+        letter-spacing: 0.018em;
+        border: 1px solid hsl(0, 0%, 60%);
+      }
+
       /* Additional spacing rules only for portfolio listing */
       .post-content {
-        color: hsl(0, 0%, 30%);
+        color: hsl(0, 0%, 20%);
         margin: 3rem auto 30px auto;
         width: 45rem;
       }
@@ -128,6 +149,7 @@ const license = frontmatter.license ?? defaultLicense
         font-weight: 600;
       }
 
+      .post-content h1,
       .post-content h2,
       .post-content h3,
       .post-content h4,
@@ -150,11 +172,69 @@ const license = frontmatter.license ?? defaultLicense
 
       .post-content p,
       .post-content > ul,
-      .post-content > ol {
+      .post-content > ol,
+      .post-content > table,
+      .post-content > section.footnotes > * {
         max-width: 37rem;
         margin: 0 4rem 2rem 4rem;
         line-height: 1.55;
         letter-spacing: 0.018em;
+      }
+
+      .post-content hr {
+        border: 0;
+        border-top: 1px solid hsl(0, 0%, 40%);
+      }
+
+      .post-content section.footnotes {
+        margin-top: 4rem;
+        border-top: 1px solid hsl(0, 0%, 40%);
+      }
+
+      .post-content section.footnotes > h2,
+      section.abstract > h2 {
+        margin-bottom: 1rem;
+        font-size: 36px;
+      }
+
+      .post-content section.footnotes p {
+        margin: 0;
+      }
+
+      .post-content table {
+        border-collapse: collapse;
+      }
+
+      .post-content thead {
+        border-bottom: 1px solid hsl(0, 0%, 40%);
+      }
+
+      .post-content td,
+      .post-content th {
+        padding: 0 1rem 0 1rem;
+      }
+
+      .post-content blockquote {
+        display: block;
+        padding: 0.2rem 0.4rem;
+        max-width: 35rem;
+        margin: 1rem 4rem 2rem 5.2rem;
+        padding-left: 0.8rem;
+        border-left: 8px solid hsl(0, 0%, 90%);
+      }
+
+      .post-content blockquote p {
+        margin: 0;
+      }
+
+      .post-content cite {
+        font-style: italic;
+        color: hsla(0, 0%, 40%);
+      }
+
+      .post-content cite::before {
+        white-space: pre;
+        content: '\A— ';
       }
 
       .post-content code {
@@ -225,9 +305,16 @@ const license = frontmatter.license ?? defaultLicense
 
         .post-content p,
         .post-content > ul,
-        .post-content > ol {
+        .post-content > ol,
+        .post-content > table,
+        .post-content > section.footnotes > * {
           line-height: 1.6;
           letter-spacing: 0.021em;
+        }
+
+        .post-content > section.footnotes > h2,
+        section.abstract > h2 {
+          font-size: 24px;
         }
 
         .post-content figure {
@@ -255,6 +342,7 @@ const license = frontmatter.license ?? defaultLicense
           box-sizing: border-box;
         }
 
+        .post-content h1,
         .post-content h2,
         .post-content h3,
         .post-content h4,
@@ -275,11 +363,23 @@ const license = frontmatter.license ?? defaultLicense
 
         .post-content p,
         .post-content > ul,
-        .post-content > ol {
+        .post-content > ol,
+        .post-content > table,
+        .post-content > section.footnotes > * {
           margin: 0 30px 2rem 30px;
           max-width: 37rem;
           line-height: 1.6;
           letter-spacing: 0.021em;
+        }
+
+        .post-content > section.footnotes > h2,
+        section.abstract > h2 {
+          margin-bottom: 1rem;
+          font-size: 22px;
+        }
+
+        .post-content blockquote {
+          margin: 1rem 30px 4rem 30px;
         }
 
         .post-content code.block,
@@ -869,5 +969,47 @@ const license = frontmatter.license ?? defaultLicense
         }
       }
     </style>
+    <script is:inline>
+      const menuImageButton = document.getElementById('menu-image-button')
+      const menu = document.getElementById('menu')
+      const menuCloseButton = document.getElementById('menu-close-button')
+      const ribbon = document.getElementById('ribbon')
+      const menuRibbonButton = document.getElementById('menu-ribbon-button')
+      const menuLinks = document.getElementById('menu-links')
+
+      document.addEventListener('click', () => {
+        menu?.classList.remove('visible')
+      })
+
+      menu?.addEventListener('click', e => {
+        e.stopPropagation()
+      })
+
+      menuImageButton?.addEventListener('click', e => {
+        e.stopPropagation()
+        menu?.classList.add('visible')
+      })
+
+      menuRibbonButton?.addEventListener('click', e => {
+        e.stopPropagation()
+        menu?.classList.add('visible')
+      })
+
+      menuCloseButton?.addEventListener('click', () => {
+        menu?.classList.remove('visible')
+      })
+
+      menuLinks?.addEventListener('click', () => {
+        menu?.classList.remove('visible')
+      })
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY >= 100) {
+          ribbon?.classList.add('visible')
+        } else {
+          ribbon?.classList.remove('visible')
+        }
+      })
+    </script>
   </body>
 </html>
