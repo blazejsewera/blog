@@ -47,12 +47,12 @@ const license = frontmatter.license ?? defaultLicense
     <div id="ribbon">
       <div id="menu-ribbon-button" class="flex cursor-pointer">
         <img src="/menu.svg" alt="menu" />
-        <span>{title}</span>
-        <div>
-          <a class="flex" href="/"
-            ><img class="logo" src="/logo-white.svg" alt="home" />
-          </a>
-        </div>
+      </div>
+      <span>{title}</span>
+      <div>
+        <a class="flex" href="/"
+          ><img class="logo" src="/logo-white.svg" alt="home" />
+        </a>
       </div>
     </div>
 
@@ -98,11 +98,6 @@ const license = frontmatter.license ?? defaultLicense
     <style is:global define:vars={{ imgUrl }}>
       html {
         font-kerning: auto;
-      }
-
-      /* Ribbon that will contain post title */
-      #ribbon {
-        height: 420px;
       }
 
       /* Title with an image */
@@ -683,7 +678,7 @@ const license = frontmatter.license ?? defaultLicense
         top: 80px;
         box-sizing: border-box;
         width: 50px;
-        height: 260px;
+        min-height: 360px;
         padding: 15px 5px;
         background-color: hsl(0, 0%, 20%);
         color: hsl(0, 0%, 100%);
@@ -911,6 +906,7 @@ const license = frontmatter.license ?? defaultLicense
           top: -45px;
           right: 0;
           width: 100%;
+          min-height: 45px;
           height: 45px;
           flex-direction: row-reverse;
           padding: 0 20px;
