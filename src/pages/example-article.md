@@ -73,6 +73,32 @@ Tables aren't part of the core Markdown spec, but Hugo supports supports them ou
 | ------------------------ | -------------------------- | ----------------------------------- | ------ |
 | *italics*                | **bold**                   | ~~strikethrough~~&nbsp;&nbsp;&nbsp; | `code` |
 
+## Images
+
+Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum,
+voluptionse latur sitiae dolessi aut parist aut dollo enim qui voluptate ma
+dolestendit peritin re plis aut quas inctum laceat est volestemque commosa as
+cus endigna tectur, offic to cor sequas etum rerum idem sintibus eiur? Quianimin
+porecus evelectur, cum que nis nust voloribus ratem aut omnimi, sitatur?
+Quiatem. Nam, omnis sum am facea corem alique molestrunt et eos evelece arcillit
+ut aut eos eos nus, sin conecerem erum fuga. Ri oditatquam, ad quibus unda
+veliamenimin cusam et facea ipsamus es exerum sitate dolores editium rerore
+eost, temped molorro ratiae volorro te reribus dolorer sperchicium faceata
+tiustia prat.
+
+<figure>
+  <img src="/example-article/nordic-sky.jpg" />
+  <figcaption>Smaller image</figcaption>
+</figure>
+
+Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne
+sapicia is sinveli squiatum, core et que aut hariosam ex eat.
+
+<figure>
+  <img src="/example-article/nordic-sky.jpg" class="wide" />
+  <figcaption>Bigger image</figcaption>
+</figure>
+
 ## Code Blocks
 
 #### Code block with backticks
