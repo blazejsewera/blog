@@ -95,7 +95,10 @@ const license = frontmatter.license ?? defaultLicense
       <img src="/logo-black.svg" alt="[magpie]" class="center-x-flex" />
     </div>
 
-    <style is:global define:vars={{ imgUrl }}>
+    <style
+      is:global
+      define:vars={{ imgUrl: `${imgUrl ? `url(${imgUrl})` : ''}` }}
+    >
       html {
         font-kerning: auto;
       }

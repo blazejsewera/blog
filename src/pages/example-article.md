@@ -1,20 +1,16 @@
 ---
 layout: ../layouts/Post.astro
-title: "Markdown Samples"
-date: 2020-06-08T08:06:25+06:00
-description: Markdown rendering samples
+title: Markdown Samples
+date: 2022-12-29
 abstract: |
   This article exemplifies how different
   Markdown elements are rendered on the blog.
   Some elements are intentionally unstyled,
   such as h1, because they shouldn't be
   included on a page more than once.
-menu:
-  sidebar:
-    name: Markdown Sample
-    identifier: markdown
-    weight: 30
 author: Blazej Sewera
+imgUrl: /example-article/nordic-sky.jpg
+imgDescription: Nordic sky
 ---
 
 This is a sample post intended to test the followings:
