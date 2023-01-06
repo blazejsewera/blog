@@ -1,6 +1,7 @@
 ---
 import { DraftInfo } from '../components/article/DraftInfo'
 import { Metadata } from '../components/article/Metadata'
+import MenuWithRibbon from '../components/MenuWithRibbon.astro'
 
 export interface Props {
   frontmatter: {
@@ -72,19 +73,7 @@ const github = 'https://github.com/blazejsewera'
     </div>
 
     <div id="screen-image" class="padding-big text-white">
-      <div class="header-image flex margin-bottom-header">
-        <span class="brand center-y-flex font-bigger">
-          <a href="/" title={siteName} class="text-white weight-normal"
-            >{siteName}</a
-          >
-        </span>
-        <span
-          id="menu-image-button"
-          class="flex right-x-flex icon-wrapper cursor-pointer"
-        >
-          <img src="/menu.svg" alt="menu" />
-        </span>
-      </div>
+      <MenuWithRibbon ribbonTitle={title} siteName={siteName} />
       <div class="text-image flex">
         <h1 class="center-x-y-flex font-huge">{title}</h1>
       </div>
@@ -504,10 +493,6 @@ const github = 'https://github.com/blazejsewera'
 
       /* Reusable classes */
 
-      .flex {
-        display: flex;
-      }
-
       .two-column-grid {
         display: grid;
         grid-column-gap: 80px;
@@ -577,14 +562,6 @@ const github = 'https://github.com/blazejsewera'
       }
 
       /* font properties */
-      .euclid {
-        font-family: 'Euclid Circular B', Futura, 'Trebuchet MS', Arial,
-          sans-serif;
-        font-weight: 500;
-      }
-      .text-white {
-        color: hsl(0, 0%, 100%);
-      }
       .weight-normal {
         font-weight: 400;
       }
@@ -707,98 +684,6 @@ const github = 'https://github.com/blazejsewera'
         height: 120px;
       }
 
-      /* Ribbon with hamburger menu showed after scrolling */
-
-      #ribbon {
-        position: fixed;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        right: -50px;
-        top: 80px;
-        box-sizing: border-box;
-        width: 50px;
-        min-height: 360px;
-        padding: 15px 5px;
-        background-color: hsl(0, 0%, 20%);
-        color: hsl(0, 0%, 100%);
-        font-size: 16px;
-        z-index: 68;
-        transition-property: right;
-        transition-duration: 200ms;
-      }
-      #ribbon.visible {
-        right: 0;
-      }
-      #ribbon #menu-ribbon-button img {
-        height: 24px;
-        margin: auto;
-      }
-      #ribbon .logo {
-        height: 30px;
-        margin: auto;
-      }
-      #ribbon span {
-        writing-mode: vertical-rl;
-        text-orientation: mixed;
-      }
-      #ribbon > div,
-      #ribbon > span {
-        margin: 0 auto;
-      }
-
-      /* Side, slide-in menu on desktop and tablet */
-
-      #menu {
-        background-color: hsl(0, 0%, 20%);
-        position: fixed;
-        top: 0;
-        right: -700px;
-        height: 100vh;
-        width: 700px;
-        padding: 50px;
-        box-sizing: border-box;
-        z-index: 69;
-        transition-property: right;
-        transition-duration: 400ms;
-      }
-      #menu.visible {
-        right: 0;
-      }
-
-      #menu menu {
-        font-size: 36px;
-      }
-
-      #menu a {
-        color: hsl(0, 0%, 75%);
-        font-weight: 400;
-        transition-property: color;
-        transition-duration: 300ms;
-      }
-      #menu a:hover {
-        text-decoration: none;
-        color: hsl(0, 0%, 100%);
-      }
-
-      #menu-close-button {
-        position: absolute;
-        top: 50px;
-        left: 50px;
-      }
-
-      /* Content with About me */
-
-      div#portrait-image {
-        background-color: hsl(181.8, 47.5%, 72.4%);
-      }
-      div#portrait-image > img {
-        max-width: 100%;
-        max-height: 25rem;
-      }
-
-      /* Medium size: usually tablets and half-screen browsers */
-
       @media (min-width: 768px) and (max-width: 1300px) {
         html {
           font-size: 16px;
@@ -854,15 +739,6 @@ const github = 'https://github.com/blazejsewera'
 
         div.logo-image > img {
           height: 80px;
-        }
-
-        #menu {
-          width: 550px;
-          right: -550px;
-        }
-
-        #menu menu {
-          font-size: 30px;
         }
       }
 
@@ -940,68 +816,6 @@ const github = 'https://github.com/blazejsewera'
 
         div.logo-image > img {
           height: 60px;
-        }
-
-        #ribbon {
-          top: -45px;
-          right: 0;
-          width: 100%;
-          min-height: 45px;
-          height: 45px;
-          flex-direction: row-reverse;
-          padding: 0 20px;
-          transition-property: top;
-        }
-        #ribbon.visible {
-          top: 0;
-        }
-        #ribbon span {
-          writing-mode: horizontal-tb;
-        }
-        #ribbon > div,
-        #ribbon > span {
-          margin: auto 0;
-        }
-
-        #menu {
-          top: 0;
-          right: -100vw;
-          width: 100vw;
-          padding: 40px;
-          transition-property: right;
-          transition-duration: 400ms;
-        }
-        #menu.visible {
-          right: 0;
-        }
-
-        #menu > div.center-y-flex {
-          width: 100%;
-        }
-
-        #menu menu {
-          font-size: 24px;
-        }
-
-        #menu h2 {
-          max-width: 200px;
-        }
-
-        #menu-links,
-        #menu-links > li,
-        #menu-links > li > a {
-          width: 100%;
-        }
-
-        #menu-links > li > a {
-          display: inline-block;
-          margin-bottom: 10px;
-        }
-
-        #menu-close-button {
-          left: auto;
-          top: 40px;
-          right: 40px;
         }
       }
     </style>
