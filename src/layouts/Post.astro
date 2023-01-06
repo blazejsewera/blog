@@ -1,8 +1,11 @@
 ---
+import { DraftInfo } from '../components/article/DraftInfo'
 import { Metadata } from '../components/article/Metadata'
 
 export interface Props {
   frontmatter: {
+    draft: boolean
+    draftDescription?: string
     title: string
     date: string
     author?: string
@@ -21,7 +24,15 @@ const defaultAuthor = 'Blazej Sewera'
 
 const { frontmatter } = Astro.props
 
-const { title, date, abstract, imgUrl, imgDescription } = frontmatter
+const {
+  draft,
+  draftDescription,
+  title,
+  date,
+  abstract,
+  imgUrl,
+  imgDescription,
+} = frontmatter
 const author = frontmatter.author ?? defaultAuthor
 const language = frontmatter.language ?? defaultLanguage
 const license = frontmatter.license ?? defaultLicense
@@ -78,6 +89,13 @@ const license = frontmatter.license ?? defaultLicense
     <article>
       <div class="post-wrapper flex">
         <div id="post-content" class="post-content">
+          {
+            draft && (
+              <section class="draft">
+                <DraftInfo description={draftDescription} />
+              </section>
+            )
+          }
           {
             abstract && (
               <section class="abstract">

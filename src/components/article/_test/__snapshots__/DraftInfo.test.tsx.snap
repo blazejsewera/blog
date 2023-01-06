@@ -1,0 +1,25 @@
+// Vitest Snapshot v1
+
+exports[`<DraftInfo /> > renders properly with description 1`] = `
+<div>
+  <div>
+    <div>
+      draft
+    </div>
+    <div>
+      description
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<DraftInfo /> > renders properly without description 1`] = `
+<div>
+  <div>
+    <div>
+      draft
+    </div>
+    
+  </div>
+</div>
+`;
