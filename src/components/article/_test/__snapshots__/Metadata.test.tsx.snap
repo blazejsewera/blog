@@ -1,0 +1,62 @@
+// Vitest Snapshot v1
+
+exports[`<Metadata /> > renders properly 1`] = `
+<div>
+  <meta
+    content="article"
+    name="og:type"
+  />
+  <meta
+    content="title"
+    name="dcterms.title"
+  />
+  <meta
+    content="title"
+    name="og:title"
+  />
+  <meta
+    content="2022-01-06"
+    name="created"
+  />
+  <meta
+    content="2022-01-06"
+    name="date"
+  />
+  <meta
+    content="2022-01-06"
+    name="dcterms.date"
+  />
+  <meta
+    content="2022-01-06"
+    name="article:published_time"
+  />
+  <meta
+    content="author"
+    name="author"
+  />
+  <meta
+    content="author"
+    name="dcterms.creator"
+  />
+  <meta
+    content="author"
+    name="article:author"
+  />
+  <meta
+    content="CC BY-SA 3.0 author"
+    name="dcterms.rights"
+  />
+  <meta
+    content="CC BY-SA 3.0"
+    name="dcterms.license"
+  />
+  <meta
+    content="en-US"
+    name="dcterms.language"
+  />
+  <meta
+    content="blog.sewera.dev"
+    name="og:site_name"
+  />
+</div>
+`;
