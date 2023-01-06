@@ -8,7 +8,9 @@ export interface DraftInfoProps {
 
 export const DraftInfo: Component<DraftInfoProps> = ({ description }) => (
   <div class={cx(['mx-16', 'mb-8', 'flex'])}>
-    <DraftBadge />
+    <div class="my-auto">
+      <DraftBadge />
+    </div>
     <span class={cx(['text-orange-600', 'inline', 'my-auto', 'ml-4'])}>
       {description ?? 'This is a draft article. It may be incomplete.'}
     </span>

@@ -1,5 +1,4 @@
 ---
-draft: true
 layout: ../layouts/Post.astro
 title: Markdown Samples
 date: 2022-12-29
