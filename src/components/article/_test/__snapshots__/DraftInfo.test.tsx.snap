@@ -2,24 +2,46 @@
 
 exports[`<DraftInfo /> > renders properly with description 1`] = `
 <div>
-  <div>
-    <div>
-      draft
+  <div
+    class="mx-16 mb-8 flex"
+  >
+    <div
+      class="inline-flex rounded-full border-2 w-min px-3 uppercase text-xs border-orange-600 text-orange-600 bg-orange-100"
+    >
+      <div
+        class="m-auto"
+      >
+        draft
+      </div>
     </div>
-    <div>
+    <span
+      class="text-orange-600 inline my-auto ml-4"
+    >
       description
-    </div>
+    </span>
   </div>
 </div>
 `;
 
 exports[`<DraftInfo /> > renders properly without description 1`] = `
 <div>
-  <div>
-    <div>
-      draft
+  <div
+    class="mx-16 mb-8 flex"
+  >
+    <div
+      class="inline-flex rounded-full border-2 w-min px-3 uppercase text-xs border-orange-600 text-orange-600 bg-orange-100"
+    >
+      <div
+        class="m-auto"
+      >
+        draft
+      </div>
     </div>
-    
+    <span
+      class="text-orange-600 inline my-auto ml-4"
+    >
+      This is a draft article. It may be incomplete.
+    </span>
   </div>
 </div>
 `;

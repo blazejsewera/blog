@@ -36,6 +36,10 @@ const {
 const author = frontmatter.author ?? defaultAuthor
 const language = frontmatter.language ?? defaultLanguage
 const license = frontmatter.license ?? defaultLicense
+
+const baseSite = 'https://www.sewera.dev'
+const blogSite = 'https://blog.sewera.dev'
+const github = 'https://github.com/blazejsewera'
 ---
 
 <!DOCTYPE html>
@@ -86,7 +90,20 @@ const license = frontmatter.license ?? defaultLicense
       </div>
     </div>
 
-    <!-- TODO: add <menu> -->
+    <div id="menu" class="text-white flex">
+      <span id="menu-close-button" class="flex icon-wrapper cursor-pointer">
+        <img src="/close.svg" alt="close" />
+      </span>
+      <div class="center-y-flex">
+        <h2 class="font-biggest my-6">Where do you want to go?</h2>
+        <menu id="menu-links" class="non-bullet-ul">
+          <li><a href={baseSite}>home</a></li>
+          <li><a href={blogSite} title="Blog">blog</a></li>
+          <li><a href={`${baseSite}#me`} title="About me">about me</a></li>
+          <li><a href={github} title="My Github">code</a></li>
+        </menu>
+      </div>
+    </div>
 
     <article>
       <div class="post-wrapper flex">
@@ -749,7 +766,7 @@ const license = frontmatter.license ?? defaultLicense
         right: 0;
       }
 
-      #menu ul {
+      #menu menu {
         font-size: 36px;
       }
 
@@ -844,7 +861,7 @@ const license = frontmatter.license ?? defaultLicense
           right: -550px;
         }
 
-        #menu ul {
+        #menu menu {
           font-size: 30px;
         }
       }
@@ -962,7 +979,7 @@ const license = frontmatter.license ?? defaultLicense
           width: 100%;
         }
 
-        #menu ul {
+        #menu menu {
           font-size: 24px;
         }
 

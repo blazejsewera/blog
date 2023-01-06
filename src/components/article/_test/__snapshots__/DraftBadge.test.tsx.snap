@@ -1,0 +1,15 @@
+// Vitest Snapshot v1
+
+exports[`<DraftBadge /> > renders properly 1`] = `
+<div>
+  <div
+    class="inline-flex rounded-full border-2 w-min px-3 uppercase text-xs border-orange-600 text-orange-600 bg-orange-100"
+  >
+    <div
+      class="m-auto"
+    >
+      draft
+    </div>
+  </div>
+</div>
+`;

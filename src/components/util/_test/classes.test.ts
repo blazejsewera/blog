@@ -1,3 +1,4 @@
+import { describe, it } from 'vitest'
 import { cx } from '../classes'
 
 describe('class names merge function', () => {
