@@ -5,13 +5,15 @@ export interface Props {
 }
 const { siteName, ribbonTitle } = Astro.props
 const baseSite = 'https://www.sewera.dev'
-const blogSite = 'https://blog.sewera.dev'
+const blogSite = '/'
 const github = 'https://github.com/blazejsewera'
 ---
 
 <div class="header-image flex margin-bottom-header">
   <span class="brand center-y-flex font-bigger">
-    <a href="/" title={siteName} class="text-white weight-normal">{siteName}</a>
+    <a href={blogSite} title={siteName} class="text-white weight-normal"
+      >{siteName}</a
+    >
   </span>
   <span
     id="menu-image-button"
@@ -27,7 +29,7 @@ const github = 'https://github.com/blazejsewera'
   </div>
   <span>{ribbonTitle}</span>
   <div>
-    <a class="flex" href="/"
+    <a class="flex" href={blogSite}
       ><img class="logo" src="/logo-white.svg" alt="home" />
     </a>
   </div>
