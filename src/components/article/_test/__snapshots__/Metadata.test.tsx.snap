@@ -3,6 +3,22 @@
 exports[`<Metadata /> > renders properly 1`] = `
 <div>
   <meta
+    charset="UTF-8"
+  />
+  <meta
+    content="width=device-width,initial-scale=1.0"
+    name="viewport"
+  />
+  <link
+    href="/favicon.svg"
+    rel="icon"
+    type="image/svg+xml"
+  />
+  <link
+    href="/style/swisstypefaces.css"
+    rel="stylesheet"
+  />
+  <meta
     content="article"
     name="og:type"
   />

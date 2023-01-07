@@ -1,19 +1,17 @@
 ---
-import { Menu } from '../components/navigation/Menu'
-import Layout from '../layouts/Layout.astro'
+import { toArticleInfo } from '../components/article/articleInfo'
+import Listing from '../layouts/Listing.astro'
 
-let visible = true
-const baseSite = ''
-const blogSite = ''
-const github = ''
+const articles = await Astro.glob('./*.md')
 ---
 
-<Layout title="Welcome to Astro.">
-  <main>
-    <a href="example-article">Example article</a>
-    <Menu {...{visible, baseSite, blogSite, github}} />
-  </main>
-</Layout>
+<Listing
+  articles={articles.map(toArticleInfo)}
+  title="Welcome to Astro."
+  description=""
+  imgUrl=""
+  imgDescription=""
+/>
 
 <script>
   import {

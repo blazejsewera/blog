@@ -1,0 +1,58 @@
+---
+import type { ArticleInfo } from '../components/article/articleInfo'
+import { Card } from '../components/article/Card'
+import { Metadata } from '../components/article/Metadata'
+import {
+  defaultAuthor,
+  defaultLanguage,
+  defaultLicense,
+  siteName,
+} from '../components/const/meta'
+
+export interface Props {
+  title: string
+  description: string
+  imgUrl: string
+  imgDescription: string
+  articles: ArticleInfo[]
+}
+
+const { title, description, imgUrl, imgDescription, articles } = Astro.props
+const generatedDate = new Date().toISOString()
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="generator" content={Astro.generator} />
+    <Metadata
+      {...{
+        title,
+        date: generatedDate,
+        author: defaultAuthor,
+        language: defaultLanguage,
+        license: defaultLicense,
+        abstract: description,
+        imgUrl,
+        imgDescription,
+        siteName
+      }}
+    />
+    <title>{title}</title>
+  </head>
+  <body>
+    <ul>
+      {
+        articles.map(
+          ({ title, date, url, draft, minImgUrl, imgDescription }) => (
+            <li>
+              <Card
+                {...{ title, date, url, draft, minImgUrl, imgDescription }}
+              />
+            </li>
+          ),
+        )
+      }
+    </ul>
+  </body>
+</html>

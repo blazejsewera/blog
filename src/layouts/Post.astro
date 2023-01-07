@@ -1,27 +1,18 @@
 ---
+import type { ArticleInfo } from '../components/article/ArticleInfo'
 import { DraftInfo } from '../components/article/DraftInfo'
 import { Metadata } from '../components/article/Metadata'
-import MenuWithRibbon from '../components/MenuWithRibbon.astro'
+import {
+  defaultAuthor,
+  defaultLanguage,
+  defaultLicense,
+  siteName,
+} from '../components/const/meta'
+import MenuWithRibbon from '../components/navigation/MenuWithRibbon.astro'
 
 export interface Props {
-  frontmatter: {
-    draft: boolean
-    draftDescription?: string
-    title: string
-    date: string
-    author?: string
-    abstract?: string
-    language?: string
-    license?: string
-    imgUrl?: string
-    imgDescription?: string
-  }
+  frontmatter: ArticleInfo
 }
-
-const siteName = 'blog.sewera.dev'
-const defaultLanguage = 'en-US'
-const defaultLicense = 'CC BY-SA 4.0'
-const defaultAuthor = 'Blazej Sewera'
 
 const { frontmatter } = Astro.props
 
@@ -37,60 +28,22 @@ const {
 const author = frontmatter.author ?? defaultAuthor
 const language = frontmatter.language ?? defaultLanguage
 const license = frontmatter.license ?? defaultLicense
-
-const baseSite = 'https://www.sewera.dev'
-const blogSite = 'https://blog.sewera.dev'
-const github = 'https://github.com/blazejsewera'
 ---
 
 <!DOCTYPE html>
 <html lang={defaultLanguage}>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="stylesheet" href="/style/swisstypefaces.css" />
-
     <meta name="generator" content={Astro.generator} />
-
     <Metadata
       {...{title, date, author, language, license, abstract, imgUrl, imgDescription, siteName}}
     />
-
     <title>{title} — blog.sewera.dev</title>
   </head>
   <body class="font-sans">
-    <div id="ribbon">
-      <div id="menu-ribbon-button" class="flex cursor-pointer">
-        <img src="/menu.svg" alt="menu" />
-      </div>
-      <span>{title}</span>
-      <div>
-        <a class="flex" href="/"
-          ><img class="logo" src="/logo-white.svg" alt="home" />
-        </a>
-      </div>
-    </div>
-
     <div id="screen-image" class="padding-big text-white">
-      <MenuWithRibbon ribbonTitle={title} siteName={siteName} />
+      <MenuWithRibbon ribbonTitle={title} />
       <div class="text-image flex">
-        <h1 class="center-x-y-flex font-huge">{title}</h1>
-      </div>
-    </div>
-
-    <div id="menu" class="text-white flex">
-      <span id="menu-close-button" class="flex icon-wrapper cursor-pointer">
-        <img src="/close.svg" alt="close" />
-      </span>
-      <div class="center-y-flex">
-        <h2 class="font-biggest my-6">Where do you want to go?</h2>
-        <menu id="menu-links" class="non-bullet-ul">
-          <li><a href={baseSite}>home</a></li>
-          <li><a href={blogSite} title="Blog">blog</a></li>
-          <li><a href={`${baseSite}#me`} title="About me">about me</a></li>
-          <li><a href={github} title="My Github">code</a></li>
-        </menu>
+        <h1 class="m-auto font-huge">{title}</h1>
       </div>
     </div>
 
@@ -118,7 +71,7 @@ const github = 'https://github.com/blazejsewera'
     </article>
 
     <div class="footer flex">
-      <img src="/logo-black.svg" alt="[magpie]" class="center-x-flex" />
+      <img src="/logo-black.svg" alt="[magpie]" class="mx-auto" />
     </div>
 
     <style
@@ -184,6 +137,9 @@ const github = 'https://github.com/blazejsewera'
         color: hsl(0, 0%, 40%);
       }
 
+      .post-content h1 {
+        text-decoration: line-through;
+      }
       .post-content h2 {
         font-size: 48px;
       }
@@ -355,10 +311,6 @@ const github = 'https://github.com/blazejsewera'
       }
 
       @media (max-width: 767px) {
-        #ribbon {
-          height: 45px;
-        }
-
         .post-content {
           margin: 2rem 0 10px 0;
           min-width: 1px;
@@ -436,12 +388,10 @@ const github = 'https://github.com/blazejsewera'
       /* The defaults of the document */
       html {
         font-size: 18px;
-        font-family: "Suisse Int'l", 'Helvetica Neue', 'Helvetica',
-          'Liberation Sans', 'Arial', sans-serif;
         font-style: normal;
         font-weight: 400;
         color: hsl(0, 0%, 50%);
-        background-color: white;
+        background-color: hsl(0, 0%, 100%);
       }
 
       body {

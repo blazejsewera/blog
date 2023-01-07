@@ -1,17 +1,20 @@
 ---
+import {
+  blogSiteRoot,
+  baseSiteRoot,
+  githubOfficial,
+  siteName,
+} from '../../components/const/meta'
+
 export interface Props {
-  siteName: string
   ribbonTitle: string
 }
-const { siteName, ribbonTitle } = Astro.props
-const baseSite = 'https://www.sewera.dev'
-const blogSite = '/'
-const github = 'https://github.com/blazejsewera'
+const { ribbonTitle } = Astro.props
 ---
 
 <div class="header-image flex margin-bottom-header">
   <span class="brand center-y-flex font-bigger">
-    <a href={blogSite} title={siteName} class="text-white weight-normal"
+    <a href={blogSiteRoot} title={siteName} class="text-white weight-normal"
       >{siteName}</a
     >
   </span>
@@ -29,7 +32,7 @@ const github = 'https://github.com/blazejsewera'
   </div>
   <span>{ribbonTitle}</span>
   <div>
-    <a class="flex" href={blogSite}
+    <a class="flex" href={blogSiteRoot}
       ><img class="logo" src="/logo-white.svg" alt="home" />
     </a>
   </div>
@@ -42,10 +45,10 @@ const github = 'https://github.com/blazejsewera'
   <div class="center-y-flex">
     <h2 class="font-biggest my-6">Where do you want to go?</h2>
     <menu id="menu-links" class="non-bullet-ul">
-      <li><a href={baseSite}>home</a></li>
-      <li><a href={blogSite} title="Blog">blog</a></li>
-      <li><a href={`${baseSite}#me`} title="About me">about me</a></li>
-      <li><a href={github} title="My Github">code</a></li>
+      <li><a href={baseSiteRoot}>home</a></li>
+      <li><a href={blogSiteRoot} title="Blog">blog</a></li>
+      <li><a href={`${baseSiteRoot}#me`} title="About me">about me</a></li>
+      <li><a href={githubOfficial} title="My Github">code</a></li>
     </menu>
   </div>
 </div>

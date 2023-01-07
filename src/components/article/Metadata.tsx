@@ -12,6 +12,15 @@ export interface MetadataProps {
   imgDescription?: string
 }
 
+const BasicMetadata: Component = () => (
+  <>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/style/swisstypefaces.css" />
+  </>
+)
+
 export const Metadata: Component<MetadataProps> = ({
   title,
   date,
@@ -25,6 +34,8 @@ export const Metadata: Component<MetadataProps> = ({
 }) => {
   return (
     <>
+      <BasicMetadata />
+
       <meta name="og:type" content="article" />
 
       <meta name="dcterms.title" content={title} />
