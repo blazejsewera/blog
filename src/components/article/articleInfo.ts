@@ -1,6 +1,6 @@
 import type { MarkdownInstance } from 'astro'
 
-export type ArticleInfo = {
+export type Frontmatter = {
   title: string
   date: string
   url: string
@@ -16,7 +16,23 @@ export type ArticleInfo = {
   imgDescription?: string
 }
 
-type Article = MarkdownInstance<Record<string, any>>
+export type ArticleInfo = {
+  title: string
+  date: Date
+  url: string
+  file: string
+  draft?: boolean
+  draftDescription?: string
+  author?: string
+  abstract?: string
+  language?: string
+  license?: string
+  imgUrl?: string
+  minImgUrl?: string
+  imgDescription?: string
+}
+
+type Article = MarkdownInstance<Frontmatter>
 
 export const toArticleInfo = (article: Article): ArticleInfo => {
   if (!article.frontmatter.title || !article.frontmatter.date)
@@ -24,8 +40,10 @@ export const toArticleInfo = (article: Article): ArticleInfo => {
       url: '',
       file: '',
       title: 'ERROR, NO TITLE',
-      date: '2000-01-01',
+      date: new Date('2000-01-01'),
     }
+
+  const date = new Date(article.frontmatter.date)
 
   const minImgUrl =
     article.frontmatter.minImgUrl === undefined ||
@@ -36,6 +54,7 @@ export const toArticleInfo = (article: Article): ArticleInfo => {
   return {
     ...article.frontmatter,
     minImgUrl,
+    date,
     url: article.url,
     file: article.file,
   } as ArticleInfo

@@ -1,0 +1,53 @@
+---
+import MenuWithRibbon from './navigation/MenuWithRibbon.astro'
+import { cx } from './util/classes'
+
+export interface Props {
+  title: string
+  imgUrl?: string
+}
+
+const { title, imgUrl } = Astro.props
+---
+
+<div
+  id="screen-image"
+  class={cx(
+    'text-white',
+    'p-10',
+    'md:p-20',
+    'xl:p-32',
+    'mb-10',
+    'md:mb-20',
+    'xl:mb-32',
+    'bg-top',
+    'bg-cover',
+    'bg-no-repeat',
+    'bg-scroll',
+    '',
+  )}
+>
+  <MenuWithRibbon ribbonTitle={title} />
+  <div class="text-image flex">
+    <h1 class="m-auto font-huge">{title}</h1>
+  </div>
+</div>
+
+<style is:global define:vars={{ imgUrl: imgUrl ? `url('${imgUrl}')` : '' }}>
+  div#screen-image {
+    background-image: var(--imgUrl);
+  }
+</style>
+
+<style>
+  div#screen-image {
+    background-position-x: center;
+    background-position-y: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-origin: border-box;
+    background-clip: border-box;
+    background-color: hsl(0, 0%, 20%);
+  }
+</style>

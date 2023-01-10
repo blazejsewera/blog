@@ -1,6 +1,6 @@
 ---
-import type { ArticleInfo } from '../components/article/articleInfo'
-import { DraftInfo } from '../components/article/DraftInfo'
+import Article from '../components/article/Article.astro'
+import type { Frontmatter } from '../components/article/articleInfo'
 import { Metadata } from '../components/article/Metadata'
 import {
   defaultAuthor,
@@ -8,10 +8,11 @@ import {
   defaultLicense,
   siteName,
 } from '../components/const/meta'
-import MenuWithRibbon from '../components/navigation/MenuWithRibbon.astro'
+import Footer from '../components/section/Footer.astro'
+import TitleSection from '../components/TitleSection.astro'
 
 export interface Props {
-  frontmatter: ArticleInfo
+  frontmatter: Frontmatter
 }
 
 const { frontmatter } = Astro.props
@@ -35,362 +36,43 @@ const license = frontmatter.license ?? defaultLicense
   <head>
     <meta name="generator" content={Astro.generator} />
     <Metadata
-      {...{title, date, author, language, license, abstract, imgUrl, imgDescription, siteName}}
+      {...{
+        title,
+        date,
+        author,
+        language,
+        license,
+        abstract,
+        imgUrl,
+        imgDescription,
+        siteName,
+      }}
     />
     <title>{title} — blog.sewera.dev</title>
   </head>
   <body class="font-sans">
-    <div id="screen-image" class="padding-big text-white">
-      <MenuWithRibbon ribbonTitle={title} />
-      <div class="text-image flex">
-        <h1 class="m-auto font-huge">{title}</h1>
-      </div>
-    </div>
+    <TitleSection {...{title, imgUrl}} />
 
-    <article>
-      <div class="post-wrapper flex">
-        <div id="post-content" class="post-content">
-          {
-            draft && (
-              <section class="draft">
-                <DraftInfo description={draftDescription} />
-              </section>
-            )
-          }
-          {
-            abstract && (
-              <section class="abstract">
-                <h2>Abstract</h2>
-                <p>{abstract}</p>
-              </section>
-            )
-          }
-          <slot />
-        </div>
-      </div>
-    </article>
+    <Article {...{draft, draftDescription, abstract}}>
+      <slot />
+    </Article>
 
-    <div class="footer flex">
-      <img src="/logo-black.svg" alt="[magpie]" class="mx-auto" />
-    </div>
+    <Footer />
 
-    <style
-      is:global
-      define:vars={{ imgUrl: `${imgUrl ? `url(${imgUrl})` : ''}` }}
-    >
-      html {
-        font-kerning: auto;
-      }
-
-      /* Title with an image */
+    <style define:vars={{ imgUrl: `${imgUrl ? `url(${imgUrl})` : ''}` }}>
       div#screen-image {
         background-image: var(--imgUrl);
-        background-position-x: center;
-        background-position-y: top;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: scroll;
-        background-origin: border-box;
-        background-clip: border-box;
-        background-color: hsl(0, 0%, 20%);
       }
+    </style>
 
-      section.abstract {
-        max-width: 37rem;
-        margin: 0 4rem 2rem 4rem;
-        line-height: 1.55;
-        letter-spacing: 0.018em;
-        border: 1px solid hsl(0, 0%, 60%);
-      }
-
-      /* Additional spacing rules only for portfolio listing */
-      .post-content {
-        color: hsl(0, 0%, 20%);
-        margin: 2rem auto 30px auto;
-        width: 45rem;
-      }
-
-      .post-content i,
-      .post-content em {
-        font-family: "Suisse Int'l", 'Helvetica Neue', 'Helvetica',
-          'Liberation Sans', 'Arial', sans-serif;
-        font-style: italic;
-        font-weight: 400;
-      }
-
-      .post-content b,
-      .post-content strong {
-        font-family: "Suisse Int'l", 'Helvetica Neue', 'Helvetica',
-          'Liberation Sans', 'Arial', sans-serif;
-        font-style: normal;
-        font-weight: 600;
-      }
-
-      .post-content h1,
-      .post-content h2,
-      .post-content h3,
-      .post-content h4,
-      .post-content h5,
-      .post-content h6 {
-        margin: 0.8em 4rem;
-        max-width: 37rem;
-        color: hsl(0, 0%, 40%);
-      }
-
-      .post-content h1 {
-        text-decoration: line-through;
-      }
-      .post-content h2 {
-        font-size: 48px;
-      }
-      .post-content h3 {
-        font-size: 36px;
-      }
-      .post-content h4 {
-        font-size: 24px;
-      }
-
-      .post-content p,
-      .post-content > ul,
-      .post-content > ol,
-      .post-content > table,
-      .post-content > section.footnotes > * {
-        max-width: 37rem;
-        margin: 0 4rem 2rem 4rem;
-        line-height: 1.55;
-        letter-spacing: 0.018em;
-      }
-
-      .post-content hr {
-        border: 0;
-        border-top: 1px solid hsl(0, 0%, 40%);
-      }
-
-      .post-content section.footnotes {
-        margin-top: 4rem;
-        border-top: 1px solid hsl(0, 0%, 40%);
-      }
-
-      .post-content section.footnotes > h2,
-      section.abstract > h2 {
-        margin-bottom: 1rem;
-        font-size: 36px;
-      }
-
-      .post-content section.footnotes p {
-        margin: 0;
-      }
-
-      .post-content table {
-        border-collapse: collapse;
-      }
-
-      .post-content thead {
-        border-bottom: 1px solid hsl(0, 0%, 40%);
-      }
-
-      .post-content td,
-      .post-content th {
-        padding: 0 1rem 0 1rem;
-      }
-
-      .post-content blockquote {
-        display: block;
-        padding: 0.2rem 0.4rem;
-        max-width: 35rem;
-        margin: 1rem 4rem 2rem 5.2rem;
-        padding-left: 0.8rem;
-        border-left: 8px solid hsl(0, 0%, 90%);
-      }
-
-      .post-content blockquote p {
-        margin: 0;
-      }
-
-      .post-content cite {
-        font-style: italic;
-        color: hsla(0, 0%, 40%);
-      }
-
-      .post-content cite::before {
-        white-space: pre;
-        content: '\A— ';
-      }
-
-      .post-content code {
-        font-family: "Suisse Int'l Mono", monospace;
-        font-size: 85%;
-        padding: 0.2rem 0.4rem;
-        border-radius: 6px;
-        white-space: pre;
-        word-break: break-all;
-        background-color: hsla(210, 12%, 12%, 0.05);
-      }
-
-      .post-content code.block,
-      pre.astro-code > code {
-        max-width: 35rem;
-        margin: 1rem 4rem 2rem 5.2rem;
-        padding-left: 0.8rem;
-        display: block;
-        overflow-x: auto;
-        border-left: 8px solid hsl(0, 0%, 90%);
-        border-radius: 0;
-        background: none;
-      }
-
-      .post-content p > code.block,
-      .post-content p > pre.astro-code {
-        margin: 1rem 2rem 2rem 1.2rem;
-      }
-
-      .post-content img {
-        max-width: 37rem;
-        display: block;
-        margin: 0 auto;
-      }
-      .post-content img.wide {
-        max-width: 45rem;
-      }
-
-      .post-content figure {
-        margin: 1rem 0 2rem 0;
-      }
-
-      .post-content figcaption {
-        font-size: 16px;
-        margin-top: 8px;
-        text-align: center;
-      }
-
-      .margin-bottom-header {
-        margin-bottom: 120px;
-      }
-
-      /* For smaller screens */
-      @media (min-width: 768px) and (max-width: 1300px) {
-        .post-content {
-          margin: 2rem auto 20px auto;
-        }
-
-        .post-content h2 {
-          font-size: 36px;
-        }
-        .post-content h3 {
-          font-size: 24px;
-        }
-        .post-content h4 {
-          font-size: 20px;
-        }
-
-        .post-content p,
-        .post-content > ul,
-        .post-content > ol,
-        .post-content > table,
-        .post-content > section.footnotes > * {
-          line-height: 1.6;
-          letter-spacing: 0.021em;
-        }
-
-        .post-content > section.footnotes > h2,
-        section.abstract > h2 {
-          font-size: 24px;
-        }
-
-        .post-content figure {
-          margin: 16px 0;
-        }
-
-        .post-content figcaption {
-          font-size: 14px;
-        }
-
-        .margin-bottom-header {
-          margin-bottom: 80px;
-        }
-      }
-
-      @media (max-width: 767px) {
-        .post-content {
-          margin: 2rem 0 10px 0;
-          min-width: 1px;
-          width: 100vw;
-          box-sizing: border-box;
-        }
-
-        .post-content h1,
-        .post-content h2,
-        .post-content h3,
-        .post-content h4,
-        .post-content h5,
-        .post-content h6 {
-          margin: 0.8em 30px;
-        }
-
-        .post-content h2 {
-          font-size: 26px;
-        }
-        .post-content h3 {
-          font-size: 22px;
-        }
-        .post-content h4 {
-          font-size: 20px;
-        }
-
-        .post-content p,
-        .post-content > ul,
-        .post-content > ol,
-        .post-content > table,
-        .post-content > section.footnotes > * {
-          margin: 0 30px 2rem 30px;
-          max-width: 37rem;
-          line-height: 1.6;
-          letter-spacing: 0.021em;
-        }
-
-        .post-content > section.footnotes > h2,
-        section.abstract > h2 {
-          margin-bottom: 1rem;
-          font-size: 22px;
-        }
-
-        .post-content blockquote {
-          margin: 1rem 30px 4rem 30px;
-        }
-
-        .post-content code.block,
-        pre.astro-code > code {
-          margin: 1rem 30px 4rem 30px;
-        }
-
-        .post-content figure {
-          margin: 16px 0;
-        }
-
-        .post-content figcaption {
-          font-size: 12px;
-        }
-
-        .post-content img {
-          max-width: calc(100vw - 60px);
-        }
-
-        .post-content img.wide {
-          max-width: unset;
-          width: 100vw;
-        }
-
-        .margin-bottom-header {
-          margin-bottom: 40px;
-        }
-      }
-
+    <style>
       /* The defaults of the document */
       html {
-        font-size: 18px;
+        font-size: 16px;
         font-style: normal;
         font-weight: 400;
-        color: hsl(0, 0%, 50%);
+        font-kerning: auto;
+        color: hsl(0, 0%, 20%);
         background-color: hsl(0, 0%, 100%);
       }
 
@@ -417,15 +99,6 @@ const license = frontmatter.license ?? defaultLicense
         border: 0;
       }
 
-      h1,
-      h2,
-      h3,
-      h4 {
-        font-family: 'Euclid Circular B', Futura, 'Trebuchet MS', Arial,
-          sans-serif;
-        font-weight: 500;
-      }
-
       p {
         max-width: 25em;
       }
@@ -439,11 +112,6 @@ const license = frontmatter.license ?? defaultLicense
       strong {
         font-weight: 400;
         color: hsl(0, 0%, 7%);
-      }
-
-      mark {
-        background-color: hsl(54, 100%, 80%);
-        color: hsl(54, 50%, 10%);
       }
 
       /* Reusable classes */
@@ -487,10 +155,6 @@ const license = frontmatter.license ?? defaultLicense
       }
       a.button:hover {
         background-color: hsl(181.8, 47.5%, 52.4%);
-      }
-
-      .footer {
-        padding: 30px 0;
       }
 
       /* alignment */
@@ -555,53 +219,6 @@ const license = frontmatter.license ?? defaultLicense
         max-height: 3.2em;
       }
 
-      .interest-containter {
-        padding: 80px;
-        box-sizing: border-box;
-        width: 500px;
-        height: auto;
-        text-align: center;
-      }
-      .interest-containter > h3 {
-        margin: 0;
-      }
-      .interest-containter p.annotation-line {
-        margin: 8px auto 30px auto;
-      }
-
-      .display-secondary-tinted {
-        color: hsl(181.8, 30%, 75%);
-      }
-
-      .display-turquoise-tint-3 {
-        background-color: hsl(181.8, 37.5%, 93%);
-        color: hsl(181.8, 40%, 20%);
-      }
-      .display-turquoise-tint-2 {
-        background-color: hsl(181.8, 47.5%, 90%);
-        color: hsl(181.8, 40%, 20%);
-      }
-      .display-turquoise-tint-1 {
-        background-color: hsl(181.8, 47.5%, 84%);
-        color: hsl(181.8, 40%, 20%);
-      }
-      .display-turquoise {
-        background-color: hsl(181.8, 47.5%, 72.4%);
-        color: hsl(0, 0%, 100%);
-      }
-      .display-turquoise-shade-1 {
-        background-color: hsl(181.8, 47.5%, 52.4%);
-        color: hsl(0, 0%, 100%);
-      }
-      .display-turquoise-shade-2 {
-        background-color: hsl(181.8, 47.5%, 32.4%);
-        color: hsl(0, 0%, 100%);
-      }
-      .display-turquoise-shade-3 {
-        background-color: hsl(181.8, 47.5%, 12.4%);
-        color: hsl(0, 0%, 100%);
-      }
-
       .icon-wrapper > img {
         margin: auto 0 auto 0;
         height: 36px;
@@ -629,7 +246,7 @@ const license = frontmatter.license ?? defaultLicense
         height: 120px;
       }
 
-      @media (min-width: 768px) and (max-width: 1300px) {
+      @media (min-width: 768px) and (max-width: 1280px) {
         html {
           font-size: 16px;
         }
@@ -665,10 +282,6 @@ const license = frontmatter.license ?? defaultLicense
           font-size: 96px;
         }
 
-        .interest-containter {
-          width: 400px;
-        }
-
         .icon-wrapper > img {
           height: 24px;
         }
@@ -688,10 +301,6 @@ const license = frontmatter.license ?? defaultLicense
       @media (max-width: 767px) {
         html {
           font-size: 16px;
-        }
-
-        section.abstract {
-          margin: 0 2rem 2rem 2rem;
         }
 
         .padding-big {
@@ -732,11 +341,6 @@ const license = frontmatter.license ?? defaultLicense
         }
         .font-display {
           font-size: 72px;
-        }
-
-        .interest-containter {
-          width: 100%;
-          padding: 40px;
         }
 
         a.button {

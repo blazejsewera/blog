@@ -1,6 +1,6 @@
 import type { MarkdownInstance } from 'astro'
 import { describe, expect, it } from 'vitest'
-import { ArticleInfo, toArticleInfo } from '../articleInfo'
+import { ArticleInfo, Frontmatter, toArticleInfo } from '../articleInfo'
 
 describe('ArticleInfo', () => {
   it('maps from Markdown frontmatter metadata', () => {
@@ -9,7 +9,7 @@ describe('ArticleInfo', () => {
       url: 'url',
       frontmatter: {
         title: 'title',
-        date: 'date',
+        date: '2000-01-01',
         draft: true,
         draftDescription: 'draftDescription',
         author: 'author',
@@ -19,10 +19,11 @@ describe('ArticleInfo', () => {
         imgUrl: 'imgUrl',
         imgDescription: 'imgDescription',
       },
-    } as MarkdownInstance<ArticleInfo>
+    } as MarkdownInstance<Frontmatter>
 
     const expected = {
       ...article.frontmatter,
+      date: new Date('2000-01-01'),
       minImgUrl: 'imgUrl',
       url: 'url',
       file: 'file',
@@ -30,6 +31,6 @@ describe('ArticleInfo', () => {
 
     const actual = toArticleInfo(article)
 
-    expect(actual).toStrictEqual(expected)
+    expect(actual).toEqual(expected)
   })
 })
