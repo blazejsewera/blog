@@ -9,7 +9,7 @@ import {
   siteName,
 } from '../components/const/meta'
 import Footer from '../components/section/Footer.astro'
-import TitleSection from '../components/TitleSection.astro'
+import BigTitle from '../components/section/BigTitle.astro'
 
 export interface Props {
   frontmatter: Frontmatter
@@ -51,13 +51,15 @@ const license = frontmatter.license ?? defaultLicense
     <title>{title} — blog.sewera.dev</title>
   </head>
   <body class="font-sans">
-    <TitleSection {...{title, imgUrl}} />
+    <BigTitle {...{title, imgUrl}} />
 
     <Article {...{draft, draftDescription, abstract}}>
       <slot />
     </Article>
 
-    <Footer />
+    <Footer
+      {...{author, license, year: new Date(date).getFullYear().toString()}}
+    />
 
     <style define:vars={{ imgUrl: `${imgUrl ? `url(${imgUrl})` : ''}` }}>
       div#screen-image {

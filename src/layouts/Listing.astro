@@ -9,7 +9,8 @@ import {
   defaultLicense,
   siteName,
 } from '../components/const/meta'
-import TitleSection from '../components/TitleSection.astro'
+import BigTitle from '../components/section/BigTitle.astro'
+import { articleInfoByDateDesc } from '../components/article/sort'
 
 export interface Props {
   title: string
@@ -43,29 +44,36 @@ const generatedDate = new Date().toISOString()
     <title>{title}</title>
   </head>
   <body>
-    <TitleSection title={title} imgUrl={imgUrl} />
+    <BigTitle title={title} imgUrl={imgUrl} />
 
     <div class={cx('flex', 'w-full')}>
       <ul
         class={cx(
-          'container',
-          'mx-auto',
-          'block',
-          'columns-1',
-          'md:columns-2',
-          'xl:columns-3',
+          'w-full',
+          'md:w-172',
+          'xl:w-256',
+          'mx-10',
+          'md:mx-auto',
+          'grid',
+          'grid-cols-1',
+          'md:grid-cols-2',
+          'xl:grid-cols-3',
+          'gap-10',
+          'md:gap-5',
         )}
       >
         {
-          articles.map(
-            ({ title, date, url, draft, minImgUrl, imgDescription }) => (
-              <li>
-                <Card
-                  {...{ title, date, url, draft, minImgUrl, imgDescription }}
-                />
+          articles
+            .sort(articleInfoByDateDesc)
+            .map(({ title, date, url, draft, minImgUrl, imgDescription }) => (
+              <li class={cx('w-full', 'flex')}>
+                <div class={cx('mx-auto', 'w-full', 'md:w-80')}>
+                  <Card
+                    {...{ title, date, url, draft, minImgUrl, imgDescription }}
+                  />
+                </div>
               </li>
-            ),
-          )
+            ))
         }
       </ul>
     </div>

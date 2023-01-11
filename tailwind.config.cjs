@@ -12,7 +12,22 @@ module.exports = {
         { fontFeatureSettings: '"kern"' },
       ],
     },
+
     extend: {
+      spacing: {
+        128: '32rem',
+        172: '48rem',
+        256: '64rem',
+      },
+      fontSize: {
+        '2xs': [
+          '0.625rem',
+          {
+            lineHeight: '0.75rem',
+            letterSpacing: '0.05rem',
+          },
+        ],
+      },
       transitionProperty: {
         right: 'right',
       },

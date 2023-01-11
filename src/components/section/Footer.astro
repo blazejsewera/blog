@@ -1,3 +1,28 @@
-<div class="py-8 flex">
-  <img src="/logo-black.svg" alt="[magpie]" class="mx-auto" />
+---
+import { cx } from '../util/classes'
+
+export interface Props {
+  license: string
+  author: string
+  year: string
+}
+
+const { license, author, year } = Astro.props
+---
+
+<div class="py-8">
+  <div class="flex">
+    <img
+      src="/logo-black.svg"
+      alt="[magpie]"
+      class={cx('mx-auto', 'mb-6', 'block')}
+    />
+  </div>
+  <div class="flex">
+    <div class={cx('mx-auto', 'mb-7', 'text-2xs', 'md:text-xs')}>
+      {license}
+      {year}
+      {author}
+    </div>
+  </div>
 </div>

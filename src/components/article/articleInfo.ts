@@ -32,7 +32,7 @@ export type ArticleInfo = {
   imgDescription?: string
 }
 
-type Article = MarkdownInstance<Frontmatter>
+export type Article = MarkdownInstance<Frontmatter>
 
 export const toArticleInfo = (article: Article): ArticleInfo => {
   if (!article.frontmatter.title || !article.frontmatter.date)

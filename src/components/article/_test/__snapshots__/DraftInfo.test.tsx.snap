@@ -6,10 +6,10 @@ exports[`<DraftInfo /> > renders properly with description 1`] = `
     class="mx-16 mb-8 flex"
   >
     <div
-      class="my-auto"
+      class="my-auto leading-none"
     >
       <div
-        class="inline-flex rounded-full border-2 w-min h-min px-3 py-0.5 uppercase text-xs border-orange-600 text-orange-600 bg-orange-100"
+        class="inline-flex rounded-full border-2 w-min h-min px-2 md:px-3 py-0.5 uppercase text-2xs md:text-xs border-orange-600 text-orange-600 bg-orange-100"
       >
         <div
           class="m-auto"
@@ -33,10 +33,10 @@ exports[`<DraftInfo /> > renders properly without description 1`] = `
     class="mx-16 mb-8 flex"
   >
     <div
-      class="my-auto"
+      class="my-auto leading-none"
     >
       <div
-        class="inline-flex rounded-full border-2 w-min h-min px-3 py-0.5 uppercase text-xs border-orange-600 text-orange-600 bg-orange-100"
+        class="inline-flex rounded-full border-2 w-min h-min px-2 md:px-3 py-0.5 uppercase text-2xs md:text-xs border-orange-600 text-orange-600 bg-orange-100"
       >
         <div
           class="m-auto"

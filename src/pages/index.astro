@@ -1,16 +1,26 @@
 ---
-import { toArticleInfo } from '../components/article/articleInfo'
+import { Article, toArticleInfo } from '../components/article/articleInfo'
+import { defaultAuthor, defaultLicense } from '../components/const/meta'
+import Footer from '../components/section/Footer.astro'
 import Listing from '../layouts/Listing.astro'
 
 const articles = await Astro.glob('./*.md')
+const filtered = articles.filter(
+  ({ frontmatter }) => !!frontmatter.title && !!frontmatter.date,
+) as Article[]
 ---
 
 <Listing
-  articles={articles.map(toArticleInfo)}
-  title="Welcome to Astro."
+  articles={filtered.map(toArticleInfo)}
+  title="Blazej Sewera’s technical blog"
   description=""
-  imgUrl=""
-  imgDescription=""
+  imgUrl="/example-article/nordic-sky.jpg"
+  imgDescription="Nordic sky"
+/>
+<Footer
+  author={defaultAuthor}
+  license={defaultLicense}
+  year={new Date().getFullYear().toString()}
 />
 
 <script>

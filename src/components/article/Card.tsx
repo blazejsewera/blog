@@ -30,21 +30,35 @@ export const Card: Component<CardProps> = ({
         'block',
         'flex',
         'flex-col',
-        'w-64',
+        'min-w-full',
+        'md:w-80',
         'rounded-lg',
-        'shadow-lg',
+        'shadow-xl',
         'break-inside-avoid',
       )}
       href={url}
     >
       <div
-        class={cx('bg-clip-border', 'bg-cover', 'aspect-video')}
+        class={cx(
+          'bg-clip-border',
+          'bg-origin-border',
+          'bg-center',
+          'bg-cover',
+          'aspect-video',
+          'flex',
+        )}
         style={{ 'background-image': `url('${imgUrl}')` }}
-      />
-      <div class={cx('p-2')}>
-        <div>{draft && <DraftBadge />}</div>
-        <div>{title}</div>
-        <div>{date.toLocaleDateString('en-US', { dateStyle: 'long' })}</div>
+        title={imgDesc}
+      >
+        <div class={cx('ml-4', 'mr-auto', 'mb-4', 'mt-auto')}>
+          {draft && <DraftBadge />}
+        </div>
+      </div>
+      <div class={cx('p-4')}>
+        <div class={cx('text-xl', 'mb-3')}>{title}</div>
+        <div class={cx('text-sm', 'text-neutral-400')}>
+          {date.toLocaleDateString('en-US', { dateStyle: 'long' })}
+        </div>
       </div>
     </a>
   )

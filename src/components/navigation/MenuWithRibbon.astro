@@ -12,15 +12,15 @@ export interface Props {
 const { ribbonTitle } = Astro.props
 ---
 
-<div class="header-image flex margin-bottom-header">
-  <span class="brand center-y-flex font-bigger">
+<div class="header-image flex mb-12">
+  <span class="brand my-auto text-2xl">
     <a href={blogSiteRoot} title={siteName} class="text-white weight-normal"
       >{siteName}</a
     >
   </span>
   <span
     id="menu-image-button"
-    class="flex right-x-flex icon-wrapper cursor-pointer"
+    class="flex ml-auto my-auto icon-wrapper cursor-pointer"
   >
     <img src="/menu.svg" alt="menu" />
   </span>
