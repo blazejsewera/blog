@@ -88,7 +88,7 @@ eost, temped molorro ratiae volorro te reribus dolorer sperchicium faceata
 tiustia prat.
 
 <figure>
-  <img src="/example-article/nordic-sky.jpg" />
+  <img src="/image/nordic-sky.jpg" />
   <figcaption>Smaller image</figcaption>
 </figure>
 
@@ -96,7 +96,7 @@ Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne
 sapicia is sinveli squiatum, core et que aut hariosam ex eat.
 
 <figure>
-  <img src="/example-article/nordic-sky.jpg" class="wide" />
+  <img src="/image/nordic-sky.jpg" class="wide" />
   <figcaption>Bigger image</figcaption>
 </figure>
 
