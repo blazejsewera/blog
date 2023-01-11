@@ -1,6 +1,6 @@
 ---
 layout: ../layouts/Post.astro
-title: Markdown Samples
+title: Oldest article
 date: 2022-12-29
 draft: true
 abstract: |
@@ -10,8 +10,8 @@ abstract: |
   such as h1, because they shouldn't be
   included on a page more than once.
 author: Blazej Sewera
-imgUrl: /example-article/nordic-sky.jpg
-imgDescription: Nordic sky
+imgUrl: /article-oldest/lake.jpg
+imgDescription: Lake
 ---
 
 This is a sample post intended to test the followings:

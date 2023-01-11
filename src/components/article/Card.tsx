@@ -32,7 +32,6 @@ export const Card: Component<CardProps> = ({
         'flex-col',
         'min-w-full',
         'md:w-80',
-        'rounded-lg',
         'shadow-xl',
         'break-inside-avoid',
       )}
