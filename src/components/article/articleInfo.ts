@@ -9,6 +9,7 @@ export type Frontmatter = {
   draftDescription?: string
   author?: string
   abstract?: string
+  keywords?: string[]
   language?: string
   license?: string
   imgUrl?: string
@@ -25,6 +26,7 @@ export type ArticleInfo = {
   draftDescription?: string
   author?: string
   abstract?: string
+  keywords?: string[]
   language?: string
   license?: string
   imgUrl?: string

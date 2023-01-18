@@ -1,5 +1,39 @@
 # Blog (blog.sewera.dev)
 
+## Writing articles
+
+Minimal frontmatter
+
+```yaml
+---
+layout: ../layouts/Post.astro
+title: Title
+date: 1970-01-01
+---
+```
+
+Complete frontmatter
+
+```yaml
+---
+layout: ../layouts/Post.astro
+title: Title
+date: 1970-01-01
+author: John Doe # default: Blazej Sewera
+license: MIT # default: CC BY-SA 4.0
+language: en-US # default: en-US
+draft: true # default: false
+draftDescription: This is a draft # default: This is a draft article. It may be incomplete.
+imgUrl: /image.jpg # default: null
+imgDescription: Sample image # default: ''
+abstract: | # default: ''
+  A short description of an article
+keywords: # default []
+  - kw1
+  - kw2
+---
+```
+
 ## Prerequisites
 
 - Install dependencies:
@@ -32,12 +66,13 @@ Isolation mode has to be on.
 Otherwise, test re-runs in watch mode will fail sometimes.
 
 In `vite.config.mjs`:
+
 ```js
 export default defineConfig({
   // [...]
   test: {
     isolate: true,
-  }
+  },
 })
 ```
 

@@ -1,0 +1,15 @@
+{
+  "Frontmatter": {
+    "scope": "markdown",
+    "prefix": ["--", "---"],
+    "body": [
+      "---",
+      "layout: ../layouts/Post.astro",
+      "title: $1",
+      "date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+      "---",
+      "",
+      "$0"
+    ]
+  }
+}

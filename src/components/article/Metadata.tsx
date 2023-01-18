@@ -8,6 +8,7 @@ export interface MetadataProps {
   language: string
   siteName: string
   abstract?: string
+  keywords?: string[]
   imgUrl?: string
   imgDescription?: string
 }
@@ -29,6 +30,7 @@ export const Metadata: Component<MetadataProps> = ({
   language,
   siteName,
   abstract,
+  keywords,
   imgUrl,
   imgDescription,
 }) => {
@@ -62,6 +64,12 @@ export const Metadata: Component<MetadataProps> = ({
           <meta name="description" content={abstract} />
           <meta name="dcterms.abstract" content={abstract} />
           <meta name="og:description" content={abstract} />
+        </>
+      )}
+
+      {keywords && (
+        <>
+          <meta name="keywords" content={keywords.join(', ')} />
         </>
       )}
 
