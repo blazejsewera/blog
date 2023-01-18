@@ -1,0 +1,36 @@
+---
+import {
+  blogSiteRoot,
+  defaultAuthor,
+  defaultLanguage,
+  defaultLicense,
+  siteName,
+} from '../components/const/meta'
+import BigTitle from '../components/section/BigTitle.astro'
+import Footer from '../components/section/Footer.astro'
+import { cx } from '../components/util/classes'
+---
+
+<!DOCTYPE html>
+<html lang={defaultLanguage}>
+  <head>
+    <meta name="generator" content={Astro.generator} />
+    <title>404 Not found — {siteName}</title>
+  </head>
+  <body>
+    <BigTitle title="404 Not found" imgUrl="/image/nordic-sky.jpg" />
+    <div class={cx('flex')}>
+      <p class={cx('max-w-7xl', 'mx-6', 'md:mx-auto')}>
+        This article does not exist (yet). Go back to <a
+          class={cx('font-bold', 'hover:underline')}
+          href={blogSiteRoot}>article listing</a
+        >.
+      </p>
+    </div>
+    <Footer
+      author={defaultAuthor}
+      license={defaultLicense}
+      year={new Date().getFullYear().toString()}
+    />
+  </body>
+</html>
