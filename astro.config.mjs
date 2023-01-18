@@ -11,5 +11,8 @@ export default defineConfig({
     shikiConfig: {
       theme: 'github-light',
     },
+    remarkRehype: {
+      clobberPrefix: 'footnote-',
+    },
   },
 })

@@ -43,7 +43,7 @@ const previous =
   articles.at(currentArticleIndex + 1) ?? (articles[0] as ArticleInfo)
 const next =
   articles.at(currentArticleIndex - 1) ??
-  (articles[articles.length] as ArticleInfo)
+  (articles[articles.length - 1] as ArticleInfo)
 ---
 
 <!DOCTYPE html>
