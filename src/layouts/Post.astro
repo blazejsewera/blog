@@ -1,6 +1,9 @@
 ---
 import Article from '../components/article/Article.astro'
-import type { Frontmatter } from '../components/article/articleInfo'
+import type {
+  ArticleInfo,
+  Frontmatter,
+} from '../components/article/articleInfo'
 import { Metadata } from '../components/article/Metadata'
 import {
   defaultAuthor,
@@ -10,6 +13,7 @@ import {
 } from '../components/const/meta'
 import Footer from '../components/section/Footer.astro'
 import BigTitle from '../components/section/BigTitle.astro'
+import { getReverseChronologicalArticlesFromGlob } from '../components/article/articles'
 
 export interface Props {
   frontmatter: Frontmatter
@@ -29,6 +33,17 @@ const {
 const author = frontmatter.author ?? defaultAuthor
 const language = frontmatter.language ?? defaultLanguage
 const license = frontmatter.license ?? defaultLicense
+
+const globResult = await Astro.glob('../pages/*.md')
+const articles = getReverseChronologicalArticlesFromGlob(globResult)
+const currentArticleIndex = articles.findIndex(
+  current => current.url === Astro.url.pathname,
+)
+const previous =
+  articles.at(currentArticleIndex + 1) ?? (articles[0] as ArticleInfo)
+const next =
+  articles.at(currentArticleIndex - 1) ??
+  (articles[articles.length] as ArticleInfo)
 ---
 
 <!DOCTYPE html>
@@ -58,7 +73,13 @@ const license = frontmatter.license ?? defaultLicense
     </Article>
 
     <Footer
-      {...{author, license, year: new Date(date).getFullYear().toString()}}
+      {...{
+        author,
+        license,
+        year: new Date(date).getFullYear().toString(),
+        previous,
+        next,
+      }}
     />
 
     <style define:vars={{ imgUrl: `${imgUrl ? `url(${imgUrl})` : ''}` }}>

@@ -1,17 +1,14 @@
 ---
-import { Article, toArticleInfo } from '../components/article/articleInfo'
+import { getReverseChronologicalArticlesFromGlob } from '../components/article/articles'
 import { defaultAuthor, defaultLicense } from '../components/const/meta'
 import Footer from '../components/section/Footer.astro'
 import Listing from '../layouts/Listing.astro'
 
-const articles = await Astro.glob('./*.md')
-const filtered = articles.filter(
-  ({ frontmatter }) => !!frontmatter.title && !!frontmatter.date,
-) as Article[]
+const globResult = await Astro.glob('./*.md')
 ---
 
 <Listing
-  articles={filtered.map(toArticleInfo)}
+  articles={getReverseChronologicalArticlesFromGlob(globResult)}
   title="Blazej Sewera’s technical blog"
   description=""
   imgUrl="/image/nordic-sky.jpg"

@@ -10,7 +10,6 @@ import {
   siteName,
 } from '../components/const/meta'
 import BigTitle from '../components/section/BigTitle.astro'
-import { articleInfoByDateDesc } from '../components/article/sort'
 import { DraftInfo } from '../components/article/DraftInfo'
 
 export interface Props {
@@ -71,9 +70,8 @@ const generatedDate = new Date().toISOString()
         )}
       >
         {
-          articles
-            .sort(articleInfoByDateDesc)
-            .map(({ title, date, url, draft, minImgUrl, imgDescription }) => (
+          articles.map(
+            ({ title, date, url, draft, minImgUrl, imgDescription }) => (
               <li class={cx('w-full', 'flex')}>
                 <div class={cx('mx-auto', 'w-full', 'md:w-80')}>
                   <Card
@@ -81,7 +79,8 @@ const generatedDate = new Date().toISOString()
                   />
                 </div>
               </li>
-            ))
+            ),
+          )
         }
       </ul>
     </div>

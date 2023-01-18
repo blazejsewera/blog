@@ -6,6 +6,7 @@ import {
   githubOfficial,
   siteName,
 } from '../../components/const/meta'
+import Icon from '../atom/Icon.astro'
 
 export interface Props {
   ribbonTitle: string
@@ -92,8 +93,12 @@ const { ribbonTitle } = Astro.props
       </li>
       <li>
         <a class={cx('block', 'mb-4')} href={githubOfficial} title="My Github"
-          >code</a
-        >
+          >github<Icon
+            cl={cx('inline-block', 'align-super', 'ml-0.5')}
+            size="1rem"
+            icon="external-link"
+          />
+        </a>
       </li>
     </menu>
   </div>
