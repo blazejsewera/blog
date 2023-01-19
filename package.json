@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "fonts": "sh -c 'for f in $(cat ./public/font/.gitkeep); do curl -o ./public/font/${f} https://www.sewera.dev/swty/${f}; done'",
     "dev": "astro dev",
     "start": "astro dev",
     "test": "vitest run",

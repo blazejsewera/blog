@@ -36,9 +36,10 @@ keywords: # default []
 
 ## Prerequisites
 
-- Install dependencies:
+- Install dependencies and download fonts:
   ```bash
   yarn
+  yarn fonts
   ```
 
 ## Development
