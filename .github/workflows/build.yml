@@ -60,4 +60,4 @@ jobs:
         with:
           name: blog-sewera-dev-dist-archive
           path: |
-            dist.tar.gz
+            dist.tar
