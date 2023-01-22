@@ -52,9 +52,12 @@ jobs:
       - name: Build
         run: yarn build
 
-      - name: Archive dist artifact
+      - name: Compress
+        run: yarn tar
+
+      - name: Archive compressed dist artifact
         uses: actions/upload-artifact@v3
         with:
-          name: blog-sewera-dev-dist
+          name: blog-sewera-dev-dist-archive
           path: |
-            dist
+            dist.tar.gz

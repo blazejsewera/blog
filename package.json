@@ -10,6 +10,7 @@
     "test:update": "vitest run -u",
     "test:watch": "vitest dev",
     "build": "astro build",
+    "tar": "sh -c 'tar -czvf ./dist.tar.gz ./dist'",
     "preview": "astro preview",
     "astro": "astro"
   },
