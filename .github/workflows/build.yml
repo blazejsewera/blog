@@ -1,0 +1,60 @@
+name: Build Dist
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'lts/hydrogen'
+
+      # https://github.com/actions/cache/blob/main/examples.md
+      - name: Get yarn cache directory path for ui
+        id: yarn-cache-dir-path
+        run: echo "dir=$(cd ui; yarn config get cacheFolder)" >> $GITHUB_OUTPUT
+
+      - name: Cache yarn dependencies
+        id: yarn-cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install yarn dependencies
+        run: yarn
+
+      - name: Cache fonts
+        id: fonts-cache
+        uses: actions/cache@v3
+        with:
+          path: 'public/font'
+          key: ${{ runner.os }}-fonts-${{ hashFiles('public/font/font.list') }}
+          restore-keys: |
+            ${{ runner.os }}-fonts-
+
+      - name: Download fonts
+        if: steps.fonts-cache.outputs.cache-hit != 'true'
+        run: yarn fonts
+
+      - name: Test
+        run: yarn test
+
+      - name: Build
+        run: yarn build
+
+      - name: Archive dist artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: blog-sewera-dev-dist
+          path: |
+            dist
