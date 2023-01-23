@@ -66,8 +66,7 @@ so it's not `.tar.gz`, but a `.tar` inside a `.zip` file.
 
 Normal `.tar.gz` can be also created using `yarn tar:gz` script.
 
-To download an archive built in Github Actions, look at `download_artifact.sh`,
-or do it manually:
+To download an archive built in Github Actions:
 
 1. Get download URL of the latest dist:
    ```bash
@@ -101,7 +100,7 @@ or do it manually:
     -o 'blog-sewera-dev-dist-archive.zip' \
     '<URL_from_previous_point>'
    ```
-3. Extract it twice:
+3. Extract it twice (once may be enough, depending on the `tar` implementation):
    ```bash
    tar -xzvf blog-sewera-dev-dist-archive.zip && tar -xvf dist.tar
    ```
