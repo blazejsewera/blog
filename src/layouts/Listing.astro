@@ -10,7 +10,6 @@ import {
   siteName,
 } from '../components/const/meta'
 import BigTitle from '../components/section/BigTitle.astro'
-import { DraftInfo } from '../components/article/DraftInfo'
 
 export interface Props {
   title: string
@@ -46,13 +45,6 @@ const generatedDate = new Date().toISOString()
   <body>
     <BigTitle title={title} imgUrl={imgUrl} />
 
-    <div class="flex w-full TO_DELETE">
-      <div class="mx-auto">
-        <DraftInfo
-          description="The blog is still under construction, the first article will be available by the end of January 2023"
-        />
-      </div>
-    </div>
     <div class={cx('flex', 'w-full')}>
       <ul
         class={cx(
