@@ -1,4 +1,4 @@
-name: Rollback production
+name: Deploy production (manual)
 
 concurrency: production
 
@@ -23,10 +23,10 @@ jobs:
           ssh-agent -a $SSH_AUTH_SOCK > /dev/null
           ssh-add /home/runner/.ssh/github_actions
 
-      - name: Rollback production
+      - name: Deploy to production
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         run: |
           ssh -i /home/runner/.ssh/github_actions \
           ${{ secrets.BLOG_PROD_USER }}@sewera.dev \
-          './ROLLBACK_BLOG'
+          './MANUAL_DEPLOY_BLOG'

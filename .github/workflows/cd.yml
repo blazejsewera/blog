@@ -81,6 +81,22 @@ jobs:
           ssh-agent -a $SSH_AUTH_SOCK > /dev/null
           ssh-add /home/runner/.ssh/github_actions
 
+      - name: Get built artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: blog-sewera-dev-dist-archive
+
+      - name: Prepare and upload artifact
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: |
+          tar -xf dist.tar && \
+          rm dist.tar && \
+          tar -czf blog-sewera-dev-dist-archive.zip dist && \
+          scp -i /home/runner/.ssh/github_actions \
+          blog-sewera-dev-dist-archive.zip \
+          ${{ secrets.BLOG_PROD_USER }}@sewera.dev:~/blog/
+
       - name: Deploy to production
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
