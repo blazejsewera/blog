@@ -1,8 +1,9 @@
-name: Build Dist
+name: CD pipeline — build, test, deploy
 
 on:
   push:
     branches: [master]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -61,3 +62,15 @@ jobs:
           name: blog-sewera-dev-dist-archive
           path: |
             dist.tar
+
+  deploy:
+    needs: build
+    environment: production
+    concurrency: production
+    runs-on: ubuntu-latest
+
+    steps:
+      - env:
+          SSHPASS: ${{ secrets.BLOG_PROD_SECRET }}
+        run: |
+          sshpass -e ssh ${{ secrets.BLOG_PROD_USER }}@sewera.dev './DEPLOY_BLOG'
