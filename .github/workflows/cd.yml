@@ -70,10 +70,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Install sshpass
-        run: sudo apt-get install -y sshpass
+      - name: Add SSH key
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: |
+          mkdir -p /home/runner/.ssh
+          ssh-keyscan sewera.dev >> /home/runner/.ssh/known_hosts
+          echo "${{ secrets.BLOG_PROD_KEY }}" > /home/runner/.ssh/github_actions
+          chmod 600 /home/runner/.ssh/github_actions
+          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+          ssh-add /home/runner/.ssh/github_actions
+
       - name: Deploy to production
         env:
-          SSHPASS: ${{ secrets.BLOG_PROD_SECRET }}
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         run: |
-          sshpass -e ssh ${{ secrets.BLOG_PROD_USER }}@sewera.dev './DEPLOY_BLOG'
+          ssh -i /home/runner/.ssh/github_actions \
+          ${{ secrets.BLOG_PROD_USER }}@sewera.dev \
+          './DEPLOY_BLOG'
