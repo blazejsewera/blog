@@ -1,7 +1,5 @@
 name: Deploy production (manual)
 
-concurrency: production
-
 on:
   workflow_dispatch:
 

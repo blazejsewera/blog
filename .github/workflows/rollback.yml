@@ -1,7 +1,5 @@
 name: Rollback production
 
-concurrency: production
-
 on:
   workflow_dispatch:
 
