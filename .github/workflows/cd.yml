@@ -85,6 +85,8 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: blog-sewera-dev-dist-archive
+          path: |
+            dist.tar
 
       - name: Prepare and upload artifact
         env:
