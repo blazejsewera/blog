@@ -12,7 +12,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - env:
+      - name: Install sshpass
+        run: sudo apt-get install -y sshpass
+      - name: Deploy to production
+        env:
           SSHPASS: ${{ secrets.BLOG_PROD_SECRET }}
         run: |
           sshpass -e ssh ${{ secrets.BLOG_PROD_USER }}@sewera.dev './DEPLOY_BLOG'
