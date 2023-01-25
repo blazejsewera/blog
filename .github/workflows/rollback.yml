@@ -18,4 +18,4 @@ jobs:
         env:
           SSHPASS: ${{ secrets.BLOG_PROD_SECRET }}
         run: |
-          sshpass -e ssh ${{ secrets.BLOG_PROD_USER }}@sewera.dev './DEPLOY_BLOG'
+          sshpass -e ssh ${{ secrets.BLOG_PROD_USER }}@sewera.dev './ROLLBACK_BLOG'
