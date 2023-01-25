@@ -82,7 +82,7 @@ jobs:
           ssh-add /home/runner/.ssh/github_actions
 
       - name: Get built artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/download-artifact@v3
         with:
           name: blog-sewera-dev-dist-archive
           path: |
