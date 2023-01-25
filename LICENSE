@@ -20,7 +20,7 @@ in a `license` field, or similar, unequivocal field.
 Because the rendered blog post content is based solely on the Blog Post file,
 the resulting web page's content is licensed under the same license
 as the source Blog Post file.
-The rendered blog post web page has the SPDX License Identifier specified
+The rendered blog post web page has the SPDX License Identifier (7) specified
 in its metadata, as well as in its footer.
 
 (1): A Markdown file is a file with `.md` extension.
