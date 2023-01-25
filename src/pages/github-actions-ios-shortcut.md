@@ -3,12 +3,25 @@ layout: ../layouts/Post.astro
 title: Github Actions iOS Shortcut
 date: 2023-01-18
 draft: true
+draftDescription: |
+  The information here is up-to-date.
+  However, the article needs some editing for better readability.
 keywords:
   - iOS Shortcuts
   - Github Actions
   - Manual Github Action Trigger
   - Github Workflow Dispatch
-imgUrl: /image/nordic-sky.jpg
+imgUrl: /github-actions-ios-shortcut/bus-shortcut.jpg
+imgDescription: A bus going through a shortcut
+abstract: |
+  Manual Github Workflow dispatching can be a convenient way
+  to trigger repeatable tasks that are not tied to our usual
+  Continuous Delivery Pipeline. For example, we might need to
+  quickly trigger a rollback of our system, when we get
+  an on-call incident. We might use our computer and trigger
+  the workflow in the Github web app.
+  However, quickly dispatching a workflow with iOS Shortcuts
+  may be more handy. This article describes how to set it up.
 ---
 
 To dispatch a Github Actions Workflow,
@@ -21,7 +34,8 @@ iPhone Shortcuts app requires a couple of parameters:
 - inputs,
 - account.
 
-They can be obtained with [`gh` CLI tool](https://cli.github.com/)[^gh-workflows].
+They can be easily obtained
+with [`gh` CLI tool](https://cli.github.com/)[^gh-workflows].
 
 ```sh
 gh api \
