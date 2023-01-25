@@ -1,5 +1,7 @@
 # Blog (blog.sewera.dev)
 
+[![Blog CD](https://github.com/blazejsewera/blog/actions/workflows/cd.yml/badge.svg)](https://github.com/blazejsewera/blog/actions)
+
 ## Writing articles
 
 Minimal frontmatter
