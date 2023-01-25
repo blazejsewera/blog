@@ -38,7 +38,7 @@ curl \
   -H "Authorization: Bearer <YOUR-TOKEN>"\
   -H "X-GitHub-Api-Version: 2022-11-28" \
   <github api url>/repos/<owner>/<repo>/actions/workflows/<workflow id>/dispatches \
-  -d '{"ref":"topic-branch","inputs":{"name":"Mona the Octocat","home":"San Francisco, CA"}}'
+  -d '{"ref":"topic-branch","inputs":{"name":"Example name","home":"San Francisco, CA"}}'
 ```
 
 ## Example
