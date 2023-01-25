@@ -1,0 +1,39 @@
+This work is licensed by default under two licenses:
+- GPL-3.0; and
+- CC-BY-SA-4.0;
+depending on a file.
+
+The full text of the GPL-3.0 license can be found in `LICENSE-GPL-3.0` file.
+The full text of the CC-BY-SA-4.0 can be found in `LICENSE-CC-BY-SA-4.0` file.
+
+Despite the Blog Post files, defined in the next paragraph,
+all files are licensed under GPL-3.0,
+unless clearly specified otherwise in a comment at the beginning of the file.
+
+A Blog Post file is a Markdown (1), MDX (2), Astro (3), or HTML (4) file
+that is placed in the `src/pages` directory.
+By default, Blog Post files are licensed under CC-BY-SA-4.0,
+unless clearly specified otherwise in the Frontmatter (5),
+a Meta Tag (6), or a comment at the beginning of the Blog Post file.
+By convention, the license will be specified as an SPDX License Identifier (7),
+in a `license` field, or similar, unequivocal field.
+Because the rendered blog post content is based solely on the Blog Post file,
+the resulting web page's content is licensed under the same license
+as the source Blog Post file.
+The rendered blog post web page has the SPDX License Identifier specified
+in its metadata, as well as in its footer.
+
+(1): A Markdown file is a file with `.md` extension.
+(2): An MDX file is a file with `.mdx` extension.
+(3): An Astro file is a file with `.astro` extension.
+(4): An HTML file is a file with `.html` extension.
+
+(5): Frontmatter is a metadata format for Markdown (1) and MDX (2) files,
+     which is placed at the beginning of the file, is in the YAML format,
+     and is delimited by three dashes (`---`) before and after the metadata.
+(6): A Meta Tag is a standard HTML tag, defined in the following document:
+     <https://html.spec.whatwg.org/multipage/semantics.html#the-meta-element>.
+(7): An SPDX License Identifier is a short identifier that unambiguously
+     points to the full text of a given license.
+     The full list of such identifiers is defined on the following web page:
+     <https://spdx.org/licenses/>.
