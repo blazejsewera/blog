@@ -59,66 +59,13 @@ keywords: # default []
   yarn dev
   ```
 
-## Deployment
+## Deploy and rollback
 
-Github Actions should make a compressed archive
-named `blog-sewera-dev-dist-archive`.
-The only gimmick is that it is tarred and zipped separately,
-so it's not `.tar.gz`, but a `.tar` inside a `.zip` file.
+The blog is deployed on every push to `master`.
+All the applicable deployment and rollback workflows,
+both automatic and manual are in the [actions tab].
 
-Normal `.tar.gz` can be also created using `yarn tar:gz` script.
-
-To download an archive built in Github Actions:
-
-1. Get download URL of the latest dist:
-   ```bash
-   gh api \
-     -H 'Accept: application/vnd.github+json' \
-     '/repos/blazejsewera/blog/actions/artifacts?per_page=1&name=blog-sewera-dev-dist-archive' \
-   | jq -r '.artifacts[0].archive_download_url'
-   ```
-   or
-   ```bash
-   curl \
-     -H 'Accept: application/vnd.github+json' \
-     -H 'Authorization: Bearer <YOUR-TOKEN>'\
-     -H 'X-GitHub-Api-Version: 2022-11-28' \
-     'https://api.github.com/repos/blazejsewera/blog/actions/artifacts?per_page=1&name=blog-sewera-dev-dist-archive' \
-   | jq -r '.artifacts[0].archive_download_url'
-   ```
-2. Download it:
-   ```bash
-   gh api \
-     -H 'Accept: application/vnd.github+json' \
-     <URL_from_previous_point> > blog-sewera-dev-dist-archive.zip
-   ```
-   or
-   ```bash
-   curl \
-    -L \
-    -H "Accept: application/vnd.github+json" \
-    -H "Authorization: Bearer <YOUR-TOKEN>"\
-    -H "X-GitHub-Api-Version: 2022-11-28" \
-    -o 'blog-sewera-dev-dist-archive.zip' \
-    '<URL_from_previous_point>'
-   ```
-3. Extract it twice (once may be enough, depending on the `tar` implementation):
-   ```bash
-   tar -xzvf blog-sewera-dev-dist-archive.zip && tar -xvf dist.tar
-   ```
-4. Remove archives:
-   ```bash
-   rm -f blog-sewera-dev-dist-archive.zip dist.tar
-   ```
-
-A fine-grained personal access token will be necessary.
-It should have read-only access to metadata and Github Actions
-(to download artifacts).
-It has to be set for `blazejsewera` organization,
-and `blog` repo.
-To create it, refer to the [documentation].
-
-[documentation]: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token
+[actions tab]: https://github.com/blazejsewera/blog/actions
 
 ## Vitest
 
