@@ -31,11 +31,11 @@ iPhone Shortcuts app requires a couple of parameters:
 - workflow id,
 - repository,
 - branch/ref,
-- inputs,
+- inputs, and
 - account.
 
-They can be easily obtained
-with [`gh` CLI tool](https://cli.github.com/)[^gh-workflows].
+They can be easily obtained with the Github CLI tool[^gh-cli].
+The following snippet is taken from the Github API docs[^gh-workflows].
 
 ```sh
 gh api \
@@ -66,12 +66,14 @@ shortcut:
   branchOrRef: master
   inputs: |
     {
-      "rebuild": true
+      "name": "Example name",
+      "home": "San Francisco, CA"
     }
   account: github-username
 ```
 
-[^gh-workflows]: <https://docs.github.com/en/rest/actions/workflows#list-repository-workflows>
-[^rq]: <https://docs.github.com/en/rest/actions/workflows#create-a-workflow-dispatch-event>
+[^gh-cli]: [Github CLI tool (`gh`)](https://cli.github.com/)
+[^gh-workflows]: [List repository workflows — Github REST API docs](https://docs.github.com/en/rest/actions/workflows#list-repository-workflows)
+[^rq]: [Create a workflow dispatch event — Github REST API docs](https://docs.github.com/en/rest/actions/workflows#create-a-workflow-dispatch-event)
 
 <!-- [[github-workflow-dispatch-iphone-shortcut]] -->

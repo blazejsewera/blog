@@ -6,6 +6,7 @@ import type {
 } from '../components/article/articleInfo'
 import { Metadata } from '../components/article/Metadata'
 import {
+  blogGithubSrcPagesRoot,
   defaultAuthor,
   defaultLanguage,
   defaultLicense,
@@ -34,6 +35,8 @@ const {
 const author = frontmatter.author ?? defaultAuthor
 const language = frontmatter.language ?? defaultLanguage
 const license = frontmatter.license ?? defaultLicense
+
+const sourceFile = frontmatter.file.split('\\')?.pop()?.split('/')?.pop() || ''
 
 const globResult = await Astro.glob('../pages/*.md')
 const articles = getReverseChronologicalArticlesFromGlob(globResult)
@@ -79,6 +82,7 @@ const next =
         author,
         license,
         year: new Date(date).getFullYear().toString(),
+        source: `${blogGithubSrcPagesRoot}/${sourceFile}`,
         previous,
         next,
       }}

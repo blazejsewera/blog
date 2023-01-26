@@ -8,11 +8,12 @@ export interface Props {
   license: string
   author: string
   year: string
+  source?: string
   previous?: ArticleInfo
   next?: ArticleInfo
 }
 
-const { license, author, year, previous, next } = Astro.props
+const { license, author, year, source, previous, next } = Astro.props
 ---
 
 <div class="py-8">
@@ -85,9 +86,25 @@ const { license, author, year, previous, next } = Astro.props
   </div>
   <div class="flex">
     <div class={cx('mx-auto', 'mb-7', 'text-2xs', 'md:text-xs')}>
-      {license}
-      {year}
-      {author}
+      <div>
+        {license}
+        {year}
+        {author}
+      </div>
+      {
+        source && (
+          <div class={cx('ml-1.5', 'mt-4', 'md:ml-2', 'md:mt-2')}>
+            <a href={source} target="_blank">
+              Source for this page on Github
+              <Icon
+                cl={cx('inline-block', 'align-super')}
+                size="0.5rem"
+                icon="external-link"
+              />
+            </a>
+          </div>
+        )
+      }
     </div>
   </div>
 </div>

@@ -1,6 +1,10 @@
 ---
 import { getReverseChronologicalArticlesFromGlob } from '../components/article/articles'
-import { defaultAuthor, defaultLicense } from '../components/const/meta'
+import {
+  blogGithubSrcPagesRoot,
+  defaultAuthor,
+  defaultLicense,
+} from '../components/const/meta'
 import Footer from '../components/section/Footer.astro'
 import Listing from '../layouts/Listing.astro'
 
@@ -17,6 +21,7 @@ const globResult = await Astro.glob('./*.md')
 <Footer
   author={defaultAuthor}
   license={defaultLicense}
+  source={`${blogGithubSrcPagesRoot}/index.astro`}
   year={new Date().getFullYear().toString()}
 />
 
