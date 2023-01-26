@@ -23,6 +23,9 @@ as the source Blog Post file.
 The rendered blog post web page has the SPDX License Identifier (7) specified
 in its metadata, as well as in its footer.
 
+Unless stated otherwise, Photos (8) are sourced from Unsplash (9),
+and therefore the Unsplash License (10) is applicable for them.
+
 (1): A Markdown file is a file with `.md` extension.
 (2): An MDX file is a file with `.mdx` extension.
 (3): An Astro file is a file with `.astro` extension.
@@ -35,5 +38,15 @@ in its metadata, as well as in its footer.
      <https://html.spec.whatwg.org/multipage/semantics.html#the-meta-element>.
 (7): An SPDX License Identifier is a short identifier that unambiguously
      points to the full text of a given license.
-     The full list of such identifiers is defined on the following web page:
+     The full list of such identifiers is defined in the following web page:
      <https://spdx.org/licenses/>.
+
+(8): A Photo file is a file with any of the following extensions:
+     - `.png`,
+     - `.jpg`,
+     - `.jpeg`,
+     - `.webp`,
+     - `.gif`.
+(9): <https://unsplash.com/>
+(10): The full text of Unsplash License can be found in the following web page:
+      <https://unsplash.com/license>.

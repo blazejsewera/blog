@@ -39,7 +39,7 @@ keywords: # default []
 ## Prerequisites
 
 - Install dependencies and download fonts:
-  ```bash
+  ```sh
   yarn
   yarn fonts
   ```
@@ -47,15 +47,19 @@ keywords: # default []
 ## Development
 
 - Run tests:
-  ```bash
+  ```sh
   yarn test
   ```
   or:
-  ```bash
+  ```sh
   yarn test:watch
   ```
+- Run tests with the snapshot updates:
+  ```sh
+  yarn test:update
+  ```
 - Run a development server:
-  ```bash
+  ```sh
   yarn dev
   ```
 
@@ -94,3 +98,16 @@ To do this, open the **Testing** tab,
 expand a dropdown for run configurations
 (a caret by the double play button),
 and select **Run Tests (Watch Mode)**.
+
+## License
+
+TLDR: All files in `src/pages` directory are under CC-BY-SA-4.0.
+All other files are under GPL-3.0.
+There can be exceptions,
+which have to be clearly specified in the licensed file.
+
+A more detailed explanation can be found in the [LICENSE](./LICENSE) file.
+
+Photos are sourced from [Unsplash](https://unsplash.com)
+under the [Unsplash license](https://unsplash.com/license),
+unless stated otherwise.
