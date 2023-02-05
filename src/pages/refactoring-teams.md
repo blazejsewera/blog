@@ -1,12 +1,12 @@
 ---
 layout: ../layouts/Post.astro
-title: Refactoring Management
+title: Refactoring Teams
 date: 2023-02-05
 draft: true
 draftDescription: |
   This article is incomplete and lacks proper references.
   It will be extended and completed soon.
-imgUrl: /refactoring-management/team-rafting-on-a-waterfall.jpg
+imgUrl: /refactoring-teams/team-rafting-on-a-waterfall.jpg
 imgDescription: A team rafting on a waterfall
 ---
 
@@ -14,12 +14,11 @@ The term "refactoring" has become frown upon between some managers.
 Putting aside the validity of such aversion,
 I think some refactoring techniques can be used
 to realign the team with its desired value stream.
-They can help manage the relative domain
-complexity[^relative-domain-complexity] of a team,
+They can help manage the cognitive load[^team-cognitive-load] of a team,
 bring development closer to business needs,
 and mitigate the risks of management debt[^management-debt].
 
-[^relative-domain-complexity]: [[relative-domain-complexity]]
+[^team-cognitive-load]: [[relative-domain-complexity]]
 [^management-debt]: Similar to technical debt being suboptimal code architecture, which is harder to maintain, management debt is suboptimal organization architecture, which makes fast flow harder. More about this term in [this section](#management-smells).
 
 From my experience, software engineering managers
