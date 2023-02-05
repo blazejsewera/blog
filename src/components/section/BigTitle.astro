@@ -4,10 +4,11 @@ import { cx } from '../util/classes'
 
 export interface Props {
   title: string
+  subtitle?: string
   imgUrl?: string
 }
 
-const { title, imgUrl } = Astro.props
+const { title, subtitle, imgUrl } = Astro.props
 ---
 
 <div
@@ -28,10 +29,10 @@ const { title, imgUrl } = Astro.props
   )}
 >
   <MenuWithRibbon ribbonTitle={title} />
-  <div class={cx('text-image', 'flex')}>
+  <div class={cx('flex')}>
     <h1
       class={cx(
-        'm-auto',
+        'mx-auto',
         'text-2xl',
         'md:text-4xl',
         'xl:text-5xl',
@@ -41,6 +42,27 @@ const { title, imgUrl } = Astro.props
       {title}
     </h1>
   </div>
+  {
+    subtitle && (
+      <div class={cx('flex')}>
+        <div
+          class={cx(
+            'mx-auto',
+            'mt-2',
+            'md:mt-3',
+            'xl:mt-4',
+            'text-xl',
+            'md:text-2xl',
+            'xl:text-3xl',
+            'font-geometric',
+            'opacity-90',
+          )}
+        >
+          {subtitle}
+        </div>
+      </div>
+    )
+  }
 </div>
 
 <style is:global define:vars={{ imgUrl: imgUrl ? `url('${imgUrl}')` : '' }}>

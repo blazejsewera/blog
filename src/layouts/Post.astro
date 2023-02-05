@@ -26,6 +26,7 @@ const {
   draft,
   draftDescription,
   title,
+  subtitle,
   date,
   abstract,
   keywords,
@@ -74,7 +75,7 @@ const next =
     <title>{title} — blog.sewera.dev</title>
   </head>
   <body class="font-sans">
-    <BigTitle {...{title, imgUrl}} />
+    <BigTitle {...{title, subtitle, imgUrl}} />
 
     <Article {...{draft, draftDescription, abstract}}>
       <slot />

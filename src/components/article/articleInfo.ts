@@ -1,10 +1,11 @@
 import type { MarkdownInstance } from 'astro'
 
-export type Frontmatter = {
+export type ArticleInfo = {
   title: string
-  date: string
+  date: Date
   url: string
   file: string
+  subtitle?: string
   draft?: boolean
   draftDescription?: string
   author?: string
@@ -17,22 +18,7 @@ export type Frontmatter = {
   imgDescription?: string
 }
 
-export type ArticleInfo = {
-  title: string
-  date: Date
-  url: string
-  file: string
-  draft?: boolean
-  draftDescription?: string
-  author?: string
-  abstract?: string
-  keywords?: string[]
-  language?: string
-  license?: string
-  imgUrl?: string
-  minImgUrl?: string
-  imgDescription?: string
-}
+export type Frontmatter = Omit<ArticleInfo, 'date'> & { date: string }
 
 export type Article = MarkdownInstance<Frontmatter>
 

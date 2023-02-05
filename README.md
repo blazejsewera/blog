@@ -20,6 +20,7 @@ Complete frontmatter
 ---
 layout: ../layouts/Post.astro
 title: Title
+subtitle: Subtitle
 date: 1970-01-01
 author: John Doe # default: Blazej Sewera
 license: MIT # default: CC BY-SA 4.0

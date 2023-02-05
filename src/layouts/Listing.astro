@@ -13,13 +13,15 @@ import BigTitle from '../components/section/BigTitle.astro'
 
 export interface Props {
   title: string
+  subtitle?: string
   description: string
   imgUrl: string
   imgDescription: string
   articles: ArticleInfo[]
 }
 
-const { title, description, imgUrl, imgDescription, articles } = Astro.props
+const { title, subtitle, description, imgUrl, imgDescription, articles } =
+  Astro.props
 const generatedDate = new Date().toISOString()
 ---
 
@@ -43,7 +45,7 @@ const generatedDate = new Date().toISOString()
     <title>{title}</title>
   </head>
   <body>
-    <BigTitle title={title} imgUrl={imgUrl} />
+    <BigTitle {...{title, subtitle, imgUrl}} />
 
     <div class={cx('flex', 'w-full')}>
       <ul

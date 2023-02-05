@@ -1,14 +1,47 @@
 ---
 layout: ../layouts/Post.astro
 title: Refactoring Teams
+subtitle: Aligning people for fast and safe flow
 date: 2023-02-05
 draft: true
+abstract: |
+  The idea of refactoring is well known by most software engineers.
+  Because many software managers are former engineers,
+  they are usually also familiar with this term.
+  However, with time, when managers become “the business people,”
+  they tend to treat refactoring as a necessary evil,
+  only slowing down the development of new features.
+  The idea of refactoring can be applied not only to code,
+  but also to teams organization,
+  which can considerably speed up the development.
+  I hope that it becomes a valuable tool
+  for every software engineering manager
+  who treats their job seriously.
 draftDescription: |
   This article is incomplete and lacks proper references.
   It will be extended and completed soon.
-imgUrl: /refactoring-teams/team-rafting-on-a-waterfall.jpg
-imgDescription: A team rafting on a waterfall
+imgUrl: /refactoring-teams/tour-de-france.jpg
+imgDescription: A professional cycling team in Tour de France
+keywords:
+  - Team Topologies
+  - Management
+  - Software Engineering
+  - Refactoring
 ---
+
+A quick note about the cover image:
+In cycling, a leader needs to spend the most energy
+to overcome the air resistance.
+If the team is well aligned in the slip stream,
+it experiences far less resistance than when cycling alone.
+In the middle of the peloton individual cyclists
+experience only 5–10% of air resistance
+compared to cycling alone[^peloton-and-air-resistance].
+I believe a good leader in a company should strive
+to align their team in such a slip stream
+in order to enable fast flow of value delivery.
+
+[^peloton-and-air-resistance]: Eindhoven University of Technology, ‘A cyclist in a peloton experiences considerably less air resistance than previously assumed’, Jun. 29, 2018. [[Online source](https://www.tue.nl/en/news-and-events/news-overview/a-cyclist-in-a-peloton-experiences-considerably-less-air-resistance-than-previously-assumed/)] (accessed Feb. 05, 2023).
 
 The term "refactoring" has become frown upon between some managers.
 Putting aside the validity of such aversion,
