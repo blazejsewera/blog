@@ -40,9 +40,12 @@ const sourceFile = frontmatter.file.split('\\')?.pop()?.split('/')?.pop() || ''
 
 const globResult = await Astro.glob('../pages/*.md')
 const articles = getReverseChronologicalArticlesFromGlob(globResult)
-const currentArticleIndex = articles.findIndex(
-  current => current.url === Astro.url.pathname,
-)
+
+const ofArticleUrl = (article: ArticleInfo): boolean =>
+  Astro.url.pathname.startsWith(article.url)
+
+const currentArticleIndex = articles.findIndex(ofArticleUrl)
+
 const previous =
   articles.at(currentArticleIndex + 1) ?? (articles[0] as ArticleInfo)
 const next =
