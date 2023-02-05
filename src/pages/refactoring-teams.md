@@ -133,5 +133,8 @@ by encouraging people to share information between one another.
 It can be done with pair programming.
 
 [^large-class]: [[fowler-2019]], p. 82
+[^relative-domain-complexity]: [[relative-domain-complexity]]
 [^cognitive-load-feedback]: [[relative-domain-complexity]]
 [^long-function]: [[fowler-2019]], p. 73
+
+To be continued.
