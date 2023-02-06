@@ -13,6 +13,7 @@ import BigTitle from '../components/section/BigTitle.astro'
 
 export interface Props {
   title: string
+  tabTitle: string
   subtitle?: string
   description: string
   imgUrl: string
@@ -20,8 +21,15 @@ export interface Props {
   articles: ArticleInfo[]
 }
 
-const { title, subtitle, description, imgUrl, imgDescription, articles } =
-  Astro.props
+const {
+  title,
+  tabTitle,
+  subtitle,
+  description,
+  imgUrl,
+  imgDescription,
+  articles,
+} = Astro.props
 const generatedDate = new Date().toISOString()
 ---
 
@@ -31,7 +39,7 @@ const generatedDate = new Date().toISOString()
     <meta name="generator" content={Astro.generator} />
     <Metadata
       {...{
-        title,
+        title: tabTitle,
         date: generatedDate,
         author: defaultAuthor,
         language: defaultLanguage,
@@ -42,7 +50,7 @@ const generatedDate = new Date().toISOString()
         siteName
       }}
     />
-    <title>{title}</title>
+    <title>{tabTitle}</title>
   </head>
   <body>
     <BigTitle {...{title, subtitle, imgUrl}} />
