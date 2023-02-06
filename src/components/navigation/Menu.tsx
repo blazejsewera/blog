@@ -48,23 +48,18 @@ export const Menu: Component<MenuProps> = ({
         <h2 class="text-lg font-geometric">Where do you want to go?</h2>
         <menu role="menu" id="menu-links">
           <li>
-            <a href={baseSite} title="Home">
-              home
+            <a href={blogSite} title="Blog home">
+              blog home
             </a>
           </li>
           <li>
-            <a href={blogSite} title="Blog">
-              blog
-            </a>
-          </li>
-          <li>
-            <a href={`${baseSite}#me`} title="About me">
-              about me
+            <a href={baseSite} title="Homepage (sewera.dev)">
+              sewera.dev
             </a>
           </li>
           <li>
             <a href={github} title="My Github">
-              code
+              github
             </a>
           </li>
         </menu>

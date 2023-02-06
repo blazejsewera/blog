@@ -80,17 +80,12 @@ const { ribbonTitle } = Astro.props
       Where do you want to go?
     </h2>
     <menu class={cx('list-none', 'text-xl', 'md:text-2xl')}>
-      <li><a class={cx('block', 'mb-4')} href={baseSiteRoot}>home</a></li>
       <li>
-        <a class={cx('block', 'mb-4')} href={blogSiteRoot} title="Blog">blog</a>
-      </li>
-      <li>
-        <a
-          class={cx('block', 'mb-4')}
-          href={`${baseSiteRoot}#me`}
-          title="About me">about me</a
+        <a class={cx('block', 'mb-4')} href={blogSiteRoot} title="Blog"
+          >blog home</a
         >
       </li>
+      <li><a class={cx('block', 'mb-4')} href={baseSiteRoot}>sewera.dev</a></li>
       <li>
         <a
           class={cx('block', 'mb-4')}
