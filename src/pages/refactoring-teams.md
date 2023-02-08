@@ -1,6 +1,6 @@
 ---
 layout: ../layouts/Post.astro
-title: Refactoring Teams (part 1)
+title: Refactoring Teams
 subtitle: Aligning people for fast and safe flow
 date: 2023-02-05
 abstract: |
