@@ -2,10 +2,6 @@
 layout: ../layouts/Post.astro
 title: Github Actions iOS Shortcut
 date: 2023-01-18
-draft: true
-draftDescription: |
-  The information here is up-to-date.
-  However, the article needs some editing for better readability.
 keywords:
   - iOS Shortcuts
   - Github Actions
@@ -72,8 +68,8 @@ shortcut:
   account: github-username
 ```
 
-[^gh-cli]: [Github CLI tool (`gh`)](https://cli.github.com/)
-[^gh-workflows]: [List repository workflows — Github REST API docs](https://docs.github.com/en/rest/actions/workflows#list-repository-workflows)
-[^rq]: [Create a workflow dispatch event — Github REST API docs](https://docs.github.com/en/rest/actions/workflows#create-a-workflow-dispatch-event)
+[^gh-cli]: [Github CLI tool (`gh`)](https://cli.github.com/) (accessed Feb. 05, 2023)
+[^gh-workflows]: [List repository workflows — Github REST API docs](https://docs.github.com/en/rest/actions/workflows#list-repository-workflows) (accessed Feb. 05, 2023)
+[^rq]: [Create a workflow dispatch event — Github REST API docs](https://docs.github.com/en/rest/actions/workflows#create-a-workflow-dispatch-event) (accessed Feb. 05, 2023)
 
 <!-- [[github-workflow-dispatch-iphone-shortcut]] -->
