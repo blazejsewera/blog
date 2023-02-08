@@ -1,9 +1,8 @@
 ---
 layout: ../layouts/Post.astro
-title: Refactoring Teams
+title: Refactoring Teams (part 1)
 subtitle: Aligning people for fast and safe flow
 date: 2023-02-05
-draft: true
 abstract: |
   The idea of refactoring is well known by most software engineers.
   Because many software managers are former engineers,
@@ -17,9 +16,6 @@ abstract: |
   I hope that it becomes a valuable tool
   for every software engineering manager
   who treats their job seriously.
-draftDescription: |
-  This article is incomplete and lacks proper references.
-  It will be extended and completed soon.
 imgUrl: /refactoring-teams/tour-de-france.jpg
 imgDescription: A professional cycling team in Tour de France
 keywords:
@@ -182,7 +178,7 @@ one of the key practices of Extreme Programming.
 [^brent]: G. Kim, K. Behr, and G. Spafford, The Phoenix Project: A Novel about IT, DevOps, and Helping Your Business Win, 3rd ed. IT Revolution, 2018. (pp. 115–116).
 [^long-function]: M. Fowler, Refactoring: Improving the Design of Existing Code. Addison-Wesley, 2019. (p. 73).
 [^bus-factor]: Wikipedia, "Bus factor", 2023. [[Online source](https://en.wikipedia.org/wiki/Bus_factor)] (accessed Feb. 08, 2023).
-[^pair-programming]: K. Beck and C. Andres, Extreme Programming Explained: Embrace Change, 2nd ed. Addison-Wesley Professional, 2004. (p. (?)).
+[^pair-programming]: K. Beck and C. Andres, Extreme Programming Explained: Embrace Change, 2nd ed. Addison-Wesley Professional, 2004. (pp. 42–44).
 
 ### Blame game
 
@@ -196,7 +192,7 @@ A blame game is a common phenomenon in low-trust teams
 and organizations, which focuses mostly on finding
 the person responsible for a failure that occurred,
 but not how to fix the issue,
-or prevent such failure in the future.
+or prevent such failure in the future.[^blame-game]
 
 People playing it aim at avoiding solving the problem themselves,
 just like with the "log and throw" pattern.
@@ -208,10 +204,10 @@ A good manager needs to encourage their team
 to find the best solution to the problem at hand,
 not a guilty person.
 To achieve this, a team must be of high trust,
-and a safe environment has to be formed within a team,[^blame-game]
+and a safe environment has to be formed within a team,
 Such safe-for-failure environment fosters innovation.
 
 [^log-and-throw]: H. Kevlin. "Clean Coders Hate What Happens to Your Code When You Use These Enterprise Programming Tricks", Feb. 27, 2017. [[Online video](https://youtu.be/FyCYva9DhsI?t=3306)]. (55:06–55:12) (accessed: Feb. 08, 2023).
-[^blame-game]: G. Kim, K. Behr, and G. Spafford, The Phoenix Project: A Novel about IT, DevOps, and Helping Your Business Win, 3rd ed. IT Revolution, 2018. (p. (?)).
+[^blame-game]: G. Kim, K. Behr, and G. Spafford, The Phoenix Project: A Novel about IT, DevOps, and Helping Your Business Win, 3rd ed. IT Revolution, 2018. (pp. 104–106).
 
 To be continued.
