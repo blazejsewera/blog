@@ -211,7 +211,7 @@ To achieve this, a team must be of high trust,
 and a safe environment has to be formed within a team,[^blame-game]
 Such safe-for-failure environment fosters innovation.
 
-[^log-and-throw]: H. Kevlin. "Clean Coders Hate What Happens to Your Code When You Use These Enterprise Programming Tricks", Feb. 27, 2017. [[Online Video](https://youtu.be/FyCYva9DhsI)]. (accessed: Feb. 08, 2023).
+[^log-and-throw]: H. Kevlin. "Clean Coders Hate What Happens to Your Code When You Use These Enterprise Programming Tricks", Feb. 27, 2017. [[Online video](https://youtu.be/FyCYva9DhsI?t=3306)]. (55:06–55:12) (accessed: Feb. 08, 2023).
 [^blame-game]: G. Kim, K. Behr, and G. Spafford, The Phoenix Project: A Novel about IT, DevOps, and Helping Your Business Win, 3rd ed. IT Revolution, 2018. (p. (?)).
 
 To be continued.
