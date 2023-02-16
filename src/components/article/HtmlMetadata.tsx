@@ -22,7 +22,7 @@ const BasicMetadata: Component = () => (
   </>
 )
 
-export const Metadata: Component<MetadataProps> = ({
+export const HtmlMetadata: Component<MetadataProps> = ({
   title,
   date,
   author,

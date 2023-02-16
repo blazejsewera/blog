@@ -27,23 +27,6 @@ const globResult = await Astro.glob('./*.md')
   year={new Date().getFullYear().toString()}
 />
 
-<script>
-  import {
-    menuId,
-    closeMenuId,
-    menuVisibleCx,
-    menuInvisibleCx,
-  } from '../components/navigation/Menu'
-
-  const closeMenu = document.getElementById(closeMenuId)
-  const menu = document.getElementById(menuId)
-
-  closeMenu?.addEventListener('click', () => {
-    menu?.classList.remove(...menuVisibleCx)
-    menu?.classList.add(...menuInvisibleCx)
-  })
-</script>
-
 <style>
   a {
     text-decoration: none;

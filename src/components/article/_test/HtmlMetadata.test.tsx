@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
-import { Metadata } from '../Metadata'
+import { HtmlMetadata } from '../HtmlMetadata'
 import { render } from '@solidjs/testing-library'
 
-describe('<Metadata />', () => {
+describe('<HtmlMetadata />', () => {
   it('renders properly', () => {
     const author = 'author'
     const date = '2022-01-06'
@@ -12,7 +12,7 @@ describe('<Metadata />', () => {
     const title = 'title'
 
     const { container, unmount } = render(() => (
-      <Metadata {...{ author, date, language, license, siteName, title }} />
+      <HtmlMetadata {...{ author, date, language, license, siteName, title }} />
     ))
 
     expect(container).toMatchSnapshot()

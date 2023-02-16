@@ -4,7 +4,7 @@ import type {
   ArticleInfo,
   Frontmatter,
 } from '../components/article/articleInfo'
-import { Metadata } from '../components/article/Metadata'
+import { HtmlMetadata } from '../components/article/HtmlMetadata'
 import {
   blogGithubSrcPagesRoot,
   defaultAuthor,
@@ -58,7 +58,7 @@ const next =
 <html lang={defaultLanguage}>
   <head>
     <meta name="generator" content={Astro.generator} />
-    <Metadata
+    <HtmlMetadata
       {...{
         title,
         date,

@@ -1,6 +1,7 @@
 import type { MarkdownInstance } from 'astro'
+import type { ArticleInfo, Frontmatter } from '../articleInfo'
 import { describe, expect, it } from 'vitest'
-import { ArticleInfo, Frontmatter, toArticleInfo } from '../articleInfo'
+import { toArticleInfo } from '../metadata'
 
 describe('ArticleInfo', () => {
   it('maps from Markdown frontmatter metadata', () => {

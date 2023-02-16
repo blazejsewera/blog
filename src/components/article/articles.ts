@@ -1,5 +1,6 @@
 import type { MarkdownInstance } from 'astro'
-import { Article, toArticleInfo } from './articleInfo'
+import type { Article } from './articleInfo'
+import { toArticleInfo } from './metadata'
 import { articleInfoByDateDesc } from './sort'
 
 export const getReverseChronologicalArticlesFromGlob = (

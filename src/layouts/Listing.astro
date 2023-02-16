@@ -2,7 +2,7 @@
 import type { ArticleInfo } from '../components/article/articleInfo'
 import { cx } from '../components/util/classes'
 import { Card } from '../components/article/Card'
-import { Metadata } from '../components/article/Metadata'
+import { HtmlMetadata } from '../components/article/HtmlMetadata'
 import {
   defaultAuthor,
   defaultLanguage,
@@ -37,7 +37,7 @@ const generatedDate = new Date().toISOString()
 <html lang={defaultLanguage}>
   <head>
     <meta name="generator" content={Astro.generator} />
-    <Metadata
+    <HtmlMetadata
       {...{
         title: tabTitle,
         date: generatedDate,

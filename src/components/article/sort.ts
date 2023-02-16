@@ -1,4 +1,4 @@
-import type { ArticleInfo } from './articleInfo'
+import type { ArticleInfo } from './metadata'
 
 type Comparator<T> = (value1: T, value2: T) => number
 
