@@ -204,7 +204,7 @@ A good manager needs to encourage their team
 to find the best solution to the problem at hand,
 not a guilty person.
 To achieve this, a team must be of high trust,
-and a safe environment has to be formed within a team,
+and a safe environment has to be formed within a team.
 Such safe-for-failure environment fosters innovation.
 
 [^log-and-throw]: H. Kevlin. "Clean Coders Hate What Happens to Your Code When You Use These Enterprise Programming Tricks", Feb. 27, 2017. [[Online video](https://youtu.be/FyCYva9DhsI?t=3306)]. (55:06–55:12) (accessed: Feb. 08, 2023).

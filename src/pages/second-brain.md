@@ -8,16 +8,16 @@ abstract: |
   but was it the first, second, or third link?
   We all wish we had a sidekick who remembers
   all the relevant information at all times.
-  Problem is, if we ask the same question multiple times,
-  people tend to get annoyed.
-  Google search doesn't seem to get annoyed,
-  but suddenly we are annoyed with the overwhelming
-  and mostly irrelevant results.
+  Problem is, we will annoy people
+  if we ask the same question multiple times.
+  On the other hand, we can become annoyed
+  with the overwhelming number of results
+  that are mostly irrelevant to us.
   What if there was a better way to manage knowledge
   and you, a software engineer, had all the skills
   to make it happen?
   Meet the Second Brain, a note-taking technique
-  that not only will improve up your Time To Answer,
+  that not only will improve your Time To Answer,
   but also has a potential to improve your engineering skills
   and make you a happier person.
 draft: true
@@ -202,7 +202,32 @@ Remember, you can always search through all your notes
 and if something interesting pops up in your archived ones,
 you can always move or copy them to your current set of notes.
 
-[^move-to-archive]: {[[forte-2022]]; pp. 102-108}
+[^move-to-archive]: [[forte-2022]]; pp. 102-108
+
+## Happiness
+
+Externalizing our thoughts through writing has a lot of benefits,
+both in psychological and even physical health.[^writing-is-healthy]
+It can reduce stress and make us more present in our daily life.
+Think about different situations
+when you just couldn't get rid of those excruciating thoughts:
+
+> I have to remember to take out the laundry
+> before I go to work. Oh, and my friend has birthday today.
+> Hmm... I think I've just found a solution to a bug
+> I've investigated yesterday, so I have to remember that as well.
+
+You get the picture.
+
+Instead, just set a timer for an hour before the laundry is done,
+put your friend's birthday into a calendar,
+and a solution to a bug into your note-taking app.
+You will immediately feel relieved.
+Over time your brain will trust the system more and more
+and you will become less stressed,
+at least when you will have to remember something.
+
+[^writing-is-healthy]: [[forte-2022]], p. 77, [[pennebaker-1997]]
 
 ## My setup
 
