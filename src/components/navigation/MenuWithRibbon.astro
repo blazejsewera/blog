@@ -3,8 +3,9 @@ import { cx } from '../util/classes'
 import {
   blogSiteRoot,
   baseSiteRoot,
-  githubOfficial,
+  githubProfile,
   siteName,
+  mastodonProfile,
 } from '../../components/const/meta'
 import Icon from '../atom/Icon.astro'
 
@@ -89,10 +90,24 @@ const { ribbonTitle } = Astro.props
       <li>
         <a
           class={cx('block', 'mb-4')}
-          href={githubOfficial}
+          href={githubProfile}
           target="_blank"
           title="My Github"
           >github<Icon
+            cl={cx('inline-block', 'align-super', 'ml-0.5')}
+            size="1rem"
+            icon="external-link"
+          />
+        </a>
+      </li>
+      <li>
+        <a
+          class={cx('block', 'mb-4')}
+          rel="me"
+          href={mastodonProfile}
+          target="_blank"
+          title="Mastodon profile"
+          >mastodon<Icon
             cl={cx('inline-block', 'align-super', 'ml-0.5')}
             size="1rem"
             icon="external-link"
