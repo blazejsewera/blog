@@ -11,7 +11,7 @@ abstract: |
   Problem is, we will annoy people
   if we ask the same question multiple times.
   On the other hand, we can become annoyed
-  with the overwhelming number of results
+  with the overwhelming number of search results
   that are mostly irrelevant to us.
   What if there was a better way to manage knowledge
   and you, a software engineer, had all the skills

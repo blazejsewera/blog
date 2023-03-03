@@ -55,8 +55,8 @@ Their menu is very short, yet very interesting,
 and they change it every season
 to offer the freshest ingredients possible.
 
-Their lunch consists of ravioli, but cheaper.
-Their promotions are ravioli, but special.
+Their lunch offer consists of ravioli, but cheaper.
+Their limited promotions are ravioli, but special.
 It is very refreshing to see such an honest business,
 which tells you **exactly** what you can expect.
 And you can expect quality ravioli every time you are here.
