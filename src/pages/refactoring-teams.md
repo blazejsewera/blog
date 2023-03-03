@@ -37,7 +37,7 @@ I believe a good leader in a company should strive
 to align their team in such a slip stream
 in order to enable fast flow of value delivery.
 
-[^peloton-and-air-resistance]: Eindhoven University of Technology, "A cyclist in a peloton experiences considerably less air resistance than previously assumed", Jun. 29, 2018. [[Online source](https://www.tue.nl/en/news-and-events/news-overview/a-cyclist-in-a-peloton-experiences-considerably-less-air-resistance-than-previously-assumed/)] (accessed Feb. 05, 2023).
+[^peloton-and-air-resistance]: Eindhoven University of Technology, "A cyclist in a peloton experiences considerably less air resistance than previously assumed", Jun. 29, 2018. [[Online source](https://www.tue.nl/en/news-and-events/news-overview/a-cyclist-in-a-peloton-experiences-considerably-less-air-resistance-than-previously-assumed/)] (accessed Feb 05, 2023).
 
 The term "refactoring" has become frowned upon by some managers.
 Putting aside the validity of such aversion,
@@ -177,7 +177,7 @@ one of the key practices of Extreme Programming.
 
 [^brent]: G. Kim, K. Behr, and G. Spafford, The Phoenix Project: A Novel about IT, DevOps, and Helping Your Business Win, 3rd ed. IT Revolution, 2018. (pp. 115–116).
 [^long-function]: M. Fowler, Refactoring: Improving the Design of Existing Code. Addison-Wesley, 2019. (p. 73).
-[^bus-factor]: Wikipedia, "Bus factor", 2023. [[Online source](https://en.wikipedia.org/wiki/Bus_factor)] (accessed Feb. 08, 2023).
+[^bus-factor]: Wikipedia, "Bus factor", 2023. [[Online source](https://en.wikipedia.org/wiki/Bus_factor)] (accessed Feb 08, 2023).
 [^pair-programming]: K. Beck and C. Andres, Extreme Programming Explained: Embrace Change, 2nd ed. Addison-Wesley Professional, 2004. (pp. 42–44).
 
 ### Blame game
@@ -207,7 +207,7 @@ To achieve this, a team must be of high trust,
 and a safe environment has to be formed within a team.
 Such safe-for-failure environment fosters innovation.
 
-[^log-and-throw]: H. Kevlin. "Clean Coders Hate What Happens to Your Code When You Use These Enterprise Programming Tricks", Feb. 27, 2017. [[Online video](https://youtu.be/FyCYva9DhsI?t=3306)]. (55:06–55:12) (accessed: Feb. 08, 2023).
+[^log-and-throw]: H. Kevlin. "Clean Coders Hate What Happens to Your Code When You Use These Enterprise Programming Tricks", Feb. 27, 2017. [[Online video](https://youtu.be/FyCYva9DhsI?t=3306)]. (55:06–55:12) (accessed: Feb 08, 2023).
 [^blame-game]: G. Kim, K. Behr, and G. Spafford, The Phoenix Project: A Novel about IT, DevOps, and Helping Your Business Win, 3rd ed. IT Revolution, 2018. (pp. 104–106).
 
 To be continued.

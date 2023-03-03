@@ -59,7 +59,7 @@ You can read about mine in [My setup section](#my-setup).
 
 [^capture]: [[code-notetaking-strategy]]
 [^organize]: [[code-notetaking-strategy]]
-[^without-palace]: In a 2002 movie "Astérix & Obélix: Mission Cléopâtre," Amonbofis says "Pas de palais... pas de palais," which translates to "Without palace... there's no palace." [[IMDb entry](https://www.imdb.com/title/tt0250223/characters/nm0201462)] (accessed Feb. 22, 2023)
+[^without-palace]: In a 2002 movie "Astérix & Obélix: Mission Cléopâtre," Amonbofis says "Pas de palais... pas de palais," which translates to "Without palace... there's no palace." [[IMDb entry](https://www.imdb.com/title/tt0250223/characters/nm0201462)] (accessed Feb 22, 2023).
 
 ## Connecting ideas
 
@@ -90,7 +90,7 @@ opening new possibilities of research.
 
 [^contact-decision-makers-directly]: D. Airey, Logo Design Love: A Guide to Creating Iconic Brand Identities, 2nd ed. New Riders, 2015. (p. 111).
 [^real-customer-involvement]: K. Beck and C. Andres, Extreme Programming Explained: Embrace Change, 2nd ed. Addison-Wesley Professional, 2004. (pp. 61–62).
-[^recency-bias]: <https://en.wikipedia.org/wiki/Recency_bias> (TODO: maybe a better reference?)
+[^recency-bias]: Wikipedia, "Recency bias", 2022. [[Online source](https://en.wikipedia.org/wiki/Recency_bias)] (accessed Mar 2, 2023).
 
 ### Go to definition or references
 
@@ -169,7 +169,7 @@ I have to come up with a clear, short name,
 which can be easily searched for,
 and will link nicely with other ideas.
 
-[^professionals-practice]: [[martin-2011]] (chapter 6).
+[^professionals-practice]: R. C. Martin, The Clean Coder: A Code of Conduct for Professional Programmers. Prentice Hall, 2011. (Chapter 6).
 
 ## Moving on
 
@@ -202,7 +202,7 @@ Remember, you can always search through all your notes
 and if something interesting pops up in your archived ones,
 you can always move or copy them to your current set of notes.
 
-[^move-to-archive]: [[forte-2022]]; pp. 102-108
+[^move-to-archive]: T. Forte, Building a Second Brain: A Proven Method to Organise Your Digital Life and Unlock Your Creative Potential. Profile, 2022. (pp. 102-108).
 
 ## Happiness
 
@@ -227,7 +227,7 @@ Over time your brain will trust the system more and more
 and you will become less stressed,
 at least when you will have to remember something.
 
-[^writing-is-healthy]: [[forte-2022]], p. 77, [[pennebaker-1997]]
+[^writing-is-healthy]: T. Forte, Building a Second Brain: A Proven Method to Organise Your Digital Life and Unlock Your Creative Potential. Profile, 2022. (p. 77).
 
 ## My setup
 
