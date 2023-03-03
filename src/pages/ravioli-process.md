@@ -47,7 +47,7 @@ It is truly astonishing.
 
 ## Perfection in ravioli — and only ravioli
 
-The work is flowing going through the process
+The work is flowing through the process
 of ravioli creation so smoothly that at some point
 I couldn't even follow what's going on.
 The employees mastered this very narrow field perfectly.
