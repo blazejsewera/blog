@@ -22,8 +22,8 @@ abstract: |
   and make you a happier person.
 draft: true
 draftDescription: |
-  This article is a draft — some references may be missing,
-  but the general idea should be complete.
+  This article is a draft — some sections and references may be missing,
+  and the existing ones may be incomplete.
 imgUrl: /second-brain/network-switch.jpg
 imgDescription: A network switch with patch cords connected to it
 date: 2023-03-01
@@ -55,7 +55,10 @@ Without notes, there are no notes,[^without-palace]
 so it's crucial to lower the bar of taking them in the first place.
 You also have to think about your ideal setup
 for organizing text files.
-You can read about mine in [My setup section](#my-setup).
+
+<!-- TODO: Extend this section. Describe why organizing text files matters. -->
+
+You can read about my approach in [My setup section](#my-setup).
 
 [^capture]: [[code-notetaking-strategy]]
 [^organize]: [[code-notetaking-strategy]]
@@ -88,13 +91,15 @@ we acquired recently.
 The Second Brain can mitigate that,
 opening new possibilities of research.
 
+<!-- TODO: Connect this section with [Visual navigation](#visual-navigation). -->
+
 [^contact-decision-makers-directly]: D. Airey, Logo Design Love: A Guide to Creating Iconic Brand Identities, 2nd ed. New Riders, 2015. (p. 111).
 [^real-customer-involvement]: K. Beck and C. Andres, Extreme Programming Explained: Embrace Change, 2nd ed. Addison-Wesley Professional, 2004. (pp. 61–62).
 [^recency-bias]: Wikipedia, "Recency bias", 2022. [[Online source](https://en.wikipedia.org/wiki/Recency_bias)] (accessed Mar 2, 2023).
 
 ### Go to definition or references
 
-When using [Foam][foam],
+When using [Foam][foam], <!-- TODO: Explain this set of applications. -->
 we can use WikiLinks to link our notes.
 It's a common linking implementation,
 which can be also found in different other note-taking applications,
@@ -115,7 +120,7 @@ is simply going through the links we made inside a note.
 In Foam, it is simply done by putting a cursor on a WikiLink,
 and pressing _Go to definition_ shortcut.
 We can also navigate to references
-from the _Backlinks_ panel,
+from the _Backlinks_ panel, <!-- TODO: Add a screenshot of a Backlinks panel. -->
 similar to what we do in code.
 
 ### Visual navigation
@@ -170,6 +175,20 @@ which can be easily searched for,
 and will link nicely with other ideas.
 
 [^professionals-practice]: R. C. Martin, The Clean Coder: A Code of Conduct for Professional Programmers. Prentice Hall, 2011. (Chapter 6).
+
+<!-- TODO: Add a section with refactoring notes.
+
+We can use [[refactoring]] techniques:
+
+- rename
+- extract class
+- extract method
+
+-->
+
+<!-- TODO: Add a section outlining how note-taking
+can make optimizing for learning easier.
+(ref. "Modern Software Engineering" by Dave Farley) -->
 
 ## Moving on
 
@@ -255,3 +274,39 @@ converts a Github issue to a Markdown file in an "inbox" directory.
 [obsidian]: https://obsidian.md
 [roam-research]: https://roamresearch.com
 [vscode]: https://code.visualstudio.com
+
+<!-- TODO: Organize and use the following ideas:
+
+We do a naming kata when making notes.
+[[distill]]ation is an important tool when expressing ourselves in code.
+We can also exercise our communication skills.
+Notes have to be used — [[express]] your thoughts
+and connections gathered inside the notes as frequently as possible.
+Obviously, notes can help us write and exercise writing documentation.
+
+[[code-notetaking-strategy]]:
+[[capture]] — just like DDD recommends implementing a feature, and then refining the domain model ([[organize]] and [[distill]]).
+Distillation is also similar to refactoring. Here, "Refactoring is not clickbait" by Kevlin Henney may help.
+[[express]] is like putting our work into production. We want to do this as frequently as possible — like [[continuous-delivery]] in order to gather [[feedback]].
+
+Note-taking is similar to processes like Event Storming, because it is a tool for research.
+
+We can leverage our text editing skills.
+Also, we can use code tools to help transform the text however we want.
+Github Actions — issue to note, merge bibliography, etc.
+
+We can see connections no one could come up with in their mind alone.
+Example: [[contact-decision-makers-directly]] is a [[customer-proximity]]
+problem, the same that [[agile]] solves.
+
+Gather frequent feedback from the notes.
+
+By being the reader of our past self,
+we have to [[focus-on-the-reader]].
+
+We can use tools like Foam to help visualize our Second Brain.
+It's the same as a [[mind-map]] and can help us reason about
+the connections between pieces of information.
+
+Make sure to never look up the same piece of information twice (or thrice).
+-->
