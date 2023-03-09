@@ -89,7 +89,7 @@ keywords:
   You want your work to be used. Without user-centric approach,
   you will fail to make your software user-friendly,
   or worse, your software will not solve your users' problems.
-  Again, you don't need to be an expert,
+  You don't need to be an expert right away,
   but knowing that this should be your aim is beneficial.
   See [Your Programming "Hobby" WON'T Cut It](https://youtu.be/yARewF1V9rU)
   by Dave Farley.
