@@ -35,7 +35,8 @@ keywords:
   See [Your Programming "Hobby" WON'T Cut It](https://youtu.be/yARewF1V9rU)
   by Dave Farley.
 - Expose your projects publicly on Github / Gitlab / etc.
-  - A link to your Github / Gitlab page in your resume is mandatory.
+  - A link to your Github / Gitlab page in your resume
+    increases your chances of employment greatly.
   - Remember that recruiters don't have much time to go through your projects.
     To counter that:
     - Provide a comprehensive summary of your project in the README.
