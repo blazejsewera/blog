@@ -25,15 +25,6 @@ keywords:
   You don't have to be an expert right away,
   but focus on sharpening your communication skills,
   they go a long way.
-- Second, remember that you will write code **for your users**,
-  not for your pleasure. Learn to listen to their voice and respect it.
-  You want your work to be used. Without user-centric approach,
-  you will fail to make your software user-friendly,
-  or worse, your software will not solve your users' problems.
-  Again, you don't need to be an expert,
-  but knowing that this should be your aim is beneficial.
-  See [Your Programming "Hobby" WON'T Cut It](https://youtu.be/yARewF1V9rU)
-  by Dave Farley.
 - Expose your projects publicly on Github / Gitlab / etc.
   - A link to your Github / Gitlab page in your resume
     increases your chances of employment greatly.
@@ -92,6 +83,16 @@ keywords:
 - While you progress through your work, ask for more. Know your value.
   - Record your success stories. Be proud of them.
   - Take lessons in your failures. Don't make the same mistake twice.
+- After you gain some confidence in your work,
+  remember that you will write code **for your users**,
+  not for your pleasure. Learn to listen to their voice and respect it.
+  You want your work to be used. Without user-centric approach,
+  you will fail to make your software user-friendly,
+  or worse, your software will not solve your users' problems.
+  Again, you don't need to be an expert,
+  but knowing that this should be your aim is beneficial.
+  See [Your Programming "Hobby" WON'T Cut It](https://youtu.be/yARewF1V9rU)
+  by Dave Farley.
 
 I may refine those ideas and create a proper article one day,
 but for now, please go to the provided resources
