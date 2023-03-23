@@ -37,7 +37,7 @@ I believe a good leader in a company should strive
 to align their team in such a slip stream
 in order to enable fast flow of value delivery.
 
-[^peloton-and-air-resistance]: Eindhoven University of Technology, "A cyclist in a peloton experiences considerably less air resistance than previously assumed", Jun. 29, 2018. [[Online source](https://www.tue.nl/en/news-and-events/news-overview/a-cyclist-in-a-peloton-experiences-considerably-less-air-resistance-than-previously-assumed/)] (accessed Feb 05, 2023).
+[^peloton-and-air-resistance]: Eindhoven University of Technology, "A cyclist in a peloton experiences considerably less air resistance than previously assumed", Jun. 29, 2018. [[Online source (archived)](https://web.archive.org/web/20201109035712/https://www.tue.nl/en/news/news-overview/a-cyclist-in-a-peloton-experiences-considerably-less-air-resistance-than-previously-assumed/)] (accessed Feb. 05, 2023).
 
 The term "refactoring" has become frowned upon by some managers.
 Putting aside the validity of such aversion,
