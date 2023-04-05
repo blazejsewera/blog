@@ -21,21 +21,87 @@ keywords:
   - Junior Software Engineer
 ---
 
-- First and foremost, learn to communicate.
-  You don't have to be an expert right away,
-  but focus on sharpening your communication skills,
-  they go a long way.
-- Expose your projects publicly on Github / Gitlab / etc.
-  - A link to your Github / Gitlab page in your resume
-    increases your chances of employment greatly.
-  - Remember that recruiters don't have much time to go through your projects.
-    To counter that:
-    - Provide a comprehensive summary of your project in the README.
-    - Write about your takeaways from the project in the README.
-    - Don't lie! Remember that the code is public, so it can be verified.
-      Also, a good recruiter will ask you about your projects on an interview.
-  - If you apply for a web development position,
-    having your own webpage is always a good idea.
+Beginnings are always the hardest,
+the most uncertain and stressful moments,
+whatever we want to start.
+I will try to give a solid starting point
+and a general outlook for your career
+as a software engineer,
+grounding it both on my experience,
+as well as the works of some of our industry's thought leaders.
+
+## Advertising
+
+In order to get a job,
+you will have to **advertise** yourself well enough,
+so that a recruiter will decide to talk with you.
+In most good organizations,
+it is the developers who decide
+if someone is a good candidate.
+You have to consciously design an advertisement campaign
+to get through to them.
+
+Prepare your resume thoroughly.
+Make sure there are no grammar and spelling mistakes,
+and that all your contact information and links
+are easily accessible.
+
+Expose your projects in a public repository,
+e.g., Github or Gitlab
+and put a link to them in your resume.
+However, remember that recruiters
+don't have much time to go through your projects.
+To counter that:
+
+- Provide a comprehensive summary of your project in the README.
+- Write about your takeaways in the README.
+- Don't lie! Remember that the code is public and can be verified.
+  Also, a good recruiter will ask you about your projects on an interview.
+- If you apply for a web development position,
+  having your own webpage is always a good idea.
+
+Remember that your main goal is to show
+what **value** you can give for the employer.
+Look what your potential employers need
+and try to learn more or make a project about it.
+
+A job interview is also a good time for you to ask questions.
+You can make a list of things
+you would like to know beforehand
+if it helps you.
+
+In healthy organizations you will be expected to collaborate.
+Show your collaboration skills by communicating well,
+asking good questions,
+and making others feel comfortable around you.
+
+## Working with people
+
+It may not look like it at the first glance,
+but professional software engineering is done best
+when collaborating with people.
+Therefore, first and foremost, learn to communicate.
+You don't have to be an expert right away,
+but sharpening your skills in naming and describing things
+goes a long way.
+
+One thing that might help you
+is to have conversations on naming things.
+Pair program or simply have a quick talk
+on how to name a certain class
+and you will not only get a better name,
+but also a deeper understanding of the topic.
+
+Communication is not the only thing, though.
+Sometimes, just being a decent person
+will take you further than you expect.
+Working with people requires treating others
+professionally and with respect.
+Don't judge people because they don't know something
+or be bitter to them because they interrupted you
+when you were "in the zone."
+Work should never be more important than people.
+
 - Prepare for some **serious** learning.
   - The following books can have an enormous impact on how you approach
     software engineering:
@@ -57,12 +123,6 @@ keywords:
     in modern frameworks or methodologies are actually 20 years old
     or as old as from 1968! See [Old is the New New](https://youtu.be/AbgsfeGvg3E)
     by Kevlin Henney.
-- Remember that your main goal is to show what **value** you can give
-  for the employer.
-  - Look what your potential employers need.
-  - In healthy organizations you will be expected to collaborate.
-    Show your collaboration skills by communicating well,
-    asking good questions, and making others feel comfortable around you.
 - Read other developers' stories, but know that every person has their own.
   Read their advice for junior programmers.
   - [20 Things I've Learned in my 20 Years as a Software Engineer](https://www.simplethread.com/20-things-ive-learned-in-my-20-years-as-a-software-engineer/)
