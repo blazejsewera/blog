@@ -6,6 +6,8 @@ dist/
 /*.tgz
 /*.zip
 
+.idea/
+
 # dependencies
 node_modules/
 
