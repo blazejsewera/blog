@@ -64,11 +64,12 @@ Remember that your main goal is to show
 what **value** you can give for the employer.
 Look what your potential employers need
 and try to learn more or make a project about it.
-
 A job interview is also a good time for you to ask questions.
 You can make a list of things
 you would like to know beforehand
 if it helps you.
+See this YouTube video by Dave Farley:
+[Software Developer Interview Advice.](https://youtu.be/osnOY5zgdMI)
 
 In healthy organizations you will be expected to collaborate.
 Show your collaboration skills by communicating well,
@@ -123,20 +124,24 @@ Take up a good note-taking practice. If you find it helpful,
 you can take some ideas
 from [my article on Second Brain](https://blog.sewera.dev/second-brain).
 
-- Stay on top of conferences, talks, blogs, and other forms
-  of knowledge transmission mediums.
-  - [GOTO Conferences](https://www.youtube.com/@GOTO-).
-  - [NDC Conferences](https://www.youtube.com/@NDC).
-- Don't discard old ideas. Some of the "revolutionary" ones
-  in modern frameworks or methodologies are actually 20 years old
-  or as old as from 1968! See [Old is the New New](https://youtu.be/AbgsfeGvg3E)
-  by Kevlin Henney.
+Stay on top of conferences, talks, blogs,
+and other forms of knowledge transmission mediums.
+The ones I recommend include:
+
+- [GOTO Conferences,](https://www.youtube.com/@GOTO-)
+- [NDC Conferences,](https://www.youtube.com/@NDC)
+- [Martin Fowler's blog.](https://martinfowler.com)
+
+Don't discard old ideas.
+Some of the "revolutionary" ones in modern frameworks
+or methodologies are actually 20 years old or as old as from 1968!
+See [Old is the New New,](https://youtu.be/AbgsfeGvg3E)
+a conference talk by Kevlin Henney.
+
 - Read other developers' stories, but know that every person has their own.
   Read their advice for junior programmers.
 - [20 Things I've Learned in my 20 Years as a Software Engineer](https://www.simplethread.com/20-things-ive-learned-in-my-20-years-as-a-software-engineer/)
   by Justin Etheredge.
-- [Software Developer Interview Advice](https://youtu.be/osnOY5zgdMI)
-  by Dave Farley.
 - [Avoid These Common Mistakes Junior Developers Make!](https://youtu.be/5g3dK2DgW-k)
   by Dave Farley.
 - [What Software Career Progression Looks Like For Junior Developers](https://youtu.be/lDQIYYakJGw)
@@ -145,7 +150,6 @@ from [my article on Second Brain](https://blog.sewera.dev/second-brain).
   by Dave Farley and Trisha Gee.
 - [What A Junior Developer's Job Is REALLY Like](https://youtu.be/Va4Ba4VtOKw)
   by Dave Farley.
-
 - Embrace diverging your skills.
   - Learn basics of frontend, backend, UI design, management,
     and whatever role you may think is "not necessary."
