@@ -137,12 +137,11 @@ const { draft, draftDescription, abstract } = Astro.props
 
   .post-content a {
     text-decoration: none;
-    color: inherit;
-    font-weight: 600;
+    color: hsl(220, 60%, 45%);
   }
   .post-content
     a:not([href*='blog.sewera.dev']):not([href^='#']):not([href^='/'])::after {
-    content: url('/external-link.svg');
+    content: url('/icon/article-external-link.svg');
     vertical-align: super;
     font-size: 0.2rem;
   }
