@@ -75,8 +75,6 @@ It is especially important when taking notes,
 because good notes save our time by being a more convenient
 source of **relevant** information than, for example, search engines.
 
-<!-- TODO: Extend this section. Describe why organizing text files matters. -->
-
 You can read about my approach in [My setup section](#my-setup).
 
 [^capture]: [[code-notetaking-strategy]]
@@ -125,7 +123,8 @@ we can use WikiLinks to link our notes.
 It's a common linking implementation,
 which can be also found in different other note-taking applications,
 like [Obsidian][obsidian], [Roam Research][roam-research],
-[Logseq][logseq], or, well [MediaWiki][mediawiki].
+[Logseq][logseq], or [MediaWiki][mediawiki]
+from which this linking style originated.
 Such links are simply file names of another notes
 without the `.md` extension,
 wrapped in double square brackets:
