@@ -32,7 +32,7 @@ date: 2023-03-01
 ## Quick start
 
 Starting with your Second Brain should be like starting
-a new software product:
+a new software project:
 do just enough upfront work to get you started,
 but try to make decisions that will speed you up in the future.
 
@@ -43,18 +43,37 @@ if you have a Continuous Delivery pipeline in place
 and have a testing library set up with easy access through your IDE.
 You are the user of the development process,
 so create the best user experience you can.
-It's called developer experience for a reason.
 
 The two important factors contributing
-to good note-taker experience are note capturing[^capture]
+to a good note-taking experience are note capturing[^capture]
 and ease of note organization.[^organize]
 It is important not to compromise on either,
 because otherwise you will just stop taking notes altogether.
 
-Without notes, there are no notes,[^without-palace]
-so it's crucial to lower the bar of taking them in the first place.
+There will be no notes
+if you are discouraged to take them in the first place,
+so it's crucial to have a setup for near-automatic note recording.
+Think about the simplest app for jotting down your messy thoughts.
+That will be your go-to.
+
 You also have to think about your ideal setup
 for organizing text files.
+As a software engineer,
+you already have a huge advantage.
+Whether it's [VSCode][vscode],
+[Neovim][neovim], or even [Emacs][emacs],
+there are plugins that will help you connect your notes.
+If you don't already have your preferred application,
+[Obsidian][obsidian] may be a good place to start.
+
+Organizing your notes matters for the same reasons
+we organize our code.
+Well-factored code is easier to navigate,
+easier to grasp,
+and easier to use.
+It is especially important when taking notes,
+because good notes save our time by being a more convenient
+source of **relevant** information than, for example, search engines.
 
 <!-- TODO: Extend this section. Describe why organizing text files matters. -->
 
@@ -62,15 +81,12 @@ You can read about my approach in [My setup section](#my-setup).
 
 [^capture]: [[code-notetaking-strategy]]
 [^organize]: [[code-notetaking-strategy]]
-[^without-palace]: In a 2002 movie "Astérix & Obélix: Mission Cléopâtre," Amonbofis says "Pas de palais... pas de palais," which translates to "Without palace... there's no palace." [[IMDb entry](https://www.imdb.com/title/tt0250223/characters/nm0201462)] (accessed Feb 22, 2023).
 
 ## Connecting ideas
 
 One feature I find particularly useful
 when building a Second Brain
-is the ability to make and visualize connections
-between ideas I would never be able
-to make without such system.
+is the ability to make and visualize connections between ideas.
 
 For example, in Dave Airey's book "Logo Design Love,"
 he found in his professional work that contacting
@@ -91,7 +107,12 @@ we acquired recently.
 The Second Brain can mitigate that,
 opening new possibilities of research.
 
-<!-- TODO: Connect this section with [Visual navigation](#visual-navigation). -->
+We can see the connections both through links and backlinks,
+described in detail in [this section](#go-to-definition-or-references),
+as well as [on a graph](#visual-navigation).
+Those options make for a great exploratory tool,
+especially when we want to freely gather relevant information,
+but we don't want to limit ourselves to one topic.
 
 [^contact-decision-makers-directly]: D. Airey, Logo Design Love: A Guide to Creating Iconic Brand Identities, 2nd ed. New Riders, 2015. (p. 111).
 [^real-customer-involvement]: K. Beck and C. Andres, Extreme Programming Explained: Embrace Change, 2nd ed. Addison-Wesley Professional, 2004. (pp. 61–62).
