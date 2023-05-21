@@ -60,8 +60,8 @@ You also have to think about your ideal setup
 for organizing text files.
 As a software engineer,
 you already have a huge advantage.
-Whether it's [VSCode][vscode],
-[Neovim][neovim], or even [Emacs][emacs],
+Whether it's [VSCode,][vscode]
+[Neovim,][neovim] or [Emacs,][emacs]
 there are plugins that will help you connect your notes.
 If you don't already have your preferred application,
 [Obsidian][obsidian] may be a good place to start.
@@ -140,8 +140,13 @@ is simply going through the links we made inside a note.
 In Foam, it is simply done by putting a cursor on a WikiLink,
 and pressing _Go to definition_ shortcut.
 We can also navigate to references
-from the _Backlinks_ panel, <!-- TODO: Add a screenshot of a Backlinks panel. -->
+from the _Backlinks_ panel,
 similar to what we do in code.
+
+<figure>
+  <img src="/second-brain/backlinks-panel.png" />
+  <figcaption>The Backlinks panel</figcaption>
+</figure>
 
 ### Visual navigation
 
@@ -159,7 +164,7 @@ to identify the most profound ideas,
 spanning the entirety of your notes.
 
 <figure>
-  <img src="/second-brain/whole-second-brain-graph.png">
+  <img src="/second-brain/whole-second-brain-graph.png" />
   <figcaption>An overview of a Second Brain graph</figcaption>
 </figure>
 
@@ -167,7 +172,7 @@ You can also zoom in to see the individual notes
 and connections between them.
 
 <figure>
-  <img class="wide" src="/second-brain/partial-second-brain-graph.png">
+  <img class="wide" src="/second-brain/partial-second-brain-graph.png" />
   <figcaption>A zoomed-in view of a Second Brain graph</figcaption>
 </figure>
 
@@ -193,8 +198,55 @@ When I have that idea in writing,
 I have to come up with a clear, short name,
 which can be easily searched for,
 and will link nicely with other ideas.
+In short—design my notes for my future self.
+However, just like with every design,
+be it in software or graphic design,
+we rarely come up with the best idea the first time.
+Therefore, we need to refactor our notes.
 
 [^professionals-practice]: R. C. Martin, The Clean Coder: A Code of Conduct for Professional Programmers. Prentice Hall, 2011. (Chapter 6).
+
+### Refactoring notes
+
+Refactoring our notes should have a similar goal as refactoring code.
+
+> Refactoring is the process of changing
+> a software system in a way that does not
+> alter the external behavior of the code
+> yet improves its internal structure.[^fowler-refactoring]
+
+[^fowler-refactoring]: [[fowler-2019]] (Preface, p. xiv).
+
+The _external behavior_ in code can be an equivalent
+to _knowledge_ or _data_ in our notes.
+We can't alter the facts here, that part is for the research phase.
+
+We've got an abundance of well-documented refactoring techniques,
+so let's explore how we can apply them to improve our notes.
+
+The first obvious refactoring is **renaming**:
+we've assigned a name to our note,
+but the more details we add to it,
+the more it turns out to be wrong.
+Then we can simply change the name of our note.
+We can also add some keywords or labels
+at the beginning or end of our note
+to make it easier to search.
+
+From my experience, the best way to ensure good searchability
+is to put a new label or rename the note
+whenever we don't find the right one on our first search.
+
+Another way we can make our notes easier to read is to
+**extract a portion of our note** to a new one.
+With _extract method_ refactoring,
+we want to achieve a consistent level of abstraction
+and detail in our methods.
+We want our notes to be consistent in their specificity,
+because there will be times where we only need
+a general overview of the subject,
+and reading through countless paragraphs of detailed explanations
+will only slow us down.
 
 <!-- TODO: Add a section with refactoring notes.
 
@@ -205,6 +257,10 @@ We can use [[refactoring]] techniques:
 - extract method
 
 -->
+
+## Optimize for learning
+
+[[farley-2022]]
 
 <!-- TODO: Add a section outlining how note-taking
 can make optimizing for learning easier.
@@ -227,19 +283,18 @@ and just move on with your current notes.
 
 The same goes for the projects you've already finished.
 Take a glance if some notes would be useful for some future projects
-and organize those notes,
+and organize those,
 but put all the rest in an archive.
 Move on with your projects, work, knowledge, and life.
 
 Moving inactive notes to archive
 will make your workspace cleaner,
-which in turn will help you focus
-on your present goals instead of
-going through a bunch of old notes.[^move-to-archive]
+which in turn will help you focus on your present goals
+instead of going through a bunch of old notes.[^move-to-archive]
 
 Remember, you can always search through all your notes
 and if something interesting pops up in your archived ones,
-you can always move or copy them to your current set of notes.
+you can always move or copy them to your working directory.
 
 [^move-to-archive]: T. Forte, Building a Second Brain: A Proven Method to Organise Your Digital Life and Unlock Your Creative Potential. Profile, 2022. (pp. 102-108).
 
@@ -294,6 +349,8 @@ converts a Github issue to a Markdown file in an "inbox" directory.
 [obsidian]: https://obsidian.md
 [roam-research]: https://roamresearch.com
 [vscode]: https://code.visualstudio.com
+[neovim]: https://neovim.io
+[emacs]: https://www.gnu.org/software/emacs
 
 <!-- TODO: Organize and use the following ideas:
 

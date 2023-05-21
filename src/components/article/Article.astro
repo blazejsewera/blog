@@ -141,11 +141,18 @@ const { draft, draftDescription, abstract } = Astro.props
   }
   .post-content
     a:not([href*='blog.sewera.dev']):not([href^='#']):not([href^='/'])::after {
-    content: url('/icon/article-external-link.svg');
-    vertical-align: super;
-    font-size: 0.2rem;
+    content: '';
+    background: url('/icon/article-external-link.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-left: 0.1em;
+    padding-top: 0.7em;
+    padding-right: 0.7em;
   }
-  .post-content a[href^='#'] {
+  .post-content a[href*='blog.sewera.dev'],
+  .post-content a[href^='#'],
+  .post-content a[href^='/'] {
     scroll-margin-top: 20px;
   }
   .post-content a:hover {
