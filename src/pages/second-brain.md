@@ -179,6 +179,36 @@ and connections between them.
   <figcaption>A zoomed-in view of a Second Brain graph</figcaption>
 </figure>
 
+## Note-taking as communication practice
+
+We all need to communicate with other people every day, everywhere.
+Clearly expressing our thoughts is very hard,
+yet it's one of the most important skills in life.
+I observed that note-taking helped me
+make my explanations more understandable,
+my arguments more substantial,
+and simply improve my ability to retrieve relevant information on the spot.
+
+We want to aim at expressing our thoughts to other people regularly,
+in order to gather feedback on the quality of our notes
+and communication.
+We need to gather what we already have and actually produce
+the first version of an important argument,
+article, speech, or presentation.[^focus]
+We can then gather feedback on that version and iterate,
+so that the next version is more concise,
+easier to understand, and resonates better with the audience.
+
+Furthermore, when we write our notes for our future selves,
+we have to think about forgetting the context with time.
+A reader of a text has a fundamentally different
+thought process than the writer.[^reader-thought-process]
+Thus, we have to place ourselves in the role of the reader
+so that we can make a useful note for the future.
+
+[^focus]: T. Forte, Building a Second Brain: A Proven Method to Organise Your Digital Life and Unlock Your Creative Potential. Profile, 2022. (pp. 180–182).
+[^reader-thought-process]: University of Chicago. The Craft of Writing Effectively, (Jun. 26, 2014). [[Online Video](https://youtu.be/vtIzMaLkCaM)]. (accessed: Dec. 14, 2022). (7:26–10:22).
+
 ## Note-taking as programming practice
 
 One thing every software engineer needs to do
@@ -285,7 +315,7 @@ to become experts at learning, we need:[^farley-learning]
 When taking notes, we can practice most of those points.
 We can iterate on our notes,
 continuously making them more concise
-and more useful for us,
+and more useful for us (distilling them[^distill]),
 based on the feedback
 of how easy they were to retrieve
 and understand, some time after writing them.
@@ -294,6 +324,7 @@ doing more detailed research
 for our problem at hand.
 
 [^farley-learning]: D. Farley, Modern Software Engineering: Doing What Works to Build Better Software Faster. Addison-Wesley, 2022. (p. 4, 36)
+[^distill]: T. Forte, Building a Second Brain: A Proven Method to Organise Your Digital Life and Unlock Your Creative Potential. Profile, 2022. (pp. 120–126).
 
 ## Moving on
 
@@ -325,7 +356,7 @@ Remember, you can always search through all your notes
 and if something interesting pops up in your archived ones,
 you can always move or copy them to your working directory.
 
-[^move-to-archive]: T. Forte, Building a Second Brain: A Proven Method to Organise Your Digital Life and Unlock Your Creative Potential. Profile, 2022. (pp. 102-108).
+[^move-to-archive]: T. Forte, Building a Second Brain: A Proven Method to Organise Your Digital Life and Unlock Your Creative Potential. Profile, 2022. (pp. 102–108).
 
 ## Happiness
 
@@ -380,39 +411,3 @@ converts a Github issue to a Markdown file in an "inbox" directory.
 [vscode]: https://code.visualstudio.com
 [neovim]: https://neovim.io
 [emacs]: https://www.gnu.org/software/emacs
-
-<!-- TODO: Organize and use the following ideas:
-
-We do a naming kata when making notes.
-[[distill]]ation is an important tool when expressing ourselves in code.
-We can also exercise our communication skills.
-Notes have to be used — [[express]] your thoughts
-and connections gathered inside the notes as frequently as possible.
-Obviously, notes can help us write and exercise writing documentation.
-
-[[code-notetaking-strategy]]:
-[[capture]] — just like DDD recommends implementing a feature, and then refining the domain model ([[organize]] and [[distill]]).
-Distillation is also similar to refactoring. Here, "Refactoring is not clickbait" by Kevlin Henney may help.
-[[express]] is like putting our work into production. We want to do this as frequently as possible — like [[continuous-delivery]] in order to gather [[feedback]].
-
-Note-taking is similar to processes like Event Storming, because it is a tool for research.
-
-We can leverage our text editing skills.
-Also, we can use code tools to help transform the text however we want.
-Github Actions — issue to note, merge bibliography, etc.
-
-We can see connections no one could come up with in their mind alone.
-Example: [[contact-decision-makers-directly]] is a [[customer-proximity]]
-problem, the same that [[agile]] solves.
-
-Gather frequent feedback from the notes.
-
-By being the reader of our past self,
-we have to [[focus-on-the-reader]].
-
-We can use tools like Foam to help visualize our Second Brain.
-It's the same as a [[mind-map]] and can help us reason about
-the connections between pieces of information.
-
-Make sure to never look up the same piece of information twice (or thrice).
--->
