@@ -118,14 +118,17 @@ but we don't want to limit ourselves to one topic.
 
 ### Go to definition or references
 
+There are many tools that can help us navigate
+through our notes in a similar way that an IDE
+enables us to quickly navigate our code.
 When using [Foam][foam], <!-- TODO: Explain this set of applications. -->
 we can use WikiLinks to link our notes.
 It's a common linking implementation,
-which can be also found in different other note-taking applications,
+which can also be found in other note-taking applications,
 like [Obsidian][obsidian], [Roam Research][roam-research],
 [Logseq][logseq], or [MediaWiki][mediawiki]
 from which this linking style originated.
-Such links are simply file names of another notes
+Such links are usually file names of another notes
 without the `.md` extension,
 wrapped in double square brackets:
 
@@ -260,11 +263,37 @@ We can use [[refactoring]] techniques:
 
 ## Optimize for learning
 
-[[farley-2022]]
+To take great notes,
+as well as develop great software,
+we need to become experts in learning.
+Every person has their own optimal way of learning,
+but fortunately, practicing note-taking can help us
+explore our own preferences for quick and effective learning.
 
-<!-- TODO: Add a section outlining how note-taking
-can make optimizing for learning easier.
-(ref. "Modern Software Engineering" by Dave Farley) -->
+There are, however, some universal characteristics
+of a good learning process.
+In "Modern Software Engineering,"
+Dave Farley wrote that
+to become experts at learning, we need:[^farley-learning]
+
+- Iteration
+- Feedback
+- Incrementalism
+- Experimentation
+- Empiricism
+
+When taking notes, we can practice most of those points.
+We can iterate on our notes,
+continuously making them more concise
+and more useful for us,
+based on the feedback
+of how easy they were to retrieve
+and understand, some time after writing them.
+We incrementally add new knowledge to our repository,
+doing more detailed research
+for our problem at hand.
+
+[^farley-learning]: D. Farley, Modern Software Engineering: Doing What Works to Build Better Software Faster. Addison-Wesley, 2022. (p. 4, 36)
 
 ## Moving on
 
