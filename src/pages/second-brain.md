@@ -22,11 +22,10 @@ abstract: |
   and make you a happier person.
 draft: true
 draftDescription: |
-  This article is a draft — some sections and references may be missing,
-  and the existing ones may be incomplete.
+  This article is a draft — it has to be reviewed.
 imgUrl: /second-brain/network-switch.jpg
 imgDescription: A network switch with patch cords connected to it
-date: 2023-03-01
+date: 2023-06-16
 ---
 
 ## Quick start
@@ -45,8 +44,8 @@ You are the user of the development process,
 so create the best user experience you can.
 
 The two important factors contributing
-to a good note-taking experience are note capturing[^capture]
-and ease of note organization.[^organize]
+to a good note-taking experience are note capturing
+and ease of note organization.[^capture-organize]
 It is important not to compromise on either,
 because otherwise you will just stop taking notes altogether.
 
@@ -77,8 +76,7 @@ source of **relevant** information than, for example, search engines.
 
 You can read about my approach in [My setup section](#my-setup).
 
-[^capture]: [[code-notetaking-strategy]]
-[^organize]: [[code-notetaking-strategy]]
+[^capture-organize]: T. Forte, Building a Second Brain: A Proven Method to Organise Your Digital Life and Unlock Your Creative Potential. Profile, 2022. (pp. 43–50).
 
 ## Connecting ideas
 
@@ -248,7 +246,7 @@ Refactoring our notes should have a similar goal as refactoring code.
 > alter the external behavior of the code
 > yet improves its internal structure.[^fowler-refactoring]
 
-[^fowler-refactoring]: [[fowler-2019]] (Preface, p. xiv).
+[^fowler-refactoring]: M. Fowler, Refactoring: Improving the Design of Existing Code, 2nd ed. Addison-Wesley, 2019. (Preface, p. xiv).
 
 The _external behavior_ in code can be an equivalent
 to _knowledge_ or _data_ in our notes.
@@ -315,7 +313,7 @@ to become experts at learning, we need:[^farley-learning]
 When taking notes, we can practice most of those points.
 We can iterate on our notes,
 continuously making them more concise
-and more useful for us (distilling them[^distill]),
+and more useful for us (distilling them),[^distill]
 based on the feedback
 of how easy they were to retrieve
 and understand, some time after writing them.
