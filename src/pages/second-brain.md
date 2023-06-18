@@ -28,6 +28,25 @@ imgDescription: A network switch with patch cords connected to it
 date: 2023-06-16
 ---
 
+## What is it?
+
+A Second Brain is our personal repository of relevant knowledge,
+how-to guides, code snippets, and other useful resources,
+gathered in the form of notes.
+However, actually building such repository
+may be a really tough task — at least it was for me,
+because I didn't have any established way of taking notes before.
+
+The book "Building a Second Brain"[^second-brain] by Tiago Forte
+has an abundance of useful techniques and guidelines
+to capture, organize, distill, and express[^code-note-taking]
+the knowledge we gather in our note-taking journey.
+This article explores those techniques through the lens of
+a software engineer.
+
+[^second-brain]: T. Forte, Building a Second Brain: A Proven Method to Organise Your Digital Life and Unlock Your Creative Potential. Profile, 2022.
+[^code-note-taking]: The CODE strategy stands for: capture, organize, distill, and express — the four note-taking stages. Described in detail in "Building a Second Brain." (pp. 43–50).
+
 ## Quick start
 
 Starting with your Second Brain should be like starting
