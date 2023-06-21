@@ -20,12 +20,9 @@ abstract: |
   that not only will improve your Time To Answer,
   but also has a potential to improve your engineering skills
   and make you a happier person.
-draft: true
-draftDescription: |
-  This article is a draft — it has to be reviewed.
 imgUrl: /second-brain/network-switch.jpg
 imgDescription: A network switch with patch cords connected to it
-date: 2023-06-16
+date: 2023-06-21
 ---
 
 ## What is it?
