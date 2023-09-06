@@ -12,6 +12,13 @@ export default defineConfig({
       web: [/.[jt]sx?/],
     },
     isolate: true,
-    setupFiles: ['node_modules/@testing-library/jest-dom/extend-expect'],
+    setupFiles: ['./vitest.setup.mjs'],
+    deps: {
+      optimizer: {
+        web: {
+          enabled: true,
+        },
+      },
+    },
   },
 })
