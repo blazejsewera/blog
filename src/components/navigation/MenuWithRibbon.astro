@@ -33,7 +33,7 @@ const { ribbonTitle } = Astro.props
   <div id="menu-ribbon-button" class="flex cursor-pointer">
     <img src="/menu.svg" alt="menu" />
   </div>
-  <span>{ribbonTitle}</span>
+  <span class={cx('text-sm','md:text-base','md:py-6')}>{ribbonTitle}</span>
   <div>
     <a class="flex" href={blogSiteRoot}
       ><img class="logo" src="/logo-white.svg" alt="home" />
