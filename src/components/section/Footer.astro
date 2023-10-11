@@ -87,9 +87,7 @@ const { license, author, year, source, previous, next } = Astro.props
   <div class="flex">
     <div class={cx('mx-auto', 'mb-7', 'text-2xs', 'md:text-xs')}>
       <div>
-        {license}
-        {year}
-        {author}
+        {`${license} – ${year} – ${author}`}
       </div>
       {
         source && (
