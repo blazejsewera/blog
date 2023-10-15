@@ -1,13 +1,13 @@
 package header
 
 import (
-	"github.com/blazejsewera/blog/templates"
 	"github.com/blazejsewera/blog/times"
 	"html/template"
+	"io/fs"
 	"strings"
 )
 
-type Header struct {
+type Props struct {
 	Title          string
 	Date           times.Time
 	Author         string
@@ -20,14 +20,15 @@ type Header struct {
 	ImgDescription string
 }
 
-func WithHeader(t *template.Template) {
-	template.Must(t.ParseFS(templates.TemplateFS, "header/*.html.tmpl"))
+func Header(templateFS fs.FS, t *template.Template) error {
+	t, err := t.ParseFS(templateFS, "header/*.html.tmpl")
+	return err
 }
 
-func (h Header) ISODate() string {
-	return h.Date.ISODate()
+func (p Props) ISODate() string {
+	return p.Date.ISODate()
 }
 
-func (h Header) CommaSeparatedKeywords() string {
-	return strings.Join(h.Keywords, ", ")
+func (p Props) CommaSeparatedKeywords() string {
+	return strings.Join(p.Keywords, ", ")
 }
