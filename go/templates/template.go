@@ -21,7 +21,7 @@ func New() *Template {
 func NewWithFS(templateFS fs.FS) *Template {
 	return &Template{
 		templateFS: templateFS,
-		template:   template.New("root"),
+		template:   template.New("index.html.tmpl"),
 	}
 }
 
