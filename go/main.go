@@ -34,11 +34,10 @@ func main() {
 		panic(err)
 	}
 
-	htmlBytes, frMetadata, isFrontmatter := markdown.Parse(input)
+	htmlBytes, frMetadata := markdown.Parse(input)
 	fmt.Printf("%s\n", htmlBytes)
 	fmt.Printf("%+#v\n", frMetadata)
-	fmt.Println(frMetadata.Date.ISODate())
-	fmt.Println(isFrontmatter)
+	fmt.Printf("%s\n", frMetadata.Date)
 }
 
 func newTemplate(decorators ...templates.TemplateDecorator) *template.Template {

@@ -25,7 +25,15 @@ type Frontmatter struct {
 	Keywords         []string   `yaml:"keywords"`
 }
 
-func Unmarshal(markdown []byte) (frMetadata Frontmatter, stripped []byte, isFrontmatter bool) {
+var DefaultFrMetadata = Frontmatter{
+	Layout:   "Article",
+	Date:     times.Now(),
+	Author:   "Blazej Sewera",
+	License:  "CC-BY",
+	Language: "en-US",
+}
+
+func Unmarshal(markdown []byte) (frMetadata Frontmatter, stripped []byte, frMetaExists bool) {
 	br := bufio.NewReader(bytes.NewReader(markdown))
 	if !detect(br) {
 		return Frontmatter{}, markdown, false
