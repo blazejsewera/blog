@@ -1,0 +1,43 @@
+{{- /*gotype: github.com/blazejsewera/blog/tmpl/header.Header*/ -}}
+{{ define "ArticleHeader" }}
+    {{ template "baseHeader" }}
+
+    <meta name="og:type" content="article" />
+
+    <meta name="dcterms.title" content="{{ .Title }}" />
+    <meta name="og:title" content="{{ .Title }}" />
+
+    <meta name="created" content="{{ .ISODate }}" />
+    <meta name="date" content="{{ .ISODate }}" />
+    <meta name="dcterms.date" content="{{ .ISODate }}" />
+    <meta name="article:published_time" content="{{ .ISODate }}" />
+
+    <meta name="author" content="{{ .Author }}" />
+    <meta name="dcterms.creator" content="{{ .Author }}" />
+    <meta name="article:author" content="{{ .Author }}" />
+
+    <meta name="dcterms.rights" content="{{ .License }} {{ .Author }}" />
+    <meta name="dcterms.license" content="{{ .License }}" />
+
+    <meta name="dcterms.language" content="{{ .Language }}" />
+
+    <meta name="og:site_name" content="{{ .SiteName }}" />
+
+    {{ if .Abstract }}
+        <meta name="description" content="{{ .Abstract }}" />
+        <meta name="dcterms.abstract" content="{{ .Abstract }}" />
+        <meta name="og:description" content="{{ .Abstract }}" />
+    {{ end }}
+
+    {{ if .Keywords }}
+        <meta name="keywords" content="{{ .CommaSeparatedKeywords }}" />
+    {{ end }}
+
+    {{ if .ImgURL }}
+        <meta name="og:image" content="{{ .ImgURL }}" />
+    {{ end }}
+
+    {{ if .ImgDescription }}
+        <meta name="og:image:alt" content="{{ .ImgDescription }}" />}
+    {{ end }}
+{{ end }}
