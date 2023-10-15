@@ -7,7 +7,7 @@ import (
 	"io"
 )
 
-func Parse(htmlWriter io.Writer, markdownReader io.Reader) (frMetadata frontmatter.Frontmatter, isFrontmatter bool) {
+func Parse(markdownReader io.Reader) (html []byte, frMetadata frontmatter.Frontmatter, isFrontmatter bool) {
 	b := &bytes.Buffer{}
 	_, err := io.Copy(b, markdownReader)
 	if err != nil {
@@ -26,10 +26,5 @@ func Parse(htmlWriter io.Writer, markdownReader io.Reader) (frMetadata frontmatt
 		blackfriday.WithRenderer(rd),
 		blackfriday.WithExtensions(blackfriday.Footnotes))
 
-	_, err = htmlWriter.Write(md)
-	if err != nil {
-		panic(err)
-	}
-
-	return frMetadata, isFrontmatter
+	return md, frMetadata, isFrontmatter
 }

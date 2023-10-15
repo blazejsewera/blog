@@ -4,15 +4,31 @@ import (
 	"bufio"
 	"bytes"
 	"errors"
+	"github.com/blazejsewera/blog/times"
+	"gopkg.in/yaml.v3"
 	"io"
 )
 
-type Frontmatter map[string]string
+type Frontmatter struct {
+	Layout           string     `yaml:"layout"`
+	Title            string     `yaml:"title"`
+	Subtitle         string     `yaml:"subtitle"`
+	Date             times.Time `yaml:"date"`
+	Author           string     `yaml:"author"`
+	License          string     `yaml:"license"`
+	Language         string     `yaml:"language"`
+	Draft            bool       `yaml:"draft"`
+	DraftDescription string     `yaml:"draftDescription"`
+	ImgURL           string     `yaml:"imgUrl"`
+	ImgDescription   string     `yaml:"imgDescription"`
+	Abstract         string     `yaml:"abstract"`
+	Keywords         []string   `yaml:"keywords"`
+}
 
 func Unmarshal(markdown []byte) (frMetadata Frontmatter, stripped []byte, isFrontmatter bool) {
 	br := bufio.NewReader(bytes.NewReader(markdown))
 	if !detect(br) {
-		return nil, markdown, false
+		return Frontmatter{}, markdown, false
 	}
 
 	inFrontmatter := false
@@ -28,13 +44,18 @@ func Unmarshal(markdown []byte) (frMetadata Frontmatter, stripped []byte, isFron
 
 		if string(s) == "---" {
 			if inFrontmatter {
-				// TODO: parse Frontmatter
-				rest := &bytes.Buffer{}
-				_, err := io.Copy(rest, br)
+				frMetadata = Frontmatter{}
+				err := yaml.Unmarshal(buf.Bytes(), &frMetadata)
 				if err != nil {
 					panic(err)
 				}
-				return Frontmatter{"buf": buf.String()}, rest.Bytes(), true
+
+				rest := &bytes.Buffer{}
+				_, err = io.Copy(rest, br)
+				if err != nil {
+					panic(err)
+				}
+				return frMetadata, rest.Bytes(), true
 			} else {
 				inFrontmatter = true
 			}
@@ -47,7 +68,7 @@ func Unmarshal(markdown []byte) (frMetadata Frontmatter, stripped []byte, isFron
 		}
 	}
 
-	return nil, markdown, false
+	return Frontmatter{}, markdown, false
 }
 
 func detect(br *bufio.Reader) bool {

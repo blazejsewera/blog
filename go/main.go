@@ -34,8 +34,10 @@ func main() {
 		panic(err)
 	}
 
-	frMetadata, isFrontmatter := markdown.Parse(os.Stdout, input)
-	fmt.Println(frMetadata)
+	htmlBytes, frMetadata, isFrontmatter := markdown.Parse(input)
+	fmt.Printf("%s\n", htmlBytes)
+	fmt.Printf("%+#v\n", frMetadata)
+	fmt.Println(frMetadata.Date.ISODate())
 	fmt.Println(isFrontmatter)
 }
 
