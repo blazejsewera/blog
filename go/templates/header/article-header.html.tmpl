@@ -1,6 +1,6 @@
 {{- /*gotype: github.com/blazejsewera/blog/templates/header.Props*/ -}}
-{{ define "ArticleHeader" }}
-    {{ template "baseHeader" }}
+{{- define "ArticleHeader" }}
+    {{- template "baseHeader" }}
 
     <meta name="og:type" content="article" />
 
@@ -23,21 +23,21 @@
 
     <meta name="og:site_name" content="{{ .SiteName }}" />
 
-    {{ if .Abstract }}
+    {{- if .Abstract }}
         <meta name="description" content="{{ .Abstract }}" />
         <meta name="dcterms.abstract" content="{{ .Abstract }}" />
         <meta name="og:description" content="{{ .Abstract }}" />
-    {{ end }}
+    {{- end }}
 
-    {{ if .Keywords }}
+    {{- if .Keywords }}
         <meta name="keywords" content="{{ .CommaSeparatedKeywords }}" />
-    {{ end }}
+    {{- end }}
 
-    {{ if .ImgURL }}
+    {{- if .ImgURL }}
         <meta name="og:image" content="{{ .ImgURL }}" />
-    {{ end }}
+    {{- end }}
 
-    {{ if .ImgDescription }}
-        <meta name="og:image:alt" content="{{ .ImgDescription }}" />}
-    {{ end }}
+    {{- if .ImgDescription }}
+        <meta name="og:image:alt" content="{{ .ImgDescription }}" />
+    {{- end }}
 {{ end }}

@@ -2,6 +2,7 @@ package templates
 
 import (
 	"fmt"
+	"github.com/blazejsewera/blog/templates/whitespace"
 	"html/template"
 	"io"
 	"io/fs"
@@ -34,5 +35,5 @@ func (t *Template) With(fn AdditionalTemplate) *Template {
 }
 
 func (t *Template) Execute(wr io.Writer, data any) error {
-	return t.template.Execute(wr, data)
+	return t.template.Execute(whitespace.Collapse(wr), data)
 }
