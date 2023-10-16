@@ -1,9 +1,9 @@
 package markdown_test
 
 import (
+	"github.com/blazejsewera/blog/internal/times"
 	"github.com/blazejsewera/blog/markdown"
 	"github.com/blazejsewera/blog/markdown/frontmatter"
-	"github.com/blazejsewera/blog/times"
 	"github.com/stretchr/testify/assert"
 	"strings"
 	"testing"

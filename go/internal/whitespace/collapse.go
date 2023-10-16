@@ -2,18 +2,9 @@ package whitespace
 
 import (
 	"bytes"
-	"io"
 )
 
-type collapser struct {
-	into io.Writer
-}
-
-func (c *collapser) Write(b []byte) (n int, err error) {
-	return c.into.Write(collapseWhitespace(b))
-}
-
-func collapseWhitespace(bb []byte) []byte {
+func Collapse(bb []byte) []byte {
 	buf := &bytes.Buffer{}
 	type Char byte
 	const (
@@ -47,8 +38,4 @@ func collapseWhitespace(bb []byte) []byte {
 		}
 	}
 	return buf.Bytes()
-}
-
-func Collapse(w io.Writer) io.Writer {
-	return &collapser{w}
 }

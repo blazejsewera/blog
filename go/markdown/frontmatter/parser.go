@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"bytes"
 	"errors"
-	"github.com/blazejsewera/blog/times"
+	"github.com/blazejsewera/blog/internal/times"
 	"gopkg.in/yaml.v3"
 	"io"
 )

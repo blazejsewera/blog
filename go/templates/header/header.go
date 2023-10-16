@@ -1,11 +1,12 @@
 package header
 
 import (
-	"github.com/blazejsewera/blog/times"
-	"html/template"
-	"io/fs"
+	"github.com/blazejsewera/blog/internal/times"
+	"github.com/blazejsewera/blog/templates"
 	"strings"
 )
+
+var templateNames = []string{"header/article-header.html.tmpl", "header/base-header.html.tmpl"}
 
 type Props struct {
 	Title          string
@@ -20,9 +21,8 @@ type Props struct {
 	ImgDescription string
 }
 
-func Header(templateFS fs.FS, t *template.Template) error {
-	t, err := t.ParseFS(templateFS, "header/*.html.tmpl")
-	return err
+func Header(t *templates.Template) {
+	t.ParseTFS(templateNames...)
 }
 
 func (p Props) ISODate() string {

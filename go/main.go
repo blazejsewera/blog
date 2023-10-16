@@ -2,20 +2,17 @@ package main
 
 import (
 	"fmt"
+	"github.com/blazejsewera/blog/internal/times"
 	"github.com/blazejsewera/blog/markdown"
-	"github.com/blazejsewera/blog/templates"
 	"github.com/blazejsewera/blog/templates/header"
 	"github.com/blazejsewera/blog/templates/index"
-	"github.com/blazejsewera/blog/times"
 	"os"
 )
 
 func main() {
-	t := templates.New().
-		With(index.Index).
-		With(header.Header)
+	t := index.Index()
 
-	err := t.Execute(os.Stdout, index.Props{
+	rendered := t.Render(index.Props{
 		Header: header.Props{
 			Title:    "Hello",
 			Date:     times.Now(),
@@ -36,9 +33,8 @@ func main() {
 			"second",
 		},
 	})
-	if err != nil {
-		panic(err)
-	}
+
+	fmt.Printf("%s\n", rendered)
 
 	input, err := os.Open("articles/ravioli-process.md")
 	if err != nil {

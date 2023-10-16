@@ -1,39 +1,45 @@
 package templates
 
 import (
+	"bytes"
 	"fmt"
-	"github.com/blazejsewera/blog/templates/whitespace"
+	"github.com/blazejsewera/blog/internal/whitespace"
 	"html/template"
-	"io"
-	"io/fs"
+	"os"
 )
 
-type AdditionalTemplate func(fs.FS, *template.Template) error
-
 type Template struct {
-	templateFS fs.FS
-	template   *template.Template
+	*template.Template
 }
 
-func New() *Template {
-	return NewWithFS(TemplateFS)
-}
+var templateFS = os.DirFS("templates")
 
-func NewWithFS(templateFS fs.FS) *Template {
-	return &Template{
-		templateFS: templateFS,
-		template:   template.New("index.html.tmpl"),
-	}
-}
-
-func (t *Template) With(fn AdditionalTemplate) *Template {
-	err := fn(t.templateFS, t.template)
+func ParseTFS(name ...string) *Template {
+	tt, err := template.ParseFS(templateFS, name...)
 	if err != nil {
-		panic(fmt.Sprintf("parsing template: %v%s", err, t.template.DefinedTemplates()))
+		panic(fmt.Errorf("parse with default fs:%w", err))
 	}
+	return &Template{tt}
+}
+
+func (t *Template) ParseTFS(name ...string) *Template {
+	tt, err := t.ParseFS(templateFS, name...)
+	if err != nil {
+		panic(fmt.Errorf("parse with default fs:%w", err))
+	}
+	return &Template{tt}
+}
+
+func (t *Template) With(component func(*Template)) *Template {
+	component(t)
 	return t
 }
 
-func (t *Template) Execute(wr io.Writer, data any) error {
-	return t.template.Execute(whitespace.Collapse(wr), data)
+func (t *Template) Render(data any) []byte {
+	buf := &bytes.Buffer{}
+	err := t.Execute(buf, data)
+	if err != nil {
+		panic(fmt.Errorf("render: %w%s", err, t.DefinedTemplates()))
+	}
+	return whitespace.Collapse(buf.Bytes())
 }
