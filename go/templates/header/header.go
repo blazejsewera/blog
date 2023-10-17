@@ -8,6 +8,10 @@ import (
 
 var templateNames = []string{"header/article-header.html.tmpl", "header/base-header.html.tmpl"}
 
+func Header(t *templates.Template) {
+	t.ParseTFS(templateNames...)
+}
+
 type Props struct {
 	Title          string
 	Date           times.Time
@@ -19,10 +23,6 @@ type Props struct {
 	Keywords       []string
 	ImgURL         string
 	ImgDescription string
-}
-
-func Header(t *templates.Template) {
-	t.ParseTFS(templateNames...)
 }
 
 func (p Props) ISODate() string {
