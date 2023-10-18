@@ -64,9 +64,14 @@ func main() {
 		panic(err)
 	}
 
+	err = files.CopyDir("dist", "_site")
+	if err != nil {
+		panic(err)
+	}
+
 	postprocess.Run()
 
-	input, err := os.Open("articles/ravioli-process.md")
+	input, err := os.Open("_site/ravioli-process/index.md")
 	if err != nil {
 		panic(err)
 	}

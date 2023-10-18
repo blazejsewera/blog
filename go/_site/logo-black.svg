@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="89.74" height="55.876" enable-background="new" version="1.1" viewBox="0 0 80 109.77" id="svg13" sodipodi:docname="magpie_dark.svg" inkscape:version="0.92.4 5da689c313, 2019-01-14">
+  <metadata id="metadata17">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" objecttolerance="10" gridtolerance="10" guidetolerance="10" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-width="960" inkscape:window-height="1162" id="namedview15" showgrid="false" inkscape:zoom="2.8415423" inkscape:cx="46.632131" inkscape:cy="58.528388" inkscape:window-x="1860" inkscape:window-y="438" inkscape:window-maximized="0" inkscape:current-layer="svg13"/>
+  <defs id="defs5">
+    <linearGradient id="accent" gradientTransform="matrix(1.2711491,0,0,1.2711491,-257.00962,-364.80404)" osb:paint="solid">
+      <stop stop-color="#7e1212" offset="0" id="stop2" style="stop-color:#9a0909;stop-opacity:1;"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(-91.757 -109.64)" id="g11">
+    <path d="m184.81 119.46c-7.9589.003-15.626 5.3938-17.435 14.119-.45625 2.2007-1.7233 4.3492-6.0898 5.4939-35.411 9.283-13.255 50.147-107.86 67.915 15.213 2.8029 36.26 7.051 66.1-10.178.86327-.49842 9.3802-4.1728 14.571 4.3854 42.086 2.114 62.567-33.672 58.608-60.168-1.2564-8.4081 4.5687-9.3156 16.443-12.809 0 0-5.0815-5.2521-13.117-4.6695-3.3781-2.807-7.3349-4.0905-11.222-4.0888zm-15.2 24.439c1.2882 10.948-9.6711 32.563-34.462 28.476 8.2718-10.672 13.144-27.516 34.462-28.476zm1.159 18.438c1.6128 4.4982 3.8168 8.5676 7.8706 12.824-25.528 34.533-51.909 3.8562-38.541 3.8562 10.145.3687 23.144-4.1275 30.67-16.68z" fill="#1a1a1a" id="path7"/>
+    <path d="m 208.70728,195.42497 a 10.310104,10.310104 0 0 1 -10.29995,10.31993 10.310104,10.310104 0 0 1 -10.32015,-10.29974 10.310104,10.310104 0 0 1 10.29952,-10.32036 10.310104,10.310104 0 0 1 10.32058,10.2993" style="opacity:0.97000002;fill:url(#accent);stroke-width:1.09148991;paint-order:normal" id="path9" inkscape:connector-curvature="0"/>
+  </g>
+</svg>

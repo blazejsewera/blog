@@ -2,9 +2,9 @@ package tailwind
 
 import (
 	"fmt"
+	"github.com/blazejsewera/blog/internal/files"
 	"github.com/blazejsewera/blog/internal/must"
 	"io"
-	"io/fs"
 	"net/http"
 	"os"
 	"runtime"
@@ -46,14 +46,7 @@ func execFilename() string {
 }
 
 func downloadFile(url string, targetFile string, executable bool) error {
-	var mode fs.FileMode
-	if executable {
-		mode = 0755
-	} else {
-		mode = 0644
-	}
-
-	file, err := os.OpenFile(targetFile, os.O_CREATE|os.O_TRUNC|os.O_WRONLY, mode)
+	file, err := files.CreateFileWr(targetFile, executable)
 	if err != nil {
 		return err
 	}
