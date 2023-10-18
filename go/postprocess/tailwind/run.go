@@ -1,6 +1,7 @@
 package tailwind
 
 import (
+	"fmt"
 	"github.com/blazejsewera/blog/internal/files"
 	"os"
 	"os/exec"
@@ -14,7 +15,7 @@ func Run() {
 	tailwindCmd.Stdout = os.Stdout
 	err := tailwindCmd.Run()
 	if err != nil {
-		panic(err)
+		panic(fmt.Errorf("run tailwind: %w; maybe you have a wrong binary version for your OS/arch", err))
 	}
 }
 
