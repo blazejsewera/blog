@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-var templateNames = []string{"header/article-header.html.tmpl", "header/base-header.html.tmpl"}
+var templateNames = []string{"header/header.html.tmpl", "header/base-header.html.tmpl"}
 
 func Header(t *templates.Template) {
 	t.ParseTFS(templateNames...)

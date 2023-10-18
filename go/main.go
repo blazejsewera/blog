@@ -4,12 +4,15 @@ import (
 	"fmt"
 	"github.com/blazejsewera/blog/internal/times"
 	"github.com/blazejsewera/blog/markdown"
+	"github.com/blazejsewera/blog/postprocess"
 	"github.com/blazejsewera/blog/templates/header"
 	"github.com/blazejsewera/blog/templates/index"
 	"os"
 )
 
 func main() {
+	postprocess.Run()
+
 	t := index.Index()
 
 	rendered := t.Render(index.Props{
@@ -27,10 +30,6 @@ func main() {
 			},
 			ImgURL:         "./some/url",
 			ImgDescription: "Some picture",
-		},
-		Posts: []string{
-			"first",
-			"second",
 		},
 	})
 

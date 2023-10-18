@@ -5,7 +5,7 @@ import (
 	"github.com/blazejsewera/blog/templates"
 )
 
-var templateNames = []string{"listing/article-listing.html.tmpl"}
+var templateNames = []string{"listing/listing.html.tmpl"}
 
 type Update struct {
 	Date    times.Time

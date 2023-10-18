@@ -1,0 +1,35 @@
+{{- /*gotype: github.com/blazejsewera/blog/templates/listing.Props */ -}}
+{{ define "Listing" }}
+    <div class="flex w-full">
+        <ul class="w-full md:w-172 xl:w-256 mx-10 md:mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 md:gap-5">
+            {{ range .Articles }}
+                {{ block "ArticleCard" . }}
+                    <li class="w-full flex">
+                        <div class="mx-auto w-full md:w-80">
+                            <a class="flex flex-col min-w-full md:w-80 shadow-xl break-inside-avoid" href={{ .URL }}>
+                                <div class="flex bg-clip-border bg-origin-border bg-center bg-cover aspect-video"
+                                     style="background-image: {{ .ImgURL }}" title={{ .ImgDescription }}>
+                                    <div class="ml-4 mr-auto mb-4 mt-auto">
+                                        {{ if .Draft }}
+                                            {{ block "DraftBadge" . }}
+                                                <div class="inline-flex rounded-full border-2 w-min h-min px-2 md:px-3 py-0.5 uppercase text-2xs md:text-xs border-orange-600 text-orange-600 bg-orange-100">
+                                                    <div class="m-auto">draft</div>
+                                                </div>
+                                            {{ end }}
+                                        {{ end }}
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <div class="text-xl mb-3">{{ .Title }}</div>
+                                    <div class="text-sm text-neutral-400">
+                                        {{ .ShortDate }}
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                {{ end }}
+            {{ end }}
+        </ul>
+    </div>
+{{ end }}

@@ -2,14 +2,10 @@
 <!doctype html>
 <html lang="{{ .Header.Language }}">
 <head>
-    {{ template "ArticleHeader" .Header }}
+    {{ template "Header" .Header }}
     <title>{{ .Header.Title }}</title>
 </head>
 <body>
-<ul>
-    {{ range .Posts }}
-        <li>{{ . }}</li>
-    {{ end }}
-</ul>
+{{ template "Listing" .Listing }}
 </body>
 </html>
