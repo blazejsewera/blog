@@ -80,4 +80,10 @@ func main() {
 	fmt.Printf("%s\n", htmlBytes)
 	fmt.Printf("%+#v\n", frMetadata)
 	fmt.Printf("%s\n", frMetadata.Date)
+
+	filePaths, err := files.FindBySuffix("dist", ".md")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("%v", filePaths)
 }
