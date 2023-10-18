@@ -3,6 +3,7 @@ package header
 import (
 	"github.com/blazejsewera/blog/internal/times"
 	"github.com/blazejsewera/blog/templates"
+	"html/template"
 	"strings"
 )
 
@@ -21,7 +22,7 @@ type Props struct {
 	SiteName       string
 	Abstract       string
 	Keywords       []string
-	ImgURL         string
+	ImgURL         template.URL
 	ImgDescription string
 }
 

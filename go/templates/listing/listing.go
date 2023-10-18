@@ -3,6 +3,7 @@ package listing
 import (
 	"github.com/blazejsewera/blog/internal/times"
 	"github.com/blazejsewera/blog/templates"
+	"html/template"
 )
 
 var templateNames = []string{"listing/listing.html.tmpl"}
@@ -15,7 +16,7 @@ type Update struct {
 type ArticleInfo struct {
 	Title            string
 	Date             times.Time
-	URL              string
+	URL              template.URL
 	File             string
 	Subtitle         string
 	Updates          []Update
@@ -26,8 +27,8 @@ type ArticleInfo struct {
 	Keywords         []string
 	Language         string
 	License          string
-	ImgURL           string
-	MinImgURL        string
+	ImgURL           template.URL
+	MinImgURL        template.URL
 	ImgDescription   string
 }
 
@@ -40,7 +41,7 @@ type Props struct {
 	TabTitle       string
 	Subtitle       string
 	Description    string
-	ImgURL         string
+	ImgURL         template.URL
 	ImgDescription string
 	Articles       []ArticleInfo
 }
