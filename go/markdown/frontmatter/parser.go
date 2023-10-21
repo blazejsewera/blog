@@ -4,13 +4,14 @@ import (
 	"bufio"
 	"bytes"
 	"errors"
+	"github.com/blazejsewera/blog/domain"
 	"github.com/blazejsewera/blog/internal/times"
 	"gopkg.in/yaml.v3"
+	"html/template"
 	"io"
 )
 
 type Frontmatter struct {
-	Layout           string     `yaml:"layout"`
 	Title            string     `yaml:"title"`
 	Subtitle         string     `yaml:"subtitle"`
 	Date             times.Time `yaml:"date"`
@@ -23,14 +24,56 @@ type Frontmatter struct {
 	ImgDescription   string     `yaml:"imgDescription"`
 	Abstract         string     `yaml:"abstract"`
 	Keywords         []string   `yaml:"keywords"`
+	Updates          []Update   `yaml:"updates"`
+}
+
+type Update struct {
+	Date    times.Time `yaml:"date"`
+	DiffURL string     `yaml:"diffUrl"`
 }
 
 var DefaultFrMetadata = Frontmatter{
-	Layout:   "Article",
 	Date:     times.Now(),
 	Author:   "Blazej Sewera",
 	License:  "CC-BY",
 	Language: "en-US",
+}
+
+func (f Frontmatter) ToArticleMetadata(url string) domain.ArticleMetadata {
+	return domain.ArticleMetadata{
+		Title:            f.Title,
+		Subtitle:         f.Subtitle,
+		Date:             f.Date,
+		Draft:            f.Draft,
+		DraftDescription: f.DraftDescription,
+		Author:           f.Author,
+		Abstract:         f.Abstract,
+		Keywords:         f.Keywords,
+		Language:         f.Language,
+		License:          f.License,
+		ImgURL:           template.URL(f.ImgURL),
+		ImgDescription:   f.ImgDescription,
+		URL:              template.URL(url),
+		Updates:          UpdatesToDomain(f.Updates),
+	}
+}
+
+func UpdatesToDomain(uu []Update) []domain.Update {
+	if uu == nil {
+		return nil
+	}
+	result := make([]domain.Update, len(uu))
+	for i, u := range uu {
+		result[i] = u.ToDomain()
+	}
+	return result
+}
+
+func (u Update) ToDomain() domain.Update {
+	return domain.Update{
+		Date:    u.Date,
+		DiffURL: u.DiffURL,
+	}
 }
 
 func Unmarshal(markdown []byte) (frMetadata Frontmatter, stripped []byte, frMetaExists bool) {

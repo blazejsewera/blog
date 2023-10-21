@@ -12,8 +12,7 @@ func FindBySuffix(root, suffix string) (filePaths []string, err error) {
 			return errW
 		}
 		if strings.HasSuffix(path, suffix) {
-			pathFromRoot := strings.TrimPrefix(strings.TrimPrefix(path, root), "/")
-			filePaths = append(filePaths, pathFromRoot)
+			filePaths = append(filePaths, path)
 		}
 		return nil
 	})

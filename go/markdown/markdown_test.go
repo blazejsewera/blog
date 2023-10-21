@@ -1,55 +1,52 @@
-package markdown_test
+package markdown
 
 import (
+	"github.com/blazejsewera/blog/domain"
 	"github.com/blazejsewera/blog/internal/times"
-	"github.com/blazejsewera/blog/markdown"
-	"github.com/blazejsewera/blog/markdown/frontmatter"
 	"github.com/stretchr/testify/assert"
+	"html/template"
 	"strings"
 	"testing"
 )
 
-// language=Markdown
-var sampleMd = `
+func TestMarkdown(t *testing.T) {
+	sampleMdWithFrontmatter := `---
+title: a title
+date: 2023-03-03
+---
+
 ## H2 heading
 
 Some text
 `
 
-// language=YAML
-var sampleMdWithFrontmatter = `---
-layout: a layout
-title: a title
-date: 2023-03-03
----
-` + sampleMd
-
-// language=HTML
-const expectedHTML = `<h2>H2 heading</h2>
-
-<p>Some text</p>
-`
-
-var expectedFrMetadata = frontmatter.Frontmatter{
-	Layout: "a layout",
-	Title:  "a title",
-	Date:   times.Parse("2023-03-03"),
-}
-
-func TestMarkdown(t *testing.T) {
-	t.Run("returns rendered HTML and parsed metadata from Markdown with Frontmatter", func(t *testing.T) {
+	t.Run("returns rendered HTML, metadata, target filename, and index.html-trimmed URL", func(t *testing.T) {
+		parser := Parser{WorkingDir: "dist"}
 		input := strings.NewReader(sampleMdWithFrontmatter)
-		output, actualFrMetadata := markdown.Parse(input)
+		output, metadata, targetFilename := parser.parseFile(input, "dist/test-article/index.md")
+
+		expectedHTML := "<h2>H2 heading</h2>\n\n<p>Some text</p>\n"
+		expectedMetadata := domain.ArticleMetadata{
+			Title: "a title",
+			Date:  times.Parse("2023-03-03"),
+			URL:   template.URL("/test-article"),
+		}
+		expectedTargetFilename := "dist/test-article/index.html"
 
 		assert.Equal(t, expectedHTML, string(output))
-		assert.Equal(t, expectedFrMetadata, actualFrMetadata)
+		assert.Equal(t, expectedMetadata, metadata)
+		assert.Equal(t, expectedTargetFilename, targetFilename)
 	})
 
-	t.Run("returns rendered HTML and default metadata from Markdown without Frontmatter", func(t *testing.T) {
-		input := strings.NewReader(sampleMd)
-		output, actualFrMetadata := markdown.Parse(input)
+	t.Run("returns rendered HTML, domain metadata, target filename, and non-trimmed URL", func(t *testing.T) {
+		parser := Parser{WorkingDir: "dist"}
+		input := strings.NewReader(sampleMdWithFrontmatter)
+		_, metadata, targetFilename := parser.parseFile(input, "dist/test-article/article.md")
 
-		assert.Equal(t, expectedHTML, string(output))
-		assert.Equal(t, frontmatter.DefaultFrMetadata, actualFrMetadata)
+		expectedURL := template.URL("/test-article/article.html")
+		expectedTargetFilename := "dist/test-article/article.html"
+
+		assert.Equal(t, expectedURL, metadata.URL)
+		assert.Equal(t, expectedTargetFilename, targetFilename)
 	})
 }

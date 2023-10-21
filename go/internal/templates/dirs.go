@@ -1,6 +1,8 @@
 package templates
 
-const relativeComponentDir = "component/"
+import "path"
+
+const relativeComponentDir = "component"
 
 func Pages(pageNames ...string) []string {
 	return transform(pageNames, func(name string) string {
@@ -10,7 +12,7 @@ func Pages(pageNames ...string) []string {
 
 func Components(componentNames ...string) []string {
 	return transform(componentNames, func(name string) string {
-		return relativeComponentDir + templateName(name)
+		return path.Join(relativeComponentDir, templateName(name))
 	})
 }
 
