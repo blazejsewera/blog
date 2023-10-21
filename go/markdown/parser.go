@@ -3,14 +3,19 @@ package markdown
 import (
 	"bytes"
 	"fmt"
-	"github.com/blazejsewera/blog/domain"
-	"github.com/blazejsewera/blog/internal/must"
-	"github.com/blazejsewera/blog/markdown/frontmatter"
-	"github.com/russross/blackfriday/v2"
 	"io"
 	"os"
 	"path/filepath"
 	"strings"
+
+	chromahtml "github.com/alecthomas/chroma/v2/formatters/html"
+	"github.com/blazejsewera/blog/domain"
+	"github.com/blazejsewera/blog/internal/must"
+	"github.com/blazejsewera/blog/markdown/frontmatter"
+	"github.com/yuin/goldmark"
+	goldmarkhighlighting "github.com/yuin/goldmark-highlighting/v2"
+	goldmarkextension "github.com/yuin/goldmark/extension"
+	goldmarkhtml "github.com/yuin/goldmark/renderer/html"
 )
 
 type Parser struct {
@@ -56,15 +61,31 @@ func parse(markdownReader io.Reader) (html []byte, frMetadata frontmatter.Frontm
 		frMetadata = frontmatter.DefaultFrMetadata
 	}
 
-	rd := blackfriday.NewHTMLRenderer(blackfriday.HTMLRendererParameters{
-		Flags: blackfriday.Smartypants |
-			blackfriday.SmartypantsFractions |
-			blackfriday.SmartypantsDashes |
-			blackfriday.SmartypantsLatexDashes,
-	})
-	md := blackfriday.Run(stripped,
-		blackfriday.WithRenderer(rd),
-		blackfriday.WithExtensions(blackfriday.Footnotes))
+	md := goldmark.New(
+		goldmark.WithRendererOptions(goldmarkhtml.WithUnsafe()),
+		goldmark.WithExtensions(
+			goldmarkextension.GFM,
+			goldmarkextension.Typographer,
+			goldmarkextension.DefinitionList,
+			goldmarkextension.NewFootnote(
+				goldmarkextension.WithFootnoteLinkClass([]byte("footnote-link")),
+				goldmarkextension.WithFootnoteBacklinkClass([]byte("footnote-backlink")),
+				goldmarkextension.WithFootnoteBacklinkHTML([]byte("[show in text]")),
+			),
+			goldmarkhighlighting.NewHighlighting(
+				goldmarkhighlighting.WithStyle("catppuccin-mocha"),
+				goldmarkhighlighting.WithFormatOptions(
+					chromahtml.WithLineNumbers(true),
+				),
+			),
+		),
+	)
 
-	return md, frMetadata
+	output := &bytes.Buffer{}
+	err = md.Convert(stripped, output)
+	if err != nil {
+		panic(err)
+	}
+
+	return output.Bytes(), frMetadata
 }
