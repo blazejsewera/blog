@@ -1,6 +1,7 @@
 package files
 
 import (
+	"errors"
 	"github.com/blazejsewera/blog/internal/must"
 	"io"
 	"os"
@@ -8,8 +9,9 @@ import (
 )
 
 func CopyDir(dst, src string) error {
-	entries, err := os.ReadDir(src)
-	if err != nil {
+	entries, err1 := os.ReadDir(src)
+	err2 := CreateDirIfDoesNotExist(dst)
+	if err := errors.Join(err1, err2); err != nil {
 		return err
 	}
 
@@ -24,18 +26,18 @@ func CopyDir(dst, src string) error {
 
 		switch fileInfo.Mode() & os.ModeType {
 		case os.ModeDir:
-			if err := CreateDirIfDoesNotExist(destPath); err != nil {
+			if err = CreateDirIfDoesNotExist(destPath); err != nil {
 				return err
 			}
-			if err := CopyDir(destPath, sourcePath); err != nil {
+			if err = CopyDir(destPath, sourcePath); err != nil {
 				return err
 			}
 		case os.ModeSymlink:
-			if err := CopySymlink(destPath, sourcePath); err != nil {
+			if err = CopySymlink(destPath, sourcePath); err != nil {
 				return err
 			}
 		default:
-			if err := Copy(destPath, sourcePath); err != nil {
+			if err = Copy(destPath, sourcePath); err != nil {
 				return err
 			}
 		}
@@ -45,6 +47,9 @@ func CopyDir(dst, src string) error {
 
 func Copy(dst, src string) error {
 	out, err := CreateFileWr(dst, false)
+	if err != nil {
+		return err
+	}
 	defer must.Close(out)
 
 	in, err := os.Open(src)

@@ -1,16 +1,16 @@
 package header
 
 import (
+	"github.com/blazejsewera/blog/internal/templates"
 	"github.com/blazejsewera/blog/internal/times"
-	"github.com/blazejsewera/blog/templates"
 	"html/template"
 	"strings"
 )
 
-var templateNames = []string{"header/header.html.tmpl", "header/base-header.html.tmpl"}
+var templateNames = templates.Components("header/header", "header/base-header")
 
 func Header(t *templates.Template) {
-	t.ParseTFS(templateNames...)
+	t.ParseTFS(templateNames)
 }
 
 type Props struct {

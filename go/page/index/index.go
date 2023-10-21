@@ -1,12 +1,12 @@
 package index
 
 import (
-	"github.com/blazejsewera/blog/templates"
-	"github.com/blazejsewera/blog/templates/header"
-	"github.com/blazejsewera/blog/templates/listing"
+	"github.com/blazejsewera/blog/internal/templates"
+	"github.com/blazejsewera/blog/page/component/header"
+	"github.com/blazejsewera/blog/page/component/listing"
 )
 
-var templateNames = []string{"index/index.html.tmpl"}
+var templateNames = templates.Pages("index/index")
 
 type Template struct {
 	t *templates.Template
@@ -18,8 +18,7 @@ type Props struct {
 }
 
 func Index() *Template {
-	return &Template{templates.
-		ParseTFS(templateNames...).
+	return &Template{templates.ParseTFS(templateNames).
 		With(header.Header).
 		With(listing.Listing)}
 }

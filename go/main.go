@@ -2,20 +2,21 @@ package main
 
 import (
 	"fmt"
+	"github.com/blazejsewera/blog/domain"
 	"github.com/blazejsewera/blog/internal/files"
 	"github.com/blazejsewera/blog/internal/times"
 	"github.com/blazejsewera/blog/markdown"
+	"github.com/blazejsewera/blog/page/component/header"
+	"github.com/blazejsewera/blog/page/component/listing"
+	"github.com/blazejsewera/blog/page/index"
 	"github.com/blazejsewera/blog/postprocess"
-	"github.com/blazejsewera/blog/templates/header"
-	"github.com/blazejsewera/blog/templates/index"
-	"github.com/blazejsewera/blog/templates/listing"
 	"os"
 )
 
 func main() {
 	t := index.Index()
 
-	rendered := t.Render(index.Props{
+	_ = t.Render(index.Props{
 		Header: header.Props{
 			Title:    "Hello",
 			Date:     times.Now(),
@@ -32,7 +33,7 @@ func main() {
 			ImgDescription: "Some picture",
 		},
 		Listing: listing.Props{
-			Articles: []listing.ArticleInfo{
+			Articles: []domain.ArticleMetadata{
 				{
 					Title:          "Hello",
 					Date:           times.Now(),
@@ -51,20 +52,7 @@ func main() {
 		},
 	})
 
-	err := files.CreateDirIfDoesNotExist("dist")
-	if err != nil {
-		panic(err)
-	}
-	file, err := os.Create("dist/index.html")
-	if err != nil {
-		panic(err)
-	}
-	_, err = file.Write(rendered)
-	if err != nil {
-		panic(err)
-	}
-
-	err = files.CopyDir("dist", "_site")
+	err := files.CopyDir("dist", "_site")
 	if err != nil {
 		panic(err)
 	}
