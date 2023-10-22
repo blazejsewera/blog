@@ -1,7 +1,11 @@
+{{- /*gotype: github.com/blazejsewera/blog/page/component/header.Props*/ -}}
 {{ define "baseHeader" }}
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="stylesheet" href="/style/swisstypefaces.css" />
+    <style>
+        {{ .CSS }}
+    </style>
 {{ end }}

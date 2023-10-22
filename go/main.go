@@ -5,10 +5,13 @@ import (
 	"github.com/blazejsewera/blog/internal/files"
 	"github.com/blazejsewera/blog/markdown"
 	"github.com/blazejsewera/blog/page/post"
+	"github.com/blazejsewera/blog/preprocess/tailwind"
 	"os"
 )
 
 func main() {
+	css := tailwind.Run()
+
 	err := files.CopyDir("dist", "_site")
 	if err != nil {
 		panic(err)
@@ -23,7 +26,7 @@ func main() {
 	parser := &markdown.Parser{WorkingDir: "dist"}
 	htmlBytes, metadata, targetFilename := parser.ParseFile(filePaths[0])
 	t := post.Post()
-	rendered := t.Render(post.PropsFrom(htmlBytes, metadata))
+	rendered := t.Render(post.PropsFrom(htmlBytes, css, metadata))
 	target, err := os.Create(targetFilename)
 	if err != nil {
 		panic(err)

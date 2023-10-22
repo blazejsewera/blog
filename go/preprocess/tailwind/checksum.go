@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"crypto/sha256"
 	"fmt"
+	"github.com/blazejsewera/blog/internal/files"
 	"github.com/blazejsewera/blog/internal/must"
 	"io"
 	"os"
@@ -42,7 +43,7 @@ func checkSha256(upstreamFilename string, localFilename string) error {
 }
 
 func downloadAndExtractChecksum(upstreamFilename string) (sha256checksum string, err error) {
-	err = downloadFile(upstreamChecksumsURL(), checksumsFilename, false)
+	err = files.DownloadFile(upstreamChecksumsURL(), checksumsFilename, false)
 	if err != nil {
 		return "", err
 	}
