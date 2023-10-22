@@ -13,12 +13,16 @@ func Article(t *templates.Template) {
 }
 
 type Props struct {
-	Draft      bool
-	DraftProps draft.Props
-	Abstract   string
-	RawContent []byte
+	Draft            bool
+	DraftDescription string
+	Abstract         string
+	RawContent       []byte
 }
 
 func (p Props) Content() template.HTML {
 	return template.HTML(p.RawContent)
+}
+
+func (p Props) DraftProps() draft.Props {
+	return draft.Props{DraftDescription: p.DraftDescription}
 }
