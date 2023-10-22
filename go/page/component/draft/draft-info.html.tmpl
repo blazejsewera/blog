@@ -1,0 +1,9 @@
+{{- /*gotype: github.com/blazejsewera/blog/page/component/draft.Props*/ -}}
+{{ define "DraftInfo" }}
+    <div class="mx-16 mb-8 flex">
+        <div class="my-auto leading-none">
+            {{ template "DraftBadge" . }}
+        </div>
+        <span class="text-orange-600 inline my-auto ml-4">{{ .Description }}</span>
+    </div>
+{{ end }}
