@@ -14,7 +14,6 @@ func Header(t *templates.Template) {
 }
 
 type Props struct {
-	RawCSS         []byte
 	Title          string
 	Date           times.Time
 	Author         string
@@ -25,10 +24,6 @@ type Props struct {
 	Keywords       []string
 	ImgURL         template.URL
 	ImgDescription string
-}
-
-func (p Props) CSS() template.CSS {
-	return template.CSS(p.RawCSS)
 }
 
 func (p Props) ISODate() string {

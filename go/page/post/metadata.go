@@ -6,10 +6,9 @@ import (
 	"github.com/blazejsewera/blog/page/component/header"
 )
 
-func PropsFrom(htmlBytes []byte, css []byte, metadata domain.ArticleMetadata) Props {
+func PropsFrom(htmlBytes []byte, metadata domain.ArticleMetadata) Props {
 	return Props{
 		Header: header.Props{
-			RawCSS:         css,
 			Title:          metadata.Title,
 			Date:           metadata.Date,
 			Author:         metadata.Author,
