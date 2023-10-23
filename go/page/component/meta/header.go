@@ -1,16 +1,10 @@
 package meta
 
 import (
-	"github.com/blazejsewera/blog/internal/templates"
 	"github.com/blazejsewera/blog/internal/times"
 	"html/template"
 	"strings"
 )
-
-func Header(t *templates.Template) {
-	templateNames := templates.Components("meta/header", "meta/base-header")
-	t.ParseTFS(templateNames)
-}
 
 type HeaderProps struct {
 	Title          string

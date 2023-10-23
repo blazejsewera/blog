@@ -1,15 +1,9 @@
 package section
 
 import (
-	"github.com/blazejsewera/blog/internal/templates"
 	"github.com/blazejsewera/blog/page/component/molecule"
 	"html/template"
 )
-
-func Article(t *templates.Template) {
-	templateNames := templates.Components("section/article")
-	t.With(molecule.Draft).ParseTFS(templateNames)
-}
 
 type ArticleProps struct {
 	Draft            bool

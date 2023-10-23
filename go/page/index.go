@@ -16,10 +16,7 @@ type IndexProps struct {
 }
 
 func Index() *IndexTemplate {
-	templateNames := templates.Pages("index")
-	return &IndexTemplate{templates.ParseTFS(templateNames).
-		With(meta.Header).
-		With(section.Listing)}
+	return &IndexTemplate{templates.ParseAll()}
 }
 
 func (t *IndexTemplate) Render(props IndexProps) []byte {

@@ -1,14 +1,6 @@
 package molecule
 
-import (
-	"github.com/blazejsewera/blog/internal/templates"
-	"html/template"
-)
-
-func Menu(t *templates.Template) {
-	templateNames := templates.Components("molecule/menu")
-	t.ParseTFS(templateNames)
-}
+import "html/template"
 
 type MenuProps struct {
 	Title              string

@@ -16,10 +16,7 @@ type PostProps struct {
 }
 
 func Post() *PostTemplate {
-	templateNames := templates.Pages("post")
-	return &PostTemplate{templates.ParseTFS(templateNames).
-		With(meta.Header).
-		With(section.Article)}
+	return &PostTemplate{templates.ParseAll()}
 }
 
 func (t *PostTemplate) Render(props PostProps) []byte {
