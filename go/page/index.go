@@ -15,6 +15,7 @@ type IndexProps struct {
 	Listing section.ArticleProps
 }
 
+//goland:noinspection GoUnusedExportedFunction
 func Index() *IndexTemplate {
 	return &IndexTemplate{templates.ParseAll()}
 }

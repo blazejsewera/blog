@@ -34,6 +34,7 @@ func download() error {
 	return nil
 }
 
+//goland:noinspection GoBoolExpressions
 func execFilename() string {
 	if runtime.GOOS == "windows" {
 		return baseExecFilename + ".exe"
