@@ -1,4 +1,4 @@
-package header
+package meta
 
 import (
 	"github.com/blazejsewera/blog/internal/templates"
@@ -7,13 +7,12 @@ import (
 	"strings"
 )
 
-var templateNames = templates.Components("header/header", "header/base-header")
-
 func Header(t *templates.Template) {
+	templateNames := templates.Components("meta/header", "meta/base-header")
 	t.ParseTFS(templateNames)
 }
 
-type Props struct {
+type HeaderProps struct {
 	Title          string
 	Date           times.Time
 	Author         string
@@ -26,10 +25,10 @@ type Props struct {
 	ImgDescription string
 }
 
-func (p Props) ISODate() string {
+func (p HeaderProps) ISODate() string {
 	return p.Date.ISODate()
 }
 
-func (p Props) CommaSeparatedKeywords() string {
+func (p HeaderProps) CommaSeparatedKeywords() string {
 	return strings.Join(p.Keywords, ", ")
 }

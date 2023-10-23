@@ -1,20 +1,19 @@
-package listing
+package section
 
 import (
 	"github.com/blazejsewera/blog/domain"
 	"github.com/blazejsewera/blog/internal/templates"
-	"github.com/blazejsewera/blog/page/component/draft"
+	"github.com/blazejsewera/blog/page/component/molecule"
 	"html/template"
 )
 
-var templateNames = templates.Components("listing/listing")
-
 func Listing(t *templates.Template) {
-	t.With(draft.Draft).
+	templateNames := templates.Components("section/listing/listing")
+	t.With(molecule.Draft).
 		ParseTFS(templateNames)
 }
 
-type Props struct {
+type ListingProps struct {
 	Title          string
 	TabTitle       string
 	Subtitle       string

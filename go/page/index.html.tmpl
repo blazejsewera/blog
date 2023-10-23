@@ -1,4 +1,4 @@
-{{- /*gotype:github.com/blazejsewera/blog/page/post.Props*/ -}}
+{{- /*gotype: github.com/blazejsewera/blog/page.IndexProps*/ -}}
 <!doctype html>
 <html lang="{{ .Header.Language }}">
 <head>
@@ -6,6 +6,6 @@
     <title>{{ .Header.Title }}</title>
 </head>
 <body>
-{{ template "Article" .Article }}
+{{ template "Listing" .Listing }}
 </body>
 </html>

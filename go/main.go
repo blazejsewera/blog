@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/blazejsewera/blog/internal/files"
 	"github.com/blazejsewera/blog/markdown"
-	"github.com/blazejsewera/blog/page/post"
+	"github.com/blazejsewera/blog/page"
 	"github.com/blazejsewera/blog/preprocess"
 	"os"
 )
@@ -25,8 +25,8 @@ func main() {
 
 	parser := &markdown.Parser{WorkingDir: "dist"}
 	htmlBytes, metadata, targetFilename := parser.ParseFile(filePaths[0])
-	t := post.Post()
-	rendered := t.Render(post.PropsFrom(htmlBytes, metadata))
+	t := page.Post()
+	rendered := t.Render(page.PropsFrom(htmlBytes, metadata))
 	target, err := os.Create(targetFilename)
 	if err != nil {
 		panic(err)

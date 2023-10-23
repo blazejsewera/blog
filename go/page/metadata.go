@@ -1,14 +1,14 @@
-package post
+package page
 
 import (
 	"github.com/blazejsewera/blog/domain"
-	"github.com/blazejsewera/blog/page/component/article"
-	"github.com/blazejsewera/blog/page/component/header"
+	"github.com/blazejsewera/blog/page/component/meta"
+	"github.com/blazejsewera/blog/page/component/section"
 )
 
-func PropsFrom(htmlBytes []byte, metadata domain.ArticleMetadata) Props {
-	return Props{
-		Header: header.Props{
+func PropsFrom(htmlBytes []byte, metadata domain.ArticleMetadata) PostProps {
+	return PostProps{
+		Header: meta.HeaderProps{
 			Title:          metadata.Title,
 			Date:           metadata.Date,
 			Author:         metadata.Author,
@@ -20,7 +20,7 @@ func PropsFrom(htmlBytes []byte, metadata domain.ArticleMetadata) Props {
 			ImgURL:         metadata.ImgURL,
 			ImgDescription: metadata.ImgDescription,
 		},
-		Article: article.Props{
+		Article: section.ArticleProps{
 			Draft:            metadata.Draft,
 			DraftDescription: metadata.DraftDescription,
 			Abstract:         metadata.Abstract,
