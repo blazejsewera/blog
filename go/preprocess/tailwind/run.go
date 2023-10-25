@@ -3,6 +3,7 @@ package tailwind
 import (
 	"bytes"
 	"fmt"
+	"github.com/blazejsewera/blog/constants"
 	"github.com/blazejsewera/blog/internal/files"
 	"github.com/blazejsewera/blog/internal/must"
 	"io"
@@ -12,11 +13,13 @@ import (
 const configFile = "preprocess/tailwind/tailwind.config.js"
 const tailwindStyleFile = "_site/style/tailwind.css"
 
-func Run(force bool) {
-	if files.Exists(tailwindStyleFile) && !force {
+func Run(force constants.ForceLevel) {
+	if files.Exists(tailwindStyleFile) && force == constants.NoForce {
 		return
 	}
-	downloadIfDoesNotExist()
+	if !files.Exists(execFilename()) || force >= constants.ReDownload {
+		download()
+	}
 
 	cssBuf := &bytes.Buffer{}
 	err := runTailwind(cssBuf)
@@ -30,17 +33,8 @@ func Run(force bool) {
 	}
 }
 
-func downloadIfDoesNotExist() {
-	if !files.Exists(execFilename()) {
-		err := download()
-		if err != nil {
-			panic(err)
-		}
-	}
-}
-
 func runTailwind(cssBuf *bytes.Buffer) error {
-	tailwindCmd := exec.Command(execFilename(), "--config", configFile)
+	tailwindCmd := exec.Command(execFilename(), "--config", configFile, "--minify")
 	tailwindCmd.Stdout = cssBuf
 	err := tailwindCmd.Run()
 	if err != nil {

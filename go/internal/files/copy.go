@@ -6,7 +6,10 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"slices"
 )
+
+var skipFiles = []string{".git", ".gitignore", ".gitkeep"}
 
 func CopyDir(dst, src string) error {
 	entries, err1 := os.ReadDir(src)
@@ -16,6 +19,10 @@ func CopyDir(dst, src string) error {
 	}
 
 	for _, entry := range entries {
+		if slices.Contains(skipFiles, entry.Name()) {
+			continue
+		}
+
 		sourcePath := filepath.Join(src, entry.Name())
 		destPath := filepath.Join(dst, entry.Name())
 

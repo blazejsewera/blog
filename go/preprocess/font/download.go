@@ -2,6 +2,7 @@ package font
 
 import (
 	"bufio"
+	"github.com/blazejsewera/blog/constants"
 	"github.com/blazejsewera/blog/internal/files"
 	"github.com/blazejsewera/blog/internal/must"
 	"log"
@@ -16,12 +17,11 @@ const (
 	fontList        = "font.list"
 )
 
-func Download(force bool) {
+func Download(force constants.ForceLevel) {
 	fns := fontNames()
-	if allFontsExist(fns) && !force {
-		return
+	if !allFontsExist(fns) || force >= constants.ReDownload {
+		download(fns)
 	}
-	download(fns)
 }
 
 func allFontsExist(fontNames []string) bool {
