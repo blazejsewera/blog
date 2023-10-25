@@ -20,5 +20,5 @@ func Post() *PostTemplate {
 }
 
 func (t *PostTemplate) Render(props PostProps) []byte {
-	return t.t.Render(props)
+	return t.t.Render("Post", props)
 }

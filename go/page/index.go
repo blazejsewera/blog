@@ -12,7 +12,7 @@ type IndexTemplate struct {
 
 type IndexProps struct {
 	Header  meta.HeaderProps
-	Listing section.ArticleProps
+	Listing section.ListingProps
 }
 
 //goland:noinspection GoUnusedExportedFunction
@@ -21,5 +21,5 @@ func Index() *IndexTemplate {
 }
 
 func (t *IndexTemplate) Render(props IndexProps) []byte {
-	return t.t.Render(props)
+	return t.t.Render("Index", props)
 }

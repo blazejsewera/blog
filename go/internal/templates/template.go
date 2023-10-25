@@ -26,9 +26,9 @@ func ParseAll() *Template {
 	return &Template{tt}
 }
 
-func (t *Template) Render(data any) []byte {
+func (t *Template) Render(templateName string, data any) []byte {
 	buf := &bytes.Buffer{}
-	err := t.Execute(buf, data)
+	err := t.ExecuteTemplate(buf, templateName, data)
 	if err != nil {
 		panic(fmt.Errorf("render: %w%s", err, t.DefinedTemplates()))
 	}

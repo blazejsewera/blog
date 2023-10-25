@@ -1,11 +1,13 @@
 {{- /*gotype: github.com/blazejsewera/blog/page.IndexProps*/ -}}
-<!doctype html>
-<html lang="{{ .Header.Language }}">
-<head>
-    {{ template "Header" .Header }}
-    <title>{{ .Header.Title }}</title>
-</head>
-<body>
-{{ template "Listing" .Listing }}
-</body>
-</html>
+{{ block "Index" . }}
+    <!doctype html>
+    <html lang="{{ .Header.Language }}">
+    <head>
+        {{ template "Header" .Header }}
+        <title>{{ .Header.Title }}</title>
+    </head>
+    <body>
+    {{ template "Listing" .Listing }}
+    </body>
+    </html>
+{{ end }}
