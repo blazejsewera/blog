@@ -1,6 +1,9 @@
 package molecule
 
-import "html/template"
+import (
+	"github.com/blazejsewera/blog/constants"
+	"html/template"
+)
 
 type MenuProps struct {
 	Title              string
@@ -9,4 +12,15 @@ type MenuProps struct {
 	BaseSiteRootURL    template.URL
 	GithubProfileURL   template.URL
 	MastodonProfileURL template.URL
+}
+
+func MenuPropsWithTitle(title string) MenuProps {
+	return MenuProps{
+		Title:              title,
+		SiteName:           constants.SiteName,
+		BlogSiteRootURL:    constants.BlogSiteRootURL,
+		BaseSiteRootURL:    constants.BaseSiteRootURL,
+		GithubProfileURL:   constants.GithubProfileURL,
+		MastodonProfileURL: constants.MastodonProfileURL,
+	}
 }

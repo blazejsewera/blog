@@ -4,10 +4,13 @@
     <html lang="{{ .Header.Language }}">
     <head>
         {{ template "Header" .Header }}
-        {{ template "ArticleStyle" .Article }}
+        {{ template "Article.Style" .Article }}
+        {{ template "Menu.Style" .Menu }}
+        {{ template "Menu.Script" .Menu }}
         <title>{{ .Header.Title }}</title>
     </head>
     <body>
+    {{ template "Menu" .Menu }}
     {{ template "Article" .Article }}
     </body>
     </html>
