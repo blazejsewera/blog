@@ -21,6 +21,6 @@ func Post() *PostTemplate {
 	return &PostTemplate{templates.ParseAll()}
 }
 
-func (t *PostTemplate) Render(props PostProps) []byte {
+func (t *PostTemplate) Render(props PostProps) ([]byte, error) {
 	return t.t.Render("Post", props)
 }

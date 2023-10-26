@@ -2,8 +2,8 @@
 {{ define "Menu" }}
     <div class="header-image flex mb-12">
         <span class="brand my-auto text-2xl">
-            <a href="{{ .BlogSiteRootURL }}" title="{{ .SiteName }}"
-               class="text-white weight-normal">{{ .SiteName }}</a>
+            <a href="{{ .Site.BlogRootURL }}" title="{{ .Site.Name }}"
+               class="text-white weight-normal">{{ .Site.Name }}</a>
         </span><span id="menu-image-button" class="flex ml-auto my-auto icon-wrapper cursor-pointer">
             <img src="/menu.svg" alt="menu" />
         </span>
@@ -15,7 +15,7 @@
         </div>
         <span class="text-sm md:text-base md:py-6">{{ .Title }}</span>
         <div>
-            <a class="flex" href="{{ .BlogSiteRootURL }}"><img class="logo" src="/logo-white.svg" alt="home" /></a>
+            <a class="flex" href="{{ .Site.BlogRootURL }}"><img class="logo" src="/logo-white.svg" alt="home" /></a>
         </div>
     </div>
 
@@ -30,11 +30,11 @@
             </h2>
             <menu class="list-none text-xl md:text-2xl">
                 <li>
-                    <a class="block mb-4" href="{{ .BlogSiteRootURL }}" title="Blog">blog home</a>
+                    <a class="block mb-4" href="{{ .Site.BlogRootURL }}" title="Blog">blog home</a>
                 </li>
-                <li><a class="block mb-4" href="{{ .BaseSiteRootURL }}">sewera.dev</a></li>
+                <li><a class="block mb-4" href="{{ .Site.BaseRootURL }}">sewera.dev</a></li>
                 <li>
-                    <a class="block mb-4" href="{{ .GithubProfileURL }}" target="_blank" title="My Github">github
+                    <a class="block mb-4" href="{{ .Site.GithubProfileURL }}" target="_blank" title="My Github">github
                         {{/*                <Icon*/}}
                         {{/*                        cl={cx('inline-block',*/}}
                         {{/*                'align-super', 'ml-0.5')}*/}}
@@ -47,7 +47,7 @@
                     <a
                             class="block mb-4"
                             rel="me"
-                            href="{{ .MastodonProfileURL }}"
+                            href="{{ .Site.MastodonProfileURL }}"
                             target="_blank"
                             title="Mastodon profile"
                     >mastodon

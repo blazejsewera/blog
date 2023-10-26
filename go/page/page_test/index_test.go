@@ -29,7 +29,11 @@ func TestIndex(t *testing.T) {
 			},
 		}
 
-		rendered := page.Index().Render(props)
+		rendered, err := page.Index().Render(props)
+
+		if err != nil {
+			t.Fatalf("unexpected error: %s", err)
+		}
 
 		if bytes.Contains(rendered, templates.ErrorBytes) {
 			t.Errorf(templates.ErrorMessage)

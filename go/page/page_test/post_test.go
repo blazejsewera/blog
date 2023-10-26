@@ -26,7 +26,11 @@ func TestPost(t *testing.T) {
 			},
 		}
 
-		rendered := page.Post().Render(props)
+		rendered, err := page.Post().Render(props)
+
+		if err != nil {
+			t.Fatalf("unexpected error: %s", err)
+		}
 
 		if bytes.Contains(rendered, templates.ErrorBytes) {
 			t.Errorf(templates.ErrorMessage)

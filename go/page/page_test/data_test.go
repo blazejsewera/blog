@@ -51,7 +51,6 @@ var headerProps = meta.HeaderProps{
 	Author:         headerData["author"],
 	License:        headerData["license"],
 	Language:       headerData["language"],
-	SiteName:       headerData["siteName"],
 	Abstract:       headerData["abstract"],
 	Keywords:       []string{headerData["keyword1"], headerData["keyword2"]},
 	ImgURL:         template.URL(headerData["imgURL"]),

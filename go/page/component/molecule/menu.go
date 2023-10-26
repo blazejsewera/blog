@@ -1,26 +1,21 @@
 package molecule
 
 import (
-	"github.com/blazejsewera/blog/constants"
-	"html/template"
+	"github.com/blazejsewera/blog/domain"
 )
 
 type MenuProps struct {
-	Title              string
-	SiteName           string
-	BlogSiteRootURL    template.URL
-	BaseSiteRootURL    template.URL
-	GithubProfileURL   template.URL
-	MastodonProfileURL template.URL
+	Title string
 }
 
-func MenuPropsWithTitle(title string) MenuProps {
-	return MenuProps{
-		Title:              title,
-		SiteName:           constants.SiteName,
-		BlogSiteRootURL:    constants.BlogSiteRootURL,
-		BaseSiteRootURL:    constants.BaseSiteRootURL,
-		GithubProfileURL:   constants.GithubProfileURL,
-		MastodonProfileURL: constants.MastodonProfileURL,
-	}
+func (p MenuProps) Site() domain.Site {
+	return domain.DefaultSite
+}
+
+func MenuPropsOf(title string) MenuProps {
+	return MenuProps{title}
+}
+
+func MenuPropsFromDomain(m domain.ArticleMetadata) MenuProps {
+	return MenuProps{m.Title}
 }

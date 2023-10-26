@@ -20,6 +20,6 @@ func Index() *IndexTemplate {
 	return &IndexTemplate{templates.ParseAll()}
 }
 
-func (t *IndexTemplate) Render(props IndexProps) []byte {
+func (t *IndexTemplate) Render(props IndexProps) ([]byte, error) {
 	return t.t.Render("Index", props)
 }
