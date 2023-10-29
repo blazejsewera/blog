@@ -1,8 +1,10 @@
 package templates
 
-func require(s string) string {
+import "fmt"
+
+func require(s string) (string, error) {
 	if s == "" {
-		panic("require: value was empty")
+		return "", fmt.Errorf("require: value was empty")
 	}
-	return s
+	return s, nil
 }
