@@ -29,6 +29,19 @@ func ParseAll() *Template {
 	return &Template{tt}
 }
 
+func ParseSingle(fileSuffix string) *Template {
+	toParse, err := files.FindBySuffix(pageDir, fileSuffix)
+	if err != nil {
+		panic(fmt.Errorf("templates: parse all: %w", err))
+	}
+
+	tt, err := template.ParseFiles(toParse...)
+	if err != nil {
+		panic(fmt.Errorf("templates: parse all: %w", err))
+	}
+	return &Template{tt}
+}
+
 func (t *Template) Render(templateName string, data any) ([]byte, error) {
 	buf := &bytes.Buffer{}
 	err := t.ExecuteTemplate(buf, templateName, data)

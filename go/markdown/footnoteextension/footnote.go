@@ -1,6 +1,7 @@
 package footnoteextension
 
 import (
+	"github.com/blazejsewera/blog/internal/templates"
 	"github.com/yuin/goldmark"
 	goldmarkast "github.com/yuin/goldmark/ast"
 	goldmarkextension "github.com/yuin/goldmark/extension"
@@ -42,8 +43,16 @@ func NewFootnoteHTMLRenderer() *FootnoteHTMLRenderer {
 	return &FootnoteHTMLRenderer{internal: goldmarkextension.NewFootnoteHTMLRenderer(
 		goldmarkextension.WithFootnoteLinkClass([]byte("footnote-link")),
 		goldmarkextension.WithFootnoteBacklinkClass([]byte("footnote-backlink")),
-		goldmarkextension.WithFootnoteBacklinkHTML([]byte("[show in text]")),
+		goldmarkextension.WithFootnoteBacklinkHTML(backlinkIcon()),
 	)}
+}
+
+func backlinkIcon() []byte {
+	icon, err := templates.ParseSingle("backlink-icon.html.tmpl").Render("BacklinkIcon", nil)
+	if err != nil {
+		panic(err)
+	}
+	return icon
 }
 
 func (r *FootnoteHTMLRenderer) RegisterFuncs(reg goldmarkrenderer.NodeRendererFuncRegisterer) {
