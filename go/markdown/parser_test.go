@@ -30,7 +30,7 @@ Some text.
 <p>Some quote<sup id="fnref:1"><a href="#fn:1" class="footnote-link" role="doc-noteref">1</a></sup></p>
 </blockquote>
 <div class="footnotes" role="doc-endnotes">
-<hr>
+<h2 id="footnote-label">Footnotes</h2>
 <ol>
 <li id="fn:1">
 <p>Some footnote&#160;<a href="#fnref:1" class="footnote-backlink" role="doc-backlink">[show in text]</a></p>

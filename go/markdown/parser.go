@@ -3,6 +3,7 @@ package markdown
 import (
 	"bytes"
 	"fmt"
+	"github.com/blazejsewera/blog/markdown/footnoteextension"
 	"io"
 	"os"
 	"path/filepath"
@@ -67,11 +68,7 @@ func parse(markdownReader io.Reader) (html []byte, frMetadata frontmatter.Frontm
 			goldmarkextension.GFM,
 			goldmarkextension.Typographer,
 			goldmarkextension.DefinitionList,
-			goldmarkextension.NewFootnote(
-				goldmarkextension.WithFootnoteLinkClass([]byte("footnote-link")),
-				goldmarkextension.WithFootnoteBacklinkClass([]byte("footnote-backlink")),
-				goldmarkextension.WithFootnoteBacklinkHTML([]byte("[show in text]")),
-			),
+			footnoteextension.NewFootnote(),
 			goldmarkhighlighting.NewHighlighting(
 				goldmarkhighlighting.WithStyle("catppuccin-mocha"),
 				goldmarkhighlighting.WithFormatOptions(
