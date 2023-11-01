@@ -3,7 +3,6 @@ package page_test
 import (
 	"github.com/blazejsewera/blog/domain"
 	"github.com/blazejsewera/blog/internal/times"
-	"github.com/blazejsewera/blog/page/component/meta"
 	"html/template"
 )
 
@@ -45,7 +44,7 @@ var rawContent = []byte(`# An article
 
 Sample text.`)
 
-var headerProps = meta.HeaderProps{
+var articleMetadata = domain.ArticleMetadata{
 	Title:          headerData["title"],
 	Date:           times.Parse(headerData["date"]),
 	Author:         headerData["author"],

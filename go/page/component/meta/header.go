@@ -1,6 +1,7 @@
 package meta
 
 import (
+	"github.com/blazejsewera/blog/domain"
 	"github.com/blazejsewera/blog/internal/times"
 	"html/template"
 	"strings"
@@ -25,4 +26,21 @@ func (p HeaderProps) ISODate() string {
 
 func (p HeaderProps) CommaSeparatedKeywords() string {
 	return strings.Join(p.Keywords, ", ")
+}
+
+func HeaderPropsFromDomain(metadata domain.ArticleMetadata) HeaderProps {
+	site := domain.DefaultSite
+
+	return HeaderProps{
+		Title:          metadata.Title,
+		Date:           metadata.Date,
+		Author:         metadata.Author,
+		License:        metadata.License,
+		Language:       metadata.Language,
+		SiteName:       site.Name,
+		Abstract:       metadata.Abstract,
+		Keywords:       metadata.Keywords,
+		ImgURL:         metadata.ImgURL,
+		ImgDescription: metadata.ImgDescription,
+	}
 }

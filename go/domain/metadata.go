@@ -30,3 +30,22 @@ type Update struct {
 func (i ArticleMetadata) ShortDate() string {
 	return i.Date.ShortDate()
 }
+
+var defaultValues = ArticleMetadata{
+	Author:   "Blazej Sewera",
+	Language: "en-US",
+	License:  "CC BY 4.0",
+}
+
+func FillDefaultIfEmpty(metadata ArticleMetadata) ArticleMetadata {
+	if metadata.Author == "" {
+		metadata.Author = defaultValues.Author
+	}
+	if metadata.Language == "" {
+		metadata.Language = defaultValues.Language
+	}
+	if metadata.License == "" {
+		metadata.License = defaultValues.License
+	}
+	return metadata
+}

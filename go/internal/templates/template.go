@@ -39,7 +39,6 @@ func (t *Template) Render(templateName string, data any) ([]byte, error) {
 }
 
 func (t *Template) definedTemplates() string {
-	t.DefinedTemplates()
 	s := strings.Replace(t.DefinedTemplates(), "; ", ";\n", 1)
 	return strings.ReplaceAll(s, "\", ", "\",\n")
 }

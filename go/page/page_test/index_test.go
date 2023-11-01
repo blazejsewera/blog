@@ -17,7 +17,7 @@ func TestIndex(t *testing.T) {
 	t.Run("renders properly", func(t *testing.T) {
 		data := maps.Union(headerData, listingData)
 		props := page.IndexProps{
-			Header: headerProps,
+			Metadata: articleMetadata,
 			Listing: section.ListingProps{
 				Title:          data["title"],
 				TabTitle:       data["tabTitle"],

@@ -1,9 +1,9 @@
 package page
 
 import (
+	"github.com/blazejsewera/blog/domain"
 	"github.com/blazejsewera/blog/internal/templates"
 	"github.com/blazejsewera/blog/page/component/meta"
-	"github.com/blazejsewera/blog/page/component/molecule"
 	"github.com/blazejsewera/blog/page/component/section"
 )
 
@@ -12,9 +12,20 @@ type PostTemplate struct {
 }
 
 type PostProps struct {
-	Header  meta.HeaderProps
-	Menu    molecule.MenuProps
-	Article section.ArticleProps
+	Metadata   domain.ArticleMetadata
+	RawContent []byte
+}
+
+func (p PostProps) Header() meta.HeaderProps {
+	return meta.HeaderPropsFromDomain(p.Metadata)
+}
+
+func (p PostProps) Title() section.TitleProps {
+	return section.TitlePropsFromDomain(p.Metadata)
+}
+
+func (p PostProps) Article() section.ArticleProps {
+	return section.ArticlePropsFromDomainAndRaw(p.Metadata, p.RawContent)
 }
 
 func Post() *PostTemplate {

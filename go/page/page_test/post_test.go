@@ -6,7 +6,6 @@ import (
 	"github.com/blazejsewera/blog/internal/templates"
 	"github.com/blazejsewera/blog/internal/workingdir"
 	"github.com/blazejsewera/blog/page"
-	"github.com/blazejsewera/blog/page/component/section"
 	"testing"
 )
 
@@ -17,13 +16,8 @@ func TestPost(t *testing.T) {
 		data := maps.Union(headerData, articleData)
 
 		props := page.PostProps{
-			Header: headerProps,
-			Article: section.ArticleProps{
-				Draft:            true,
-				DraftDescription: data["draftDescription"],
-				Abstract:         data["abstract"],
-				RawContent:       rawContent,
-			},
+			Metadata:   articleMetadata,
+			RawContent: rawContent,
 		}
 
 		rendered, err := page.Post().Render(props)

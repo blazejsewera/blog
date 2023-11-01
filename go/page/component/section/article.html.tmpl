@@ -1,8 +1,8 @@
+{{- /*gotype: github.com/blazejsewera/blog/page/component/article.Props*/ -}}
 {{ define "Article" }}
     <article>
         <div class="post-wrapper flex">
             <div id="post-content" class="post-content">
-                {{- /*gotype: github.com/blazejsewera/blog/page/component/article.Props*/ -}}
                 {{ if .Draft }}
                     <section class="draft">
                         {{ template "DraftInfo" }}
@@ -22,7 +22,7 @@
 
 {{ define "Article.Style" }}
     <style>
-        section.abstract {
+        .abstract {
             max-width: 37rem;
             margin: 0 4rem 2rem 4rem;
             line-height: 1.55;
@@ -31,7 +31,7 @@
         }
 
         @media (max-width: 767px) {
-            section.abstract {
+            .abstract {
                 margin: 0 2rem 2rem 2rem;
             }
         }
@@ -120,7 +120,7 @@
         .post-content > ul,
         .post-content > ol,
         .post-content > table,
-        .post-content > section.footnotes > * {
+        .post-content > .footnotes > * {
             max-width: 37rem;
             margin: 0 4rem 1.2rem 4rem;
             line-height: 1.55;
@@ -134,7 +134,7 @@
 
         .post-content a:not([href*='blog.sewera.dev']):not([href^='#']):not([href^='/'])::after {
             content: '';
-            background: url('/icon/article-external-link.svg');
+            background: url('/icon/external-link-blue.svg');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center center;
@@ -158,23 +158,23 @@
             border-top: 1px solid hsl(0, 0%, 40%);
         }
 
-        .post-content section.footnotes {
+        .post-content .footnotes {
             padding-top: 1rem;
             margin-top: 4rem;
             border-top: 1px solid hsl(0, 0%, 40%);
         }
 
-        .post-content section.footnotes > h2,
-        section.abstract > h2 {
+        .post-content .footnotes > h2,
+        .abstract > h2 {
             margin-bottom: 1rem;
             font-size: 36px;
         }
 
-        .post-content section.footnotes p {
+        .post-content .footnotes p {
             margin: 0;
         }
 
-        .post-content section.footnotes > ol {
+        .post-content .footnotes > ol {
             list-style-position: outside;
             padding-left: 0;
         }
@@ -284,13 +284,13 @@
             .post-content > ul,
             .post-content > ol,
             .post-content > table,
-            .post-content > section.footnotes > * {
+            .post-content > .footnotes > * {
                 line-height: 1.6;
                 letter-spacing: 0.021em;
             }
 
-            .post-content > section.footnotes > h2,
-            section.abstract > h2 {
+            .post-content > .footnotes > h2,
+            .abstract > h2 {
                 font-size: 24px;
             }
 
@@ -341,15 +341,15 @@
             .post-content > ul,
             .post-content > ol,
             .post-content > table,
-            .post-content > section.footnotes > * {
+            .post-content > .footnotes > * {
                 margin: 0 30px 1.2rem 30px;
                 max-width: 37rem;
                 line-height: 1.5;
                 letter-spacing: 0.021em;
             }
 
-            .post-content > section.footnotes > h2,
-            section.abstract > h2 {
+            .post-content > .footnotes > h2,
+            .abstract > h2 {
                 margin-bottom: 1rem;
                 font-size: 22px;
             }

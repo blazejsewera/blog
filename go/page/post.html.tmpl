@@ -5,13 +5,13 @@
     <head>
         {{ template "Header" .Header }}
         {{ template "Article.Style" .Article }}
-        {{ template "Menu.Style" .Menu }}
-        {{ template "Menu.Script" .Menu }}
+        {{ template "Title.Style" .Title }}
         <title>{{ .Header.Title }}</title>
     </head>
     <body>
-    {{ template "Menu" .Menu }}
+    {{ template "Title" .Title }}
     {{ template "Article" .Article }}
+    {{ template "Title.Script" .Title }}
     </body>
     </html>
 {{ end }}

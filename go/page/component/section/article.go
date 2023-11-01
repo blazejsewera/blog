@@ -1,6 +1,7 @@
 package section
 
 import (
+	"github.com/blazejsewera/blog/domain"
 	"github.com/blazejsewera/blog/page/component/molecule"
 	"html/template"
 )
@@ -18,4 +19,13 @@ func (p ArticleProps) Content() template.HTML {
 
 func (p ArticleProps) DraftProps() molecule.DraftProps {
 	return molecule.DraftProps{DraftDescription: p.DraftDescription}
+}
+
+func ArticlePropsFromDomainAndRaw(metadata domain.ArticleMetadata, rawContent []byte) ArticleProps {
+	return ArticleProps{
+		Draft:            metadata.Draft,
+		DraftDescription: metadata.DraftDescription,
+		Abstract:         metadata.Abstract,
+		RawContent:       rawContent,
+	}
 }

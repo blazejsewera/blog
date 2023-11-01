@@ -5,24 +5,26 @@
             <a href="{{ .Site.BlogRootURL }}" title="{{ .Site.Name }}"
                class="text-white weight-normal">{{ .Site.Name }}</a>
         </span><span id="menu-image-button" class="flex ml-auto my-auto icon-wrapper cursor-pointer">
-            <img src="/menu.svg" alt="menu" />
+            <img src="/icon/menu.svg" alt="menu" />
         </span>
     </div>
 
     <div id="ribbon" class="bg-neutral-700 text-white">
         <div id="menu-ribbon-button" class="flex cursor-pointer">
-            <img src="/menu.svg" alt="menu" />
+            <img src="/icon/menu.svg" alt="menu" />
         </div>
         <span class="text-sm md:text-base md:py-6">{{ .Title }}</span>
         <div>
-            <a class="flex" href="{{ .Site.BlogRootURL }}"><img class="logo" src="/logo-white.svg" alt="home" /></a>
+            <a class="flex" href="{{ .Site.BlogRootURL }}">
+                <img class="logo" src="/icon/logo-white.svg" alt="home" />
+            </a>
         </div>
     </div>
 
     <div id="menu" class="flex fixed top-0 h-screen p-12 bg-neutral-700 text-white">
         <span id="menu-close-button"
               class="flex absolute top-8 right-8 md:top-12 md:left-12 icon-wrapper cursor-pointer">
-            <img src="/close.svg" alt="close" />
+            <img src="/icon/close.svg" alt="close" />
         </span>
         <div class="my-auto">
             <h2 class="font-geometric text-2xl md:text-3xl xl:text-4xl my-6">
@@ -35,12 +37,7 @@
                 <li><a class="block mb-4" href="{{ .Site.BaseRootURL }}">sewera.dev</a></li>
                 <li>
                     <a class="block mb-4" href="{{ .Site.GithubProfileURL }}" target="_blank" title="My Github">github
-                        {{/*                <Icon*/}}
-                        {{/*                        cl={cx('inline-block',*/}}
-                        {{/*                'align-super', 'ml-0.5')}*/}}
-                        {{/*                size="1rem"*/}}
-                        {{/*                icon="external-link"*/}}
-                        {{/*                />*/}}
+                        {{ template "ExternalLinkIcon" }}
                     </a>
                 </li>
                 <li>
@@ -51,12 +48,7 @@
                             target="_blank"
                             title="Mastodon profile"
                     >mastodon
-                        {{/*                <Icon*/}}
-                        {{/*                        cl={cx('inline-block',*/}}
-                        {{/*                'align-super', 'ml-0.5')}*/}}
-                        {{/*                size="1rem"*/}}
-                        {{/*                icon="external-link"*/}}
-                        {{/*                />*/}}
+                        {{ template "ExternalLinkIcon" }}
                     </a>
                 </li>
             </menu>
