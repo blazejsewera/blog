@@ -3,6 +3,7 @@ package markdown
 import (
 	"github.com/blazejsewera/blog/domain"
 	"github.com/blazejsewera/blog/internal/times"
+	"github.com/blazejsewera/blog/internal/workingdir"
 	"github.com/stretchr/testify/assert"
 	"html/template"
 	"strings"
@@ -10,6 +11,8 @@ import (
 )
 
 func TestMarkdown(t *testing.T) {
+	workingdir.SetToProjectRoot()
+
 	sampleMdWithFrontmatter := `---
 title: a title
 date: 2023-03-03

@@ -10,6 +10,7 @@ type ArticleMetadata struct {
 	Date             times.Time
 	URL              template.URL
 	SourceFile       string
+	TargetFile       string
 	Subtitle         string
 	Updates          []Update
 	Draft            bool
@@ -23,13 +24,17 @@ type ArticleMetadata struct {
 	ImgDescription   string
 }
 
+func (m ArticleMetadata) Equal(other ArticleMetadata) bool {
+	return m.SourceFile == other.SourceFile
+}
+
 type Update struct {
 	Date    times.Time
 	DiffURL string
 }
 
-func (i ArticleMetadata) ShortDate() string {
-	return i.Date.ShortDate()
+func (m ArticleMetadata) ShortDate() string {
+	return m.Date.ShortDate()
 }
 
 var defaultValues = ArticleMetadata{
