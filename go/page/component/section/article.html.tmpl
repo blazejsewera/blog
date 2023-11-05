@@ -71,10 +71,7 @@
         .post-content h6 {
             font-family: 'Euclid Circular B', Futura, 'Trebuchet MS', Arial, sans-serif;
             line-height: 1em;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            margin-left: 4rem;
-            margin-right: 4rem;
+            margin: 2rem 4rem 1rem;
             max-width: 37rem;
             color: hsl(0, 0%, 35%);
         }
@@ -132,10 +129,8 @@
 
         .post-content a:not([href*='blog.sewera.dev']):not([href^='#']):not([href^='/'])::after {
             content: '';
-            background: url('/icon/external-link-blue.svg');
             background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center center;
+            background: url('/icon/external-link-blue.svg') no-repeat center center;
             margin-left: 0.1em;
             padding-top: 0.7em;
             padding-right: 0.7em;

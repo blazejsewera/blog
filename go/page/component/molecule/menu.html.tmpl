@@ -210,45 +210,47 @@
 
 {{ define "Menu.Script" }}
     <script>
-      const menuImageButton = document.getElementById('menu-image-button')
-      const menu = document.getElementById('menu')
-      const menuCloseButton = document.getElementById('menu-close-button')
-      const ribbon = document.getElementById('ribbon')
-      const menuRibbonButton = document.getElementById('menu-ribbon-button')
-      const menuLinks = document.getElementById('menu-links')
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuImageButton = document.getElementById('menu-image-button'),
+                menu = document.getElementById('menu'),
+                menuCloseButton = document.getElementById('menu-close-button'),
+                ribbon = document.getElementById('ribbon'),
+                menuRibbonButton = document.getElementById('menu-ribbon-button'),
+                menuLinks = document.getElementById('menu-links')
 
-      document.addEventListener('click', () => {
-        menu?.classList.remove('visible')
-      })
+            document.addEventListener('click', () => {
+                menu?.classList.remove('visible')
+            })
 
-      menu?.addEventListener('click', e => {
-        e.stopPropagation()
-      })
+            menu?.addEventListener('click', e => {
+                e.stopPropagation()
+            })
 
-      menuImageButton?.addEventListener('click', e => {
-        e.stopPropagation()
-        menu?.classList.add('visible')
-      })
+            menuImageButton?.addEventListener('click', e => {
+                e.stopPropagation()
+                menu?.classList.add('visible')
+            })
 
-      menuRibbonButton?.addEventListener('click', e => {
-        e.stopPropagation()
-        menu?.classList.add('visible')
-      })
+            menuRibbonButton?.addEventListener('click', e => {
+                e.stopPropagation()
+                menu?.classList.add('visible')
+            })
 
-      menuCloseButton?.addEventListener('click', () => {
-        menu?.classList.remove('visible')
-      })
+            menuCloseButton?.addEventListener('click', () => {
+                menu?.classList.remove('visible')
+            })
 
-      menuLinks?.addEventListener('click', () => {
-        menu?.classList.remove('visible')
-      })
+            menuLinks?.addEventListener('click', () => {
+                menu?.classList.remove('visible')
+            })
 
-      window.addEventListener('scroll', () => {
-        if (window.scrollY >= 100) {
-          ribbon?.classList.add('visible')
-        } else {
-          ribbon?.classList.remove('visible')
-        }
-      })
+            window.addEventListener('scroll', () => {
+                if (window.scrollY >= 100) {
+                    ribbon?.classList.add('visible')
+                } else {
+                    ribbon?.classList.remove('visible')
+                }
+            })
+        })
     </script>
 {{ end }}
