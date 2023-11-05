@@ -9,6 +9,7 @@ type ArticleMetadata struct {
 	Title            string
 	Date             times.Time
 	URL              template.URL
+	SourceFile       string
 	Subtitle         string
 	Updates          []Update
 	Draft            bool

@@ -3,6 +3,7 @@ package markdown
 import (
 	"bytes"
 	"fmt"
+	"github.com/blazejsewera/blog/constants"
 	"github.com/blazejsewera/blog/markdown/footnoteextension"
 	"io"
 	"os"
@@ -34,7 +35,9 @@ func (p *Parser) ParseFile(markdownFilename string) (html []byte, metadata domai
 
 func (p *Parser) parseFile(markdownReader io.Reader, markdownFilename string) (html []byte, metadata domain.ArticleMetadata, targetFilename string) {
 	html, frMetadata := parse(markdownReader)
-	metadata = frMetadata.ToArticleMetadata(p.urlFromMdFilename(markdownFilename))
+	metadata = frMetadata.ToArticleMetadata(
+		sourceFileFromMdFilename(markdownFilename),
+		p.urlFromMdFilename(markdownFilename))
 	return html, metadata, fileFromMdFilename(markdownFilename)
 }
 
@@ -45,9 +48,14 @@ func (p *Parser) urlFromMdFilename(markdownFilename string) string {
 	return strings.TrimSuffix(posix, "/index.html")
 }
 
+func sourceFileFromMdFilename(markdownFilename string) string {
+	trimmed := strings.TrimPrefix(markdownFilename, constants.DistDir)
+	return constants.SiteDir + trimmed
+}
+
 func fileFromMdFilename(markdownFilename string) string {
-	trimmed := strings.TrimSuffix(markdownFilename, ".md")
-	return trimmed + ".html"
+	trimmed := strings.TrimSuffix(markdownFilename, constants.MdExt)
+	return trimmed + constants.HtmlExt
 }
 
 func parse(markdownReader io.Reader) (html []byte, frMetadata frontmatter.Frontmatter) {

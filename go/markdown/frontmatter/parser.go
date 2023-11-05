@@ -39,7 +39,7 @@ var DefaultFrMetadata = Frontmatter{
 	Language: "en-US",
 }
 
-func (f Frontmatter) ToArticleMetadata(url string) domain.ArticleMetadata {
+func (f Frontmatter) ToArticleMetadata(sourceFile, url string) domain.ArticleMetadata {
 	return domain.ArticleMetadata{
 		Title:            f.Title,
 		Subtitle:         f.Subtitle,
@@ -54,6 +54,7 @@ func (f Frontmatter) ToArticleMetadata(url string) domain.ArticleMetadata {
 		ImgURL:           template.URL(f.ImgURL),
 		ImgDescription:   f.ImgDescription,
 		URL:              template.URL(url),
+		SourceFile:       sourceFile,
 		Updates:          UpdatesToDomain(f.Updates),
 	}
 }

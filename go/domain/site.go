@@ -8,6 +8,7 @@ type Site struct {
 	BaseRootURL        template.URL
 	GithubProfileURL   template.URL
 	MastodonProfileURL template.URL
+	BlogSourceRootURL  string
 }
 
 const (
@@ -16,6 +17,7 @@ const (
 	DefaultSiteBaseRootURL        = "https://www.sewera.dev"
 	DefaultSiteGithubProfileURL   = "https://github.com/sewera"
 	DefaultSiteMastodonProfileURL = "https://hachyderm.io/@sewera"
+	DefaultSiteBlogSourceRootURL  = "https://github.com/blazejsewera/blog/tree/master/"
 )
 
 var DefaultSite = Site{
@@ -24,4 +26,5 @@ var DefaultSite = Site{
 	BaseRootURL:        DefaultSiteBaseRootURL,
 	GithubProfileURL:   DefaultSiteGithubProfileURL,
 	MastodonProfileURL: DefaultSiteMastodonProfileURL,
+	BlogSourceRootURL:  DefaultSiteBlogSourceRootURL,
 }

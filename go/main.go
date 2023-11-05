@@ -30,6 +30,7 @@ func main() {
 
 	parser := &markdown.Parser{WorkingDir: constants.DistDir}
 	htmlBytes, metadata, targetFilename := parser.ParseFile(filePaths[0])
+	fmt.Printf("%s\n", metadata.URL)
 	t := page.Post()
 	rendered, err := t.Render(page.PropsFrom(domain.FillDefaultIfEmpty(metadata), htmlBytes))
 	if err != nil {
