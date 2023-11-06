@@ -26,7 +26,7 @@ type ArticleMetadata struct {
 	Next             PartialMetadata
 }
 
-func (m ArticleMetadata) Equal(other ArticleMetadata) bool {
+func (m ArticleMetadata) Equals(other ArticleMetadata) bool {
 	return m.SourceFile == other.SourceFile
 }
 

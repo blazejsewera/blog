@@ -17,7 +17,8 @@ import (
 )
 
 type Parser struct {
-	WorkingDir string
+	WorkingDir  string
+	AllArticles []domain.ArticleMetadata
 }
 
 func (p *Parser) ParseFile(markdownFilename string) (html []byte, metadata domain.ArticleMetadata, targetFilename string) {
@@ -31,8 +32,17 @@ func (p *Parser) ParseFile(markdownFilename string) (html []byte, metadata domai
 
 func (p *Parser) parseFile(markdownReader io.Reader, markdownFilename string) (html []byte, metadata domain.ArticleMetadata, targetFilename string) {
 	html, frMetadata := parse(markdownReader)
-	metadata = frMetadata.ToArticleMetadata(p.WorkingDir, markdownFilename)
+	metadata = p.findMetadata(frMetadata.ToArticleMetadata(p.WorkingDir, markdownFilename))
 	return html, metadata, metadata.TargetFile
+}
+
+func (p *Parser) findMetadata(metadata domain.ArticleMetadata) domain.ArticleMetadata {
+	for _, article := range p.AllArticles {
+		if article.Equals(metadata) {
+			return article
+		}
+	}
+	return metadata
 }
 
 func parse(markdownReader io.Reader) (html []byte, frMetadata frontmatter.Frontmatter) {
