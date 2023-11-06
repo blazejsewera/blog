@@ -28,7 +28,7 @@ func (s *Scanner) ScanMetadata() []domain.ArticleMetadata {
 	slices.SortFunc(result, func(a, b domain.ArticleMetadata) int {
 		return a.Date.Compare(b.Date)
 	})
-	return result
+	return linkArticlesCyclic(result)
 }
 
 func scanFile(workingDir, markdownFilename string) domain.ArticleMetadata {
@@ -40,4 +40,26 @@ func scanFile(workingDir, markdownFilename string) domain.ArticleMetadata {
 
 	frMetadata, _ := frontmatter.SplitMetadataAndMarkdown(file)
 	return frMetadata.ToArticleMetadata(workingDir, markdownFilename)
+}
+
+func linkArticlesCyclic(articles []domain.ArticleMetadata) []domain.ArticleMetadata {
+	limit := len(articles)
+
+	previous := func(i int) domain.ArticleMetadata {
+		if i == 0 {
+			return articles[limit-1]
+		}
+		return articles[i-1]
+	}
+	next := func(i int) domain.ArticleMetadata {
+		if i == limit-1 {
+			return articles[0]
+		}
+		return articles[i+1]
+	}
+	for i := 0; i < limit; i++ {
+		articles[i].Previous = domain.PartialFromArticleMetadata(previous(i))
+		articles[i].Next = domain.PartialFromArticleMetadata(next(i))
+	}
+	return articles
 }

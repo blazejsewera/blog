@@ -22,6 +22,8 @@ type ArticleMetadata struct {
 	License          string
 	ImgURL           template.URL
 	ImgDescription   string
+	Previous         PartialMetadata
+	Next             PartialMetadata
 }
 
 func (m ArticleMetadata) Equal(other ArticleMetadata) bool {
@@ -35,6 +37,28 @@ type Update struct {
 
 func (m ArticleMetadata) ShortDate() string {
 	return m.Date.ShortDate()
+}
+
+type PartialMetadata struct {
+	Title          string
+	Subtitle       string
+	Author         string
+	ImgURL         template.URL
+	ImgDescription string
+	Date           times.Time
+	URL            template.URL
+}
+
+func PartialFromArticleMetadata(m ArticleMetadata) PartialMetadata {
+	return PartialMetadata{
+		Title:          m.Title,
+		Subtitle:       m.Subtitle,
+		Author:         m.Author,
+		ImgURL:         m.ImgURL,
+		ImgDescription: m.ImgDescription,
+		Date:           m.Date,
+		URL:            m.URL,
+	}
 }
 
 var defaultValues = ArticleMetadata{
