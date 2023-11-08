@@ -35,8 +35,8 @@ func TestMarkdown(t *testing.T) {
 		}
 		expectedTargetFilename := "dist/test-article/index.html"
 
+		assert.EqualFields(t, expectedMetadata, metadata, "Title", "URL", "Previous")
 		assert.Equal(t, expectedHTML, string(output))
-		assert.Equal(t, expectedMetadata, metadata)
 		assert.Equal(t, expectedTargetFilename, targetFilename)
 	})
 
