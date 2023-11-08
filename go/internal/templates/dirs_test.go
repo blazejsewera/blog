@@ -1,7 +1,7 @@
 package templates
 
 import (
-	"github.com/stretchr/testify/assert"
+	"github.com/blazejsewera/blog/internal/assert"
 	"testing"
 )
 

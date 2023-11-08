@@ -2,8 +2,8 @@ package markdown
 
 import (
 	"github.com/blazejsewera/blog/domain"
+	"github.com/blazejsewera/blog/internal/assert"
 	"github.com/blazejsewera/blog/internal/times"
-	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
@@ -39,7 +39,7 @@ func TestScanner(t *testing.T) {
 
 		actual := s.ScanMetadata()
 
-		if assert.Len(t, actual, 4) {
+		if assert.Len(t, 4, actual) {
 			for i, ex := range expected {
 				ac := actual[i]
 				assert.Zero(t, ex.Date.Compare(ac.Date))

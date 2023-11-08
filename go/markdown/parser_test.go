@@ -2,9 +2,9 @@ package markdown
 
 import (
 	"github.com/blazejsewera/blog/domain"
+	"github.com/blazejsewera/blog/internal/assert"
 	"github.com/blazejsewera/blog/internal/files"
 	"github.com/blazejsewera/blog/internal/times"
-	"github.com/stretchr/testify/assert"
 	"html/template"
 	"strings"
 	"testing"
