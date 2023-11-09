@@ -12,26 +12,39 @@ import (
 )
 
 type Scanner struct {
+	// WorkingDir is the base directory from which the Scanner starts looking for Markdown files.
+	// It is _site by default.
 	WorkingDir string
 }
 
-func (s *Scanner) ScanMetadata() []domain.ArticleMetadata {
-	filePaths, err := files.FindBySuffix(s.WorkingDir, constants.MdExt)
+func (s *Scanner) ScanMetadata() (linkedMetadata []domain.ArticleMetadata, sourceFiles []string) {
+	filePaths, err := files.FindBySuffix(s.WorkingDirectory(), constants.MdExt)
 	if err != nil {
 		panic(err)
 	}
-	var result []domain.ArticleMetadata
+	var articles []domain.ArticleMetadata
 	for _, markdownFilename := range filePaths {
-		result = append(result, scanFile(s.WorkingDir, markdownFilename))
+		articles = append(articles, scanFile(markdownFilename))
 	}
 
-	slices.SortFunc(result, func(a, b domain.ArticleMetadata) int {
+	slices.SortFunc(articles, func(a, b domain.ArticleMetadata) int {
 		return a.Date.Compare(b.Date)
 	})
-	return linkArticlesCyclic(result)
+
+	linkedMetadata = linkArticlesCyclic(articles)
+	sourceFiles = sources(linkedMetadata)
+	return linkedMetadata, sourceFiles
 }
 
-func scanFile(workingDir, markdownFilename string) domain.ArticleMetadata {
+func (s *Scanner) WorkingDirectory() string {
+	if s.WorkingDir == "" {
+		return "_site"
+	} else {
+		return s.WorkingDir
+	}
+}
+
+func scanFile(markdownFilename string) domain.ArticleMetadata {
 	file, err := os.Open(markdownFilename)
 	if err != nil {
 		panic(fmt.Errorf("markdown: parse file: %w", err))
@@ -39,7 +52,7 @@ func scanFile(workingDir, markdownFilename string) domain.ArticleMetadata {
 	defer must.Close(file)
 
 	frMetadata, _ := frontmatter.SplitMetadataAndMarkdown(file)
-	return frontmatter.ToArticleMetadata(frMetadata, workingDir, markdownFilename)
+	return frontmatter.ToArticleMetadata(frMetadata, markdownFilename)
 }
 
 func linkArticlesCyclic(articles []domain.ArticleMetadata) []domain.ArticleMetadata {
@@ -62,4 +75,12 @@ func linkArticlesCyclic(articles []domain.ArticleMetadata) []domain.ArticleMetad
 		articles[i].Next = domain.PartialFromArticleMetadata(next(i))
 	}
 	return articles
+}
+
+func sources(articles []domain.ArticleMetadata) []string {
+	var result []string
+	for _, article := range articles {
+		result = append(result, article.SourceFile)
+	}
+	return result
 }

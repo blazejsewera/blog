@@ -6,19 +6,18 @@ import (
 	"strings"
 )
 
-func urlFromMdFilename(workingDir, markdownFilename string) string {
-	trimmed := strings.TrimPrefix(markdownFilename, workingDir)
-	htmlFilename := targetFileFromMdFilename(trimmed)
+func urlFromMdFilename(markdownFilename string) string {
+	htmlFilename := bareTarget(markdownFilename)
 	posix := filepath.ToSlash(htmlFilename)
 	return strings.TrimSuffix(posix, "/index.html")
 }
 
-func sourceFileFromMdFilename(markdownFilename string) string {
-	trimmed := strings.TrimPrefix(markdownFilename, constants.DistDir)
-	return constants.SiteDir + trimmed
+func targetFileFromMdFilename(markdownFilename string) string {
+	return constants.DistDir + bareTarget(markdownFilename)
 }
 
-func targetFileFromMdFilename(markdownFilename string) string {
-	trimmed := strings.TrimSuffix(markdownFilename, constants.MdExt)
-	return trimmed + constants.HtmlExt
+func bareTarget(markdownFilename string) string {
+	trimmedOfSite := strings.TrimPrefix(markdownFilename, constants.SiteDir)
+	trimmedOfExt := strings.TrimSuffix(trimmedOfSite, constants.MdExt)
+	return trimmedOfExt + constants.HtmlExt
 }

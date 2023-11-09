@@ -37,7 +37,7 @@ func TestScanner(t *testing.T) {
 			},
 		}
 
-		actual := s.ScanMetadata()
+		actual, _ := s.ScanMetadata()
 
 		if assert.Len(t, 4, actual) {
 			for i, ex := range expected {

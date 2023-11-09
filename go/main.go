@@ -28,7 +28,7 @@ func main() {
 	}
 	fmt.Printf("%v\n\n", filePaths)
 
-	parser := &markdown.Parser{WorkingDir: constants.DistDir}
+	parser := &markdown.Parser{}
 	htmlBytes, metadata, targetFilename := parser.ParseFile(filePaths[0])
 	fmt.Printf("%s\n", metadata.URL)
 	t := page.Post()
