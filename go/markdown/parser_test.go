@@ -4,7 +4,6 @@ import (
 	"github.com/blazejsewera/blog/domain"
 	"github.com/blazejsewera/blog/internal/assert"
 	"github.com/blazejsewera/blog/internal/files"
-	"github.com/blazejsewera/blog/internal/times"
 	"html/template"
 	"strings"
 	"testing"
@@ -14,29 +13,37 @@ func TestMarkdown(t *testing.T) {
 	sampleMdWithFrontmatter := files.Read("parser_testdata/example.md")
 	expectedHTML := files.Read("parser_testdata/example.html")
 	t.Run("returns rendered HTML, metadata, target filename, and index.html-trimmed URL", func(t *testing.T) {
+		title := "a title"
+		sourceFile := "_site/test-article/index.md"
+		sourceInDist := "dist/test-article/index.md"
+		targetFile := "dist/test-article/index.html"
+		url := template.URL("/test-article")
+		previous := domain.PartialMetadata{Title: "previous title"}
+
 		parser := Parser{
 			WorkingDir: "dist",
 			AllArticles: []domain.ArticleMetadata{
 				{
-					Title:      "a title",
-					SourceFile: "_site/test-article/index.md",
-					Previous:   domain.PartialMetadata{Title: "previous title"},
+					Title:      title,
+					SourceFile: sourceFile,
+					TargetFile: targetFile,
+					URL:        url,
+					Previous:   previous,
 				},
 			},
 		}
 		input := strings.NewReader(sampleMdWithFrontmatter)
-		output, metadata, targetFilename := parser.parseFile(input, "dist/test-article/index.md")
+		output, metadata, targetFilename := parser.parseFile(input, sourceInDist)
 
 		expectedMetadata := domain.ArticleMetadata{
-			Title:    "a title",
-			Date:     times.Parse("2023-03-03"),
-			URL:      template.URL("/test-article"),
-			Previous: domain.PartialMetadata{Title: "previous title"},
+			Title:    title,
+			URL:      url,
+			Previous: previous,
 		}
 		expectedTargetFilename := "dist/test-article/index.html"
 
 		assert.EqualFields(t, expectedMetadata, metadata, "Title", "URL", "Previous")
-		assert.Equal(t, expectedHTML, string(output))
+		assert.EqualHTML(t, expectedHTML, output)
 		assert.Equal(t, expectedTargetFilename, targetFilename)
 	})
 

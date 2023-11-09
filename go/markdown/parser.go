@@ -32,7 +32,7 @@ func (p *Parser) ParseFile(markdownFilename string) (html []byte, metadata domai
 
 func (p *Parser) parseFile(markdownReader io.Reader, markdownFilename string) (html []byte, metadata domain.ArticleMetadata, targetFilename string) {
 	html, frMetadata := parse(markdownReader)
-	metadata = p.findMetadata(frMetadata.ToArticleMetadata(p.WorkingDir, markdownFilename))
+	metadata = p.findMetadata(frontmatter.ToArticleMetadata(frMetadata, p.WorkingDir, markdownFilename))
 	return html, metadata, metadata.TargetFile
 }
 

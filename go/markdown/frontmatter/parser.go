@@ -39,7 +39,7 @@ var DefaultFrMetadata = Frontmatter{
 	Language: "en-US",
 }
 
-func (f Frontmatter) ToArticleMetadata(workingDir, markdownFilename string) domain.ArticleMetadata {
+func ToArticleMetadata(f Frontmatter, workingDir, markdownFilename string) domain.ArticleMetadata {
 	sourceFile := sourceFileFromMdFilename(markdownFilename)
 	url := urlFromMdFilename(workingDir, markdownFilename)
 	targetFile := targetFileFromMdFilename(markdownFilename)

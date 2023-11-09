@@ -39,7 +39,7 @@ func scanFile(workingDir, markdownFilename string) domain.ArticleMetadata {
 	defer must.Close(file)
 
 	frMetadata, _ := frontmatter.SplitMetadataAndMarkdown(file)
-	return frMetadata.ToArticleMetadata(workingDir, markdownFilename)
+	return frontmatter.ToArticleMetadata(frMetadata, workingDir, markdownFilename)
 }
 
 func linkArticlesCyclic(articles []domain.ArticleMetadata) []domain.ArticleMetadata {
