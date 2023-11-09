@@ -4,10 +4,8 @@ import (
 	"bufio"
 	"bytes"
 	"errors"
-	"github.com/blazejsewera/blog/domain"
 	"github.com/blazejsewera/blog/internal/times"
 	"gopkg.in/yaml.v3"
-	"html/template"
 	"io"
 )
 
@@ -37,49 +35,6 @@ var DefaultFrMetadata = Frontmatter{
 	Author:   "Blazej Sewera",
 	License:  "CC-BY",
 	Language: "en-US",
-}
-
-func ToArticleMetadata(f Frontmatter, markdownFilename string) domain.ArticleMetadata {
-	sourceFile := markdownFilename
-	url := urlFromMdFilename(markdownFilename)
-	targetFile := targetFileFromMdFilename(markdownFilename)
-
-	return domain.ArticleMetadata{
-		Title:            f.Title,
-		Subtitle:         f.Subtitle,
-		Date:             f.Date,
-		Draft:            f.Draft,
-		DraftDescription: f.DraftDescription,
-		Author:           f.Author,
-		Abstract:         f.Abstract,
-		Keywords:         f.Keywords,
-		Language:         f.Language,
-		License:          f.License,
-		ImgURL:           template.URL(f.ImgURL),
-		ImgDescription:   f.ImgDescription,
-		URL:              template.URL(url),
-		SourceFile:       sourceFile,
-		TargetFile:       targetFile,
-		Updates:          UpdatesToDomain(f.Updates),
-	}
-}
-
-func UpdatesToDomain(uu []Update) []domain.Update {
-	if uu == nil {
-		return nil
-	}
-	result := make([]domain.Update, len(uu))
-	for i, u := range uu {
-		result[i] = u.ToDomain()
-	}
-	return result
-}
-
-func (u Update) ToDomain() domain.Update {
-	return domain.Update{
-		Date:    u.Date,
-		DiffURL: u.DiffURL,
-	}
 }
 
 func Unmarshal(markdown []byte) (frMetadata Frontmatter, stripped []byte, frMetaExists bool) {
