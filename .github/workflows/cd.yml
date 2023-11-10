@@ -32,14 +32,14 @@ jobs:
       - name: "Test"
         run: "make test"
 
-      - name: "Cache binary"
-        id: "bin-cache"
+      - name: "Cache fonts"
+        id: "fonts-cache"
         uses: "actions/cache@v3"
         with:
-          path: "renderblog"
-          key: "${{ runner.os }}-bin-${{ hashFiles('**/*.go') }}"
+          path: "_site/font"
+          key: "${{ runner.os }}-fonts-${{ hashFiles('_site/font/font.list') }}"
           restore-keys: |
-            ${{ runner.os }}-bin-
+            ${{ runner.os }}-fonts-
 
       - name: "Build binary"
         if: "steps.bin-cache.outputs.cache-hit != 'true'"
