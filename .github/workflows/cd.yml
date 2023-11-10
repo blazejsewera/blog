@@ -1,78 +1,49 @@
-name: CD pipeline — build, test, deploy
+name: "CD pipeline — build, test, deploy"
 
 on:
   push:
-    branches: [master]
+    branches: [ master ]
   workflow_dispatch:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: "ubuntu-latest"
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: "actions/checkout@v4"
 
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v3
+      - name: "Setup Go environment"
+        uses: "actions/setup-go@v4"
         with:
-          node-version: 'lts/hydrogen'
+          go-version: "1.21"
+        run: "go version"
 
-      # https://github.com/actions/cache/blob/main/examples.md
-      - name: Get yarn cache directory path for ui
-        id: yarn-cache-dir-path
-        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
+      - name: "Test"
+        run: "make test"
 
-      - name: Cache yarn dependencies
-        id: yarn-cache
-        uses: actions/cache@v3
+      - name: "Build"
+        run: "make build"
+
+      - name: "Archive"
+        run: "make archive"
+
+      - name: "Upload dist artifact"
+        uses: "actions/upload-artifact@v3"
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      - name: Install yarn dependencies
-        run: yarn
-
-      - name: Cache fonts
-        id: fonts-cache
-        uses: actions/cache@v3
-        with:
-          path: 'public/font'
-          key: ${{ runner.os }}-fonts-${{ hashFiles('public/font/font.list') }}
-          restore-keys: |
-            ${{ runner.os }}-fonts-
-
-      - name: Download fonts
-        if: steps.fonts-cache.outputs.cache-hit != 'true'
-        run: yarn fonts
-
-      - name: Test
-        run: yarn test
-
-      - name: Build
-        run: yarn build
-
-      - name: Compress
-        run: yarn tar
-
-      - name: Archive compressed dist artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: blog-sewera-dev-dist-archive
+          name: "blog-sewera-dev-dist-archive"
           path: |
             dist.tar
 
   deploy:
-    needs: build
-    environment: production
-    concurrency: production
-    runs-on: ubuntu-latest
+    needs: "build"
+    environment: "production"
+    concurrency: "production"
+    runs-on: "ubuntu-latest"
 
     steps:
-      - name: Add SSH key
+      - name: "Add SSH key"
         env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+          SSH_AUTH_SOCK: "/tmp/ssh_agent.sock"
         run: |
           mkdir -p /home/runner/.ssh
           ssh-keyscan sewera.dev >> /home/runner/.ssh/known_hosts
@@ -81,14 +52,14 @@ jobs:
           ssh-agent -a $SSH_AUTH_SOCK > /dev/null
           ssh-add /home/runner/.ssh/github_actions
 
-      - name: Get built artifact
-        uses: actions/download-artifact@v3
+      - name: "Get built artifact"
+        uses: "actions/download-artifact@v3"
         with:
-          name: blog-sewera-dev-dist-archive
+          name: "blog-sewera-dev-dist-archive"
 
-      - name: Prepare and upload artifact
+      - name: "Prepare and upload artifact"
         env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+          SSH_AUTH_SOCK: "/tmp/ssh_agent.sock"
         run: |
           tar -xf dist.tar && \
           rm dist.tar && \
@@ -97,9 +68,9 @@ jobs:
           blog-sewera-dev-dist-archive.zip \
           ${{ secrets.BLOG_PROD_USER }}@sewera.dev:~/blog/
 
-      - name: Deploy to production
+      - name: "Deploy to production"
         env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+          SSH_AUTH_SOCK: "/tmp/ssh_agent.sock"
         run: |
           ssh -i /home/runner/.ssh/github_actions \
           ${{ secrets.BLOG_PROD_USER }}@sewera.dev \

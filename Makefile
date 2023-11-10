@@ -1,4 +1,4 @@
-.PHONY: run clean test
+.PHONY: run clean test archive
 
 run: build
 	./renderblog
@@ -19,3 +19,6 @@ renderblog:
 
 test:
 	go test ./...
+
+archive:
+	tar -cvf ./dist.tar ./dist
