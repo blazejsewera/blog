@@ -30,13 +30,17 @@ func (m ArticleMetadata) EqualSource(markdownSourceFile string) bool {
 	return m.SourceFile == markdownSourceFile
 }
 
+func (m ArticleMetadata) ShortDate() string {
+	return m.Date.ShortDate()
+}
+
+func (m ArticleMetadata) Year() int {
+	return m.Date.Year()
+}
+
 type Update struct {
 	Date    times.Time
 	DiffURL string
-}
-
-func (m ArticleMetadata) ShortDate() string {
-	return m.Date.ShortDate()
 }
 
 type PartialMetadata struct {

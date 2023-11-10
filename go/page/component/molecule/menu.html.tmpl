@@ -16,7 +16,9 @@
         <span class="text-sm md:text-base md:py-6">{{ .Title }}</span>
         <div>
             <a class="flex" href="{{ .Site.BlogRootURL }}">
-                <img class="logo" src="/icon/logo-white.svg" alt="home" />
+                <div class="logo">
+                    {{ template "LogoWhiteIcon" }}
+                </div>
             </a>
         </div>
     </div>

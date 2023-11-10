@@ -15,7 +15,7 @@
                 <div class="order-2 md:order-1"></div>
             {{ end }}
             <a class="mx-auto block order-3 md:order-2" href="{{ .Site.BlogRootURL }}" title="Blog home">
-                <img src="/logo-black.svg" alt="Blog home" />
+                {{ template "LogoBlackIcon" }}
             </a>
             {{ if .Next.URL }}
                 <a id="footer-next-article"
@@ -33,7 +33,7 @@
         <div class="flex">
             <div class="mx-auto mb-7 text-2xs md:text-xs">
                 <div>
-                    {{ .Current.License }} – {{ .Current.Year }} – {{ .Current.Author }}
+                    {{ .Metadata.License }} – {{ .Metadata.Year }} – {{ .Metadata.Author }}
                 </div>
                 {{ if .Source }}
                     <div class="ml-1.5 mt-4 md:ml-2 md:mt-2">

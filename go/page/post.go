@@ -28,6 +28,10 @@ func (p PostProps) Article() section.ArticleProps {
 	return section.ArticlePropsFromDomainAndRaw(p.Metadata, p.RawContent)
 }
 
+func (p PostProps) Footer() section.FooterProps {
+	return section.FooterPropsFromDomain(p.Metadata)
+}
+
 func Post() *PostTemplate {
 	return &PostTemplate{templates.ParseAll()}
 }

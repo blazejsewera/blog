@@ -32,6 +32,10 @@ func (t Time) ShortDate() string {
 	return t.t.Format("January 2, 2006")
 }
 
+func (t Time) Year() int {
+	return t.t.Year()
+}
+
 func (t *Time) UnmarshalText(b []byte) error {
 	var err error
 	t.t, err = parseDate(string(b))
