@@ -14,7 +14,12 @@ type Template struct {
 
 const pageDir = "page"
 
+var parsedTemplates *Template
+
 func ParseAll() *Template {
+	if parsedTemplates != nil {
+		return parsedTemplates
+	}
 	toParse, err := files.FindBySuffix(pageDir, ".html.tmpl")
 	if err != nil {
 		panic(fmt.Errorf("templates: parse all: %w", err))
@@ -26,7 +31,8 @@ func ParseAll() *Template {
 	if err != nil {
 		panic(fmt.Errorf("templates: parse all: %w", err))
 	}
-	return &Template{tt}
+	parsedTemplates = &Template{tt}
+	return parsedTemplates
 }
 
 func ParseSingle(fileSuffix string) *Template {

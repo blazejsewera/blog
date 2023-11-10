@@ -1,8 +1,10 @@
 package page
 
 import (
+	"github.com/blazejsewera/blog/constants"
 	"github.com/blazejsewera/blog/domain"
 	"github.com/blazejsewera/blog/internal/templates"
+	"github.com/blazejsewera/blog/internal/times"
 	"github.com/blazejsewera/blog/page/component/meta"
 	"github.com/blazejsewera/blog/page/component/section"
 )
@@ -20,11 +22,31 @@ func (p IndexProps) Header() meta.HeaderProps {
 	return meta.HeaderPropsFromDomain(p.Metadata)
 }
 
-//goland:noinspection GoUnusedExportedFunction
 func Index() *IndexTemplate {
 	return &IndexTemplate{templates.ParseAll()}
 }
 
 func (t *IndexTemplate) Render(props IndexProps) ([]byte, error) {
 	return t.t.Render("Index", props)
+}
+
+var IndexMetadata = domain.ArticleMetadata{
+	Title:      "Software development blog",
+	Subtitle:   "By Blazej Sewera",
+	Date:       times.Now(),
+	URL:        "/",
+	SourceFile: "page/index.html.tmpl",
+	TargetFile: constants.DistDir + "/index.html",
+	Author:     "Blazej Sewera",
+	Keywords: []string{
+		"software engineering",
+		"software development",
+		"programming",
+		"technical blog",
+		"Blazej Sewera",
+	},
+	Language:       "en-US",
+	License:        "CC BY-SA 4.0",
+	ImgURL:         "/image/nordic-sky.jpg",
+	ImgDescription: "Nordic sky",
 }

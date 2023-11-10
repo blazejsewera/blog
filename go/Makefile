@@ -1,15 +1,18 @@
-.PHONY: run
+.PHONY: run clean
 
 run: build
 	./renderblog
 
-run-f: build
+run-f: clean build
 	./renderblog -f=1
 
-run-ff: build
+run-ff: clean build
 	./renderblog -f=2
 
 build: renderblog
+
+clean:
+	rm -f renderblog
 
 renderblog:
 	go build -o renderblog github.com/blazejsewera/blog

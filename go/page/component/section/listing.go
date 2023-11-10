@@ -2,15 +2,16 @@ package section
 
 import (
 	"github.com/blazejsewera/blog/domain"
-	"html/template"
+	"slices"
 )
 
 type ListingProps struct {
-	Title          string
-	TabTitle       string
-	Subtitle       string
-	Description    string
-	ImgURL         template.URL
-	ImgDescription string
-	Articles       []domain.ArticleMetadata
+	Articles []domain.ArticleMetadata
+}
+
+func ListingPropsFromAllArticles(allArticles []domain.ArticleMetadata) ListingProps {
+	articles := slices.Clone(allArticles)
+	slices.Reverse(articles)
+
+	return ListingProps{articles}
 }

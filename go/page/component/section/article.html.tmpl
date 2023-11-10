@@ -1,11 +1,11 @@
-{{- /*gotype: github.com/blazejsewera/blog/page/component/article.Props*/ -}}
+{{- /*gotype: github.com/blazejsewera/blog/page/component/section.ArticleProps*/ -}}
 {{ define "Article" }}
     <article>
         <div class="post-wrapper flex">
             <div id="post-content" class="post-content">
                 {{ if .Draft }}
                     <section class="draft">
-                        {{ template "DraftInfo" }}
+                        {{ template "DraftInfo" .DraftProps }}
                     </section>
                 {{ end }}
                 {{ if .Abstract }}

@@ -24,11 +24,31 @@ func main() {
 	scanner := markdown.Scanner{}
 	allArticles, sourceFiles := scanner.ScanMetadata()
 
+	postTemplate := page.Post()
 	parser := &markdown.Parser{AllArticles: allArticles}
-	htmlBytes, metadata, targetFilename := parser.ParseFile(sourceFiles[0])
-	fmt.Printf("%s\n", metadata.URL)
-	t := page.Post()
-	rendered, err := t.Render(page.PropsFrom(domain.FillDefaultIfEmpty(metadata), htmlBytes))
+	for _, sourceFile := range sourceFiles {
+		htmlBytes, metadata, targetFilename := parser.ParseFile(sourceFile)
+		fmt.Printf("%s\n", metadata.URL)
+		rendered, err := postTemplate.Render(page.PostPropsFrom(domain.FillDefaultIfEmpty(metadata), htmlBytes))
+		if err != nil {
+			panic(err)
+		}
+		target, err := os.Create(targetFilename)
+		if err != nil {
+			panic(err)
+		}
+		_, err = target.Write(postprocess.MinifyHTML(rendered))
+		if err != nil {
+			panic(err)
+		}
+
+		fmt.Printf("targetFilename: %s\n\n", targetFilename)
+	}
+
+	indexTemplate := page.Index()
+	targetFilename := page.IndexMetadata.TargetFile
+	rendered, err := indexTemplate.Render(page.IndexPropsFrom(page.IndexMetadata, allArticles))
+
 	if err != nil {
 		panic(err)
 	}
