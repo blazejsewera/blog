@@ -1,10 +1,13 @@
 package must
 
-import "io"
+import (
+	"fmt"
+	"io"
+)
 
 func Close(c io.Closer) {
 	err := c.Close()
 	if err != nil {
-		panic(err)
+		panic(fmt.Errorf("must close: %w", err))
 	}
 }

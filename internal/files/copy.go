@@ -2,6 +2,7 @@ package files
 
 import (
 	"errors"
+	"fmt"
 	"github.com/blazejsewera/blog/internal/must"
 	"io"
 	"os"
@@ -28,7 +29,7 @@ func CopyDir(dst, src string) error {
 
 		fileInfo, err := os.Stat(sourcePath)
 		if err != nil {
-			return err
+			return fmt.Errorf("dir: copy: %s", err)
 		}
 
 		switch fileInfo.Mode() & os.ModeType {
@@ -41,11 +42,11 @@ func CopyDir(dst, src string) error {
 			}
 		case os.ModeSymlink:
 			if err = CopySymlink(destPath, sourcePath); err != nil {
-				return err
+				return fmt.Errorf("dir: copy: %w", err)
 			}
 		default:
 			if err = Copy(destPath, sourcePath); err != nil {
-				return err
+				return fmt.Errorf("dir: copy: %w", err)
 			}
 		}
 	}
@@ -61,13 +62,13 @@ func Copy(dst, src string) error {
 
 	in, err := os.Open(src)
 	if err != nil {
-		return err
+		return fmt.Errorf("file: copy: open: %w", err)
 	}
 	defer must.Close(in)
 
 	_, err = io.Copy(out, in)
 	if err != nil {
-		return err
+		return fmt.Errorf("file: copy: %w", err)
 	}
 	return nil
 }
@@ -75,7 +76,7 @@ func Copy(dst, src string) error {
 func CopySymlink(dst, src string) error {
 	link, err := os.Readlink(src)
 	if err != nil {
-		return err
+		return fmt.Errorf("symlink: %w", err)
 	}
 	return os.Symlink(link, dst)
 }

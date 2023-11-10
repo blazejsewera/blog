@@ -20,6 +20,7 @@ const (
 func Download(force constants.ForceLevel) {
 	fns := fontNames()
 	if !allFontsExist(fns) || force >= constants.ReDownload {
+		log.Print("info: fonts: downloading")
 		download(fns)
 	}
 }
@@ -68,6 +69,6 @@ func downloadFont(wg *sync.WaitGroup, fontName string) {
 	targetFile := path.Join(fontDir, fontName)
 	err := files.DownloadFile(upstreamURL, targetFile, false)
 	if err != nil {
-		log.Printf("download font: %s", err)
+		log.Printf("error: font: download: %s", err)
 	}
 }

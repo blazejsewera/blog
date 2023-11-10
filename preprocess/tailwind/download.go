@@ -11,26 +11,26 @@ import (
 const baseExecFilename = "bin/tailwindcss"
 
 func download() {
-	log.Printf("info: downloading tailwind")
+	log.Printf("info: tailwind: downloading")
 	osys, arch, err := detectOSAndArch()
 	if err != nil {
-		panic(fmt.Errorf("download tailwind: %w", err))
+		panic(fmt.Errorf("tailwind: download: %w", err))
 	}
 	upstreamFilename := upstreamExecFilename(osys, arch)
 	localFilename := execFilename()
 
 	err = files.DownloadFile(upstreamExecURL(upstreamFilename), localFilename, true)
 	if err != nil {
-		panic(fmt.Errorf("download tailwind: %w", err))
+		panic(fmt.Errorf("tailwind: download: %w", err))
 	}
 
 	err = checkSha256(upstreamFilename, localFilename)
 	if err != nil {
 		errRm := os.Remove(localFilename)
 		if errRm != nil {
-			panic(fmt.Errorf("remove local binary: %s: %w", localFilename, errRm))
+			panic(fmt.Errorf("tailwind: remove local binary: %s: %w", localFilename, errRm))
 		}
-		panic(fmt.Errorf("download tailwind: %w", err))
+		panic(fmt.Errorf("tailwind: download: %w", err))
 	}
 
 }

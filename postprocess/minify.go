@@ -28,7 +28,7 @@ func init() {
 func MinifyHTML(htmlBytes []byte) []byte {
 	b, err := minifier.Bytes(mimeHTML, htmlBytes)
 	if err != nil {
-		log.Print("warn: could not minify HTML")
+		log.Printf("warn: minify: %s", err)
 	}
 	return b
 }

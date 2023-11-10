@@ -7,6 +7,7 @@ import (
 	"github.com/blazejsewera/blog/internal/files"
 	"github.com/blazejsewera/blog/internal/must"
 	"io"
+	"log"
 	"os/exec"
 )
 
@@ -21,6 +22,7 @@ func Run(force constants.ForceLevel) {
 		download()
 	}
 
+	log.Print("info: tailwind: running")
 	cssBuf := &bytes.Buffer{}
 	err := runTailwind(cssBuf)
 	if err != nil {
@@ -38,7 +40,7 @@ func runTailwind(cssBuf *bytes.Buffer) error {
 	tailwindCmd.Stdout = cssBuf
 	err := tailwindCmd.Run()
 	if err != nil {
-		return fmt.Errorf("run tailwind: %w; maybe you have a wrong binary version for your OS/arch", err)
+		return fmt.Errorf("tailwind: run: %w; maybe you have a wrong binary version for your OS/arch", err)
 	}
 	return nil
 }
@@ -46,10 +48,13 @@ func runTailwind(cssBuf *bytes.Buffer) error {
 func writeCSSFile(cssBuf *bytes.Buffer) error {
 	file, err := files.CreateFileWr(tailwindStyleFile, false)
 	if err != nil {
-		return err
+		return fmt.Errorf("tailwind: write css: %w", err)
 	}
 	defer must.Close(file)
 
 	_, err = io.Copy(file, cssBuf)
-	return err
+	if err != nil {
+		return fmt.Errorf("tailwind: write css: %w", err)
+	}
+	return nil
 }
