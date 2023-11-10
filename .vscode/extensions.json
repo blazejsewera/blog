@@ -1,4 +1,5 @@
 {
-  "recommendations": ["astro-build.astro-vscode", "ZixuanChen.vitest-explorer"],
-  "unwantedRecommendations": []
+    "recommendations": [
+        "golang.Go"
+    ]
 }
