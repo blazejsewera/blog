@@ -17,8 +17,8 @@ type Scanner struct {
 	WorkingDir string
 }
 
-func (s *Scanner) ScanMetadata() (linkedMetadata []domain.ArticleMetadata, sourceFiles []string) {
-	filePaths, err := files.FindBySuffix(s.WorkingDirectory(), constants.MdExt)
+func (s *Scanner) ScanMetadata() (allArticles []domain.ArticleMetadata, sourceFiles []string) {
+	filePaths, err := files.FindBySuffix(s.workingDirectory(), constants.MdExt)
 	if err != nil {
 		panic(err)
 	}
@@ -31,12 +31,12 @@ func (s *Scanner) ScanMetadata() (linkedMetadata []domain.ArticleMetadata, sourc
 		return a.Date.Compare(b.Date)
 	})
 
-	linkedMetadata = linkArticlesCyclic(articles)
-	sourceFiles = sources(linkedMetadata)
-	return linkedMetadata, sourceFiles
+	allArticles = linkArticlesCyclic(articles)
+	sourceFiles = sources(allArticles)
+	return allArticles, sourceFiles
 }
 
-func (s *Scanner) WorkingDirectory() string {
+func (s *Scanner) workingDirectory() string {
 	if s.WorkingDir == "" {
 		return "_site"
 	} else {

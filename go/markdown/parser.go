@@ -55,7 +55,7 @@ func parse(markdownReader io.Reader) (html []byte, frMetadata frontmatter.Frontm
 			goldmarkextension.DefinitionList,
 			footnoteextension.NewFootnote(),
 			goldmarkhighlighting.NewHighlighting(
-				goldmarkhighlighting.WithStyle("catppuccin-mocha"),
+				goldmarkhighlighting.WithStyle("github"),
 				goldmarkhighlighting.WithFormatOptions(
 					chromahtml.WithLineNumbers(true),
 				),

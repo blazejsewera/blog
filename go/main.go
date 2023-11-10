@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/blazejsewera/blog/constants"
 	"github.com/blazejsewera/blog/domain"
-	"github.com/blazejsewera/blog/internal/files"
 	"github.com/blazejsewera/blog/markdown"
 	"github.com/blazejsewera/blog/page"
 	"github.com/blazejsewera/blog/postprocess"
@@ -22,14 +21,11 @@ func main() {
 	preprocess.Run(force)
 	distdir.CopyIfDoesNotExist(force)
 
-	filePaths, err := files.FindBySuffix(constants.DistDir, constants.MdExt)
-	if err != nil {
-		panic(err)
-	}
-	fmt.Printf("%v\n\n", filePaths)
+	scanner := markdown.Scanner{}
+	allArticles, sourceFiles := scanner.ScanMetadata()
 
-	parser := &markdown.Parser{}
-	htmlBytes, metadata, targetFilename := parser.ParseFile(filePaths[0])
+	parser := &markdown.Parser{AllArticles: allArticles}
+	htmlBytes, metadata, targetFilename := parser.ParseFile(sourceFiles[0])
 	fmt.Printf("%s\n", metadata.URL)
 	t := page.Post()
 	rendered, err := t.Render(page.PropsFrom(domain.FillDefaultIfEmpty(metadata), htmlBytes))
