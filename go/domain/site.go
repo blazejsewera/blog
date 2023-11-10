@@ -13,7 +13,7 @@ type Site struct {
 
 const (
 	DefaultSiteName               = "blog.sewera.dev"
-	DefaultSiteBlogRootURL        = "https://blog.sewera.dev"
+	DefaultSiteBlogRootURL        = "/"
 	DefaultSiteBaseRootURL        = "https://www.sewera.dev"
 	DefaultSiteGithubProfileURL   = "https://github.com/sewera"
 	DefaultSiteMastodonProfileURL = "https://hachyderm.io/@sewera"
