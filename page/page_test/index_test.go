@@ -7,7 +7,6 @@ import (
 	"github.com/blazejsewera/blog/internal/workingdir"
 	"github.com/blazejsewera/blog/page"
 	"github.com/blazejsewera/blog/page/component/section"
-	"html/template"
 	"testing"
 )
 
@@ -19,15 +18,7 @@ func TestIndex(t *testing.T) {
 		data := maps.Union(headerData, listingData)
 		props := page.IndexProps{
 			Metadata: articleMetadata,
-			Listing: section.ListingProps{
-				Title:          data["title"],
-				TabTitle:       data["tabTitle"],
-				Subtitle:       data["subtitle"],
-				Description:    data["description"],
-				ImgURL:         template.URL(data["imgURL"]),
-				ImgDescription: data["imgDescription"],
-				Articles:       articles,
-			},
+			Listing:  section.ListingPropsFromAllArticles(articles),
 		}
 
 		rendered, err := page.Index().Render(props)

@@ -1,4 +1,4 @@
-.PHONY: run clean
+.PHONY: run clean test
 
 run: build
 	./renderblog
@@ -16,3 +16,6 @@ clean:
 
 renderblog:
 	go build -o renderblog github.com/blazejsewera/blog
+
+test:
+	go test ./...

@@ -1,12 +1,12 @@
 {
-  "vitest.enable": true,
-  "vitest.commandLine": "yarn test --reporter=json --",
-  "testing.automaticallyOpenPeekView": "never",
-  "[astro]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "cSpell.words": ["Blazej", "Błażej", "dcterms", "Sewera"]
+    "testing.automaticallyOpenPeekView": "never",
+    "[markdown]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "cSpell.words": [
+        "Blazej",
+        "Błażej",
+        "dcterms",
+        "Sewera"
+    ]
 }

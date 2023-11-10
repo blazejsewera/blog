@@ -39,11 +39,7 @@ keywords: # default []
 
 ## Prerequisites
 
-- Install dependencies and download fonts:
-  ```sh
-  yarn
-  yarn fonts
-  ```
+- Install [Go](https://go.dev)
 
 ## Development
 
@@ -85,10 +81,10 @@ In `vite.config.mjs`:
 
 ```js
 export default defineConfig({
-  // [...]
-  test: {
-    isolate: true,
-  },
+	// [...]
+	test: {
+		isolate: true,
+	},
 })
 ```
 
