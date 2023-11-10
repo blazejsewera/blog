@@ -3,8 +3,7 @@ package tailwind
 import "fmt"
 
 const (
-	tailwindVersion = "v3.3.3"
-	baseURL         = "https://github.com/tailwindlabs/tailwindcss/releases/download"
+	baseURL = "https://github.com/tailwindlabs/tailwindcss/releases/download"
 )
 
 func upstreamExecFilename(osys string, arch string) string {

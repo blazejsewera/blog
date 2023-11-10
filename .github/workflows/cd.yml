@@ -20,11 +20,33 @@ jobs:
       - name: "Go version"
         run: "go version"
 
+      - name: "Cache tailwind binary"
+        id: "tailwind-cache"
+        uses: "actions/cache@v3"
+        with:
+          path: "bin/tailwindcss"
+          key: "${{ runner.os }}-tailwind-${{ hashFiles('preprocess/tailwind/version.go') }}"
+          restore-keys: |
+            ${{ runner.os }}-tailwind-
+
       - name: "Test"
         run: "make test"
 
-      - name: "Build"
+      - name: "Cache binary"
+        id: "bin-cache"
+        uses: "actions/cache@v3"
+        with:
+          path: "renderblog"
+          key: "${{ runner.os }}-bin-${{ hashFiles('**/*.go') }}"
+          restore-keys: |
+            ${{ runner.os }}-bin-
+
+      - name: "Build binary"
+        if: "steps.bin-cache.outputs.cache-hit != 'true'"
         run: "make build"
+
+      - name: "Render"
+        run: "make run"
 
       - name: "Archive"
         run: "make archive"
