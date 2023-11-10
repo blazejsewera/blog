@@ -22,6 +22,14 @@ func (p IndexProps) Header() meta.HeaderProps {
 	return meta.HeaderPropsFromDomain(p.Metadata)
 }
 
+func (p IndexProps) Title() section.TitleProps {
+	return section.TitlePropsFromDomain(p.Metadata)
+}
+
+func (p IndexProps) Footer() section.FooterProps {
+	return section.FooterPropsFromDomain(p.Metadata)
+}
+
 func Index() *IndexTemplate {
 	return &IndexTemplate{templates.ParseAll()}
 }

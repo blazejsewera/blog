@@ -4,10 +4,14 @@
     <html lang="{{ .Header.Language }}">
     <head>
         {{ template "Header" .Header }}
+        {{ template "Title.Style" .Title }}
         <title>{{ .Header.Title }}</title>
     </head>
     <body>
+    {{ template "Title" .Title }}
     {{ template "Listing" .Listing }}
+    {{ template "Footer" .Footer }}
+    {{ template "Title.Script" .Title }}
     </body>
     </html>
 {{ end }}
