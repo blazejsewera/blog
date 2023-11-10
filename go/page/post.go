@@ -20,6 +20,10 @@ func (p PostProps) Header() meta.HeaderProps {
 	return meta.HeaderPropsFromDomain(p.Metadata)
 }
 
+func (p PostProps) Site() domain.Site {
+	return domain.DefaultSite
+}
+
 func (p PostProps) Title() section.TitleProps {
 	return section.TitlePropsFromDomain(p.Metadata)
 }

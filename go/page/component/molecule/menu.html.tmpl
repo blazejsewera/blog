@@ -16,9 +16,7 @@
         <span class="text-sm md:text-base md:py-6">{{ .Title }}</span>
         <div>
             <a class="flex" href="{{ .Site.BlogRootURL }}">
-                <div class="logo">
-                    {{ template "LogoWhiteIcon" }}
-                </div>
+                {{ template "LogoWhiteIcon" "w-7 h-7 m-auto" }}
             </a>
         </div>
     </div>
@@ -38,8 +36,9 @@
                 </li>
                 <li><a class="block mb-4" href="{{ .Site.BaseRootURL }}">sewera.dev</a></li>
                 <li>
-                    <a class="block mb-4" href="{{ .Site.GithubProfileURL }}" target="_blank" title="My Github">github
-                        {{ template "ExternalLinkIcon" }}
+                    <a class="block mb-4" href="{{ .Site.GithubProfileURL }}" target="_blank" title="My Github">
+                        github
+                        {{- template "ExternalLinkIcon" "w-3 h-3" }}
                     </a>
                 </li>
                 <li>
@@ -48,8 +47,9 @@
                        href="{{ .Site.MastodonProfileURL }}"
                        target="_blank"
                        title="Mastodon profile"
-                    >mastodon
-                        {{ template "ExternalLinkIcon" }}
+                    >
+                        mastodon
+                        {{- template "ExternalLinkIcon" "w-3 h-3" }}
                     </a>
                 </li>
             </menu>
@@ -83,11 +83,7 @@
         #ribbon #menu-ribbon-button img {
             height: 24px;
             margin: auto;
-        }
-
-        #ribbon .logo {
-            height: 30px;
-            margin: auto;
+            max-width: unset;
         }
 
         #ribbon span {
@@ -122,7 +118,7 @@
 
             #ribbon > div,
             #ribbon > span {
-                margin: auto 0;
+                margin: auto 5px;
             }
         }
 

@@ -22,6 +22,10 @@ func (p IndexProps) Header() meta.HeaderProps {
 	return meta.HeaderPropsFromDomain(p.Metadata)
 }
 
+func (p IndexProps) Site() domain.Site {
+	return domain.DefaultSite
+}
+
 func (p IndexProps) Title() section.TitleProps {
 	return section.TitlePropsFromDomain(p.Metadata)
 }
@@ -38,14 +42,13 @@ func (t *IndexTemplate) Render(props IndexProps) ([]byte, error) {
 	return t.t.Render("Index", props)
 }
 
-var IndexMetadata = domain.ArticleMetadata{
+var IndexMetadata = domain.FillDefaultIfEmpty(domain.ArticleMetadata{
 	Title:      "Software development blog",
 	Subtitle:   "By Blazej Sewera",
 	Date:       times.Now(),
 	URL:        "/",
 	SourceFile: "page/index.html.tmpl",
 	TargetFile: constants.DistDir + "/index.html",
-	Author:     "Blazej Sewera",
 	Keywords: []string{
 		"software engineering",
 		"software development",
@@ -53,8 +56,6 @@ var IndexMetadata = domain.ArticleMetadata{
 		"technical blog",
 		"Blazej Sewera",
 	},
-	Language:       "en-US",
-	License:        "CC BY-SA 4.0",
 	ImgURL:         "/image/nordic-sky.jpg",
 	ImgDescription: "Nordic sky",
-}
+})

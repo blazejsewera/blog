@@ -20,6 +20,7 @@ type ArticleMetadata struct {
 	Keywords         []string
 	Language         string
 	License          string
+	LicenseURL       template.URL
 	ImgURL           template.URL
 	ImgDescription   string
 	Previous         PartialMetadata
@@ -66,9 +67,10 @@ func PartialFromArticleMetadata(m ArticleMetadata) PartialMetadata {
 }
 
 var defaultValues = ArticleMetadata{
-	Author:   "Blazej Sewera",
-	Language: "en-US",
-	License:  "CC BY 4.0",
+	Author:     "Blazej Sewera",
+	Language:   "en-US",
+	License:    "CC BY-SA 4.0",
+	LicenseURL: "https://creativecommons.org/licenses/by-sa/4.0/",
 }
 
 func FillDefaultIfEmpty(metadata ArticleMetadata) ArticleMetadata {
@@ -80,6 +82,9 @@ func FillDefaultIfEmpty(metadata ArticleMetadata) ArticleMetadata {
 	}
 	if metadata.License == "" {
 		metadata.License = defaultValues.License
+	}
+	if metadata.LicenseURL == "" {
+		metadata.LicenseURL = defaultValues.LicenseURL
 	}
 	return metadata
 }

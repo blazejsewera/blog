@@ -6,7 +6,7 @@
         {{ template "Header" .Header }}
         {{ template "Article.Style" .Article }}
         {{ template "Title.Style" .Title }}
-        <title>{{ .Header.Title }}</title>
+        <title>{{ .Header.Title }} — {{ .Site.Name }}</title>
     </head>
     <body>
     {{ template "Title" .Title }}
