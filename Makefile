@@ -1,13 +1,7 @@
 .PHONY: run clean test archive
 
-run: build
-	./renderblog
-
-run-f: clean build
-	./renderblog -f=1
-
-run-ff: clean build
-	./renderblog -f=2
+help: build
+	./renderblog -h
 
 build:
 	go build -o renderblog github.com/blazejsewera/blog

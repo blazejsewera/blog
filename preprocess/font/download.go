@@ -4,8 +4,8 @@ import (
 	"bufio"
 	"github.com/blazejsewera/blog/constants"
 	"github.com/blazejsewera/blog/internal/files"
+	"github.com/blazejsewera/blog/internal/log"
 	"github.com/blazejsewera/blog/internal/must"
-	"log"
 	"os"
 	"path"
 	"sync"
@@ -20,7 +20,6 @@ const (
 func Download(force constants.ForceLevel) {
 	fns := fontNames()
 	if !allFontsExist(fns) || force >= constants.ReDownload {
-		log.Print("info: fonts: downloading")
 		download(fns)
 	}
 }
@@ -35,6 +34,7 @@ func allFontsExist(fontNames []string) bool {
 }
 
 func download(fontNames []string) {
+	log.Info("fonts: downloading")
 	wg := &sync.WaitGroup{}
 	for _, fontName := range fontNames {
 		fontName := fontName
@@ -69,6 +69,6 @@ func downloadFont(wg *sync.WaitGroup, fontName string) {
 	targetFile := path.Join(fontDir, fontName)
 	err := files.DownloadFile(upstreamURL, targetFile, false)
 	if err != nil {
-		log.Printf("error: font: download: %s", err)
+		log.Error("font: download: %s", err)
 	}
 }

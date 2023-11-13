@@ -2,8 +2,8 @@ package render
 
 import (
 	"fmt"
+	"github.com/blazejsewera/blog/internal/log"
 	"github.com/blazejsewera/blog/postprocess"
-	"log"
 	"os"
 )
 
@@ -16,7 +16,7 @@ func save(targetFile string, rendered []byte, sourceFile string) error {
 	if err != nil {
 		return renderErr(sourceFile, err)
 	}
-	log.Printf("info: rendered: source: %s; target: %s", sourceFile, targetFile)
+	log.Info("rendered: source: %s; target: %s", sourceFile, targetFile)
 	return nil
 }
 

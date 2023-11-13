@@ -1,12 +1,12 @@
 package postprocess
 
 import (
+	"github.com/blazejsewera/blog/internal/log"
 	"github.com/tdewolff/minify/v2"
 	"github.com/tdewolff/minify/v2/css"
 	"github.com/tdewolff/minify/v2/html"
 	"github.com/tdewolff/minify/v2/js"
 	"github.com/tdewolff/minify/v2/svg"
-	"log"
 )
 
 const (
@@ -28,7 +28,7 @@ func init() {
 func MinifyHTML(htmlBytes []byte) []byte {
 	b, err := minifier.Bytes(mimeHTML, htmlBytes)
 	if err != nil {
-		log.Printf("warn: minify: %s", err)
+		log.Warn("minify: %s", err)
 	}
 	return b
 }

@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"github.com/blazejsewera/blog/constants"
+	"github.com/blazejsewera/blog/internal/log"
 	"github.com/blazejsewera/blog/markdown"
 	"github.com/blazejsewera/blog/page"
 	"github.com/blazejsewera/blog/preprocess"
@@ -11,7 +12,8 @@ import (
 )
 
 func main() {
-	force := parseCmdArgs()
+	force, verbosity := parseCmdArgs()
+	log.SetVerbosity(verbosity)
 
 	preprocess.Run(force)
 	distdir.CopyIfDoesNotExist(force)
@@ -35,12 +37,28 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
+	log.Info("success")
 }
 
-func parseCmdArgs() constants.ForceLevel {
-	f := flag.Int("f", 0, "Force level. -f 0 is normal operation, -f 1 re-renders project, -f 2 re-downloads dependencies.")
-	flag.Parse()
+func parseCmdArgs() (constants.ForceLevel, constants.VerbosityLevel) {
+	const forceLevelDescription = `Force level.
+	-f=0 is normal operation,
+	-f=1 re-runs tailwind and re-renders project,
+	-f=2 removes dist and does the above,
+	-f=3 re-downloads dependencies and does the above.`
+	f := flag.Int("f", 0, forceLevelDescription)
 
+	const verbosityLevelDescription = `Verbosity level.
+	-v=0 silent,
+	-v=1 errors only,
+	-v=2 warnings and above,
+	-v=3 info and above,
+	-v=4 debug and above`
+	v := flag.Int("v", 0, verbosityLevelDescription)
+
+	flag.Parse()
 	force := constants.ForceLevel(*f)
-	return force
+	verbosity := constants.VerbosityLevel(*v)
+	return force, verbosity
 }

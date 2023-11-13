@@ -4,16 +4,15 @@ import (
 	"fmt"
 	"github.com/blazejsewera/blog/constants"
 	"github.com/blazejsewera/blog/internal/files"
-	"log"
+	"github.com/blazejsewera/blog/internal/log"
 )
 
 func CopyIfDoesNotExist(force constants.ForceLevel) {
-	if force >= constants.ReRender {
-		log.Print("info: dist: remove")
+	if force >= constants.RemoveAndReRender {
+		log.Info("dist: remove")
 		files.RemoveAll(constants.DistDir)
-	}
-	if !files.Exists(constants.DistDir) {
-		log.Print("info: dist: copying")
+	} else if force >= constants.ReRender || !files.Exists(constants.DistDir) {
+		log.Info("dist: copying")
 		err := files.CopyDir(constants.DistDir, constants.SiteDir)
 		if err != nil {
 			panic(fmt.Errorf("dist: copy: %w", err))

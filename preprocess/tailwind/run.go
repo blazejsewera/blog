@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"github.com/blazejsewera/blog/constants"
 	"github.com/blazejsewera/blog/internal/files"
+	"github.com/blazejsewera/blog/internal/log"
 	"github.com/blazejsewera/blog/internal/must"
 	"io"
-	"log"
 	"os/exec"
 )
 
@@ -22,7 +22,7 @@ func Run(force constants.ForceLevel) {
 		download()
 	}
 
-	log.Print("info: tailwind: running")
+	log.Info("tailwind: running")
 	cssBuf := &bytes.Buffer{}
 	err := runTailwind(cssBuf)
 	if err != nil {

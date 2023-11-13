@@ -2,7 +2,7 @@ name: "CD pipeline — build, test, deploy"
 
 on:
   push:
-    branches: [master]
+    branches: [ master ]
   workflow_dispatch:
 
 jobs:
@@ -45,7 +45,7 @@ jobs:
             ${{ runner.os }}-fonts-
 
       - name: "Render"
-        run: "make run"
+        run: "./renderblog -f=1 -v=3"
 
       - name: "Archive"
         run: "make archive"

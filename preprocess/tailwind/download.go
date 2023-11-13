@@ -3,7 +3,7 @@ package tailwind
 import (
 	"fmt"
 	"github.com/blazejsewera/blog/internal/files"
-	"log"
+	"github.com/blazejsewera/blog/internal/log"
 	"os"
 	"runtime"
 )
@@ -11,7 +11,7 @@ import (
 const baseExecFilename = "bin/tailwindcss"
 
 func download() {
-	log.Printf("info: tailwind: downloading")
+	log.Info("tailwind: downloading")
 	osys, arch, err := detectOSAndArch()
 	if err != nil {
 		panic(fmt.Errorf("tailwind: download: %w", err))
