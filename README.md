@@ -8,7 +8,6 @@ Minimal frontmatter
 
 ```yaml
 ---
-layout: ../layouts/Post.astro
 title: Title
 date: 1970-01-01
 ---
@@ -18,7 +17,6 @@ Complete frontmatter
 
 ```yaml
 ---
-layout: ../layouts/Post.astro
 title: Title
 subtitle: Subtitle
 date: 1970-01-01
@@ -30,35 +28,35 @@ draftDescription: This is a draft # default: This is a draft article. It may be 
 imgUrl: /image.jpg # default: null
 imgDescription: Sample image # default: ''
 abstract: | # default: ''
-  A short description of an article
+    A short description of an article
 keywords: # default []
-  - kw1
-  - kw2
+    - kw1
+    - kw2
 ---
 ```
 
 ## Prerequisites
 
-- Install [Go](https://go.dev)
+-   Install [Go](https://go.dev)
 
 ## Development
 
-- Run tests:
-  ```sh
-  yarn test
-  ```
-  or:
-  ```sh
-  yarn test:watch
-  ```
-- Run tests with the snapshot updates:
-  ```sh
-  yarn test:update
-  ```
-- Run a development server:
-  ```sh
-  yarn dev
-  ```
+-   Run tests:
+    ```sh
+    yarn test
+    ```
+    or:
+    ```sh
+    yarn test:watch
+    ```
+-   Run tests with the snapshot updates:
+    ```sh
+    yarn test:update
+    ```
+-   Run a development server:
+    ```sh
+    yarn dev
+    ```
 
 ## Deploy and rollback
 
@@ -85,7 +83,7 @@ export default defineConfig({
 	test: {
 		isolate: true,
 	},
-})
+});
 ```
 
 ### Vitest VSCode integration
