@@ -9,13 +9,11 @@ run-f: clean build
 run-ff: clean build
 	./renderblog -f=2
 
-build: renderblog
+build:
+	go build -o renderblog github.com/blazejsewera/blog
 
 clean:
 	rm -f renderblog
-
-renderblog:
-	go build -o renderblog github.com/blazejsewera/blog
 
 test:
 	go test ./...

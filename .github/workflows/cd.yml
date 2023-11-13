@@ -2,7 +2,7 @@ name: "CD pipeline — build, test, deploy"
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   workflow_dispatch:
 
 jobs:
@@ -20,6 +20,12 @@ jobs:
       - name: "Go version"
         run: "go version"
 
+      - name: "Build binary"
+        run: "make build"
+
+      - name: "Test"
+        run: "make test"
+
       - name: "Cache tailwind binary"
         id: "tailwind-cache"
         uses: "actions/cache@v3"
@@ -29,9 +35,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-tailwind-
 
-      - name: "Test"
-        run: "make test"
-
       - name: "Cache fonts"
         id: "fonts-cache"
         uses: "actions/cache@v3"
@@ -40,10 +43,6 @@ jobs:
           key: "${{ runner.os }}-fonts-${{ hashFiles('_site/font/font.list') }}"
           restore-keys: |
             ${{ runner.os }}-fonts-
-
-      - name: "Build binary"
-        if: "steps.bin-cache.outputs.cache-hit != 'true'"
-        run: "make build"
 
       - name: "Render"
         run: "make run"
