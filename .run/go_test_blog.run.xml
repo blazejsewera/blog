@@ -1,11 +1,11 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="go_test_blog" type="GoTestRunConfiguration" factoryName="Go Test">
     <module name="blog" />
-    <working_directory value="$PROJECT_DIR$" />
+    <working_directory value="$PROJECT_DIR$/renderer" />
     <go_parameters value="-i" />
     <kind value="DIRECTORY" />
-    <package value="github.com/blazejsewera/blog" />
-    <directory value="$PROJECT_DIR$" />
+    <package value="github.com/blazejsewera/blog/renderer" />
+    <directory value="$PROJECT_DIR$/renderer" />
     <filePath value="$PROJECT_DIR$" />
     <framework value="gotest" />
     <method v="2" />

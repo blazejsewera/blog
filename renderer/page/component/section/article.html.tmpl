@@ -1,0 +1,390 @@
+{{- /*gotype: github.com/blazejsewera/blog/renderer/page/component/section.ArticleProps*/ -}}
+{{ define "Article" }}
+	<article>
+		<div class="post-wrapper flex">
+			<div id="post-content" class="post-content">
+                {{ if .Draft }}
+					<section class="draft">
+                        {{ template "DraftInfo" .DraftProps }}
+					</section>
+                {{ end }}
+                {{ if .Abstract }}
+					<section class="abstract">
+						<h2>Abstract</h2>
+						<p>{{ .Abstract }}</p>
+					</section>
+                {{ end }}
+                {{ .Content }}
+			</div>
+		</div>
+	</article>
+{{ end }}
+
+{{ define "Article.Style" }}
+	<style>
+		.abstract {
+			max-width: 37rem;
+			margin: 0 4rem 2rem 4rem;
+			line-height: 1.55;
+			letter-spacing: 0.018em;
+			border: 1px solid hsl(0, 0%, 60%);
+		}
+
+		@media (max-width: 767px) {
+			.abstract {
+				margin: 0 2rem 2rem 2rem;
+			}
+		}
+
+		.post-content {
+			color: hsl(0, 0%, 20%);
+			margin: 0 auto 30px auto;
+			width: 45rem;
+		}
+
+		.post-content i,
+		.post-content em {
+			font-family: "Suisse Int'l", 'Helvetica Neue', 'Helvetica',
+			'Liberation Sans', 'Arial', sans-serif;
+			font-style: italic;
+			font-weight: 400;
+		}
+
+		.post-content b,
+		.post-content strong {
+			font-family: "Suisse Int'l", 'Helvetica Neue', 'Helvetica',
+			'Liberation Sans', 'Arial', sans-serif;
+			font-style: normal;
+			font-weight: 600;
+		}
+
+		.post-content mark {
+			background-color: hsl(54, 100%, 80%);
+			color: hsl(54, 50%, 10%);
+		}
+
+		.post-content h1,
+		.post-content h2,
+		.post-content h3,
+		.post-content h4,
+		.post-content h5,
+		.post-content h6 {
+			font-family: 'Euclid Circular B', Futura, 'Trebuchet MS', Arial, sans-serif;
+			line-height: 1em;
+			margin: 2rem 4rem 1rem;
+			max-width: 37rem;
+			color: hsl(0, 0%, 35%);
+		}
+
+		.post-content h1 {
+			text-decoration: line-through;
+		}
+
+		.post-content h2 {
+			font-size: 48px;
+		}
+
+		.post-content h3 {
+			font-size: 36px;
+		}
+
+		.post-content h4 {
+			font-size: 24px;
+		}
+
+		.post-content ul,
+		.post-content ol {
+			list-style-position: outside;
+			padding-left: 1rem;
+		}
+
+		.post-content > ul,
+		.post-content > ol {
+			padding-left: 0;
+		}
+
+		.post-content ul {
+			list-style-type: disc;
+		}
+
+		.post-content ol {
+			list-style-type: decimal;
+		}
+
+		.post-content p,
+		.post-content > ul,
+		.post-content > ol,
+		.post-content > table,
+		.post-content > .footnotes > * {
+			max-width: 37rem;
+			margin: 0 4rem 1.2rem 4rem;
+			line-height: 1.55;
+			letter-spacing: 0.018em;
+		}
+
+		.post-content a {
+			text-decoration: none;
+			color: hsl(220, 60%, 45%);
+		}
+
+		.post-content a:not([href*='blog.sewera.dev']):not([href^='#']):not([href^='/'])::after {
+			content: '';
+			background-size: contain;
+			background: url('/icon/external-link-blue.svg') no-repeat center center;
+			margin-left: 0.1em;
+			padding-top: 0.7em;
+			padding-right: 0.7em;
+		}
+
+		.post-content a[href*='blog.sewera.dev'],
+		.post-content a[href^='#'],
+		.post-content a[href^='/'],
+		.post-content sup[id^='fn'] {
+			scroll-margin-top: 20px;
+		}
+
+		.post-content a:hover {
+			text-decoration: underline;
+		}
+
+		.post-content hr {
+			border: 0;
+			border-top: 1px solid hsl(0, 0%, 40%);
+		}
+
+		.post-content .footnotes {
+			padding-top: 1rem;
+			margin-top: 4rem;
+			border-top: 1px solid hsl(0, 0%, 40%);
+		}
+
+		.post-content .footnotes > h2,
+		.abstract > h2 {
+			margin-bottom: 1rem;
+			font-size: 36px;
+		}
+
+		.post-content .footnotes p {
+			margin: 0;
+		}
+
+		.post-content .footnotes > ol {
+			list-style-position: outside;
+			padding-left: 0;
+		}
+
+		.post-content table {
+			border-collapse: collapse;
+		}
+
+		.post-content thead {
+			border-bottom: 1px solid hsl(0, 0%, 40%);
+		}
+
+		.post-content td,
+		.post-content th {
+			padding: 0 1rem 0 1rem;
+		}
+
+		.post-content blockquote {
+			display: block;
+			padding: 0.2rem 0.4rem;
+			max-width: 35rem;
+			margin: 1rem 4rem 2rem 5.2rem;
+			padding-left: 0.8rem;
+			border-left: 8px solid hsl(0, 0%, 90%);
+		}
+
+		.post-content blockquote p {
+			margin: 0;
+		}
+
+		.post-content cite {
+			font-style: italic;
+			color: hsla(0, 0%, 40%);
+		}
+
+		.post-content cite::before {
+			white-space: pre;
+			content: '\A— ';
+		}
+
+		.post-content code {
+			font-family: "Suisse Int'l Mono", monospace;
+			font-size: 85%;
+			padding: 0.2rem 0.4rem;
+			border-radius: 6px;
+			white-space: pre;
+			word-break: break-all;
+			background-color: hsla(210, 12%, 12%, 0.05);
+		}
+
+		.post-content code.block,
+		.post-content pre > code {
+			max-width: 35rem;
+			margin: 1rem 4rem 2rem 5.2rem;
+			padding-left: 0.8rem;
+			display: block;
+			overflow-x: auto;
+			border-left: 8px solid hsl(0, 0%, 90%);
+			border-radius: 0;
+			background: none;
+		}
+
+		.post-content p > code.block,
+		.post-content p > pre {
+			margin: 1rem 2rem 2rem 1.2rem;
+		}
+
+		.post-content img {
+			max-width: 37rem;
+			display: block;
+			margin: 0 auto;
+		}
+
+		.post-content img.wide {
+			max-width: 45rem;
+		}
+
+		.post-content figure {
+			margin: 1rem 0 2rem 0;
+		}
+
+		.post-content figcaption {
+			font-size: 16px;
+			margin-top: 8px;
+			text-align: center;
+		}
+
+		/* For smaller screens */
+		@media (min-width: 768px) and (max-width: 1280px) {
+			.post-content {
+				margin: 0 auto 20px auto;
+			}
+
+			.post-content h2 {
+				font-size: 36px;
+			}
+
+			.post-content h3 {
+				font-size: 24px;
+			}
+
+			.post-content h4 {
+				font-size: 20px;
+			}
+
+			.post-content p,
+			.post-content > ul,
+			.post-content > ol,
+			.post-content > table,
+			.post-content > .footnotes > * {
+				line-height: 1.6;
+				letter-spacing: 0.021em;
+			}
+
+			.post-content > .footnotes > h2,
+			.abstract > h2 {
+				font-size: 24px;
+			}
+
+			.post-content figure {
+				margin: 16px 0;
+			}
+
+			.post-content figcaption {
+				font-size: 14px;
+			}
+		}
+
+		@media (max-width: 767px) {
+			.post-content {
+				margin: 0 0 10px 0;
+				min-width: 1px;
+				width: 100vw;
+				box-sizing: border-box;
+			}
+
+			.post-content h1,
+			.post-content h2,
+			.post-content h3,
+			.post-content h4,
+			.post-content h5,
+			.post-content h6 {
+				margin-left: 30px;
+				margin-right: 30px;
+			}
+
+			.post-content h2 {
+				font-size: 26px;
+			}
+
+			.post-content h3 {
+				font-size: 22px;
+			}
+
+			.post-content h4 {
+				font-size: 20px;
+			}
+
+			.post-content a[href^='#'],
+			.post-content sup[id^='fn'] {
+				scroll-margin-top: 60px;
+			}
+
+			.post-content p,
+			.post-content > ul,
+			.post-content > ol,
+			.post-content > table,
+			.post-content > .footnotes > * {
+				margin: 0 30px 1.2rem 30px;
+				max-width: 37rem;
+				line-height: 1.5;
+				letter-spacing: 0.021em;
+			}
+
+			.post-content > .footnotes > h2,
+			.abstract > h2 {
+				margin-bottom: 1rem;
+				font-size: 22px;
+			}
+
+			.post-content p blockquote {
+				margin-left: 0;
+				margin-right: 0;
+			}
+
+			.post-content blockquote {
+				margin: 1rem 30px 4rem 30px;
+			}
+
+			.post-content p code.block,
+			.post-content p pre > code {
+				margin-left: 0;
+				margin-right: 0;
+			}
+
+			.post-content code.block,
+			.post-content pre > code {
+				margin: 1rem 30px 4rem 30px;
+			}
+
+			.post-content figure {
+				margin: 16px 0;
+			}
+
+			.post-content figcaption {
+				font-size: 12px;
+			}
+
+			.post-content img {
+				max-width: calc(100vw - 60px);
+			}
+
+			.post-content img.wide {
+				max-width: unset;
+				width: 100vw;
+			}
+		}
+	</style>
+{{ end }}

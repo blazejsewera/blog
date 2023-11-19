@@ -28,35 +28,35 @@ draftDescription: This is a draft # default: This is a draft article. It may be 
 imgUrl: /image.jpg # default: null
 imgDescription: Sample image # default: ''
 abstract: | # default: ''
-    A short description of an article
+  A short description of an article
 keywords: # default []
-    - kw1
-    - kw2
+  - kw1
+  - kw2
 ---
 ```
 
 ## Prerequisites
 
--   Install [Go](https://go.dev)
+- Install [Go](https://go.dev)
 
 ## Development
 
--   Run tests:
-    ```sh
-    yarn test
-    ```
-    or:
-    ```sh
-    yarn test:watch
-    ```
--   Run tests with the snapshot updates:
-    ```sh
-    yarn test:update
-    ```
--   Run a development server:
-    ```sh
-    yarn dev
-    ```
+- Run tests:
+  ```sh
+  yarn test
+  ```
+  or:
+  ```sh
+  yarn test:watch
+  ```
+- Run tests with the snapshot updates:
+  ```sh
+  yarn test:update
+  ```
+- Run a development server:
+  ```sh
+  yarn dev
+  ```
 
 ## Deploy and rollback
 
@@ -79,10 +79,10 @@ In `vite.config.mjs`:
 
 ```js
 export default defineConfig({
-	// [...]
-	test: {
-		isolate: true,
-	},
+  // [...]
+  test: {
+    isolate: true,
+  },
 });
 ```
 

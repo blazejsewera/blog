@@ -1,5 +1,9 @@
 name: "CD pipeline — build, test, deploy"
 
+defaults:
+  run:
+    working-directory: "renderer"
+
 on:
   push:
     branches: [ master ]

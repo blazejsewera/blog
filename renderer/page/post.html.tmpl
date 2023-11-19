@@ -1,0 +1,18 @@
+{{- /*gotype:github.com/blazejsewera/blog/renderer/page.PostProps*/ -}}
+{{ block "Post" . }}
+	<!doctype html>
+	<html lang="{{ .Header.Language }}">
+	<head>
+        {{ template "Header" .Header }}
+        {{ template "Article.Style" .Article }}
+        {{ template "Title.Style" .Title }}
+		<title>{{ .Header.Title }} — {{ .Site.Name }}</title>
+	</head>
+	<body>
+    {{ template "Title" .Title }}
+    {{ template "Article" .Article }}
+    {{ template "Footer" .Footer }}
+    {{ template "Title.Script" .Title }}
+	</body>
+	</html>
+{{ end }}

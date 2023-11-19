@@ -1,0 +1,254 @@
+{{- /*gotype: github.com/blazejsewera/blog/renderer/page/component/molecule.MenuProps*/ -}}
+{{ define "Menu" }}
+	<div class="header-image flex mb-12">
+        <span class="brand my-auto text-2xl">
+            <a href="{{ .Site.BlogRootURL }}" title="{{ .Site.Name }}"
+			   class="text-white weight-normal">{{ .Site.Name }}</a>
+        </span><span id="menu-image-button" class="flex ml-auto my-auto icon-wrapper cursor-pointer">
+            <img src="/icon/menu.svg" alt="menu" />
+        </span>
+	</div>
+
+	<div id="ribbon" class="bg-neutral-700 text-white">
+		<div id="menu-ribbon-button" class="flex cursor-pointer">
+			<img src="/icon/menu.svg" alt="menu" />
+		</div>
+		<span class="text-sm md:text-base md:py-6">{{ .Title }}</span>
+		<div>
+			<a class="flex" href="{{ .Site.BlogRootURL }}">
+                {{ template "LogoWhiteIcon" "w-7 h-7 m-auto" }}
+			</a>
+		</div>
+	</div>
+
+	<div id="menu" class="flex fixed top-0 h-screen p-12 bg-neutral-700 text-white">
+        <span id="menu-close-button"
+			  class="flex absolute top-8 right-8 md:top-12 md:left-12 icon-wrapper cursor-pointer">
+            <img src="/icon/close.svg" alt="close" />
+        </span>
+		<div class="my-auto">
+			<h2 class="font-geometric text-2xl md:text-3xl xl:text-4xl my-6">
+				Where do you want to go?
+			</h2>
+			<menu class="list-none text-xl md:text-2xl">
+				<li>
+					<a class="block mb-4" href="{{ .Site.BlogRootURL }}" title="Blog">blog home</a>
+				</li>
+				<li><a class="block mb-4" href="{{ .Site.BaseRootURL }}">sewera.dev</a></li>
+				<li>
+					<a class="block mb-4" href="{{ .Site.GithubProfileURL }}" target="_blank" title="My Github">
+						github
+                        {{- template "ExternalLinkIcon" "w-3 h-3" }}
+					</a>
+				</li>
+				<li>
+					<a class="block mb-4"
+					   rel="me"
+					   href="{{ .Site.MastodonProfileURL }}"
+					   target="_blank"
+					   title="Mastodon profile"
+					>
+						mastodon
+                        {{- template "ExternalLinkIcon" "w-3 h-3" }}
+					</a>
+				</li>
+			</menu>
+		</div>
+	</div>
+{{ end }}
+
+{{ define "Menu.Style" }}
+	<style>
+		#ribbon {
+			position: fixed;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			right: -50px;
+			top: 80px;
+			box-sizing: border-box;
+			width: 50px;
+			min-height: 360px;
+			padding: 15px 5px;
+			font-size: 16px;
+			z-index: 68;
+			transition-property: right;
+			transition-duration: 200ms;
+		}
+
+		#ribbon.visible {
+			right: 0;
+		}
+
+		#ribbon #menu-ribbon-button img {
+			height: 24px;
+			margin: auto;
+			max-width: unset;
+		}
+
+		#ribbon span {
+			writing-mode: vertical-rl;
+			text-orientation: mixed;
+		}
+
+		#ribbon > div,
+		#ribbon > span {
+			margin: 0 auto;
+		}
+
+		@media (max-width: 767px) {
+			#ribbon {
+				top: -45px;
+				right: 0;
+				width: 100%;
+				min-height: 45px;
+				height: 45px;
+				flex-direction: row-reverse;
+				padding: 0 20px;
+				transition-property: top;
+			}
+
+			#ribbon.visible {
+				top: 0;
+			}
+
+			#ribbon span {
+				writing-mode: horizontal-tb;
+			}
+
+			#ribbon > div,
+			#ribbon > span {
+				margin: auto 5px;
+			}
+		}
+
+		div.header-image {
+			height: 48px;
+		}
+
+		div.header-image > .brand > a:hover {
+			text-decoration: none;
+		}
+
+		#menu {
+			right: -700px;
+			width: 700px;
+			box-sizing: border-box;
+			z-index: 69;
+			transition-property: right;
+			transition-duration: 400ms;
+		}
+
+		#menu.visible {
+			right: 0;
+		}
+
+		#menu a {
+			color: hsl(0, 0%, 75%);
+			font-weight: 400;
+			transition-property: color;
+			transition-duration: 300ms;
+		}
+
+		#menu a:hover {
+			text-decoration: none;
+			color: hsl(0, 0%, 100%);
+		}
+
+		@media (min-width: 768px) and (max-width: 1280px) {
+			div.header-image {
+				height: 32px;
+			}
+
+			#menu {
+				width: 550px;
+				right: -550px;
+			}
+		}
+
+		@media (max-width: 767px) {
+			div.header-image {
+				height: 24px;
+			}
+
+			div.header-image > .brand {
+				font-size: 16px;
+			}
+
+			#menu {
+				right: -100vw;
+				width: 100vw;
+			}
+
+			#menu.visible {
+				right: 0;
+			}
+
+			#menu > div.center-y-flex {
+				width: 100%;
+			}
+
+			#menu h2 {
+				max-width: 200px;
+			}
+
+			#menu-links,
+			#menu-links > li,
+			#menu-links > li > a {
+				width: 100%;
+			}
+
+			#menu-links > li > a {
+				display: inline-block;
+				margin-bottom: 10px;
+			}
+		}
+	</style>
+{{ end }}
+
+{{ define "Menu.Script" }}
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			const menuImageButton = document.getElementById("menu-image-button"),
+				menu = document.getElementById("menu"),
+				menuCloseButton = document.getElementById("menu-close-button"),
+				ribbon = document.getElementById("ribbon"),
+				menuRibbonButton = document.getElementById("menu-ribbon-button"),
+				menuLinks = document.getElementById("menu-links");
+
+			document.addEventListener("click", () => {
+				menu?.classList.remove("visible");
+			});
+
+			menu?.addEventListener("click", e => {
+				e.stopPropagation();
+			});
+
+			menuImageButton?.addEventListener("click", e => {
+				e.stopPropagation();
+				menu?.classList.add("visible");
+			});
+
+			menuRibbonButton?.addEventListener("click", e => {
+				e.stopPropagation();
+				menu?.classList.add("visible");
+			});
+
+			menuCloseButton?.addEventListener("click", () => {
+				menu?.classList.remove("visible");
+			});
+
+			menuLinks?.addEventListener("click", () => {
+				menu?.classList.remove("visible");
+			});
+
+			window.addEventListener("scroll", () => {
+				if (window.scrollY >= 100) {
+					ribbon?.classList.add("visible");
+				} else {
+					ribbon?.classList.remove("visible");
+				}
+			});
+		});
+	</script>
+{{ end }}
