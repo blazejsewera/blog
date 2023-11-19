@@ -11,11 +11,8 @@ import (
 	"os/exec"
 )
 
-const configFile = "preprocess/tailwind/tailwind.config.js"
-const tailwindStyleFile = "_site/style/tailwind.css"
-
 func Run(force constants.ForceLevel) {
-	if files.Exists(tailwindStyleFile) && force == constants.NoForce {
+	if files.Exists(constants.TailwindStyleFile) && force == constants.NoForce {
 		return
 	}
 	if !files.Exists(execFilename()) || force >= constants.ReDownload {
@@ -36,17 +33,20 @@ func Run(force constants.ForceLevel) {
 }
 
 func runTailwind(cssBuf *bytes.Buffer) error {
-	tailwindCmd := exec.Command(execFilename(), "--config", configFile, "--minify")
+	tailwindCmd := exec.Command(execFilename(), "--config", constants.TailwindConfigFile, "--minify")
 	tailwindCmd.Stdout = cssBuf
+	errBuf := &bytes.Buffer{}
+	tailwindCmd.Stderr = errBuf
+
 	err := tailwindCmd.Run()
 	if err != nil {
-		return fmt.Errorf("tailwind: run: %w; maybe you have a wrong binary version for your OS/arch", err)
+		return fmt.Errorf("tailwind: run: %w; maybe you have a wrong binary version for your OS/arch;\nstderr:\n%s", err, errBuf.String())
 	}
 	return nil
 }
 
 func writeCSSFile(cssBuf *bytes.Buffer) error {
-	file, err := files.CreateFileWr(tailwindStyleFile, false)
+	file, err := files.CreateFileWr(constants.TailwindStyleFile, false)
 	if err != nil {
 		return fmt.Errorf("tailwind: write css: %w", err)
 	}

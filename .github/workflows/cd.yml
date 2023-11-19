@@ -1,9 +1,5 @@
 name: "CD pipeline — build, test, deploy"
 
-defaults:
-  run:
-    working-directory: "renderer"
-
 on:
   push:
     branches: [ master ]
@@ -34,8 +30,8 @@ jobs:
         id: "tailwind-cache"
         uses: "actions/cache@v3"
         with:
-          path: "bin/tailwindcss"
-          key: "${{ runner.os }}-tailwind-${{ hashFiles('preprocess/tailwind/version.go') }}"
+          path: "renderer/bin/tailwindcss"
+          key: "${{ runner.os }}-tailwind-${{ hashFiles('renderer/constants/constants.go') }}"
           restore-keys: |
             ${{ runner.os }}-tailwind-
 

@@ -18,9 +18,9 @@ func detectOSAndArch() (osys string, arch string, err error) {
 	}
 
 	switch runtime.GOARCH {
-	case "amd64":
+	case "amd64", "x86_64":
 		arch = "x64"
-	case "arm":
+	case "arm", "arm64":
 		arch = "arm64"
 	default:
 		return "", "", fmt.Errorf("tailwind: unsupported architecture: %s", runtime.GOARCH)

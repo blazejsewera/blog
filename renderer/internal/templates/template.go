@@ -3,6 +3,7 @@ package templates
 import (
 	"bytes"
 	"fmt"
+	"github.com/blazejsewera/blog/renderer/constants"
 	"github.com/blazejsewera/blog/renderer/internal/files"
 	"html/template"
 	"strings"
@@ -12,15 +13,13 @@ type Template struct {
 	*template.Template
 }
 
-const pageDir = "page"
-
 var parsedTemplates *Template
 
 func ParseAll() *Template {
 	if parsedTemplates != nil {
 		return parsedTemplates
 	}
-	toParse, err := files.FindBySuffix(pageDir, ".html.tmpl")
+	toParse, err := files.FindBySuffix(constants.PageDir, ".html.tmpl")
 	if err != nil {
 		panic(fmt.Errorf("templates: parse all: %w", err))
 	}
@@ -36,7 +35,7 @@ func ParseAll() *Template {
 }
 
 func ParseSingle(fileSuffix string) *Template {
-	toParse, err := files.FindBySuffix(pageDir, fileSuffix)
+	toParse, err := files.FindBySuffix(constants.PageDir, fileSuffix)
 	if err != nil {
 		panic(fmt.Errorf("templates: parse all: %w", err))
 	}

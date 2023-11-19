@@ -11,12 +11,6 @@ import (
 	"sync"
 )
 
-const (
-	baseUpstreamURL = "https://www.sewera.dev/swty/"
-	fontDir         = "_site/font"
-	fontList        = "font.list"
-)
-
 func Download(force constants.ForceLevel) {
 	fns := fontNames()
 	if !allFontsExist(fns) || force >= constants.ReDownload {
@@ -26,7 +20,7 @@ func Download(force constants.ForceLevel) {
 
 func allFontsExist(fontNames []string) bool {
 	for _, fontName := range fontNames {
-		if !files.Exists(path.Join(fontDir, fontName)) {
+		if !files.Exists(path.Join(constants.FontDir, fontName)) {
 			return false
 		}
 	}
@@ -45,7 +39,7 @@ func download(fontNames []string) {
 }
 
 func fontNames() []string {
-	file, err := os.Open(path.Join(fontDir, fontList))
+	file, err := os.Open(path.Join(constants.FontDir, constants.FontList))
 	if err != nil {
 		panic(err)
 	}
@@ -65,8 +59,8 @@ func fontNames() []string {
 
 func downloadFont(wg *sync.WaitGroup, fontName string) {
 	defer wg.Done()
-	upstreamURL := baseUpstreamURL + fontName
-	targetFile := path.Join(fontDir, fontName)
+	upstreamURL := constants.FontUpstreamURL + fontName
+	targetFile := path.Join(constants.FontDir, fontName)
 	err := files.DownloadFile(upstreamURL, targetFile, false)
 	if err != nil {
 		log.Error("font: download: %s", err)

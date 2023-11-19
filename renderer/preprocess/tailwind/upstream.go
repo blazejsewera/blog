@@ -1,9 +1,8 @@
 package tailwind
 
-import "fmt"
-
-const (
-	baseURL = "https://github.com/tailwindlabs/tailwindcss/releases/download"
+import (
+	"fmt"
+	"github.com/blazejsewera/blog/renderer/constants"
 )
 
 func upstreamExecFilename(osys string, arch string) string {
@@ -24,5 +23,5 @@ func upstreamChecksumsURL() string {
 }
 
 func upstreamURL(filename string) string {
-	return fmt.Sprintf("%s/%s/%s", baseURL, tailwindVersion, filename)
+	return fmt.Sprintf("%s/%s/%s", constants.TailwindUpstreamURL, constants.TailwindVersion, filename)
 }

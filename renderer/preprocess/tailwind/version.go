@@ -1,3 +1,3 @@
 package tailwind
 
-const tailwindVersion = "v3.3.3"
+const tailwindVersion = "v3.3.5"

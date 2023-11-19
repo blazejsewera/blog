@@ -4,14 +4,13 @@ import (
 	"bufio"
 	"crypto/sha256"
 	"fmt"
+	"github.com/blazejsewera/blog/renderer/constants"
 	"github.com/blazejsewera/blog/renderer/internal/files"
 	"github.com/blazejsewera/blog/renderer/internal/must"
 	"io"
 	"os"
 	"strings"
 )
-
-const checksumsFilename = "bin/tailwindcss.checksum.txt"
 
 func checkSha256(upstreamFilename string, localFilename string) error {
 	expectedChecksum, err := downloadAndExtractChecksum(upstreamFilename)
@@ -43,12 +42,12 @@ func checkSha256(upstreamFilename string, localFilename string) error {
 }
 
 func downloadAndExtractChecksum(upstreamFilename string) (sha256checksum string, err error) {
-	err = files.DownloadFile(upstreamChecksumsURL(), checksumsFilename, false)
+	err = files.DownloadFile(upstreamChecksumsURL(), constants.TailwindChecksum, false)
 	if err != nil {
 		return "", err
 	}
 
-	checksums, err := os.Open(checksumsFilename)
+	checksums, err := os.Open(constants.TailwindChecksum)
 	if err != nil {
 		return "", err
 	}
@@ -58,9 +57,9 @@ func downloadAndExtractChecksum(upstreamFilename string) (sha256checksum string,
 		return "", err
 	}
 
-	err = os.Remove(checksumsFilename)
+	err = os.Remove(constants.TailwindChecksum)
 	if err != nil {
-		return "", fmt.Errorf("remove checksums file: %s: %w", checksumsFilename, err)
+		return "", fmt.Errorf("remove checksums file: %s: %w", constants.TailwindChecksum, err)
 	}
 	return sha256checksum, nil
 }
@@ -75,7 +74,7 @@ func findChecksum(checksums io.Reader, upstreamFilename string) (checksum string
 		}
 		checksum = f[0]
 		filename := f[1]
-		if filename == upstreamFilename {
+		if strings.Contains(filename, upstreamFilename) {
 			return checksum, nil
 		}
 	}
