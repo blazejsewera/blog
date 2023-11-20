@@ -47,7 +47,7 @@ var IndexMetadata = domain.FillDefaultIfEmpty(domain.ArticleMetadata{
 	Subtitle:   "By Blazej Sewera",
 	Date:       times.Now(),
 	URL:        "/",
-	SourceFile: "page/index.html.tmpl",
+	SourceFile: "renderer/page/index.html.tmpl",
 	TargetFile: constants.DistDir + "/index.html",
 	Keywords: []string{
 		"software engineering",
