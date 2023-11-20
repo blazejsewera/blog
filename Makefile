@@ -9,3 +9,15 @@ clean:
 
 archive:
 	tar -cvf ./dist.tar ./dist
+
+dev: install build-render
+	go run devserver/main.go &
+	reflex --config=devserver.reflex --decoration=fancy
+
+build-render: build
+	./renderblog -f=1
+
+install:
+ifeq (, $(shell which reflex))
+	go install github.com/cespare/reflex@latest
+endif

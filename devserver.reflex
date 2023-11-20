@@ -1,0 +1,11 @@
+# Re-render blog
+-R '^dist/' -r '^_site/.*' -- \
+	./renderblog
+
+# Rebuild binary
+-R '^dist/' -r '\.go$' -- \
+	make build-render
+
+# Rerun tailwind when templates or tailwind config change
+-R '^dist/' -r '\.html\.tmpl$|tailwind\.config\.js$' -- \
+	./renderblog -f=1
