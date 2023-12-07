@@ -7,12 +7,12 @@ import (
 )
 
 var headerData = map[string]string{
+	"blogRoot":       "blog.sewera.dev",
 	"title":          "title",
 	"date":           "2023-10-01",
 	"author":         "author",
 	"license":        "license",
 	"language":       "language",
-	"siteName":       "siteName",
 	"abstract":       "abstract",
 	"keyword1":       "keyword1",
 	"keyword2":       "keyword2",
@@ -21,16 +21,14 @@ var headerData = map[string]string{
 }
 
 var listingData = map[string]string{
-	"tabTitle":    "tabTitle",
-	"subtitle":    "subtitle",
 	"description": "description",
 
 	"articleTitle":  "articleTitle",
-	"articleDate":   "2023-10-02",
+	"articleDate":   "October 2, 2023",
 	"articleURL":    "https://example.com/article",
 	"articleImgURL": "https://example.com/article/img.jpg",
 
-	"articleDate2": "2023-10-03",
+	"articleDate2": "October 3, 2023",
 }
 
 var articleData = map[string]string{
@@ -45,26 +43,28 @@ var rawContent = []byte(`# An article
 Sample text.`)
 
 var articleMetadata = domain.ArticleMetadata{
-	Title:          headerData["title"],
-	Date:           times.Parse(headerData["date"]),
-	Author:         headerData["author"],
-	License:        headerData["license"],
-	Language:       headerData["language"],
-	Abstract:       headerData["abstract"],
-	Keywords:       []string{headerData["keyword1"], headerData["keyword2"]},
-	ImgURL:         template.URL(headerData["imgURL"]),
-	ImgDescription: headerData["imgDescription"],
+	Title:            headerData["title"],
+	Date:             times.Parse(headerData["date"]),
+	Author:           headerData["author"],
+	License:          headerData["license"],
+	Language:         headerData["language"],
+	Abstract:         articleData["abstract"],
+	Keywords:         []string{headerData["keyword1"], headerData["keyword2"]},
+	ImgURL:           template.URL(headerData["imgURL"]),
+	ImgDescription:   headerData["imgDescription"],
+	Draft:            true,
+	DraftDescription: articleData["draftDescription"],
 }
 
 var articles = []domain.ArticleMetadata{{
 	Title:  listingData["articleTitle"],
-	Date:   times.Parse(listingData["articleDate"]),
+	Date:   times.Parse("2023-10-02"),
 	URL:    template.URL(listingData["articleURL"]),
 	Draft:  false,
 	ImgURL: template.URL(listingData["articleImgURL"]),
 }, {
 	Title:  listingData["articleTitle"],
-	Date:   times.Parse(listingData["articleDate2"]),
+	Date:   times.Parse("2023-10-03"),
 	URL:    template.URL(listingData["articleURL"]),
 	Draft:  true,
 	ImgURL: template.URL(listingData["articleImgURL"]),

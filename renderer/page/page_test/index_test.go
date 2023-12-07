@@ -14,7 +14,6 @@ func TestIndex(t *testing.T) {
 	workingdir.SetToProjectRoot()
 
 	t.Run("renders properly", func(t *testing.T) {
-		t.Skipf("fix this test after proper rendering is implemented")
 		data := maps.Union(headerData, listingData)
 		props := page.IndexProps{
 			Metadata: articleMetadata,

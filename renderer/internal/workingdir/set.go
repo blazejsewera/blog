@@ -45,7 +45,7 @@ func isProjectRoot(dir string) bool {
 		panic(fmt.Errorf("is project root: read dir: %s: %w", dir, err))
 	}
 	for _, file := range files {
-		if file.Name() == "go.mod" {
+		if file.Name() == "LICENSE" {
 			return true
 		}
 	}

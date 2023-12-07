@@ -4,6 +4,6 @@ import (
 	"github.com/yosssi/gohtml"
 )
 
-func MinifyHTML(htmlBytes []byte) []byte {
+func FormatHTML(htmlBytes []byte) []byte {
 	return gohtml.FormatBytes(htmlBytes)
 }

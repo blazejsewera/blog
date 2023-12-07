@@ -12,7 +12,7 @@ func save(targetFile string, rendered []byte, sourceFile string) error {
 	if err != nil {
 		return renderErr(sourceFile, err)
 	}
-	_, err = target.Write(postprocess.MinifyHTML(rendered))
+	_, err = target.Write(postprocess.FormatHTML(rendered))
 	if err != nil {
 		return renderErr(sourceFile, err)
 	}

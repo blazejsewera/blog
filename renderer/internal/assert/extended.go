@@ -22,7 +22,7 @@ func EqualFields[T any](t testing.TB, expected T, actual T, fields ...string) {
 
 func EqualHTML[T, R []byte | string](t testing.TB, expected T, actual R) bool {
 	t.Helper()
-	normalizedExpected := string(postprocess.MinifyHTML([]byte(expected)))
-	normalizedActual := string(postprocess.MinifyHTML([]byte(actual)))
+	normalizedExpected := string(postprocess.FormatHTML([]byte(expected)))
+	normalizedActual := string(postprocess.FormatHTML([]byte(actual)))
 	return Equal(t, normalizedExpected, normalizedActual)
 }
