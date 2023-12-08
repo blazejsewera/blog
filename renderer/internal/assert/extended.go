@@ -2,7 +2,7 @@ package assert
 
 import (
 	"fmt"
-	"github.com/blazejsewera/blog/renderer/postprocess"
+	"github.com/yosssi/gohtml"
 	"reflect"
 	"testing"
 )
@@ -22,7 +22,11 @@ func EqualFields[T any](t testing.TB, expected T, actual T, fields ...string) {
 
 func EqualHTML[T, R []byte | string](t testing.TB, expected T, actual R) bool {
 	t.Helper()
-	normalizedExpected := string(postprocess.FormatHTML([]byte(expected)))
-	normalizedActual := string(postprocess.FormatHTML([]byte(actual)))
+	normalizedExpected := formatHTML(string(expected))
+	normalizedActual := formatHTML(string(actual))
 	return Equal(t, normalizedExpected, normalizedActual)
+}
+
+func formatHTML(input string) string {
+	return gohtml.Format(input)
 }

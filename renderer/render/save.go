@@ -3,7 +3,6 @@ package render
 import (
 	"fmt"
 	"github.com/blazejsewera/blog/renderer/internal/log"
-	"github.com/blazejsewera/blog/renderer/postprocess"
 	"os"
 )
 
@@ -12,7 +11,7 @@ func save(targetFile string, rendered []byte, sourceFile string) error {
 	if err != nil {
 		return renderErr(sourceFile, err)
 	}
-	_, err = target.Write(postprocess.FormatHTML(rendered))
+	_, err = target.Write(rendered)
 	if err != nil {
 		return renderErr(sourceFile, err)
 	}
