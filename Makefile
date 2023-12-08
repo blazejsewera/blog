@@ -20,4 +20,5 @@ build-render: build
 install:
 ifeq (, $(shell which reflex))
 	go install github.com/cespare/reflex@latest
+	@echo "Remember to add Go bin directory into PATH (usually $HOME/go/bin)"
 endif
