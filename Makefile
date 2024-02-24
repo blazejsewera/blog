@@ -17,8 +17,17 @@ dev: install build-render
 build-render: build
 	./renderblog -f=1
 
+dev-server:
+	go run devserver/main.go
+
+render:
+	./renderblog
+
 install:
 ifeq (, $(shell which reflex))
 	go install github.com/cespare/reflex@latest
 	@echo "Remember to add Go bin directory into PATH (usually $HOME/go/bin)"
 endif
+
+sync-vendor:
+	cd renderer; $(MAKE) sync-vendor

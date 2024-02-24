@@ -3,3 +3,6 @@ build:
 
 test:
 	go test ./...
+
+sync-vendor:
+	go mod vendor
