@@ -4,7 +4,7 @@ subtitle:  Migrating my blog from Astro to Go
 date: 2024-02-24
 abstract: |
   How much work maintaining the dependencies is too much?
-  How big must be the node_modules directory to start bothering you?
+  How big must be the node modules directory to start bothering you?
   Do you like spending an hour every now and then
   to adjust your code to the APIs you depend on,
   just to have up-to-date libraries?
@@ -145,6 +145,17 @@ Let me say that again: from over 200 MB to about 3.5!
 If you wanted proof that the JavaScript ecosystem
 makes it extremely easy to just add new layers of abstraction ad infinitum,
 here you go.
+The difference is colossal, the graphs show it better than words.
+
+<figure>
+  <img src="/from-over-200-mb-of-dependencies-to-less-than-4/size-of-dependencies-mb.png" />
+  <figcaption>Comparison of the size of dependencies in Astro and Go implementations in megabytes</figcaption>
+</figure>
+
+<figure>
+  <img src="/from-over-200-mb-of-dependencies-to-less-than-4/number-of-dependencies.png" />
+  <figcaption>Comparison of the number of dependencies in Astro and Go implementations</figcaption>
+</figure>
 
 ### But there is a catch
 
