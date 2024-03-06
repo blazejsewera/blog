@@ -45,9 +45,9 @@ Easy enough.
 ## Prepare to move with your framework
 
 Library authors have every right to break all the APIs they wish.
-Especially with open-source licenses,
-like the one Astro uses, MIT,
-the license literally screams at you with the following statement:
+Just look at open-source licenses.
+Every one of them has a lack of warranty disclaimer.
+Here's an example from the MIT license used by Astro:
 
 ```
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -81,10 +81,21 @@ I didn't have to wait that long for the next major release of Astro —
 version 4[^astro-4] came out on December 5, 2023.
 Because Astro 3 came out on August 30, 2023,
 it is only 3 months between major updates.
-I consider my hypothetical maximum writing capacity of one article per month.
+I consider my hypothetical maximum writing capacity
+to be one article per month.
 That would make me do a major framework update every third article!
 I already have enough reasons to procrastinate on writing articles,
 and another one would probably grind my writing to a halt.
+
+You can soften the blow of upgrading your dependencies
+with a help of an auto-updater like Dependabot,[^dependabot] or Renovate Bot,[^renovate]
+but if some library introduces a breaking change,
+you're out of luck.
+The best thing it can do then is to open a Pull Request,
+and it's up to you to have a sufficient build pipeline
+to show you that this change breaks the project.
+The burden of reading migration guides and manually make changes in your code
+still lies upon you.
 
 [^astro]: Astro. The web framework for content-driven websites. [[Online source](https://astro.build)] (accessed Feb 24, 2024).
 [^second-iteration]: The first iteration was in Python and Django,
@@ -97,13 +108,15 @@ and another one would probably grind my writing to a halt.
 [^astro-3]: Third major release of Astro, Aug 30, 2023. [[Online source](https://astro.build/blog/astro-3)] (accessed Feb 24, 2024).
 [^astro-3-deprecations-and-breaking-changes]: Astro 3 deprecations and breaking changes, 2023. [[Online source](https://docs.astro.build/en/guides/upgrade-to/v3)] (accessed Feb 24, 2024).
 [^astro-4]: Fourth major release of Astro, Dec 05, 2023. [[Online source](https://astro.build/blog/astro-4)] (accessed Feb 24, 2024).
+[^dependabot]: Dependabot. Automated dependency updates built into GitHub, 2024. [[Online source](https://github.com/dependabot)] (accessed Mar 6, 2024).
+[^renovate]: Renovate. Universal dependency automation tool, 2024. [[Online source](https://github.com/renovatebot/renovate)] (accessed Mar 6, 2024).
 
 ## Unplugging from the JavaScript Matrix
 
-Frontend development has became synonymous with JavaScript
-to the point that I chose Astro instead of Hugo,[^hugo]
-because I didn't write any frontend code
-that didn't involve JavaScript in my job.
+Frontend development has become synonymous with JavaScript.
+In my professional experience,
+every piece of frontend code I wrote involved JavaScript,
+so I chose Astro instead of Hugo.[^hugo]
 
 Only when I learned about HTMX[^htmx]
 I realized that I can generate my static site in whatever language I wanted.
@@ -161,9 +174,8 @@ The difference is colossal, the graphs show it better than words.
 
 Giving up those many layers of abstraction
 lead to more _application_ code, though.
-With Astro, I needed 2209 lines of code,
-complete with all the JSON configuration files,
-to implement my blog.
+With Astro, I needed 2209 lines of code to implement my blog,
+including all the JSON configuration files.
 With Go, I needed 3309 lines of code,
 so quite a lot more!
 
@@ -188,21 +200,21 @@ so rewriting everything in Go templates wasn't very hard.
 
 The last annoyance was the lack of customizability
 of the footnote section's heading.
-I don't think it was customizable in Astro, either,
-but the default behavior already satisfied me,
-because the default heading for the footnote section was "Footnotes."
-The Goldmark library[^goldmark] did not put any heading,
-only a horizontal rule to mark the start of the footnotes.
+I don't think it was customizable in Astro either,
+but the default behavior for the footnote section was "Footnotes,"
+which already satisfied me.
+On the other hand, the Goldmark library[^goldmark] did not put any heading,
+only a horizontal rule to mark the start of the footnotes section.
 So I needed to reimplement some internal methods
 to put the heading back in its place.
 
-[^goldmark]: Goldmark. A markdown parser written in Go. [[Online source](https://github.com/yuin/goldmark)] (accessed Feb 24, 2024).
+[^goldmark]: Goldmark. A Markdown parser written in Go. [[Online source](https://github.com/yuin/goldmark)] (accessed Feb 24, 2024).
 
 ## Conclusion
 
 You are probably familiar with many such rewrite stories,
 where a project moves away from JavaScript.
-Less dependencies, faster development, better application performance.
+Fewer dependencies, faster development, better application performance.
 My story was a bit different.
 Yes, the number of dependencies decreased significantly,
 but my biggest goal was to be able to forget about my project
@@ -211,5 +223,5 @@ without studying a migration guide for half a day.
 I think I managed to do it,
 because I've started writing this article November 24, 2023,
 and went back to it on and off for three months.
-Now it's February 24, 2024 and I didn't need to read any migration guide —
+Now it's February 24, 2024, and I didn't need to read any migration guide —
 my blog renderer Just Works™.
