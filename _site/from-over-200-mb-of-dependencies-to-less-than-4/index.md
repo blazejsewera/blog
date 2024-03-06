@@ -198,6 +198,20 @@ which is interoperability with different JavaScript component frameworks.
 Fortunately, my blog isn't a very big project,
 so rewriting everything in Go templates wasn't very hard.
 
+Another thing I didn't consider when rewriting my blog was security,
+because my website is static and doesn't make any connections to the database.
+However, looking at the html/template package[^html-template]
+of the Go standard library,
+the code injection protection is very good out of the box,
+and I don't see any reason for it to be less secure than Astro implementation.
+Additionally, having less dependencies results in less code.
+Less code equals less opportunities for security bugs to show up,
+and most crucially less effort to update or patch known vulnerabilities.
+In OWASP Top 10[^owasp-top-10]
+having a vulnerable or outdated component[^vulnerable-and-outdated-component]
+is the only potential weakness differentiating Astro and Go implementations.
+Everything else is either the same or independent of the framework.
+
 The last annoyance was the lack of customizability
 of the footnote section's heading.
 I don't think it was customizable in Astro either,
@@ -208,7 +222,10 @@ only a horizontal rule to mark the start of the footnotes section.
 So I needed to reimplement some internal methods
 to put the heading back in its place.
 
-[^goldmark]: Goldmark. A Markdown parser written in Go. [[Online source](https://github.com/yuin/goldmark)] (accessed Feb 24, 2024).
+[^goldmark]: Goldmark. A Markdown parser written in Go, 2024. [[Online source](https://github.com/yuin/goldmark)] (accessed Feb 24, 2024).
+[^html-template]: html/template package. Data-driven templates for generating HTML output safe against code injection. Go standard library, 2024. [[Online source](https://pkg.go.dev/html/template)] (accessed Mar 6, 2024).
+[^owasp-top-10]: OWASP Top 10:2021. Standard awareness document for developers and web application security, 2021. [[Online source](https://owasp.org/www-project-top-ten/)] (accessed Mar 6, 2024).
+[^vulnerable-and-outdated-component]: Vulnerable and Outdated Components. OWASP Top 10:2021, 2021. [[Online source](https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/)] (accessed Mar 6, 2024).
 
 ## Conclusion
 
