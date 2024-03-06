@@ -1,6 +1,6 @@
 ---
 title: From over 200 MB of dependencies to less than 4 MB
-subtitle:  Migrating my blog from Astro to Go
+subtitle: Migrating my blog from Astro to Go
 date: 2024-02-24
 abstract: |
   How much work maintaining the dependencies is too much?
@@ -13,9 +13,8 @@ abstract: |
   just because a new vulnerability surfaced?
   Many of us don't realize that other people's code
   in our dependencies is still our liability.
-  Library maintainers sure do improve them,
-  but nobody will help us maintain the integration
-  of those libraries with our own projects.
+  I rewrote my blog from JavaScript (Astro) to Go
+  and now I have over 50 times less code I depend on.
 imgUrl: /from-over-200-mb-of-dependencies-to-less-than-4/simple-desk.jpg
 imgDescription: A simple and clean desk
 keywords:
@@ -27,12 +26,18 @@ keywords:
 
 ## An easy way in
 
+When I started developing my blog,
+I decided to use Astro,
+as I was somewhat familiar with React.
+I thought about using other frameworks like Next.js,[^next-js]
+but Astro seemed at the time the best for generating static websites
+without unnecessary client-side JavaScript.
+It was actually my second iteration,
+because the first one was in Python and Django framework.[^second-iteration]
+
 Astro[^astro] is an amazing framework for static site generation.
 It supports multiple UI libraries for defining components,
 as well as its own component templating language.
-When I started developing the second iteration[^second-iteration] of my blog,
-I decided to use it, as I was somewhat familiar with React.
-
 I obviously didn't choose React for my side project,
 that would be too uncool.
 I chose Solid[^solid].
@@ -97,14 +102,13 @@ to show you that this change breaks the project.
 The burden of reading migration guides and manually make changes in your code
 still lies upon you.
 
-[^astro]: Astro. The web framework for content-driven websites. [[Online source](https://astro.build)] (accessed Feb 24, 2024).
-[^second-iteration]: The first iteration was in Python and Django,
-    and somehow had an Internal Server Error
-    whenever I had a non-ASCII character.
-    I was stupid back then, so I never figured out why.
-    I still don't know why, so not much changed.
+[^next-js]: Next.js. The React framework of the Web, 2024. [[Online source](https://nextjs.org/)] (accessed Mar 6, 2024).
+[^astro]: Astro. The web framework for content-driven websites, 2024. [[Online source](https://astro.build)] (accessed Feb 24, 2024).
+[^second-iteration]: When I implemented my blog for the first time with Python and Django,
+    I somehow got an Internal Server Error every time I had a non-ASCII character in any article.
+    I was stupid back then, so I never figured out why. I still don't know why, so not much changed.
 
-[^solid]: Solid. A declarative, efficient, and flexible JavaScript library for building user interfaces. [[Online source](https://www.solidjs.com)] (accessed Feb 24, 2024).
+[^solid]: Solid. A declarative, efficient, and flexible JavaScript library for building user interfaces, 2024. [[Online source](https://www.solidjs.com)] (accessed Feb 24, 2024).
 [^astro-3]: Third major release of Astro, Aug 30, 2023. [[Online source](https://astro.build/blog/astro-3)] (accessed Feb 24, 2024).
 [^astro-3-deprecations-and-breaking-changes]: Astro 3 deprecations and breaking changes, 2023. [[Online source](https://docs.astro.build/en/guides/upgrade-to/v3)] (accessed Feb 24, 2024).
 [^astro-4]: Fourth major release of Astro, Dec 05, 2023. [[Online source](https://astro.build/blog/astro-4)] (accessed Feb 24, 2024).
@@ -158,6 +162,11 @@ Let me say that again: from over 200 MB to about 3.5!
 If you wanted proof that the JavaScript ecosystem
 makes it extremely easy to just add new layers of abstraction ad infinitum,
 here you go.
+There's and added benefit that having less code executing
+makes for less resource consumption,
+and in my case, less Virtual Machine minutes spent in GitHub Actions.[^billing-for-github-actions]
+I've never actually exceeded my GitHub Actions quota,
+but that's a nice thing to keep in mind.
 The difference is colossal, the graphs show it better than words.
 
 <figure>
@@ -226,6 +235,7 @@ to put the heading back in its place.
 [^html-template]: html/template package. Data-driven templates for generating HTML output safe against code injection. Go standard library, 2024. [[Online source](https://pkg.go.dev/html/template)] (accessed Mar 6, 2024).
 [^owasp-top-10]: OWASP Top 10:2021. Standard awareness document for developers and web application security, 2021. [[Online source](https://owasp.org/www-project-top-ten/)] (accessed Mar 6, 2024).
 [^vulnerable-and-outdated-component]: Vulnerable and Outdated Components. OWASP Top 10:2021, 2021. [[Online source](https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/)] (accessed Mar 6, 2024).
+[^billing-for-github-actions]: Billing for GitHub Actions. GitHub, 2024. [[Online source](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions)] (accessed Mar 6, 2024).
 
 ## Conclusion
 
