@@ -29,7 +29,7 @@ jobs:
 
       - name: "Cache tailwind binary"
         id: "tailwind-cache"
-        uses: "actions/cache@v3"
+        uses: "actions/cache@v4"
         with:
           path: "renderer/bin/tailwindcss"
           key: "${{ runner.os }}-tailwind-${{ hashFiles('renderer/constants/constants.go') }}"
@@ -38,7 +38,7 @@ jobs:
 
       - name: "Cache fonts"
         id: "fonts-cache"
-        uses: "actions/cache@v3"
+        uses: "actions/cache@v4"
         with:
           path: "_site/font"
           key: "${{ runner.os }}-fonts-${{ hashFiles('_site/font/font.list') }}"
@@ -52,7 +52,7 @@ jobs:
         run: "make archive"
 
       - name: "Upload dist artifact"
-        uses: "actions/upload-artifact@v3"
+        uses: "actions/upload-artifact@v4"
         with:
           name: "blog-sewera-dev-dist-archive"
           path: |
@@ -77,7 +77,7 @@ jobs:
           ssh-add /home/runner/.ssh/github_actions
 
       - name: "Get built artifact"
-        uses: "actions/download-artifact@v3"
+        uses: "actions/download-artifact@v4"
         with:
           name: "blog-sewera-dev-dist-archive"
 
