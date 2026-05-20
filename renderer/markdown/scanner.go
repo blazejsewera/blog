@@ -2,13 +2,14 @@ package markdown
 
 import (
 	"fmt"
+	"os"
+	"slices"
+
+	"github.com/blazejsewera/blog/renderer/article"
 	"github.com/blazejsewera/blog/renderer/constants"
-	"github.com/blazejsewera/blog/renderer/domain"
 	"github.com/blazejsewera/blog/renderer/internal/files"
 	"github.com/blazejsewera/blog/renderer/internal/must"
 	"github.com/blazejsewera/blog/renderer/markdown/frontmatter"
-	"os"
-	"slices"
 )
 
 type Scanner struct {
@@ -17,17 +18,17 @@ type Scanner struct {
 	WorkingDir string
 }
 
-func (s *Scanner) ScanMetadata() (allArticles []domain.ArticleMetadata, sourceFiles []string) {
+func (s *Scanner) ScanMetadata() (allArticles []article.Metadata, sourceFiles []string) {
 	filePaths, err := files.FindBySuffix(s.workingDirectory(), constants.MdExt)
 	if err != nil {
 		panic(err)
 	}
-	var articles []domain.ArticleMetadata
+	var articles []article.Metadata
 	for _, markdownFilename := range filePaths {
 		articles = append(articles, scanFile(markdownFilename))
 	}
 
-	slices.SortFunc(articles, func(a, b domain.ArticleMetadata) int {
+	slices.SortFunc(articles, func(a, b article.Metadata) int {
 		return a.Date.Compare(b.Date)
 	})
 
@@ -44,7 +45,7 @@ func (s *Scanner) workingDirectory() string {
 	}
 }
 
-func scanFile(markdownFilename string) domain.ArticleMetadata {
+func scanFile(markdownFilename string) article.Metadata {
 	file, err := os.Open(markdownFilename)
 	if err != nil {
 		panic(fmt.Errorf("markdown: parse file: %w", err))
@@ -55,29 +56,29 @@ func scanFile(markdownFilename string) domain.ArticleMetadata {
 	return frontmatter.ToArticleMetadata(frMetadata, markdownFilename)
 }
 
-func linkArticlesCyclic(articles []domain.ArticleMetadata) []domain.ArticleMetadata {
+func linkArticlesCyclic(articles []article.Metadata) []article.Metadata {
 	limit := len(articles)
 
-	previous := func(i int) domain.ArticleMetadata {
+	previous := func(i int) article.Metadata {
 		if i == 0 {
 			return articles[limit-1]
 		}
 		return articles[i-1]
 	}
-	next := func(i int) domain.ArticleMetadata {
+	next := func(i int) article.Metadata {
 		if i == limit-1 {
 			return articles[0]
 		}
 		return articles[i+1]
 	}
 	for i := 0; i < limit; i++ {
-		articles[i].Previous = domain.PartialFromArticleMetadata(previous(i))
-		articles[i].Next = domain.PartialFromArticleMetadata(next(i))
+		articles[i].Previous = article.PartialFromMetadata(previous(i))
+		articles[i].Next = article.PartialFromMetadata(next(i))
 	}
 	return articles
 }
 
-func sources(articles []domain.ArticleMetadata) []string {
+func sources(articles []article.Metadata) []string {
 	var result []string
 	for _, article := range articles {
 		result = append(result, article.SourceFile)

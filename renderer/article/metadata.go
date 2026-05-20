@@ -1,11 +1,12 @@
-package domain
+package article
 
 import (
-	"github.com/blazejsewera/blog/renderer/internal/times"
 	"html/template"
+
+	"github.com/blazejsewera/blog/renderer/internal/times"
 )
 
-type ArticleMetadata struct {
+type Metadata struct {
 	Title            string
 	Date             times.Time
 	URL              template.URL
@@ -27,15 +28,15 @@ type ArticleMetadata struct {
 	Next             PartialMetadata
 }
 
-func (m ArticleMetadata) EqualSource(markdownSourceFile string) bool {
+func (m Metadata) EqualSource(markdownSourceFile string) bool {
 	return m.SourceFile == markdownSourceFile
 }
 
-func (m ArticleMetadata) ShortDate() string {
+func (m Metadata) ShortDate() string {
 	return m.Date.ShortDate()
 }
 
-func (m ArticleMetadata) Year() int {
+func (m Metadata) Year() int {
 	return m.Date.Year()
 }
 
@@ -54,7 +55,7 @@ type PartialMetadata struct {
 	URL            template.URL
 }
 
-func PartialFromArticleMetadata(m ArticleMetadata) PartialMetadata {
+func PartialFromMetadata(m Metadata) PartialMetadata {
 	return PartialMetadata{
 		Title:          m.Title,
 		Subtitle:       m.Subtitle,
@@ -66,14 +67,14 @@ func PartialFromArticleMetadata(m ArticleMetadata) PartialMetadata {
 	}
 }
 
-var defaultValues = ArticleMetadata{
+var defaultValues = Metadata{
 	Author:     "Blazej Sewera",
 	Language:   "en-US",
 	License:    "CC BY-SA 4.0",
 	LicenseURL: "https://creativecommons.org/licenses/by-sa/4.0/",
 }
 
-func FillDefaultIfEmpty(metadata ArticleMetadata) ArticleMetadata {
+func FillDefaultIfEmpty(metadata Metadata) Metadata {
 	if metadata.Author == "" {
 		metadata.Author = defaultValues.Author
 	}

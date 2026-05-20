@@ -12,7 +12,7 @@ func Now() Time {
 	return Time{time.Now()}
 }
 
-func Parse(dateString string) Time {
+func MustParse(dateString string) Time {
 	t, err := parseDate(dateString)
 	if err != nil {
 		panic(err)
@@ -36,7 +36,7 @@ func (t Time) Year() int {
 	return t.t.Year()
 }
 
-func (t *Time) UnmarshalText(b []byte) error {
+func (t Time) UnmarshalText(b []byte) error {
 	var err error
 	t.t, err = parseDate(string(b))
 	return err

@@ -2,8 +2,10 @@ package render
 
 import (
 	"fmt"
-	"github.com/blazejsewera/blog/renderer/internal/log"
 	"os"
+
+	"github.com/blazejsewera/blog/renderer/internal/log"
+	"github.com/blazejsewera/blog/renderer/internal/must"
 )
 
 func save(targetFile string, rendered []byte, sourceFile string) error {
@@ -11,6 +13,7 @@ func save(targetFile string, rendered []byte, sourceFile string) error {
 	if err != nil {
 		return renderErr(sourceFile, err)
 	}
+	defer must.Close(target)
 	_, err = target.Write(rendered)
 	if err != nil {
 		return renderErr(sourceFile, err)

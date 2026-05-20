@@ -1,8 +1,9 @@
 package page
 
 import (
-	"github.com/blazejsewera/blog/renderer/domain"
+	"github.com/blazejsewera/blog/renderer/article"
 	"github.com/blazejsewera/blog/renderer/internal/templates"
+	"github.com/blazejsewera/blog/renderer/page/component"
 	"github.com/blazejsewera/blog/renderer/page/component/meta"
 	"github.com/blazejsewera/blog/renderer/page/component/section"
 )
@@ -12,7 +13,7 @@ type PostTemplate struct {
 }
 
 type PostProps struct {
-	Metadata   domain.ArticleMetadata
+	Metadata   article.Metadata
 	RawContent []byte
 }
 
@@ -20,8 +21,8 @@ func (p PostProps) Header() meta.HeaderProps {
 	return meta.HeaderPropsFromDomain(p.Metadata)
 }
 
-func (p PostProps) Site() domain.Site {
-	return domain.DefaultSite
+func (p PostProps) Site() component.SiteInfo {
+	return component.DefaultSite
 }
 
 func (p PostProps) Title() section.TitleProps {

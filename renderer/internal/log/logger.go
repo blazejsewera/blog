@@ -1,8 +1,9 @@
 package log
 
 import (
-	"github.com/blazejsewera/blog/renderer/constants"
 	ll "log"
+
+	"github.com/blazejsewera/blog/renderer/constants"
 )
 
 const (

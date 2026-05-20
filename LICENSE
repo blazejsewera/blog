@@ -6,12 +6,12 @@ depending on a file.
 The full text of the GPL-3.0 license can be found in `LICENSE-GPL-3.0` file.
 The full text of the CC-BY-SA-4.0 can be found in `LICENSE-CC-BY-SA-4.0` file.
 
-Despite the Blog Post files, defined in the next paragraph,
+Excluding the Blog Post files, defined in the next paragraph,
 all files are licensed under GPL-3.0,
 unless clearly specified otherwise in a comment at the beginning of the file.
 
 A Blog Post file is a Markdown (1), MDX (2), Astro (3), or HTML (4) file
-that is placed in the `src/pages` directory.
+that is placed in the `_site` directory.
 By default, Blog Post files are licensed under CC-BY-SA-4.0,
 unless clearly specified otherwise in the Frontmatter (5),
 a Meta Tag (6), or a comment at the beginning of the Blog Post file.

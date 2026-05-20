@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/blazejsewera/blog/renderer/domain"
+	"github.com/blazejsewera/blog/renderer/article"
 	"github.com/blazejsewera/blog/renderer/internal/assert"
 	"github.com/blazejsewera/blog/renderer/internal/files"
 )
@@ -18,10 +18,10 @@ func TestMarkdown(t *testing.T) {
 	sourceFile := "_site/test-article/index.md"
 	targetFile := "dist/test-article/index.html"
 	url := template.URL("/test-article")
-	previous := domain.PartialMetadata{Title: "previous title"}
+	previous := article.PartialMetadata{Title: "previous title"}
 
 	parser := &Parser{
-		AllArticles: []domain.ArticleMetadata{
+		AllArticles: []article.Metadata{
 			{
 				Title:      title,
 				SourceFile: sourceFile,
@@ -36,7 +36,7 @@ func TestMarkdown(t *testing.T) {
 		input := strings.NewReader(sampleMdWithFrontmatter)
 		output, metadata, targetFilename := parser.parseFile(input, sourceFile)
 
-		expectedMetadata := domain.ArticleMetadata{
+		expectedMetadata := article.Metadata{
 			Title:    title,
 			URL:      url,
 			Previous: previous,

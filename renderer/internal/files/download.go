@@ -2,9 +2,10 @@ package files
 
 import (
 	"fmt"
-	"github.com/blazejsewera/blog/renderer/internal/must"
 	"io"
 	"net/http"
+
+	"github.com/blazejsewera/blog/renderer/internal/must"
 )
 
 func DownloadFile(url string, targetFile string, executable bool) error {

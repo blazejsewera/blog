@@ -1,9 +1,10 @@
 package section
 
 import (
-	"github.com/blazejsewera/blog/renderer/domain"
-	"github.com/blazejsewera/blog/renderer/page/component/molecule"
 	"html/template"
+
+	"github.com/blazejsewera/blog/renderer/article"
+	"github.com/blazejsewera/blog/renderer/page/component/molecule"
 )
 
 type ArticleProps struct {
@@ -21,7 +22,7 @@ func (p ArticleProps) DraftProps() molecule.DraftProps {
 	return molecule.DraftProps{DraftDescription: p.DraftDescription}
 }
 
-func ArticlePropsFromDomainAndRaw(metadata domain.ArticleMetadata, rawContent []byte) ArticleProps {
+func ArticlePropsFromDomainAndRaw(metadata article.Metadata, rawContent []byte) ArticleProps {
 	return ArticleProps{
 		Draft:            metadata.Draft,
 		DraftDescription: metadata.DraftDescription,

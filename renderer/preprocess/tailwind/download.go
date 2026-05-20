@@ -2,23 +2,19 @@ package tailwind
 
 import (
 	"fmt"
+	"os"
+
 	"github.com/blazejsewera/blog/renderer/constants"
 	"github.com/blazejsewera/blog/renderer/internal/files"
 	"github.com/blazejsewera/blog/renderer/internal/log"
-	"os"
-	"runtime"
 )
 
 func download() {
-	osys, arch, err := detectOSAndArch()
-	if err != nil {
-		panic(fmt.Errorf("tailwind: download: %w", err))
-	}
-	log.Info("tailwind: downloading: sys=%s arch=%s", osys, arch)
-	upstreamFilename := upstreamExecFilename(osys, arch)
+	upstreamFilename := upstreamExecFilename()
+	log.Info("tailwind: downloading: upstreamFilename=%s", upstreamFilename)
 	localFilename := execFilename()
 
-	err = files.DownloadFile(upstreamExecURL(upstreamFilename), localFilename, true)
+	err := files.DownloadFile(upstreamURL(upstreamFilename), localFilename, true)
 	if err != nil {
 		panic(fmt.Errorf("tailwind: download: %w", err))
 	}
@@ -34,11 +30,6 @@ func download() {
 
 }
 
-//goland:noinspection GoBoolExpressions
 func execFilename() string {
-	if runtime.GOOS == "windows" {
-		return constants.TailwindBinary + ".exe"
-	} else {
-		return constants.TailwindBinary
-	}
+	return files.ExecutableFilename(constants.TailwindBinary)
 }

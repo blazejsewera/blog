@@ -3,11 +3,12 @@ package files
 import (
 	"errors"
 	"fmt"
-	"github.com/blazejsewera/blog/renderer/internal/must"
 	"io"
 	"os"
 	"path/filepath"
 	"slices"
+
+	"github.com/blazejsewera/blog/renderer/internal/must"
 )
 
 var skipFiles = []string{".git", ".gitignore", ".gitkeep"}

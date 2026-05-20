@@ -1,8 +1,10 @@
 package meta
 
 import (
-	"github.com/blazejsewera/blog/renderer/domain"
+	"github.com/blazejsewera/blog/renderer/article"
 	"github.com/blazejsewera/blog/renderer/internal/times"
+	"github.com/blazejsewera/blog/renderer/page/component"
+
 	"html/template"
 	"strings"
 )
@@ -28,8 +30,8 @@ func (p HeaderProps) CommaSeparatedKeywords() string {
 	return strings.Join(p.Keywords, ", ")
 }
 
-func HeaderPropsFromDomain(metadata domain.ArticleMetadata) HeaderProps {
-	site := domain.DefaultSite
+func HeaderPropsFromDomain(metadata article.Metadata) HeaderProps {
+	site := component.DefaultSite
 
 	return HeaderProps{
 		Title:          metadata.Title,

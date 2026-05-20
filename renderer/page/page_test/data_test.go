@@ -1,9 +1,10 @@
 package page_test
 
 import (
-	"github.com/blazejsewera/blog/renderer/domain"
-	"github.com/blazejsewera/blog/renderer/internal/times"
 	"html/template"
+
+	"github.com/blazejsewera/blog/renderer/article"
+	"github.com/blazejsewera/blog/renderer/internal/times"
 )
 
 var headerData = map[string]string{
@@ -42,9 +43,9 @@ var rawContent = []byte(`# An article
 
 Sample text.`)
 
-var articleMetadata = domain.ArticleMetadata{
+var articleMetadata = article.Metadata{
 	Title:            headerData["title"],
-	Date:             times.Parse(headerData["date"]),
+	Date:             times.MustParse(headerData["date"]),
 	Author:           headerData["author"],
 	License:          headerData["license"],
 	Language:         headerData["language"],
@@ -56,15 +57,15 @@ var articleMetadata = domain.ArticleMetadata{
 	DraftDescription: articleData["draftDescription"],
 }
 
-var articles = []domain.ArticleMetadata{{
+var articles = []article.Metadata{{
 	Title:  listingData["articleTitle"],
-	Date:   times.Parse("2023-10-02"),
+	Date:   times.MustParse("2023-10-02"),
 	URL:    template.URL(listingData["articleURL"]),
 	Draft:  false,
 	ImgURL: template.URL(listingData["articleImgURL"]),
 }, {
 	Title:  listingData["articleTitle"],
-	Date:   times.Parse("2023-10-03"),
+	Date:   times.MustParse("2023-10-03"),
 	URL:    template.URL(listingData["articleURL"]),
 	Draft:  true,
 	ImgURL: template.URL(listingData["articleImgURL"]),

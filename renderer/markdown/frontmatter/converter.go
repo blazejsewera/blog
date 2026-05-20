@@ -1,19 +1,20 @@
 package frontmatter
 
 import (
-	"github.com/blazejsewera/blog/renderer/constants"
-	"github.com/blazejsewera/blog/renderer/domain"
 	"html/template"
 	"path/filepath"
 	"strings"
+
+	"github.com/blazejsewera/blog/renderer/article"
+	"github.com/blazejsewera/blog/renderer/constants"
 )
 
-func ToArticleMetadata(f Frontmatter, markdownFilename string) domain.ArticleMetadata {
+func ToArticleMetadata(f Frontmatter, markdownFilename string) article.Metadata {
 	sourceFile := markdownFilename
 	url := urlFromMdFilename(markdownFilename)
 	targetFile := targetFileFromMdFilename(markdownFilename)
 
-	return domain.ArticleMetadata{
+	return article.Metadata{
 		Title:            f.Title,
 		Subtitle:         f.Subtitle,
 		Date:             f.Date,
@@ -33,19 +34,19 @@ func ToArticleMetadata(f Frontmatter, markdownFilename string) domain.ArticleMet
 	}
 }
 
-func UpdatesToDomain(uu []Update) []domain.Update {
+func UpdatesToDomain(uu []Update) []article.Update {
 	if uu == nil {
 		return nil
 	}
-	result := make([]domain.Update, len(uu))
+	result := make([]article.Update, len(uu))
 	for i, u := range uu {
 		result[i] = u.ToDomain()
 	}
 	return result
 }
 
-func (u Update) ToDomain() domain.Update {
-	return domain.Update{
+func (u Update) ToDomain() article.Update {
+	return article.Update{
 		Date:    u.Date,
 		DiffURL: u.DiffURL,
 	}

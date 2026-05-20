@@ -3,9 +3,10 @@ package files
 import (
 	"bytes"
 	"fmt"
-	"github.com/blazejsewera/blog/renderer/internal/must"
 	"io"
 	"os"
+
+	"github.com/blazejsewera/blog/renderer/internal/must"
 )
 
 func Read(filename string) string {

@@ -1,15 +1,16 @@
 package section
 
 import (
-	"github.com/blazejsewera/blog/renderer/domain"
 	"slices"
+
+	"github.com/blazejsewera/blog/renderer/article"
 )
 
 type ListingProps struct {
-	Articles []domain.ArticleMetadata
+	Articles []article.Metadata
 }
 
-func ListingPropsFromAllArticles(allArticles []domain.ArticleMetadata) ListingProps {
+func ListingPropsFromAllArticles(allArticles []article.Metadata) ListingProps {
 	articles := slices.Clone(allArticles)
 	slices.Reverse(articles)
 
