@@ -1,12 +1,13 @@
 package markdown
 
 import (
-	"github.com/blazejsewera/blog/renderer/domain"
-	"github.com/blazejsewera/blog/renderer/internal/assert"
-	"github.com/blazejsewera/blog/renderer/internal/files"
 	"html/template"
 	"strings"
 	"testing"
+
+	"github.com/blazejsewera/blog/renderer/domain"
+	"github.com/blazejsewera/blog/renderer/internal/assert"
+	"github.com/blazejsewera/blog/renderer/internal/files"
 )
 
 func TestMarkdown(t *testing.T) {
@@ -43,7 +44,7 @@ func TestMarkdown(t *testing.T) {
 		expectedTargetFilename := "dist/test-article/index.html"
 
 		assert.EqualFields(t, expectedMetadata, metadata, "Title", "URL", "Previous")
-		assert.EqualHTML(t, expectedHTML, output)
+		assert.EqualHTMLTree(t, expectedHTML, output)
 		assert.Equal(t, expectedTargetFilename, targetFilename)
 	})
 }
