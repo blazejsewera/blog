@@ -11,8 +11,8 @@ import (
 )
 
 func TestMarkdown(t *testing.T) {
-	sampleMdWithFrontmatter := files.Read("body_converter_testdata/example.md")
-	expectedHTML := files.Read("body_converter_testdata/example.html")
+	sampleMdWithFrontmatter := files.Read("parser_testdata/example.md")
+	expectedHTML := files.Read("parser_testdata/example.html")
 
 	title := "a title"
 	sourceFile := "_site/test-article/index.md"
@@ -20,7 +20,7 @@ func TestMarkdown(t *testing.T) {
 	url := template.URL("/test-article")
 	previous := article.PartialMetadata{Title: "previous title"}
 
-	parser := &Parser{
+	parser := &Renderer{
 		AllArticles: []article.Metadata{
 			{
 				Title:      title,
@@ -34,7 +34,7 @@ func TestMarkdown(t *testing.T) {
 
 	t.Run("returns rendered HTML, metadata, target filename, and index.html-trimmed URL", func(t *testing.T) {
 		input := strings.NewReader(sampleMdWithFrontmatter)
-		output, metadata, targetFilename := parser.parseFile(input, sourceFile)
+		output, metadata, targetFilename := parser.renderFileAndParseMetadata(input, sourceFile)
 
 		expectedMetadata := article.Metadata{
 			Title:    title,

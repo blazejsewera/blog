@@ -21,9 +21,9 @@ func main() {
 	distdir.CopyIfDoesNotExist(force)
 
 	scanner := markdown.Scanner{}
-	allArticles, sourceFiles := scanner.ScanMetadata()
+	allArticles, sourceFiles := scanner.ScanAllArticlesMetadata()
 
-	parser := &markdown.Parser{AllArticles: allArticles}
+	parser := &markdown.Renderer{AllArticles: allArticles}
 	postTemplate := page.Post()
 	postRenderer := render.NewPostRenderer(parser, postTemplate)
 	for _, sourceFile := range sourceFiles {

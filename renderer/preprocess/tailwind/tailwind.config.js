@@ -1,4 +1,5 @@
 /** @type {import("tailwindcss").Config} */
+// has to be migrated to: https://tailwindcss.com/docs/functions-and-directives#compatibility
 module.exports = {
 	content: ["renderer/page/**/*.html.tmpl"],
 	theme: {

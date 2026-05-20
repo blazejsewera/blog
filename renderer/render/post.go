@@ -8,17 +8,17 @@ import (
 )
 
 type PostRenderer struct {
-	parser       *markdown.Parser
+	renderer     *markdown.Renderer
 	postTemplate *page.PostTemplate
 }
 
-func NewPostRenderer(parser *markdown.Parser, postTemplate *page.PostTemplate) *PostRenderer {
+func NewPostRenderer(parser *markdown.Renderer, postTemplate *page.PostTemplate) *PostRenderer {
 	return &PostRenderer{parser, postTemplate}
 }
 
 func (r *PostRenderer) Render(sourceFile string) error {
 	log.Debug("render: rendering post")
-	htmlBytes, metadata, targetFile := r.parser.ParseFile(sourceFile)
+	htmlBytes, metadata, targetFile := r.renderer.RenderFile(sourceFile)
 	rendered, err := r.postTemplate.Render(page.PostPropsFrom(article.FillDefaultIfEmpty(metadata), htmlBytes))
 	if err != nil {
 		return renderErr(sourceFile, err)

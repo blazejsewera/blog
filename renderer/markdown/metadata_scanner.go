@@ -9,7 +9,7 @@ import (
 	"github.com/blazejsewera/blog/renderer/constants"
 	"github.com/blazejsewera/blog/renderer/internal/files"
 	"github.com/blazejsewera/blog/renderer/internal/must"
-	"github.com/blazejsewera/blog/renderer/markdown/frontmatter"
+	"github.com/blazejsewera/blog/renderer/markdown/parse"
 )
 
 type Scanner struct {
@@ -18,7 +18,7 @@ type Scanner struct {
 	WorkingDir string
 }
 
-func (s *Scanner) ScanMetadata() (allArticles []article.Metadata, sourceFiles []string) {
+func (s *Scanner) ScanAllArticlesMetadata() (allArticles []article.Metadata, sourceFiles []string) {
 	filePaths, err := files.FindBySuffix(s.workingDirectory(), constants.MdExt)
 	if err != nil {
 		panic(err)
@@ -51,8 +51,7 @@ func scanFile(markdownFilename string) article.Metadata {
 	}
 	defer must.Close(file)
 
-	frMetadata := frontmatter.ParseFrontmatter(file)
-	return frontmatter.ToArticleMetadata(frMetadata, markdownFilename)
+	return parse.Frontmatter(file, markdownFilename)
 }
 
 func linkArticlesCyclic(articles []article.Metadata) []article.Metadata {

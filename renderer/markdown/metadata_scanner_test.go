@@ -10,7 +10,7 @@ import (
 
 func TestScanner(t *testing.T) {
 	t.Run("scan metadata and sort it in correct order", func(t *testing.T) {
-		s := Scanner{WorkingDir: "metadata_parser_testdata"}
+		s := Scanner{WorkingDir: "metadata_scanner_testdata"}
 		expected := []article.Metadata{
 			{
 				Title:    "First",
@@ -38,7 +38,7 @@ func TestScanner(t *testing.T) {
 			},
 		}
 
-		actual, _ := s.ScanMetadata()
+		actual, _ := s.ScanAllArticlesMetadata()
 
 		if assert.Len(t, 4, actual) {
 			for i, ex := range expected {

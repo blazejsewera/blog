@@ -1,4 +1,4 @@
-package frontmatter
+package parse
 
 import (
 	"bufio"
@@ -7,13 +7,22 @@ import (
 	"iter"
 	"strings"
 
+	"github.com/blazejsewera/blog/renderer/article"
+	"github.com/blazejsewera/blog/renderer/internal/must"
 	"github.com/blazejsewera/blog/renderer/internal/times"
 	"gopkg.in/yaml.v3"
 )
 
+func Frontmatter(markdownReader io.Reader, markdownFilename string) article.Metadata {
+	b := &bytes.Buffer{}
+	must.Copy(b, markdownReader)
+	frontmatter := readFrontmatter(b.Bytes())
+	return mapToArticleMetadata(frontmatter, markdownFilename)
+}
+
 const frontmatterYamlDelimiter = "---"
 
-type Frontmatter struct {
+type rawFrontmatter struct {
 	Title            string     `yaml:"title"`
 	Subtitle         string     `yaml:"subtitle"`
 	Date             times.Time `yaml:"date"`
@@ -26,43 +35,43 @@ type Frontmatter struct {
 	ImgDescription   string     `yaml:"imgDescription"`
 	Abstract         string     `yaml:"abstract"`
 	Keywords         []string   `yaml:"keywords"`
-	Updates          []Update   `yaml:"updates"`
+	Updates          []update   `yaml:"updates"`
 }
 
-type Update struct {
+type update struct {
 	Date    times.Time `yaml:"date"`
 	DiffURL string     `yaml:"diffUrl"`
 }
 
-var DefaultFrontmatter = Frontmatter{
+var defaultFrontmatter = rawFrontmatter{
 	Date:     times.Now(),
 	Author:   "Blazej Sewera",
 	License:  "CC-BY",
 	Language: "en-US",
 }
 
-func unmarshal(wholeMarkdown []byte) (frontmatter Frontmatter, markdownBody []byte) {
+func readFrontmatter(wholeMarkdown []byte) (frontmatter rawFrontmatter) {
 	if !frontmatterExists(wholeMarkdown) {
-		return DefaultFrontmatter, wholeMarkdown
+		return defaultFrontmatter
 	}
 	markdownReader := bufio.NewReader(bytes.NewReader(wholeMarkdown))
 
-	frontmatterBuf := readFrontmatter(markdownReader)
-	frontmatter = Frontmatter{}
+	frontmatterBuf := readFrontmatterBuf(markdownReader)
+	frontmatter = rawFrontmatter{}
 	err := yaml.Unmarshal(frontmatterBuf.Bytes(), &frontmatter)
 	if err != nil {
 		panic(err)
 	}
-
-	restOfMarkdown := &bytes.Buffer{}
-	_, err = io.Copy(restOfMarkdown, markdownReader)
-	if err != nil {
-		panic(err)
-	}
-	return frontmatter, restOfMarkdown.Bytes()
+	return frontmatter
 }
 
-func readFrontmatter(markdownReader *bufio.Reader) *bytes.Buffer {
+func frontmatterExists(wholeMarkdown []byte) bool {
+	reader := bufio.NewReader(bytes.NewReader(wholeMarkdown))
+	head, _ := readLine(reader)
+	return isFrontmatterYamlDelimiter(head)
+}
+
+func readFrontmatterBuf(markdownReader *bufio.Reader) *bytes.Buffer {
 	firstLine, _ := readLine(markdownReader)
 	if !isFrontmatterYamlDelimiter(firstLine) {
 		panic("markdown: frontmatter was not detected correctly; check if you run frontmatterExists before parsing")
@@ -80,12 +89,6 @@ func appendLine(buf *bytes.Buffer, line string) {
 	if err != nil {
 		panic(err)
 	}
-}
-
-func frontmatterExists(wholeMarkdown []byte) bool {
-	reader := bufio.NewReader(bytes.NewReader(wholeMarkdown))
-	head, _ := readLine(reader)
-	return isFrontmatterYamlDelimiter(head)
 }
 
 func readFrontmatterLines(r *bufio.Reader) iter.Seq[string] {

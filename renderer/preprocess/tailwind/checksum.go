@@ -28,9 +28,7 @@ func checkSha256(upstreamFilename string, localFilename string) error {
 	defer must.Close(f)
 
 	h := sha256.New()
-	if _, err = io.Copy(h, f); err != nil {
-		return err
-	}
+	must.Copy(h, f)
 
 	actualChecksum := fmt.Sprintf("%x", h.Sum(nil))
 	if actualChecksum != expectedChecksum {

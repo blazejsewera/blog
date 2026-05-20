@@ -1,4 +1,4 @@
-package frontmatter
+package parse
 
 import (
 	"html/template"
@@ -9,7 +9,7 @@ import (
 	"github.com/blazejsewera/blog/renderer/constants"
 )
 
-func ToArticleMetadata(f Frontmatter, markdownFilename string) article.Metadata {
+func mapToArticleMetadata(f rawFrontmatter, markdownFilename string) article.Metadata {
 	sourceFile := markdownFilename
 	url := urlFromMdFilename(markdownFilename)
 	targetFile := targetFileFromMdFilename(markdownFilename)
@@ -30,22 +30,22 @@ func ToArticleMetadata(f Frontmatter, markdownFilename string) article.Metadata 
 		URL:              template.URL(url),
 		SourceFile:       sourceFile,
 		TargetFile:       targetFile,
-		Updates:          UpdatesToDomain(f.Updates),
+		Updates:          toArticleUpdates(f.Updates),
 	}
 }
 
-func UpdatesToDomain(uu []Update) []article.Update {
+func toArticleUpdates(uu []update) []article.Update {
 	if uu == nil {
 		return nil
 	}
 	result := make([]article.Update, len(uu))
 	for i, u := range uu {
-		result[i] = u.ToDomain()
+		result[i] = u.toArticleUpdate()
 	}
 	return result
 }
 
-func (u Update) ToDomain() article.Update {
+func (u update) toArticleUpdate() article.Update {
 	return article.Update{
 		Date:    u.Date,
 		DiffURL: u.DiffURL,

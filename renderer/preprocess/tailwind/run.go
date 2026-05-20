@@ -3,7 +3,6 @@ package tailwind
 import (
 	"bytes"
 	"fmt"
-	"io"
 	"os/exec"
 
 	"github.com/blazejsewera/blog/renderer/constants"
@@ -54,9 +53,6 @@ func writeCSSFile(cssBuf *bytes.Buffer) error {
 	}
 	defer must.Close(file)
 
-	_, err = io.Copy(file, cssBuf)
-	if err != nil {
-		return fmt.Errorf("tailwind: write css: %w", err)
-	}
+	must.Copy(file, cssBuf)
 	return nil
 }
