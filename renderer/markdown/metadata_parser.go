@@ -14,7 +14,7 @@ import (
 
 type Scanner struct {
 	// WorkingDir is the base directory from which the Scanner starts looking for Markdown files.
-	// It is _site by default.
+	// It is constants.SiteDir by default.
 	WorkingDir string
 }
 
@@ -39,10 +39,9 @@ func (s *Scanner) ScanMetadata() (allArticles []article.Metadata, sourceFiles []
 
 func (s *Scanner) workingDirectory() string {
 	if s.WorkingDir == "" {
-		return "_site"
-	} else {
-		return s.WorkingDir
+		return constants.SiteDir
 	}
+	return s.WorkingDir
 }
 
 func scanFile(markdownFilename string) article.Metadata {
@@ -80,8 +79,8 @@ func linkArticlesCyclic(articles []article.Metadata) []article.Metadata {
 
 func sources(articles []article.Metadata) []string {
 	var result []string
-	for _, article := range articles {
-		result = append(result, article.SourceFile)
+	for _, anArticle := range articles {
+		result = append(result, anArticle.SourceFile)
 	}
 	return result
 }

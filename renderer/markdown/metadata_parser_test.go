@@ -10,7 +10,7 @@ import (
 
 func TestScanner(t *testing.T) {
 	t.Run("scan metadata and sort it in correct order", func(t *testing.T) {
-		s := Scanner{WorkingDir: "scanner_testdata"}
+		s := Scanner{WorkingDir: "metadata_parser_testdata"}
 		expected := []article.Metadata{
 			{
 				Title:    "First",

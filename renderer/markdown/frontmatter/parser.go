@@ -4,9 +4,10 @@ import (
 	"bufio"
 	"bytes"
 	"errors"
+	"io"
+
 	"github.com/blazejsewera/blog/renderer/internal/times"
 	"gopkg.in/yaml.v3"
-	"io"
 )
 
 type Frontmatter struct {
@@ -37,7 +38,7 @@ var DefaultFrMetadata = Frontmatter{
 	Language: "en-US",
 }
 
-func Unmarshal(markdown []byte) (frMetadata Frontmatter, stripped []byte, frMetaExists bool) {
+func Unmarshal(markdown []byte) (frMetadata Frontmatter, markdownBody []byte, frMetaExists bool) {
 	br := bufio.NewReader(bytes.NewReader(markdown))
 	if !detect(br) {
 		return Frontmatter{}, markdown, false
@@ -47,14 +48,14 @@ func Unmarshal(markdown []byte) (frMetadata Frontmatter, stripped []byte, frMeta
 	buf := &bytes.Buffer{}
 
 	for {
-		s, isPrefix, err := br.ReadLine()
+		line, isPrefix, err := br.ReadLine()
 		if err != nil {
 			panic(err)
 		} else if isPrefix {
 			panic("read line: line was too long")
 		}
 
-		if string(s) == "---" {
+		if string(line) == "---" {
 			if inFrontmatter {
 				frMetadata = Frontmatter{}
 				err := yaml.Unmarshal(buf.Bytes(), &frMetadata)
@@ -72,15 +73,19 @@ func Unmarshal(markdown []byte) (frMetadata Frontmatter, stripped []byte, frMeta
 				inFrontmatter = true
 			}
 		} else {
-			_, err1 := buf.Write(s)
-			_, err2 := buf.WriteString("\n")
-			if err := errors.Join(err1, err2); err != nil {
-				panic(err)
-			}
+			appendLine(buf, line)
 		}
 	}
 
 	return Frontmatter{}, markdown, false
+}
+
+func appendLine(buf *bytes.Buffer, line []byte) {
+	_, err1 := buf.Write(line)
+	_, err2 := buf.WriteString("\n")
+	if err := errors.Join(err1, err2); err != nil {
+		panic(err)
+	}
 }
 
 func detect(br *bufio.Reader) bool {

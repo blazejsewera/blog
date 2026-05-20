@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+
 	"github.com/blazejsewera/blog/renderer/constants"
 	"github.com/blazejsewera/blog/renderer/internal/log"
 	"github.com/blazejsewera/blog/renderer/markdown"
@@ -14,6 +15,7 @@ import (
 func main() {
 	force, verbosity := parseCmdArgs()
 	log.SetVerbosity(verbosity)
+	log.Info("main: force level: %s; verbosity: %s", force, verbosity)
 
 	preprocess.Run(force)
 	distdir.CopyIfDoesNotExist(force)

@@ -11,8 +11,8 @@ import (
 )
 
 func TestMarkdown(t *testing.T) {
-	sampleMdWithFrontmatter := files.Read("parser_testdata/example.md")
-	expectedHTML := files.Read("parser_testdata/example.html")
+	sampleMdWithFrontmatter := files.Read("body_converter_testdata/example.md")
+	expectedHTML := files.Read("body_converter_testdata/example.html")
 
 	title := "a title"
 	sourceFile := "_site/test-article/index.md"
