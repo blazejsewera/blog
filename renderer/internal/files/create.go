@@ -4,10 +4,13 @@ import (
 	"fmt"
 	"io/fs"
 	"os"
+
+	"github.com/blazejsewera/blog/renderer/internal/log"
 )
 
 func CreateDirIfDoesNotExist(name string) error {
 	if !Exists(name) {
+		log.Debug("files: creating directory: %s", name)
 		err := os.Mkdir(name, 0755)
 		if err != nil {
 			return fmt.Errorf("dir: create: %w", err)
@@ -23,10 +26,11 @@ func CreateFileWr(name string, executable bool) (*os.File, error) {
 	} else {
 		mode = 0644
 	}
+	log.Debug("files: creating file: %s; mode: %o", name, mode)
 
 	file, err := os.OpenFile(name, os.O_CREATE|os.O_TRUNC|os.O_WRONLY, mode)
 	if err != nil {
-		return nil, fmt.Errorf("file: create for write: %w", err)
+		return nil, fmt.Errorf("files: create file for writing: %w", err)
 	}
 	return file, nil
 }

@@ -11,13 +11,15 @@ import (
 
 func download() {
 	upstreamFilename := upstreamExecFilename()
-	log.Info("tailwind: downloading: upstreamFilename=%s", upstreamFilename)
-	localFilename := execFilename()
+	upstreamUrl := upstreamURL(upstreamFilename)
+	log.Debug("tailwind: downloading: source: %s", upstreamUrl)
 
-	err := files.DownloadFile(upstreamURL(upstreamFilename), localFilename, true)
+	localFilename := execFilename()
+	err := files.DownloadFile(upstreamUrl, localFilename, true)
 	if err != nil {
 		panic(fmt.Errorf("tailwind: download: %w", err))
 	}
+	log.Debug("tailwind: downloaded: source: %s; target: %s", upstreamUrl, localFilename)
 
 	err = checkSha256(upstreamFilename, localFilename)
 	if err != nil {

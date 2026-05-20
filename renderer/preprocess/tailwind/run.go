@@ -3,12 +3,13 @@ package tailwind
 import (
 	"bytes"
 	"fmt"
+	"io"
+	"os/exec"
+
 	"github.com/blazejsewera/blog/renderer/constants"
 	"github.com/blazejsewera/blog/renderer/internal/files"
 	"github.com/blazejsewera/blog/renderer/internal/log"
 	"github.com/blazejsewera/blog/renderer/internal/must"
-	"io"
-	"os/exec"
 )
 
 func Run(force constants.ForceLevel) {
@@ -19,7 +20,6 @@ func Run(force constants.ForceLevel) {
 		download()
 	}
 
-	log.Info("tailwind: running")
 	cssBuf := &bytes.Buffer{}
 	err := runTailwind(cssBuf)
 	if err != nil {
@@ -30,9 +30,11 @@ func Run(force constants.ForceLevel) {
 	if err != nil {
 		panic(err)
 	}
+	log.Info("tailwind: done")
 }
 
 func runTailwind(cssBuf *bytes.Buffer) error {
+	log.Debug("tailwind: running: version: %s; config: %s", constants.TailwindVersion, constants.TailwindConfigFile)
 	tailwindCmd := exec.Command(execFilename(), "--config", constants.TailwindConfigFile, "--minify")
 	tailwindCmd.Stdout = cssBuf
 	errBuf := &bytes.Buffer{}

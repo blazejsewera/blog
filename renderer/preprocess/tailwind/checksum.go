@@ -10,10 +10,12 @@ import (
 
 	"github.com/blazejsewera/blog/renderer/constants"
 	"github.com/blazejsewera/blog/renderer/internal/files"
+	"github.com/blazejsewera/blog/renderer/internal/log"
 	"github.com/blazejsewera/blog/renderer/internal/must"
 )
 
 func checkSha256(upstreamFilename string, localFilename string) error {
+	log.Debug("tailwind: checking checksum for file: %s; upstream checksums file: %s", localFilename, upstreamFilename)
 	expectedChecksum, err := downloadAndExtractChecksum(upstreamFilename)
 	if err != nil {
 		return err
@@ -33,12 +35,13 @@ func checkSha256(upstreamFilename string, localFilename string) error {
 	actualChecksum := fmt.Sprintf("%x", h.Sum(nil))
 	if actualChecksum != expectedChecksum {
 		return fmt.Errorf(
-			"checksums: not equal: expected='%s'; actual='%s'; filename='%s'",
+			"tailwind: checksums not equal: expected: %s; actual: %s; filename: %s",
 			expectedChecksum,
 			actualChecksum,
 			localFilename,
 		)
 	}
+	log.Debug("tailwind: checksums equal: %s", expectedChecksum)
 	return nil
 }
 

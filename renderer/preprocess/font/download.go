@@ -1,14 +1,13 @@
 package font
 
 import (
-	"bufio"
+	"path"
+	"strings"
+	"sync"
+
 	"github.com/blazejsewera/blog/renderer/constants"
 	"github.com/blazejsewera/blog/renderer/internal/files"
 	"github.com/blazejsewera/blog/renderer/internal/log"
-	"github.com/blazejsewera/blog/renderer/internal/must"
-	"os"
-	"path"
-	"sync"
 )
 
 func Download(force constants.ForceLevel) {
@@ -16,6 +15,20 @@ func Download(force constants.ForceLevel) {
 	if !allFontsExist(fns) || force >= constants.ReDownload {
 		download(fns)
 	}
+	log.Info("fonts: done")
+}
+
+func fontNames() []string {
+	fontNamesFile := files.Read(path.Join(constants.FontDir, constants.FontList))
+	var result []string
+	strings.Split(fontNamesFile, "\n")
+	for _, line := range strings.Split(fontNamesFile, "\n") {
+		trimmed := strings.TrimSpace(line)
+		if trimmed != "" {
+			result = append(result, trimmed)
+		}
+	}
+	return result
 }
 
 func allFontsExist(fontNames []string) bool {
@@ -28,41 +41,21 @@ func allFontsExist(fontNames []string) bool {
 }
 
 func download(fontNames []string) {
-	log.Info("fonts: downloading")
+	log.Debug("fonts: downloading: %v", fontNames)
 	wg := &sync.WaitGroup{}
 	for _, fontName := range fontNames {
-		fontName := fontName
-		wg.Add(1)
-		go downloadFont(wg, fontName)
+		wg.Go(func() { downloadFont(fontName) })
 	}
 	wg.Wait()
 }
 
-func fontNames() []string {
-	file, err := os.Open(path.Join(constants.FontDir, constants.FontList))
-	if err != nil {
-		panic(err)
-	}
-	defer must.Close(file)
-
-	var result []string
-	s := bufio.NewScanner(file)
-	for s.Scan() {
-		fontName := s.Text()
-		result = append(result, fontName)
-	}
-	if err := s.Err(); err != nil {
-		panic(err)
-	}
-	return result
-}
-
-func downloadFont(wg *sync.WaitGroup, fontName string) {
-	defer wg.Done()
+func downloadFont(fontName string) {
 	upstreamURL := constants.FontUpstreamURL + fontName
 	targetFile := path.Join(constants.FontDir, fontName)
 	err := files.DownloadFile(upstreamURL, targetFile, false)
 	if err != nil {
 		log.Error("font: download: %s", err)
+		return
 	}
+	log.Debug("font: downloaded: source: %s; target: %s", upstreamURL, targetFile)
 }

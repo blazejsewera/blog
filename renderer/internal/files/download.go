@@ -5,6 +5,7 @@ import (
 	"io"
 	"net/http"
 
+	"github.com/blazejsewera/blog/renderer/internal/log"
 	"github.com/blazejsewera/blog/renderer/internal/must"
 )
 
@@ -15,6 +16,7 @@ func DownloadFile(url string, targetFile string, executable bool) error {
 	}
 	defer must.Close(file)
 
+	log.Debug("files: downloading: source: %s; target: %s", url, targetFile)
 	res, err := http.Get(url)
 	if err != nil {
 		return fmt.Errorf("file: download: %w", err)

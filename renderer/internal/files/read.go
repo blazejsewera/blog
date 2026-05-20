@@ -6,10 +6,12 @@ import (
 	"io"
 	"os"
 
+	"github.com/blazejsewera/blog/renderer/internal/log"
 	"github.com/blazejsewera/blog/renderer/internal/must"
 )
 
 func Read(filename string) string {
+	log.Debug("files: reading file: %s", filename)
 	file, err := os.Open(filename)
 	if err != nil {
 		panic(fmt.Errorf("read file: %w", err))

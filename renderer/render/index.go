@@ -2,6 +2,7 @@ package render
 
 import (
 	"github.com/blazejsewera/blog/renderer/article"
+	"github.com/blazejsewera/blog/renderer/internal/log"
 	"github.com/blazejsewera/blog/renderer/page"
 )
 
@@ -14,6 +15,7 @@ func NewIndexRenderer(indexTemplate *page.IndexTemplate) *IndexRenderer {
 }
 
 func (r *IndexRenderer) Render(allArticles []article.Metadata) error {
+	log.Debug("render: rendering index")
 	metadata := page.IndexMetadata
 	targetFile := metadata.TargetFile
 	sourceFile := metadata.SourceFile

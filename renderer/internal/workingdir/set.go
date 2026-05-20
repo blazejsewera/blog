@@ -4,11 +4,14 @@ import (
 	"fmt"
 	"os"
 	"path"
+
+	"github.com/blazejsewera/blog/renderer/internal/log"
 )
 
 const maxIters = 6
 
 func SetToProjectRoot() {
+	log.Debug("workingdir: setting to project root")
 	if isProjectRoot(getCurrentWD()) {
 		return
 	}
@@ -17,14 +20,14 @@ func SetToProjectRoot() {
 		parent := path.Dir(getCurrentWD())
 		err := set(parent)
 		if err != nil {
-			panic(fmt.Errorf("set working directory: %w", err))
+			panic(fmt.Errorf("workingdir: set working directory: %w", err))
 		}
 		if isProjectRoot(parent) {
 			return
 		}
 	}
 
-	panic(fmt.Errorf("set working directory: failed to find project root after %d iterations", maxIters))
+	panic(fmt.Errorf("workingdir: set working directory: failed to find project root after %d iterations", maxIters))
 }
 
 func getCurrentWD() string {
@@ -42,7 +45,7 @@ func isProjectRoot(dir string) bool {
 
 	files, err := os.ReadDir(dir)
 	if err != nil {
-		panic(fmt.Errorf("is project root: read dir: %s: %w", dir, err))
+		panic(fmt.Errorf("workingdir: is project root: read dir: %s: %w", dir, err))
 	}
 	for _, file := range files {
 		if file.Name() == "LICENSE" {
@@ -55,7 +58,7 @@ func isProjectRoot(dir string) bool {
 func isDir(file string) bool {
 	fileInfo, err := os.Stat(file)
 	if err != nil {
-		panic(fmt.Errorf("is dir: %w", err))
+		panic(fmt.Errorf("workingdir: is dir: %w", err))
 	}
 	return fileInfo.Mode()&os.ModeType == os.ModeDir
 }

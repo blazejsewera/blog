@@ -4,6 +4,8 @@ import (
 	"io/fs"
 	"path/filepath"
 	"strings"
+
+	"github.com/blazejsewera/blog/renderer/internal/log"
 )
 
 func FindBySuffix(root, suffix string) (filePaths []string, err error) {
@@ -19,5 +21,6 @@ func FindBySuffix(root, suffix string) (filePaths []string, err error) {
 	if err != nil {
 		return nil, err
 	}
+	log.Debug("files: found files: %v; root: %s; suffix: %s", filePaths, root, suffix)
 	return filePaths, nil
 }

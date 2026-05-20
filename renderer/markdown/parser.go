@@ -8,6 +8,7 @@ import (
 
 	chromahtml "github.com/alecthomas/chroma/v2/formatters/html"
 	"github.com/blazejsewera/blog/renderer/article"
+	"github.com/blazejsewera/blog/renderer/internal/log"
 	"github.com/blazejsewera/blog/renderer/internal/must"
 	"github.com/blazejsewera/blog/renderer/markdown/footnoteextension"
 	"github.com/blazejsewera/blog/renderer/markdown/frontmatter"
@@ -24,22 +25,24 @@ type Parser struct {
 func (p *Parser) ParseFile(markdownFilename string) (html []byte, metadata article.Metadata, targetFilename string) {
 	file, err := os.Open(markdownFilename)
 	if err != nil {
-		panic(fmt.Errorf("markdown: parse file: %w", err))
+		panic(fmt.Errorf("markdown: parse: %w", err))
 	}
 	defer must.Close(file)
+	log.Debug("markdown: parsing: %s", markdownFilename)
 	return p.parseFile(file, markdownFilename)
 }
 
 func (p *Parser) parseFile(markdownReader io.Reader, markdownFilename string) (html []byte, metadata article.Metadata, targetFilename string) {
 	html, _ = parse(markdownReader)
 	metadata = p.findMetadata(markdownFilename)
+	log.Debug("markdown: parsed: %s", markdownFilename)
 	return html, metadata, metadata.TargetFile
 }
 
 func (p *Parser) findMetadata(markdownSourceFile string) article.Metadata {
-	for _, article := range p.AllArticles {
-		if article.EqualSource(markdownSourceFile) {
-			return article
+	for _, anArticle := range p.AllArticles {
+		if anArticle.EqualSource(markdownSourceFile) {
+			return anArticle
 		}
 	}
 	panic(fmt.Errorf("find metadata: cannot find metadata for %s; consider running Scanner first", markdownSourceFile))

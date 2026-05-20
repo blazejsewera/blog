@@ -18,7 +18,7 @@ func save(targetFile string, rendered []byte, sourceFile string) error {
 	if err != nil {
 		return renderErr(sourceFile, err)
 	}
-	log.Info("rendered: source: %s; target: %s", sourceFile, targetFile)
+	log.Info("render: saved: source: %s; target: %s", sourceFile, targetFile)
 	return nil
 }
 

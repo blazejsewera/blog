@@ -2,6 +2,7 @@ package render
 
 import (
 	"github.com/blazejsewera/blog/renderer/article"
+	"github.com/blazejsewera/blog/renderer/internal/log"
 	"github.com/blazejsewera/blog/renderer/markdown"
 	"github.com/blazejsewera/blog/renderer/page"
 )
@@ -16,6 +17,7 @@ func NewPostRenderer(parser *markdown.Parser, postTemplate *page.PostTemplate) *
 }
 
 func (r *PostRenderer) Render(sourceFile string) error {
+	log.Debug("render: rendering post")
 	htmlBytes, metadata, targetFile := r.parser.ParseFile(sourceFile)
 	rendered, err := r.postTemplate.Render(page.PostPropsFrom(article.FillDefaultIfEmpty(metadata), htmlBytes))
 	if err != nil {
