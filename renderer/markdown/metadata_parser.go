@@ -51,7 +51,7 @@ func scanFile(markdownFilename string) article.Metadata {
 	}
 	defer must.Close(file)
 
-	frMetadata, _ := frontmatter.SplitMetadataAndMarkdown(file)
+	frMetadata := frontmatter.ParseFrontmatter(file)
 	return frontmatter.ToArticleMetadata(frMetadata, markdownFilename)
 }
 

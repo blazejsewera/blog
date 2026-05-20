@@ -33,7 +33,7 @@ func (p *Parser) ParseFile(markdownFilename string) (html []byte, metadata artic
 }
 
 func (p *Parser) parseFile(markdownReader io.Reader, markdownFilename string) (html []byte, metadata article.Metadata, targetFilename string) {
-	html, _ = parse(markdownReader)
+	html = parse(markdownReader)
 	metadata = p.findMetadata(markdownFilename)
 	log.Debug("markdown: parsed: %s", markdownFilename)
 	return html, metadata, metadata.TargetFile
@@ -48,8 +48,8 @@ func (p *Parser) findMetadata(markdownSourceFile string) article.Metadata {
 	panic(fmt.Errorf("find metadata: cannot find metadata for %s; consider running Scanner first", markdownSourceFile))
 }
 
-func parse(markdownReader io.Reader) (html []byte, frMetadata frontmatter.Frontmatter) {
-	frMetadata, stripped := frontmatter.SplitMetadataAndMarkdown(markdownReader)
+func parse(markdownReader io.Reader) (html []byte) {
+	markdownBody := frontmatter.MarkdownBody(markdownReader)
 
 	md := goldmark.New(
 		goldmark.WithRendererOptions(goldmarkhtml.WithUnsafe()),
@@ -68,10 +68,10 @@ func parse(markdownReader io.Reader) (html []byte, frMetadata frontmatter.Frontm
 	)
 
 	output := &bytes.Buffer{}
-	err := md.Convert(stripped, output)
+	err := md.Convert(markdownBody, output)
 	if err != nil {
 		panic(err)
 	}
 
-	return output.Bytes(), frMetadata
+	return output.Bytes()
 }
