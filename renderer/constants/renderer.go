@@ -1,10 +1,10 @@
 package constants
 
 const (
-	RendererPrefix = "renderer/"
-	DistDir        = "dist"
-	SiteDir        = "_site"
-	PageDir        = RendererPrefix + "page"
+	RendererDir = "renderer"
+	DistDir     = "dist"
+	SiteDir     = "_site"
+	PageDir     = RendererDir + "/page"
 
 	MdExt   = ".md"
 	HtmlExt = ".html"

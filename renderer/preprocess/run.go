@@ -8,10 +8,10 @@ import (
 	"github.com/blazejsewera/blog/renderer/preprocess/tailwind"
 )
 
-func Run(force constants.ForceLevel) {
+func Run(force constants.ForceLevel, verbosity constants.VerbosityLevel) {
 	wg := sync.WaitGroup{}
 	wg.Go(func() {
-		tailwind.Run(force)
+		tailwind.Run(force, verbosity)
 	})
 	wg.Go(func() {
 		font.Download(force)

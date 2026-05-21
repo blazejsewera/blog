@@ -8,10 +8,9 @@ import (
 	"github.com/blazejsewera/blog/renderer/constants"
 	"github.com/blazejsewera/blog/renderer/internal/files"
 	"github.com/blazejsewera/blog/renderer/internal/log"
-	"github.com/blazejsewera/blog/renderer/internal/must"
 )
 
-func Run(force constants.ForceLevel) {
+func Run(force constants.ForceLevel, verbosity constants.VerbosityLevel) {
 	if files.Exists(constants.TailwindStyleFile) && force == constants.NoForce {
 		return
 	}
@@ -19,23 +18,27 @@ func Run(force constants.ForceLevel) {
 		download()
 	}
 
-	cssBuf := &bytes.Buffer{}
-	err := runTailwind(cssBuf)
-	if err != nil {
-		panic(err)
-	}
-
-	err = writeCSSFile(cssBuf)
+	err := runTailwind(verbosity)
 	if err != nil {
 		panic(err)
 	}
 	log.Info("tailwind: done")
 }
 
-func runTailwind(cssBuf *bytes.Buffer) error {
-	log.Debug("tailwind: running: version: %s; config: %s", constants.TailwindVersion, constants.TailwindConfigFile)
-	tailwindCmd := exec.Command(execFilename(), "--config", constants.TailwindConfigFile, "--minify")
-	tailwindCmd.Stdout = cssBuf
+func runTailwind(verbosity constants.VerbosityLevel) error {
+	tailwindOutputOptimization := "--minify"
+	if verbosity >= constants.Debug {
+		tailwindOutputOptimization = ""
+	}
+	log.Debug("tailwind: running: version: %s; config: %s; optimization: %s",
+		constants.TailwindVersion, constants.TailwindConfigFile, tailwindOutputOptimization)
+
+	tailwindCmd := exec.Command(execFilename(),
+		"--input", constants.TailwindConfigFile,
+		"--output", constants.TailwindStyleFile,
+		tailwindOutputOptimization)
+	outBuf := &bytes.Buffer{}
+	tailwindCmd.Stdout = outBuf
 	errBuf := &bytes.Buffer{}
 	tailwindCmd.Stderr = errBuf
 
@@ -43,16 +46,8 @@ func runTailwind(cssBuf *bytes.Buffer) error {
 	if err != nil {
 		return fmt.Errorf("tailwind: run: %w; maybe you have a wrong binary version for your OS/arch;\nstderr:\n%s", err, errBuf.String())
 	}
-	return nil
-}
 
-func writeCSSFile(cssBuf *bytes.Buffer) error {
-	file, err := files.CreateFileWr(constants.TailwindStyleFile, false)
-	if err != nil {
-		return fmt.Errorf("tailwind: write css: %w", err)
-	}
-	defer must.Close(file)
-
-	must.Copy(file, cssBuf)
+	log.Debug("tailwind: stdout:\n%s", outBuf.String())
+	log.Debug("tailwind: stderr:\n%s", errBuf.String())
 	return nil
 }

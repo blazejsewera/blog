@@ -14,12 +14,12 @@ func Download(force constants.ForceLevel) {
 	fns := fontNames()
 	if !allFontsExist(fns) || force >= constants.ReDownload {
 		download(fns)
+		log.Info("fonts: done")
 	}
-	log.Info("fonts: done")
 }
 
 func fontNames() []string {
-	fontNamesFile := files.Read(path.Join(constants.FontDir, constants.FontList))
+	fontNamesFile := files.Read(constants.FontListFile)
 	var result []string
 	strings.Split(fontNamesFile, "\n")
 	for _, line := range strings.Split(fontNamesFile, "\n") {

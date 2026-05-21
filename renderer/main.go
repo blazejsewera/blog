@@ -17,7 +17,7 @@ func main() {
 	log.SetVerbosity(verbosity)
 	log.Info("main: force level: %s; verbosity: %s", force, verbosity)
 
-	preprocess.Run(force)
+	preprocess.Run(force, verbosity)
 	distdir.CopyIfDoesNotExist(force)
 
 	scanner := markdown.Scanner{}
