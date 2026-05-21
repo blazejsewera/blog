@@ -1,8 +1,9 @@
 package assert
 
 import (
-	tt "github.com/stretchr/testify/assert"
 	"testing"
+
+	tt "github.com/stretchr/testify/assert"
 )
 
 func Equal[T any](t testing.TB, expected T, actual T, errorMsg ...any) bool {

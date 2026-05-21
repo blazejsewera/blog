@@ -41,22 +41,13 @@ keywords: # default []
 
 ## Development
 
-- Run tests:
-  ```sh
-  yarn test
-  ```
-  or:
-  ```sh
-  yarn test:watch
-  ```
-- Run tests with the snapshot updates:
-  ```sh
-  yarn test:update
-  ```
-- Run a development server:
-  ```sh
-  yarn dev
-  ```
+See the [Makefile](./Makefile)
+
+or quickly run:
+
+```sh
+make dev
+```
 
 ## Deploy and rollback
 
@@ -65,34 +56,6 @@ All the applicable deployment and rollback workflows,
 both automatic and manual are in the [actions tab].
 
 [actions tab]: https://github.com/blazejsewera/blog/actions
-
-## Vitest
-
-Vitest is a faster alternative to Jest.
-
-### Troubleshooting
-
-Isolation mode has to be on.
-Otherwise, test re-runs in watch mode will fail sometimes.
-
-In `vite.config.mjs`:
-
-```js
-export default defineConfig({
-  // [...]
-  test: {
-    isolate: true,
-  },
-});
-```
-
-### Vitest VSCode integration
-
-Remember to run vitest VSCode plugin in "Watch mode".
-To do this, open the **Testing** tab,
-expand a dropdown for run configurations
-(a caret by the double play button),
-and select **Run Tests (Watch Mode)**.
 
 ## License
 
