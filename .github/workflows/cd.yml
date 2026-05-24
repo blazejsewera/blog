@@ -32,7 +32,7 @@ jobs:
         uses: "actions/cache@v5"
         with:
           path: "renderer/bin/tailwindcss"
-          key: "${{ runner.os }}-tailwind-${{ hashFiles('renderer/constants/constants.go') }}"
+          key: "${{ runner.os }}-tailwind-${{ hashFiles('renderer/constants/tailwind.go') }}"
           restore-keys: |
             ${{ runner.os }}-tailwind-
 
@@ -41,7 +41,7 @@ jobs:
         uses: "actions/cache@v5"
         with:
           path: "_site/font"
-          key: "${{ runner.os }}-fonts-${{ hashFiles('_site/font/font.list') }}"
+          key: "${{ runner.os }}-fonts-${{ hashFiles('renderer/preprocess/font/font.list') }}"
           restore-keys: |
             ${{ runner.os }}-fonts-
 
